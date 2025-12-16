@@ -10,6 +10,8 @@
     - [Metropolitan Area Network (MAN)](#metropolitan-area-network-man)
     - [Wide Area Network (WAN)](#wide-area-network-wan)
     - [Network Architecture](#network-architecture)
+      - [Peer-to-Peer](#peer-to-peer)
+      - [Client-Server](#client-server)
     - [Peer-to-Peer vs Client-Server Network](#peer-to-peer-vs-client-server-network)
 
 # Introduction Network
@@ -70,6 +72,24 @@
 - Examples: The Internet, Corporate Offices in Different States
 
 ### Network Architecture
+
+#### Peer-to-Peer
+
+- All computers on the network are peers
+  - No dedicated servers
+  - There’s no centralized control over shared resources
+- Any device can share its resources as it pleases
+- All computers can act as either a client or a server
+- Easy to set-up, and common in homes and small businesse
+
+#### Client-Server
+
+- The network is composed of client and servers
+  - Servers provide resources
+  - Clients receive resources
+- Servers provide centralized control over network resources (files, printers, etc.)
+- Centralizes user accounts, security, and access controls to simplify network administration
+- More difficult to setup and requires an IT administrator
 
 ### Peer-to-Peer vs Client-Server Network
 
