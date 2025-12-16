@@ -13,6 +13,9 @@
       - [Peer-to-Peer](#peer-to-peer)
       - [Client-Server](#client-server)
     - [Peer-to-Peer vs Client-Server Network](#peer-to-peer-vs-client-server-network)
+  - [Introduction to Computer Networking Protocols](#introduction-to-computer-networking-protocols)
+  - [Introduction to the OSI Model](#introduction-to-the-osi-model)
+    - [What is it?](#what-is-it)
 
 # Introduction Network
 
@@ -105,3 +108,35 @@
 | Setup complexity         | Easy to set up                               | More difficult to set up                                |
 | IT administration        | Not required                                 | Requires an IT administrator                            |
 | Typical usage            | Homes and small businesses                   | Medium and large organizations                          |
+
+## Introduction to Computer Networking Protocols
+
+- Computers communicate with each other with network protocols.
+- Protocols are rules governing how machines exchange data and enable effective communication.
+- Example Common TCP/IP Suite of Protocols:
+  - Web Communication: HTTP
+  - E-mail: POP3, SMTP, IMAP
+  - File Transfers: FTP
+
+## Introduction to the OSI Model
+
+### What is it?
+
+- The Open Systems Interconnection (OSI) Reference Model
+
+  - A conceptual framework showing us how data moves throughout a network.
+  - Developed by the International Organization for Standardization (ISO) in 1977.
+
+- It’s Purpose: Gives us a guide to understanding how networks operate.
+
+**Mnemonic:** _Please Do Not Throw Sausage Pizza Away_
+
+| Layer No. | Mnemonic    | Layer Name   | Data Unit | Common Protocols                              | Typical Devices                   |
+| --------- | ----------- | ------------ | --------- | --------------------------------------------- | --------------------------------- |
+| 7         | P – Please  | Application  | Data      | HTTP, HTTPS, FTP, SMTP, POP3, IMAP, DNS, SNMP | PC, Server, Proxy Server          |
+| 6         | P – Pizza   | Presentation | Data      | SSL/TLS, JPEG, MPEG, ASCII                    | PC, Server                        |
+| 5         | S – Sausage | Session      | Data      | NetBIOS Session, RPC, PPTP                    | PC, Server                        |
+| 4         | T – Throw   | Transport    | Segment   | TCP, UDP                                      | Firewall, Load Balancer (Layer 4) |
+| 3         | N – Not     | Network      | Packet    | IP, ICMP, IPsec, RIP, OSPF, BGP               | Router, Layer 3 Switch            |
+| 2         | D – Do      | Data Link    | Frame     | Ethernet (802.3), ARP, PPP, VLAN (802.1Q)     | Switch, Bridge, NIC               |
+| 1         | A – Away    | Physical     | Bit       | Physical standards (UTP, Fiber)               | Hub, Repeater, Cable              |
