@@ -23,6 +23,14 @@
     - [Unicast](#unicast)
     - [Multicast](#multicast)
     - [Broadcast](#broadcast)
+  - [Wired Network Topologies](#wired-network-topologies)
+    - [Ring Topology](#ring-topology)
+    - [Star Topology](#star-topology)
+    - [Mesh Topology](#mesh-topology)
+  - [Wireless Network Topologies](#wireless-network-topologies)
+    - [Ad hoc](#ad-hoc)
+    - [Infrastructure](#infrastructure)
+    - [Mesh](#mesh)
 - [Data link layer - OSI layer 2 - TCP/IP Layer 1](#data-link-layer---osi-layer-2---tcpip-layer-1)
   - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
   - [Ethernet](#ethernet)
@@ -196,6 +204,72 @@
 - One-to-All
 
 ![OSI Model comunication](./static/tutorial_0005.png)
+
+## Wired Network Topologies
+
+### Ring Topology
+
+- All devices are connected in a circular fashion, with each device (node) linked to two others.
+- Data travels from node to node, with each device handling and regenerating the signal, acting as a repeater.
+- WAN technologies like SONET/SDH use dual ring topologies for redundancy, where the two rings send data in opposite directions (counterrotating), so if one path or node fails, data can travel the other way, ensuring continuous service.
+- This redundancy provides high availability and rapid recovery from failures, making ring topologies popular in high-speed carrier networks.
+
+![OSI Model comunication](./static/tutorial_0006.png)
+
+### Star Topology
+
+- All devices are connected to a central connecting device, which is almost always a
+  switch in modern networks.
+- Devices send data to the switch, which forwards it only to the appropriate destination
+  device.
+- Star topology is the standard for nearly all modern LANs, from home networks to
+  enterprise environments.
+- While the central switch is a single point of failure, modern networks often use redundant
+  switches and connections to address this.
+
+![OSI Model comunication](./static/tutorial_0007.png)
+
+### Mesh Topology
+
+- Devices are connected to multiple other devices, creating redundant paths for data.
+  There are two types:
+- Full Mesh: Each device connects to every other device (maximum redundancy, rarely
+  used due to high cost)
+- Partial Mesh: Devices connect to some, but not all, other devices (balances redundancy
+  with cost)
+- Commonly used in WANs and for critical network infrastructure where reliability is
+  essential.
+- Modern networks typically use a partial mesh for core components only.
+
+![OSI Model comunication](./static/tutorial_0008.png)
+
+## Wireless Network Topologies
+
+### Ad hoc
+
+- Peer-to-peer (P2P) wireless network where no wireless access point (WAP) infrastructure exits.
+- The devices communicate directly with one another.
+- Personal area networks (PANs) are a common example of Ad hoc wireless networks.
+
+![OSI Model comunication](./static/tutorial_0009.png)
+
+### Infrastructure
+
+- Wireless network that uses a wireless access point (WAP) as its central connecting
+  device.
+- Infrastructure wireless networks (WLANs) are commonly used in homes and small offices.
+
+![OSI Model comunication](./static/tutorial_0010.png)
+
+### Mesh
+
+- Just like a wired mesh design, wireless mesh networks utilize several wireless access points (nodes) to create a robust wireless network that is:
+  - Scalable
+  - Self-Healing
+  - Reliable (redundancy)
+- Common in larger homes and businesses
+
+![OSI Model comunication](./static/tutorial_0011.png)
 
 # Data link layer - OSI layer 2 - TCP/IP Layer 1
 
