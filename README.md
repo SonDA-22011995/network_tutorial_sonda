@@ -25,6 +25,7 @@
     - [Broadcast](#broadcast)
 - [Data link layer - OSI layer 2 - TCP/IP Layer 1](#data-link-layer---osi-layer-2---tcpip-layer-1)
   - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
+  - [Ethernet](#ethernet)
 - [Network Layer - OSI layer 3 - TCP/IP Layer 2](#network-layer---osi-layer-3---tcpip-layer-2)
   - [IP Address](#ip-address)
 
@@ -207,6 +208,12 @@
 - Example MAC address: 00:21:70:6f:06:f2
 
 ![OSI Model comunication](./static/tutorial_0002.png)
+
+## Ethernet
+
+- The most popular networking technology in the world!
+- Refers to a family of standards that define the physical and logical aspects of the world's most popular type of LAN.
+- The standard communications protocol for building a local area network (LAN).
 
 # Network Layer - OSI layer 3 - TCP/IP Layer 2
 
