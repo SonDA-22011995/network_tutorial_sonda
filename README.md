@@ -16,6 +16,7 @@
   - [Introduction to Computer Networking Protocols](#introduction-to-computer-networking-protocols)
   - [Introduction to the OSI Model](#introduction-to-the-osi-model)
     - [What is it?](#what-is-it)
+    - [OSI communication](#osi-communication)
 
 # Introduction Network
 
@@ -140,3 +141,7 @@
 | 3         | N – Not     | Network      | Packet    | IP, ICMP, IPsec, RIP, OSPF, BGP               | Router, Layer 3 Switch            |
 | 2         | D – Do      | Data Link    | Frame     | Ethernet (802.3), ARP, PPP, VLAN (802.1Q)     | Switch, Bridge, NIC               |
 | 1         | A – Away    | Physical     | Bit       | Physical standards (UTP, Fiber)               | Hub, Repeater, Cable              |
+
+### OSI communication
+
+![OSI Model](./static/tutorial_0001.png)
