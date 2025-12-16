@@ -144,4 +144,4 @@
 
 ### OSI communication
 
-![OSI Model](./static/tutorial_0001.png)
+![OSI Model comunication](./static/tutorial_0001.png)
