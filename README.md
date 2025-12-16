@@ -18,6 +18,9 @@
     - [What is it?](#what-is-it)
     - [OSI communication](#osi-communication)
   - [Introduction to the TCP/IP Model](#introduction-to-the-tcpip-model)
+- [Data link layer - OSI layer 2 - TCP/IP Layer 1](#data-link-layer---osi-layer-2---tcpip-layer-1)
+  - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
+- [Network Layer - OSI layer 3 - TCP/IP Layer 2](#network-layer---osi-layer-3---tcpip-layer-2)
 
 # Introduction Network
 
@@ -160,3 +163,13 @@
 | 3         | Transport         | OSI Layer 4   | Segment     | TCP, UDP                                      | Firewall, Load Balancer (Layer 4) |
 | 2         | Internet          | OSI Layer 3   | Packet      | IP, ICMP, IPsec, ARP                          | Router, Layer 3 Switch            |
 | 1         | Network Access    | OSI Layer 2–1 | Frame / Bit | Ethernet, Wi-Fi (802.11), PPP                 | Switch, NIC, Hub, Cable           |
+
+# Data link layer - OSI layer 2 - TCP/IP Layer 1
+
+## MAC Addresses - Media Access Control (MAC)
+
+- Physical address of the network adapter card
+
+![OSI Model comunication](./static/tutorial_0002.png)
+
+# Network Layer - OSI layer 3 - TCP/IP Layer 2
