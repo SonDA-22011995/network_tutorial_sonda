@@ -17,6 +17,7 @@
   - [Introduction to the OSI Model](#introduction-to-the-osi-model)
     - [What is it?](#what-is-it)
     - [OSI communication](#osi-communication)
+  - [Introduction to the TCP/IP Model](#introduction-to-the-tcpip-model)
 
 # Introduction Network
 
@@ -145,3 +146,17 @@
 ### OSI communication
 
 ![OSI Model comunication](./static/tutorial_0001.png)
+
+## Introduction to the TCP/IP Model
+
+- The TCP/IP suite is the most commonly used protocol suite in the networking world.
+- It’s essentially the protocol suite in which the Internet was built.
+- It’s the standard for computer networking.
+- It is based on a 4-layer model that is similar to the OSI model.
+
+| Layer No. | TCP/IP Layer Name | OSI Mapping   | Data Unit   | Common Protocols                              | Typical Devices                   |
+| --------- | ----------------- | ------------- | ----------- | --------------------------------------------- | --------------------------------- |
+| 4         | Application       | OSI Layer 7–5 | Data        | HTTP, HTTPS, FTP, SMTP, POP3, IMAP, DNS, SNMP | PC, Server, Proxy Server          |
+| 3         | Transport         | OSI Layer 4   | Segment     | TCP, UDP                                      | Firewall, Load Balancer (Layer 4) |
+| 2         | Internet          | OSI Layer 3   | Packet      | IP, ICMP, IPsec, ARP                          | Router, Layer 3 Switch            |
+| 1         | Network Access    | OSI Layer 2–1 | Frame / Bit | Ethernet, Wi-Fi (802.11), PPP                 | Switch, NIC, Hub, Cable           |
