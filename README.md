@@ -18,9 +18,15 @@
     - [What is it?](#what-is-it)
     - [OSI communication](#osi-communication)
   - [Introduction to the TCP/IP Model](#introduction-to-the-tcpip-model)
+  - [Duplex Communication](#duplex-communication)
+  - [Network Transmission Types](#network-transmission-types)
+    - [Unicast](#unicast)
+    - [Multicast](#multicast)
+    - [Broadcast](#broadcast)
 - [Data link layer - OSI layer 2 - TCP/IP Layer 1](#data-link-layer---osi-layer-2---tcpip-layer-1)
   - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
 - [Network Layer - OSI layer 3 - TCP/IP Layer 2](#network-layer---osi-layer-3---tcpip-layer-2)
+  - [IP Address](#ip-address)
 
 # Introduction Network
 
@@ -164,12 +170,49 @@
 | 2         | Internet          | OSI Layer 3   | Packet      | IP, ICMP, IPsec, ARP                          | Router, Layer 3 Switch            |
 | 1         | Network Access    | OSI Layer 2–1 | Frame / Bit | Ethernet, Wi-Fi (802.11), PPP                 | Switch, NIC, Hub, Cable           |
 
+## Duplex Communication
+
+- Network communication will occur in either full or half duplex mode:
+  - Half Duplex: Can send and receive data, but not at the same time.
+  - Full Duplex: Can send and receive data simultaneously.
+
+## Network Transmission Types
+
+### Unicast
+
+- One-to-One
+
+![OSI Model comunication](./static/tutorial_0003.png)
+
+### Multicast
+
+- One-to-Many
+
+![OSI Model comunication](./static/tutorial_0004.png)
+
+### Broadcast
+
+- One-to-All
+
+![OSI Model comunication](./static/tutorial_0005.png)
+
 # Data link layer - OSI layer 2 - TCP/IP Layer 1
 
 ## MAC Addresses - Media Access Control (MAC)
 
 - Physical address of the network adapter card
+- Represented Hexadecimal - Six bytes (48 bits)
+  - First three bytes (24 bits) are assigned by the IEEE to the manufacturer.Organizationally Unique Identifier (OUI) assigned by IEEE (ex: Dell or HP)
+  - Last three bytes (24 bits) are usually assigned sequentially: Unique Numbers
+- Example MAC address: 00:21:70:6f:06:f2
 
 ![OSI Model comunication](./static/tutorial_0002.png)
 
 # Network Layer - OSI layer 3 - TCP/IP Layer 2
+
+## IP Address
+
+- An IP Address is a logical address used in order to uniquely identify a device on an IP network
+- There are two versions:
+  - IP version 4 (IPv4): 192.168.0.1
+  - IP version 6 (IPv6): 2001:DB8:85A3:0:0:8A2E:370:7334
