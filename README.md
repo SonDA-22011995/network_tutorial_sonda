@@ -285,6 +285,8 @@
 
 ## Ethernet
 
+![OSI Model comunication](./static/tutorial_0012.webp)
+
 - The most popular networking technology in the world!
 - Refers to a family of standards that define the physical and logical aspects of the world's most popular type of LAN.
 - The standard communications protocol for building a local area network (LAN).
