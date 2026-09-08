@@ -3,12 +3,12 @@
     - [What is a Network?](#what-is-a-network)
     - [Some Basic Networking Rules](#some-basic-networking-rules)
     - [Type of Computer Networks (by size)](#type-of-computer-networks-by-size)
-    - [Personal Area Network (PAN)](#personal-area-network-pan)
-    - [Local Area Network (LAN)](#local-area-network-lan)
-    - [Wireless Local Area Network (WLAN)](#wireless-local-area-network-wlan)
-    - [Campus Area Network (CAN)](#campus-area-network-can)
-    - [Metropolitan Area Network (MAN)](#metropolitan-area-network-man)
-    - [Wide Area Network (WAN)](#wide-area-network-wan)
+      - [Personal Area Network (PAN)](#personal-area-network-pan)
+      - [Local Area Network (LAN)](#local-area-network-lan)
+      - [Wireless Local Area Network (WLAN)](#wireless-local-area-network-wlan)
+      - [Campus Area Network (CAN)](#campus-area-network-can)
+      - [Metropolitan Area Network (MAN)](#metropolitan-area-network-man)
+      - [Wide Area Network (WAN)](#wide-area-network-wan)
     - [Network Architecture](#network-architecture)
       - [Peer-to-Peer](#peer-to-peer)
       - [Client-Server](#client-server)
@@ -62,33 +62,33 @@
 - Metropolitan Area Network (MAN)
 - Wide Area Network (WAN)
 
-### Personal Area Network (PAN)
+#### Personal Area Network (PAN)
 
 - Ultra-small networks used for personal use to share
   data from one device to another.
 - Examples: Smart Phone to Laptop, Smart Watch to Smart Phone, Heart Rate Monitor to Smart Phone
 
-### Local Area Network (LAN)
+#### Local Area Network (LAN)
 
 - A computer network within a small geographical area, such as a single room, building or group of buildings.
 - Examples: Home Network, Small Business or Office Network
 
-### Wireless Local Area Network (WLAN)
+#### Wireless Local Area Network (WLAN)
 
 - A LAN that’s dependent on wireless connectivity or one that extends a traditional wired LAN to a wireless LAN.
 - Most home networks are WLANs.
 
-### Campus Area Network (CAN)
+#### Campus Area Network (CAN)
 
 - A computer network of multiple interconnected LANs in a limited geographical area, such as a corporate business park, government agency, or university campus.
 - Typically owned or used by a single entity.
 
-### Metropolitan Area Network (MAN)
+#### Metropolitan Area Network (MAN)
 
 - A computer network that interconnects users with computer resources in a city.
 - Larger than a campus area network, but smaller than a wide area network.
 
-### Wide Area Network (WAN)
+#### Wide Area Network (WAN)
 
 - A computer network that extends over a large geographical distance, typically multiple cities, states, or countries.
 - WANs connect geographically distant LANs.
