@@ -12,7 +12,7 @@
     - [Network Architecture](#network-architecture)
       - [Peer-to-Peer](#peer-to-peer)
       - [Client-Server](#client-server)
-    - [Peer-to-Peer vs Client-Server Network](#peer-to-peer-vs-client-server-network)
+      - [Peer-to-Peer vs Client-Server Network](#peer-to-peer-vs-client-server-network)
   - [Introduction to Computer Networking Protocols](#introduction-to-computer-networking-protocols)
   - [Introduction to the OSI Model](#introduction-to-the-osi-model)
     - [What is it?](#what-is-it)
@@ -114,7 +114,7 @@
 - Centralizes user accounts, security, and access controls to simplify network administration
 - More difficult to setup and requires an IT administrator
 
-### Peer-to-Peer vs Client-Server Network
+#### Peer-to-Peer vs Client-Server Network
 
 | Criteria                 | Peer-to-Peer (P2P)                           | Client-Server                                           |
 | ------------------------ | -------------------------------------------- | ------------------------------------------------------- |
