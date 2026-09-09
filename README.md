@@ -40,10 +40,11 @@
     - [Ad hoc](#ad-hoc)
     - [Infrastructure](#infrastructure)
     - [Mesh](#mesh)
-- [Data link layer - OSI layer 2 - TCP/IP Layer 1](#data-link-layer---osi-layer-2---tcpip-layer-1)
-  - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
+- [Physical - OSI layer 1 - Network Access - TCP/IP Layer 1](#physical---osi-layer-1---network-access---tcpip-layer-1)
   - [Ethernet](#ethernet)
-- [Network Layer - OSI layer 3 - TCP/IP Layer 2](#network-layer---osi-layer-3---tcpip-layer-2)
+- [Data link - OSI layer 2 - Network Access - TCP/IP Layer 1](#data-link---osi-layer-2---network-access---tcpip-layer-1)
+  - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
+- [Network - OSI layer 3 - Internet - TCP/IP Layer 2](#network---osi-layer-3---internet---tcpip-layer-2)
   - [IP Address](#ip-address)
 
 # Introduction Network
@@ -402,7 +403,17 @@ Network Interface  ───────>   Data Link
 
 ![OSI Model comunication](./static/tutorial_0011.png)
 
-# Data link layer - OSI layer 2 - TCP/IP Layer 1
+# Physical - OSI layer 1 - Network Access - TCP/IP Layer 1
+
+## Ethernet
+
+![OSI Model comunication](./static/tutorial_0012.webp)
+
+- The most popular networking technology in the world!
+- Refers to a family of standards that define the physical and logical aspects of the world's most popular type of LAN.
+- The standard communications protocol for building a local area network (LAN).
+
+# Data link - OSI layer 2 - Network Access - TCP/IP Layer 1
 
 ## MAC Addresses - Media Access Control (MAC)
 
@@ -414,15 +425,7 @@ Network Interface  ───────>   Data Link
 
 ![OSI Model comunication](./static/tutorial_0002.png)
 
-## Ethernet
-
-![OSI Model comunication](./static/tutorial_0012.webp)
-
-- The most popular networking technology in the world!
-- Refers to a family of standards that define the physical and logical aspects of the world's most popular type of LAN.
-- The standard communications protocol for building a local area network (LAN).
-
-# Network Layer - OSI layer 3 - TCP/IP Layer 2
+# Network - OSI layer 3 - Internet - TCP/IP Layer 2
 
 ## IP Address
 
