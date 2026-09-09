@@ -19,8 +19,9 @@
       - [Physical Protocols](#physical-protocols)
       - [Logical Protocols](#logical-protocols)
   - [Introduction to the OSI Model](#introduction-to-the-osi-model)
-    - [What is it?](#what-is-it)
-    - [OSI communication](#osi-communication)
+    - [What is the OSI Model?](#what-is-the-osi-model)
+    - [The 7 Layers of the OSI Model](#the-7-layers-of-the-osi-model)
+    - [How Data Travels Through the OSI Model](#how-data-travels-through-the-osi-model)
   - [Introduction to the TCP/IP Model](#introduction-to-the-tcpip-model)
   - [Duplex Communication](#duplex-communication)
   - [Network Transmission Types](#network-transmission-types)
@@ -177,16 +178,18 @@
 
 ## Introduction to the OSI Model
 
-### What is it?
+### What is the OSI Model?
 
-- The Open Systems Interconnection (OSI) Reference Model
+- OSI stands for Open Systems Interconnection.
+- The OSI model is a conceptual reference model that explains how data flows through a network from a source device to a destination device.
+- Important:
+  - OSI is not actually implemented as the networking architecture used in the real world.
+  - TCP/IP is the practical networking model/protocol suite used in real networks.
+  - However, OSI is widely used for learning, troubleshooting, and discussing networking concepts.
 
-  - A conceptual framework showing us how data moves throughout a network.
-  - Developed by the International Organization for Standardization (ISO) in 1977.
+### The 7 Layers of the OSI Model
 
-- It’s Purpose: Gives us a guide to understanding how networks operate.
-
-**Mnemonic:** _Please Do Not Throw Sausage Pizza Away_
+**Memorize:** _Please Do Not Throw Sausage Pizza Away_
 
 | Layer No. | Mnemonic    | Layer Name   | Data Unit | Common Protocols                              | Typical Devices                   |
 | --------- | ----------- | ------------ | --------- | --------------------------------------------- | --------------------------------- |
@@ -198,7 +201,47 @@
 | 2         | D – Do      | Data Link    | Frame     | Ethernet (802.3), ARP, PPP, VLAN (802.1Q)     | Switch, Bridge, NIC               |
 | 1         | A – Away    | Physical     | Bit       | Physical standards (UTP, Fiber)               | Hub, Repeater, Cable              |
 
-### OSI communication
+### How Data Travels Through the OSI Model
+
+- Sender: The data starts at the top
+
+```
+  Application
+     ↓
+  Presentation
+     ↓
+  Session
+     ↓
+  Transport
+     ↓
+  Network
+     ↓
+  Data Link
+     ↓
+  Physical
+     ↓
+   Network
+```
+
+- Receiver: Receives the transmission and processes it in the opposite direction
+
+```
+   Network
+      ↓
+  Physical
+      ↓
+  Data Link
+      ↓
+  Network
+      ↓
+  Transport
+      ↓
+  Session
+      ↓
+  Presentation
+      ↓
+  Application
+```
 
 ![OSI Model comunication](./static/tutorial_0001.png)
 
