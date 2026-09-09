@@ -44,8 +44,17 @@
   - [Ethernet](#ethernet)
 - [Data link - OSI layer 2 - Network Access - TCP/IP Layer 1](#data-link---osi-layer-2---network-access---tcpip-layer-1)
   - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
+    - [What is a MAC Address?](#what-is-a-mac-address)
+    - [MAC Address vs. MAC Address Spoofing](#mac-address-vs-mac-address-spoofing)
+    - [MAC Address Format](#mac-address-format)
+      - [OUI — Organizationally Unique Identifier](#oui--organizationally-unique-identifier)
+      - [Individual identifier](#individual-identifier)
 - [Network - OSI layer 3 - Internet - TCP/IP Layer 2](#network---osi-layer-3---internet---tcpip-layer-2)
   - [IP Address](#ip-address)
+    - [What is an IP Address?](#what-is-an-ip-address)
+    - [IP Address vs MAC Address](#ip-address-vs-mac-address)
+    - [Internet Protocol version 4 - IPv4](#internet-protocol-version-4---ipv4)
+    - [Internet Protocol version 6 - IPv6](#internet-protocol-version-6---ipv6)
 
 # Introduction Network
 
@@ -417,19 +426,88 @@ Network Interface  ───────>   Data Link
 
 ## MAC Addresses - Media Access Control (MAC)
 
-- Physical address of the network adapter card
-- Represented Hexadecimal - Six bytes (48 bits)
-  - First three bytes (24 bits) are assigned by the IEEE to the manufacturer.Organizationally Unique Identifier (OUI) assigned by IEEE (ex: Dell or HP)
-  - Last three bytes (24 bits) are usually assigned sequentially: Unique Numbers
-- Example MAC address: 00:21:70:6f:06:f2
+### What is a MAC Address?
 
-![OSI Model comunication](./static/tutorial_0002.png)
+- MAC stands for Media Access Control.
+- A MAC address is the physical/hardware address associated with a device's **network adapter**.
+- A network adapter is also called:
+  - Network Interface Card (NIC)
+  - Network Adapter
+  - These terms are generally interchangeable
+
+![network adapter](./static/tutorial_0002.png)
+
+### MAC Address vs. MAC Address Spoofing
+
+- Traditionally, a MAC address is assigned to the network interface hardware.
+- It is associated with the hardware rather than being simply an IP address configured by the user.
+- However, an operating system can perform MAC address spoofing.
+  - The hardware's original MAC address isn't physically changed. Instead, the operating system is instructed to use a different MAC address.
+  - MAC spoofing is also relevant in cybersecurity and network testing.
+
+### MAC Address Format
+
+- A MAC address is: 48 bits - 6 bytes
+  - Usually represented in hexadecimal
+  - Example: 00:1A:2B:3C:4D:5E
+
+```
+00 : 1A : 2B : 3C : 4D : 5E
+ └───────┘   └───────────────┘
+   3 bytes         3 bytes
+  (24 bits)       (24 bits)
+    |                 |
+    ▼                 ▼
+   OUI       Individual identifier
+```
+
+#### OUI — Organizationally Unique Identifier
+
+- OUI stands for Organizationally Unique Identifier.
+- The OUI identifies the organization/manufacturer associated with the network interface.
+- OUIs are assigned through the IEEE
+  - Institute of Electrical and Electronics Engineers
+
+#### Individual identifier
+
+- The remaining 24 bits can be used to identify individual network interfaces under that OUI.
+- 2²⁴ ~16.7 Million Unique Addresses
 
 # Network - OSI layer 3 - Internet - TCP/IP Layer 2
 
 ## IP Address
 
-- An IP Address is a logical address used in order to uniquely identify a device on an IP network
-- There are two versions:
-  - IP version 4 (IPv4): 192.168.0.1
-  - IP version 6 (IPv6): 2001:DB8:85A3:0:0:8A2E:370:7334
+### What is an IP Address?
+
+- IP stands for Internet Protocol.
+- An IP address is a logical address used to identify a device on a network.
+- Unlike a MAC address, an IP address is configured by the operating system/network configuration.
+  - It can be assigned in two main ways:
+    - Automatically -> using DHCP
+    - Manually -> Manually configured. The administrator enters the IP address.
+- Example
+  - Pv4 - 192.168.1.10
+  - IPv6 - 2001:db8::1
+
+### IP Address vs MAC Address
+
+| **Category**                 | **IP Address**                                                                                         | **MAC Address**                                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| **Definition**               | A **logical address**                                                                                  | A **physical/hardware address** associated with a network interface card (NIC)                               |
+| **OSI Layer**                | **Layer 3 — Network Layer**                                                                            | **Layer 2 — Data Link Layer**                                                                                |
+| **Main Purpose**             | Used for **network-to-network communication**, especially when traffic needs to travel through routers | Used primarily for **communication within a local network (LAN)**                                            |
+| **Communication**            | **Network → Network**                                                                                  | **Device/interface → Device/interface within a local network**                                               |
+| **Main Network Device**      | **Router**                                                                                             | **Switch**                                                                                                   |
+| **Assignment**               | **Static** or **Dynamic**                                                                              | Associated with the **NIC hardware**                                                                         |
+| **Static Assignment**        | Manually configured by a network administrator                                                         | Normally associated with the network interface hardware                                                      |
+| **Dynamic Assignment**       | Automatically assigned by a **DHCP server**                                                            | Not normally assigned by DHCP                                                                                |
+| **Can be spoofed?**          | Yes                                                                                                    | Yes — the OS can spoof a MAC address, but this does not physically change the address stored by the hardware |
+| **Example**                  | `192.168.1.10`                                                                                         | `00:1A:2B:3C:4D:5E`                                                                                          |
+| **Example of communication** | Your home network → Router → Internet → Gmail network → Gmail server                                   | PC → Switch → PC / Printer                                                                                   |
+| **Key concept**              | **Routing**                                                                                            | **Switching**                                                                                                |
+
+
+
+### Internet Protocol version 4 - IPv4
+
+### Internet Protocol version 6 - IPv6
