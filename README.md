@@ -14,6 +14,10 @@
       - [Client-Server](#client-server)
       - [Peer-to-Peer vs Client-Server Network](#peer-to-peer-vs-client-server-network)
   - [Introduction to Computer Networking Protocols](#introduction-to-computer-networking-protocols)
+    - [What is a Protocol?](#what-is-a-protocol)
+    - [Physical and Logical Protocols](#physical-and-logical-protocols)
+      - [Physical Protocols](#physical-protocols)
+      - [Logical Protocols](#logical-protocols)
   - [Introduction to the OSI Model](#introduction-to-the-osi-model)
     - [What is it?](#what-is-it)
     - [OSI communication](#osi-communication)
@@ -131,12 +135,45 @@
 
 ## Introduction to Computer Networking Protocols
 
-- Computers communicate with each other with network protocols.
-- Protocols are rules governing how machines exchange data and enable effective communication.
-- Example Common TCP/IP Suite of Protocols:
-  - Web Communication: HTTP
-  - E-mail: POP3, SMTP, IMAP
-  - File Transfers: FTP
+### What is a Protocol?
+
+- A protocol is essentially a set of rules that defines how systems communicate and exchange data.
+- In computer networking, network protocols are rules that govern how devices on a network exchange data and enable effective communication.
+- Examples:
+  - Email protocols => sending and receiving emails
+    - POP3, SMTP, IMAP
+  - File transfer protocols => sending and receiving files
+    - FTP
+  - Web protocols => communicating with web servers 
+    - HTTP, HTTPS
+
+### Physical and Logical Protocols
+
+- A computer network has two main aspects:
+  - Physical aspect
+  - Logical aspect
+- Therefore, networking protocols can also be divided into
+
+#### Physical Protocols
+
+- Physical protocols deal with the physical characteristics of network communication, such as:
+  - Network transmission media
+  - Cables and wiring
+  - Connectors
+  - RJ-45 ports
+  - Electrical signals
+  - Voltage levels on the wire
+
+![Physical Protocols](./static/tutorial_0012.png)
+
+#### Logical Protocols
+
+- Logical protocols deal with software and communication rules.
+- They determine:
+  - How data is sent
+  - When data is sent
+  - How data is received
+  - How computers communicate using the underlying physical network
 
 ## Introduction to the OSI Model
 
