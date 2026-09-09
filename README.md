@@ -18,11 +18,15 @@
     - [Physical and Logical Protocols](#physical-and-logical-protocols)
       - [Physical Protocols](#physical-protocols)
       - [Logical Protocols](#logical-protocols)
-  - [Introduction to the OSI Model](#introduction-to-the-osi-model)
+  - [The OSI Model](#the-osi-model)
     - [What is the OSI Model?](#what-is-the-osi-model)
     - [The 7 Layers of the OSI Model](#the-7-layers-of-the-osi-model)
     - [How Data Travels Through the OSI Model](#how-data-travels-through-the-osi-model)
-  - [Introduction to the TCP/IP Model](#introduction-to-the-tcpip-model)
+  - [The TCP/IP Model](#the-tcpip-model)
+    - [What is the TCP/IP Model?](#what-is-the-tcpip-model)
+    - [The Four Layers of TCP/IP](#the-four-layers-of-tcpip)
+    - [TCP/IP vs. OSI Model](#tcpip-vs-osi-model)
+    - [Important Protocol Examples](#important-protocol-examples)
   - [Duplex Communication](#duplex-communication)
   - [Network Transmission Types](#network-transmission-types)
     - [Unicast](#unicast)
@@ -176,7 +180,7 @@
   - How data is received
   - How computers communicate using the underlying physical network
 
-## Introduction to the OSI Model
+## The OSI Model
 
 ### What is the OSI Model?
 
@@ -245,12 +249,16 @@
 
 ![OSI Model comunication](./static/tutorial_0001.png)
 
-## Introduction to the TCP/IP Model
+## The TCP/IP Model
 
-- The TCP/IP suite is the most commonly used protocol suite in the networking world.
-- It’s essentially the protocol suite in which the Internet was built.
-- It’s the standard for computer networking.
-- It is based on a 4-layer model that is similar to the OSI model.
+### What is the TCP/IP Model?
+
+- TCP/IP is the most widely used networking protocol suite today and forms the foundation of the Internet.
+- Unlike the OSI model:
+  - OSI => conceptual/reference model, never implemented as a real-world networking architecture.
+  - TCP/IP => actually implemented and widely used in real network
+
+### The Four Layers of TCP/IP
 
 | Layer No. | TCP/IP Layer Name | OSI Mapping   | Data Unit   | Common Protocols                              | Typical Devices                   |
 | --------- | ----------------- | ------------- | ----------- | --------------------------------------------- | --------------------------------- |
@@ -258,6 +266,49 @@
 | 3         | Transport         | OSI Layer 4   | Segment     | TCP, UDP                                      | Firewall, Load Balancer (Layer 4) |
 | 2         | Internet          | OSI Layer 3   | Packet      | IP, ICMP, IPsec, ARP                          | Router, Layer 3 Switch            |
 | 1         | Network Access    | OSI Layer 2–1 | Frame / Bit | Ethernet, Wi-Fi (802.11), PPP                 | Switch, NIC, Hub, Cable           |
+
+### TCP/IP vs. OSI Model
+
+- TCP/IP didn't completely change how networking functions work.
+- Instead, it simplified the OSI model by combining related functions into fewer layers
+
+| TCP/IP                | OSI                                  |
+| --------------------- | ------------------------------------ |
+| **Application**       | Application + Presentation + Session |
+| **Transport**         | Transport                            |
+| **Internet**          | Network                              |
+| **Network Interface** | Data Link + Physical                 |
+
+```
+TCP/IP Model                  OSI Model
+
+Application        ───────>   Application
+                              Presentation
+                              Session
+
+Transport          ───────>   Transport
+
+Internet           ───────>   Network
+
+Network Interface  ───────>   Data Link
+                              Physical
+```
+
+### Important Protocol Examples
+
+| Layer                       | Protocol / Technology | Purpose                                                              |
+| --------------------------- | --------------------- | -------------------------------------------------------------------- |
+| **Application Layer**       | **HTTP/HTTPS**        | Web communication                                                    |
+| **Application Layer**       | **FTP**               | File transfer                                                        |
+| **Application Layer**       | **SMTP**              | Sending email                                                        |
+| **Application Layer**       | **POP3**              | Receiving email                                                      |
+| **Transport Layer**         | **TCP**               | Reliable transport of data                                           |
+| **Transport Layer**         | **UDP**               | Fast, connectionless transport of data                               |
+| **Internet Layer**          | **IP**                | Logical addressing and routing                                       |
+| **Internet Layer**          | **ARP**               | Resolving IP addresses to MAC addresses in IPv4 networks             |
+| **Network Interface Layer** | **Ethernet**          | Accessing the network and transmitting data over Ethernet networks   |
+| **Network Interface Layer** | **Token Ring**        | Accessing the network and transmitting data over Token Ring networks |
+
 
 ## Duplex Communication
 
