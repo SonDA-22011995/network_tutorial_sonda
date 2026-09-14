@@ -22,6 +22,10 @@
     - [What is the OSI Model?](#what-is-the-osi-model)
     - [The 7 Layers of the OSI Model](#the-7-layers-of-the-osi-model)
     - [How Data Travels Through the OSI Model](#how-data-travels-through-the-osi-model)
+    - [OSI Layer 1 — Physical Layer](#osi-layer-1--physical-layer)
+      - [What is the Physical Layer?](#what-is-the-physical-layer)
+      - [What Does Layer 1 Deal With?](#what-does-layer-1-deal-with)
+      - [Physical Network Equipment](#physical-network-equipment)
   - [The TCP/IP Model](#the-tcpip-model)
     - [What is the TCP/IP Model?](#what-is-the-tcpip-model)
     - [The Four Layers of TCP/IP](#the-four-layers-of-tcpip)
@@ -258,6 +262,42 @@
 ```
 
 ![OSI Model comunication](./static/tutorial_0001.png)
+
+### OSI Layer 1 — Physical Layer
+
+#### What is the Physical Layer?
+
+- The Physical Layer is Layer 1, the lowest layer of the OSI model.
+- Its main purpose is to define how raw bits are physically transmitted between network devices.
+- At this layer: **Frames (Data Link Layer) are converted into bits (0s and 1s) for physical transmission.**
+
+#### What Does Layer 1 Deal With?
+
+- The Physical Layer deals with the physical and electrical characteristics of network communication.
+- It includes:
+  - Network hardware
+  - Physical media
+  - Physical topology
+  - Signals used to transmit bits
+
+- Three main types of physical signals
+
+| Medium           | Signal             |
+| ---------------- | ------------------ |
+| **Copper cable** | Electrical signals |
+| **Fiber optic**  | Light photons      |
+| **Wireless**     | Radio waves        |
+
+#### Physical Network Equipment
+
+- Layer 1 includes simple physical equipment that generally doesn't make intelligent networking decisions.
+- Examples:
+  - Cables
+  - Network jacks
+  - Patch panels
+  - Hubs
+  - Media converters
+  - Modems
 
 ## The TCP/IP Model
 
