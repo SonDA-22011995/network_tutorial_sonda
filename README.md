@@ -61,6 +61,12 @@
     - [Wireless Mesh Topology](#wireless-mesh-topology)
     - [Comparison](#comparison)
 - [Physical - OSI layer 1 - Network Access - TCP/IP Layer 1](#physical---osi-layer-1---network-access---tcpip-layer-1)
+  - [Network Interface Card (NIC)](#network-interface-card-nic)
+    - [What is a NIC?](#what-is-a-nic)
+    - [NIC and MAC Address](#nic-and-mac-address)
+    - [A Device Can Have Multiple NICs](#a-device-can-have-multiple-nics)
+  - [Hub](#hub)
+    - [What is a Hub?](#what-is-a-hub)
 - [Data link - OSI layer 2 - Network Access - TCP/IP Layer 1](#data-link---osi-layer-2---network-access---tcpip-layer-1)
   - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
     - [What is a MAC Address?](#what-is-a-mac-address)
@@ -704,6 +710,65 @@ Node A ─── ❌ Node B
 
 # Physical - OSI layer 1 - Network Access - TCP/IP Layer 1
 
+## Network Interface Card (NIC)
+
+### What is a NIC?
+
+- A Network Interface Card (NIC) is a hardware component that allows a device to connect and communicate with a network.
+- Other terms for NIC include:
+  - Network Interface Card
+  - NIC
+  - Network Adapter
+- If a device needs to communicate on a network, it needs at least one network interface.
+
+### NIC and MAC Address
+
+- Each NIC has a unique MAC address associated with it.
+
+```
+NIC
+ └── MAC Address
+       ↓
+   Unique identifier
+```
+
+- The MAC address is associated with the network interface hardware.
+- Although the operating system can spoof the MAC address, that does not physically change the hardware's original address
+
+### A Device Can Have Multiple NICs
+
+- A computer does not have to have only one NIC.
+- Example
+  - Each network interface can have its own: MAC address, IP address
+
+```
+# A modern desktop might have
+
+Desktop
+ ├── Ethernet NIC
+ │     └── RJ-45
+ │
+ └── Wi-Fi NIC
+       └── Radio
+```
+
+```
+# Servers commonly have multiple network interfaces
+
+Server
+ ├── NIC 1 → Network A
+ └── NIC 2 → Network B
+```
+
+## Hub
+
+### What is a Hub?
+
+- A hub is a legacy networking device that was commonly used in older networks.
+- Today, hubs have been almost completely replaced by switches.
+- A hub and a switch may look physically similar, but they operate very differently internally.
+  - Hub = Dumb device
+  - Switch = Smart device
 
 # Data link - OSI layer 2 - Network Access - TCP/IP Layer 1
 
