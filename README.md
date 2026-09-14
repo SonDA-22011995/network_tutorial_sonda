@@ -67,6 +67,8 @@
     - [A Device Can Have Multiple NICs](#a-device-can-have-multiple-nics)
   - [Hub](#hub)
     - [What is a Hub?](#what-is-a-hub)
+    - [Hub and Star Topology](#hub-and-star-topology)
+    - [Hub = Multi-Port Repeater](#hub--multi-port-repeater)
 - [Data link - OSI layer 2 - Network Access - TCP/IP Layer 1](#data-link---osi-layer-2---network-access---tcpip-layer-1)
   - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
     - [What is a MAC Address?](#what-is-a-mac-address)
@@ -769,6 +771,35 @@ Server
 - A hub and a switch may look physically similar, but they operate very differently internally.
   - Hub = Dumb device
   - Switch = Smart device
+
+### Hub and Star Topology
+
+- A hub can act as the central connecting device in a star topology.
+
+```
+# All devices connect to the hub.
+
+          PC1
+           │
+PC2 ───── HUB ───── PC3
+           │
+          PC4
+
+```
+
+### Hub = Multi-Port Repeater
+
+- A hub is essentially a multi-port repeater.
+  - When data enters one port, the hub repeats it out through all other connected ports.
+- For example
+  - Even if PC1 only wants to communicate with PC4, the hub sends the signal to PC2, PC3, and PC4.
+  - PC2 and PC3 will receive the signal and determine that the data isn't intended for them, so they discard it.
+
+```
+PC1 ──> HUB ──> PC2
+             ├─> PC3
+             └─> PC4
+```
 
 # Data link - OSI layer 2 - Network Access - TCP/IP Layer 1
 
