@@ -32,20 +32,34 @@
     - [TCP/IP vs. OSI Model](#tcpip-vs-osi-model)
     - [Important Protocol Examples](#important-protocol-examples)
   - [Duplex Communication](#duplex-communication)
+    - [What is the Duplex Communication?](#what-is-the-duplex-communication)
+    - [Half-Duplex](#half-duplex)
   - [Network Transmission Types](#network-transmission-types)
     - [Unicast](#unicast)
     - [Multicast](#multicast)
     - [Broadcast](#broadcast)
+  - [Ethernet](#ethernet)
+    - [What is Ethernet?](#what-is-ethernet)
+    - [Ethernet and the OSI Model](#ethernet-and-the-osi-model)
+    - [Ethernet as a Network Access Method](#ethernet-as-a-network-access-method)
+  - [Network Topology](#network-topology)
+    - [What is Network Topology?](#what-is-network-topology)
+    - [Physical Topology](#physical-topology)
+    - [Logical Topology](#logical-topology)
+    - [Physical vs. Logical](#physical-vs-logical)
   - [Wired Network Topologies](#wired-network-topologies)
     - [Ring Topology](#ring-topology)
     - [Star Topology](#star-topology)
     - [Mesh Topology](#mesh-topology)
+      - [Full Mesh](#full-mesh)
+      - [Partial Mesh](#partial-mesh)
+    - [Ring vs. Star vs. Mesh](#ring-vs-star-vs-mesh)
+    - [Hybrid Topology](#hybrid-topology)
   - [Wireless Network Topologies](#wireless-network-topologies)
     - [Ad hoc](#ad-hoc)
     - [Infrastructure](#infrastructure)
     - [Mesh](#mesh)
 - [Physical - OSI layer 1 - Network Access - TCP/IP Layer 1](#physical---osi-layer-1---network-access---tcpip-layer-1)
-  - [Ethernet](#ethernet)
 - [Data link - OSI layer 2 - Network Access - TCP/IP Layer 1](#data-link---osi-layer-2---network-access---tcpip-layer-1)
   - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
     - [What is a MAC Address?](#what-is-a-mac-address)
@@ -362,67 +376,260 @@ Network Interface  ───────>   Data Link
 
 ## Duplex Communication
 
-- Network communication will occur in either full or half duplex mode:
-  - Half Duplex: Can send and receive data, but not at the same time.
-  - Full Duplex: Can send and receive data simultaneously.
+### What is the Duplex Communication?
+
+- Duplex describes how devices send and receive data over a communication channel.
+- There are two modes:
+  - Half-duplex
+  - Full-duplex
+
+### Half-Duplex
+
+- With half-duplex, a device can send or receive data, but not both at the same time.
+
+```
+PC 1 ─────────→ PC 2
+     Sending
+
+PC 1 ←───────── PC 2
+     Receiving
+```
 
 ## Network Transmission Types
+
+- Network transmission type describes the general way data is sent from one system to other systems on a network.
+
+- There are three basic types:
+
+| Type          | Communication   | Description                                            |
+| ------------- | --------------- | ------------------------------------------------------ |
+| **Unicast**   | **One-to-One**  | One sender sends data to one specific receiver         |
+| **Multicast** | **One-to-Many** | One sender sends data to a specific group of receivers |
+| **Broadcast** | **One-to-All**  | One sender sends data to all devices on the network    |
+
 
 ### Unicast
 
 - One-to-One
+- Only one specific device receives the data.
 
 ![OSI Model comunication](./static/tutorial_0003.png)
 
 ### Multicast
 
 - One-to-Many
+- The sender sends data to a specific group of devices, called a multicast group.
 
 ![OSI Model comunication](./static/tutorial_0004.png)
 
 ### Broadcast
 
 - One-to-All
+- The sender sends data to all devices on the relevant network.
 
 ![OSI Model comunication](./static/tutorial_0005.png)
+
+## Ethernet
+
+### What is Ethernet?
+
+- Ethernet is a family of networking standards used primarily for communication within **Local Area Networks (LANs)**.
+- It covers both:
+  - Physical aspects of networking 
+  - Logical/data communication aspects
+- So Ethernet is not just about cables.
+
+### Ethernet and the OSI Model
+
+- Ethernet is associated with both:
+  - Layer 1 — Physical: Ethernet defines physical aspects such as
+    - Network cables
+    - Connectors
+    - Electrical signals
+    - Physical transmission
+  - Layer 2 — Data Link: Ethernet also defines aspects of how data moves across the local network, including:
+    - Frames
+    - MAC addresses
+    - Access to the shared network medium
+- Therefore: thernet operates across OSI Layer 1 and Layer 2.
+
+### Ethernet as a Network Access Method
+
+- Ethernet provides rules for how devices access and communicate over the network medium.
+- The lecture introduces CSMA: **Carrier Sense Multiple Access**
+  - The idea is that devices can sense the communication medium before transmitting
+
+## Network Topology
+
+### What is Network Topology?
+
+- Network Topology can be thought of as a blueprint of a network.
+- A Network has two aspects:
+  - Physical
+  - Logical
+Therefore, we have: **Physical topology** and **Logical topology**
+
+### Physical Topology
+
+- Physical topology describes where devices are physically located and how they are physically connected.
+- It includes:
+  - Servers
+  - Switches
+  - Routers
+  - Firewalls
+  - Printers
+  - Network cables
+  - Physical connections
+
+- Example
+
+```
+          Router
+             │
+          Switch
+        ┌────┼────┐
+       PC   Server Printer
+```
+
+### Logical Topology
+
+- Logical topology describes how data flows through the network.
+- It isn't primarily concerned with where the devices physically sit. Instead, it focuses on the rules and protocols that determine how data is transmitted.
+- Examples include:
+  - Ethernet
+  - CSMA/CD
+  - IEEE 802.11
+  - CSMA/CA
+
+### Physical vs. Logical
+
+|                | **Physical Topology**                     | **Logical Topology**        |
+| -------------- | ----------------------------------------- | --------------------------- |
+| Focus          | Physical connections                      | Data flow                   |
+| Describes      | Where/how devices are connected           | How devices communicate     |
+| Examples       | Cables, switches, routers                 | Ethernet, 802.11, CSMA/CD   |
+| Think of it as | **Physical blueprint**                    | **Communication blueprint** |
+| Main question  | "How is everything physically connected?" | "How does data flow?"       |
+
 
 ## Wired Network Topologies
 
 ### Ring Topology
 
-- All devices are connected in a circular fashion, with each device (node) linked to two others.
-- Data travels from node to node, with each device handling and regenerating the signal, acting as a repeater.
-- WAN technologies like SONET/SDH use dual ring topologies for redundancy, where the two rings send data in opposite directions (counterrotating), so if one path or node fails, data can travel the other way, ensuring continuous service.
-- This redundancy provides high availability and rapid recovery from failures, making ring topologies popular in high-speed carrier networks.
+- In a ring topology, every device (node) is connected to two other devices, forming a closed loop.
+
+```
+       PC1
+      /   \
+    PC2   PC6
+    |       |
+    PC3   PC5
+      \   /
+       PC4
+```
+
+- How does data travel?
+  - Data moves from node to node around the ring.
+  - Each device can regenerate/repeat the signal before passing it to the next device.
+- Problem with traditional ring
+  - If one device or cable fails -> The ring can be broken, preventing communication.
+- Modern ring topology
+  - Modern implementations can use two counter-rotating rings
+  - If one path fails, traffic can use the other path.
+  - This provides: Redundancy- High availability- Rapid recovery from failures
+  - Examples mentioned: SONET- SDH- Metro Ethernet
 
 ![OSI Model comunication](./static/tutorial_0006.png)
 
 ### Star Topology
 
-- All devices are connected to a central connecting device, which is almost always a
-  switch in modern networks.
-- Devices send data to the switch, which forwards it only to the appropriate destination
-  device.
-- Star topology is the standard for nearly all modern LANs, from home networks to
-  enterprise environments.
-- While the central switch is a single point of failure, modern networks often use redundant
-  switches and connections to address this.
+- In a star topology, all devices connect to a central device, typically a switch.
+
+```
+           PC
+            │
+            │
+PC ─────── Switch ───── Server
+            │
+            │
+         Printer
+```
+
+- How does it work?
+  - Devices send their data to the central switch.
+  - The switch determines the destination and forwards the data to the appropriate device.
+- Advantages
+  - Simple to manage
+  - Easy to expand
+  - Easy to troubleshoot
+  - Standard topology for modern LANs
+- Disadvantage
+  - The central switch can be a single point of failure
 
 ![OSI Model comunication](./static/tutorial_0007.png)
 
 ### Mesh Topology
 
-- Devices are connected to multiple other devices, creating redundant paths for data.
-  There are two types:
-- Full Mesh: Each device connects to every other device (maximum redundancy, rarely
-  used due to high cost)
-- Partial Mesh: Devices connect to some, but not all, other devices (balances redundancy
-  with cost)
-- Commonly used in WANs and for critical network infrastructure where reliability is
-  essential.
-- Modern networks typically use a partial mesh for core components only.
+- In a mesh topology, devices have multiple connections, creating redundant paths.
+- There are two main types:
+  - Full mesh
+  - Partial mesh
 
 ![OSI Model comunication](./static/tutorial_0008.png)
+
+#### Full Mesh
+
+- In a full mesh, every device connects directly to every other device.
+- The exact number of connections grows very quickly as more devices are added
+- For n devices, the number of links is: `n(n − 1) / 2`
+- For example:
+  - 3 devices -> 3 links
+  - 10 devices -> 45 links
+  - 20 devices -> 190 links
+  - 50 devices -> 1,225 links
+
+```
+      S1
+     / | \
+    /  |  \
+  S2───┼───S3
+   \   |   /
+    \  |  /
+      D1
+```
+
+#### Partial Mesh
+
+- In a partial mesh, devices connect to some, but not all, other devices.
+- Some devices have multiple paths, while others may have only one path.
+- Main advantage
+  - It provides a balance between: **Redundancy <-> Cost**
+  - Therefore, partial mesh is much more practical for real-world networks.
+
+### Ring vs. Star vs. Mesh
+
+| Topology         | Structure                             | Main Advantage               | Main Disadvantage       | Common Use              |
+| ---------------- | ------------------------------------- | ---------------------------- | ----------------------- | ----------------------- |
+| **Ring**         | Devices form a loop                   | Redundancy with dual rings   | More complex            | Carrier/WAN networks    |
+| **Star**         | Devices connect to central switch     | Simple & easy to manage      | Central device can fail | Modern LANs             |
+| **Full Mesh**    | Every device connects to every device | Maximum redundancy           | Very expensive          | Critical infrastructure |
+| **Partial Mesh** | Devices connect to selected devices   | Good redundancy/cost balance | More complex than star  | Core/WAN networks       |
+
+### Hybrid Topology
+
+- Real-world networks usually don't use only one topology.
+- They commonly combine different topologies
+- For example
+  - The core might use a partial mesh for redundancy, while devices at the edge connect using a star topology.
+  - This combination is called a Hybrid topology
+
+```
+              Core
+          ┌─────┴─────┐
+       Switch        Switch
+       /   \          /   \
+     PC    PC       PC    Server
+```
 
 ## Wireless Network Topologies
 
@@ -454,13 +661,6 @@ Network Interface  ───────>   Data Link
 
 # Physical - OSI layer 1 - Network Access - TCP/IP Layer 1
 
-## Ethernet
-
-![OSI Model comunication](./static/tutorial_0012.webp)
-
-- The most popular networking technology in the world!
-- Refers to a family of standards that define the physical and logical aspects of the world's most popular type of LAN.
-- The standard communications protocol for building a local area network (LAN).
 
 # Data link - OSI layer 2 - Network Access - TCP/IP Layer 1
 
