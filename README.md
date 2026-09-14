@@ -56,9 +56,10 @@
     - [Ring vs. Star vs. Mesh](#ring-vs-star-vs-mesh)
     - [Hybrid Topology](#hybrid-topology)
   - [Wireless Network Topologies](#wireless-network-topologies)
-    - [Ad hoc](#ad-hoc)
+    - [Ad Hoc Topology](#ad-hoc-topology)
     - [Infrastructure](#infrastructure)
-    - [Mesh](#mesh)
+    - [Wireless Mesh Topology](#wireless-mesh-topology)
+    - [Comparison](#comparison)
 - [Physical - OSI layer 1 - Network Access - TCP/IP Layer 1](#physical---osi-layer-1---network-access---tcpip-layer-1)
 - [Data link - OSI layer 2 - Network Access - TCP/IP Layer 1](#data-link---osi-layer-2---network-access---tcpip-layer-1)
   - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
@@ -633,31 +634,73 @@ PC ─────── Switch ───── Server
 
 ## Wireless Network Topologies
 
-### Ad hoc
+### Ad Hoc Topology
 
-- Peer-to-peer (P2P) wireless network where no wireless access point (WAP) infrastructure exits.
-- The devices communicate directly with one another.
-- Personal area networks (PANs) are a common example of Ad hoc wireless networks.
+- An **Ad Hoc network** is a **peer-to-peer (P2P)** wireless network.
+- There is no central wireless **access point (AP)**.
+- Devices communicate directly with one another.
+- Characteristics
+  - No central AP
+  - Device-to-device communication
+  - Simple to set up
+  - Suitable for small/personal networks
+  - Can be considered a type of peer-to-peer wireless communication
 
 ![OSI Model comunication](./static/tutorial_0009.png)
 
 ### Infrastructure
 
-- Wireless network that uses a wireless access point (WAP) as its central connecting
-  device.
-- Infrastructure wireless networks (WLANs) are commonly used in homes and small offices.
+- This is the most common traditional wireless network design.
+- Devices connect to a Wireless Access Point (WAP/AP)
+- A typical infrastructure WLAN is not completely wireless
+  - The wireless devices communicate with the AP wirelessly, but the AP normally has a wired connection to the rest of the network.
+- Characteristics
+  - Uses a central Wireless Access Point
+  - Common in homes and businesses
+  - Forms a WLAN (Wireless LAN)
+  - Easy to manage
+  - **Infrastructure = Devices → AP → Wired Network**
 
 ![OSI Model comunication](./static/tutorial_0010.png)
 
-### Mesh
+### Wireless Mesh Topology
 
-- Just like a wired mesh design, wireless mesh networks utilize several wireless access points (nodes) to create a robust wireless network that is:
-  - Scalable
-  - Self-Healing
-  - Reliable (redundancy)
-- Common in larger homes and businesses
+- A wireless mesh network uses multiple wireless nodes/APs that communicate with one another.
+
+```
+             Node
+            /    \
+           /      \
+Wired → Node ───── Node
+           \      /
+            \    /
+             Node
+```
+
+- For example, if one node fails
+  - Other nodes can potentially provide an alternative path
+  - The network may lose some coverage or performance, but it doesn't necessarily go down completely.
+
+```
+Node A ─── ❌ Node B
+   \              /
+    └── Node C ──┘
+```
 
 ![OSI Model comunication](./static/tutorial_0011.png)
+
+### Comparison
+
+|                      | **Ad Hoc**   | **Infrastructure**   | **Wireless Mesh**      |
+| -------------------- | ------------ | -------------------- | ---------------------- |
+| Central AP           | ❌            | ✅                    | Usually multiple nodes |
+| Device communication | Direct       | Through AP           | Through mesh nodes     |
+| Scale                | Small        | Small → Large        | Medium → Large         |
+| Coverage             | Limited      | AP-dependent         | Large                  |
+| Redundancy           | Low          | Usually low          | **High**               |
+| Self-healing         | ❌            | ❌                    | **✅**                  |
+| Common use           | P2P/personal | Home & business WLAN | Large homes/businesses |
+
 
 # Physical - OSI layer 1 - Network Access - TCP/IP Layer 1
 
