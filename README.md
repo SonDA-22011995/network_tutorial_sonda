@@ -69,6 +69,18 @@
     - [What is a Hub?](#what-is-a-hub)
     - [Hub and Star Topology](#hub-and-star-topology)
     - [Hub = Multi-Port Repeater](#hub--multi-port-repeater)
+    - [Why Are Hubs Bad?](#why-are-hubs-bad)
+      - [Network Collisions](#network-collisions)
+      - [Security Problem](#security-problem)
+  - [Switch](#switch)
+    - [What is a Switch?](#what-is-a-switch)
+    - [MAC Address Table / CAM Table](#mac-address-table--cam-table)
+    - [How a Switch Forwards Data](#how-a-switch-forwards-data)
+    - [Collision Domains](#collision-domains)
+    - [Security Advantage](#security-advantage)
+    - [Broadcast Domain](#broadcast-domain)
+    - [Why the switch can still have one large broadcast domain?](#why-the-switch-can-still-have-one-large-broadcast-domain)
+    - [Switch vs. Hub](#switch-vs-hub)
 - [Data link - OSI layer 2 - Network Access - TCP/IP Layer 1](#data-link---osi-layer-2---network-access---tcpip-layer-1)
   - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
     - [What is a MAC Address?](#what-is-a-mac-address)
@@ -800,6 +812,127 @@ PC1 ──> HUB ──> PC2
              ├─> PC3
              └─> PC4
 ```
+
+### Why Are Hubs Bad?
+
+#### Network Collisions
+
+- Because the hub sends traffic to every port, all connected devices share the same communication medium.
+  - This creates a collision.
+  - The larger the network, the greater the potential for collisions.
+
+#### Security Problem
+
+- Hubs can also create security concerns.
+  - Because traffic is repeated out to every port
+  - Other devices may receive traffic that wasn't intended for them.
+  - A switch, on the other hand, can make forwarding decisions based on MAC addresses, so traffic can normally be sent only toward the appropriate destination port.
+
+## Switch
+
+### What is a Switch?
+
+- A switch is a network device used to connect multiple devices in a LAN (Local Area Network).
+- Like a hub, a switch can act as the central connecting device in a star topology.
+  - Although a hub and switch may look similar physically, they work very differently internally.
+
+```
+          PC1
+           │
+PC2 ──── Switch ──── PC3
+           │
+          PC4
+```
+
+### MAC Address Table / CAM Table
+
+- A switch learns the MAC addresses of connected devices and stores them in a table.
+- This table can be called:
+  - MAC address table
+  - CAM table (CAM = Content Addressable Memory)
+
+### How a Switch Forwards Data
+
+```
+PC1 ──> Switch ──> MAC Address Table -> MAC Destination -> Port -> PC4
+```
+
+- Suppose PC1 wants to send data to PC4.
+  - The switch checks its MAC/CAM table: `PC4's MAC → Port 4`
+  - Therefore, it forwards the frame only through Port 4.
+  - Another devices don't receive the frame
+
+### Collision Domains
+
+- One of the biggest advantages of a switch is that it breaks up collision domains.
+- **Hub**: A hub creates essentially one large collision domain
+- **Switch**: With a switch, each switch port represents a separate collision domain in the traditional Ethernet model
+
+### Security Advantage
+
+- Switches are also more secure than hubs.
+- Remember
+  - A switch does not automatically make a network completely secure. 
+  - There are techniques such as MAC flooding, port mirroring, ARP spoofing, etc., that can affect Layer 2 security.
+
+| **Hub**                                                                                                                    | **Switch**                                                                 |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Because the hub **repeats the signal to every port**, another device connected to the hub may potentially capture traffic. | The switch normally **forwards the frame only toward the appropriate por** |
+
+
+### Broadcast Domain
+
+- A switch does NOT normally break up a broadcast domain.
+- Example
+
+```
+# For example, if PC3 sends a broadcast
+# The broadcast can be forwarded to the other ports.
+
+              ┌──→ PC1
+              ├──→ PC2
+PC3 → SWITCH ─┼──→ PC4
+              └──→ PC5
+```
+
+- Therefore: **A basic Layer 2 switch = multiple collision domains but one broadcast domain.**
+
+### Why the switch can still have one large broadcast domain?
+
+- When a new computer joins a network, it may not have an IP address yet.
+  - It can send **a DHCP broadcast** asking: "Is there a DHCP server that can give me an IP address?"
+  - The switch can forward this broadcast within the LAN.
+
+```
+PC
+ │
+ │ DHCP Broadcast
+ ↓
+Switch
+ │
+ ├──→ Other devices
+ │
+ └──→ DHCP Server
+```
+
+- This is why the switch can still have **one large broadcast domain**, even though it has **multiple collision domains**
+
+### Switch vs. Hub
+
+- The most important difference:
+  - Hub -> repeats traffic everywhere
+  - Switch -> intelligently forwards traffic to the destination
+
+|                    | **Hub**         | **Switch**           |
+| ------------------ | --------------- | -------------------- |
+| OSI Layer          | **Layer 1**     | **Layer 2**          |
+| Type               | Dumb device     | Intelligent device   |
+| Main function      | Repeats signals | Forwards frames      |
+| Uses MAC addresses | ❌               | ✅                    |
+| Traffic            | To all ports    | To destination port  |
+| Collision domains  | **1 large**     | **Multiple smaller** |
+| Modern LANs        | Legacy          | **Standard**         |
+
 
 # Data link - OSI layer 2 - Network Access - TCP/IP Layer 1
 
