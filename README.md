@@ -72,6 +72,7 @@
     - [Why Are Hubs Bad?](#why-are-hubs-bad)
       - [Network Collisions](#network-collisions)
       - [Security Problem](#security-problem)
+- [Data link - OSI layer 2 - Network Access - TCP/IP Layer 1](#data-link---osi-layer-2---network-access---tcpip-layer-1)
   - [Switch](#switch)
     - [What is a Switch?](#what-is-a-switch)
     - [MAC Address Table / CAM Table](#mac-address-table--cam-table)
@@ -81,7 +82,6 @@
     - [Broadcast Domain](#broadcast-domain)
     - [Why the switch can still have one large broadcast domain?](#why-the-switch-can-still-have-one-large-broadcast-domain)
     - [Switch vs. Hub](#switch-vs-hub)
-- [Data link - OSI layer 2 - Network Access - TCP/IP Layer 1](#data-link---osi-layer-2---network-access---tcpip-layer-1)
   - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
     - [What is a MAC Address?](#what-is-a-mac-address)
     - [MAC Address vs. MAC Address Spoofing](#mac-address-vs-mac-address-spoofing)
@@ -828,6 +828,9 @@ PC1 ──> HUB ──> PC2
   - Other devices may receive traffic that wasn't intended for them.
   - A switch, on the other hand, can make forwarding decisions based on MAC addresses, so traffic can normally be sent only toward the appropriate destination port.
 
+
+# Data link - OSI layer 2 - Network Access - TCP/IP Layer 1
+
 ## Switch
 
 ### What is a Switch?
@@ -933,8 +936,6 @@ Switch
 | Collision domains  | **1 large**     | **Multiple smaller** |
 | Modern LANs        | Legacy          | **Standard**         |
 
-
-# Data link - OSI layer 2 - Network Access - TCP/IP Layer 1
 
 ## MAC Addresses - Media Access Control (MAC)
 
