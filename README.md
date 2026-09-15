@@ -60,6 +60,10 @@
     - [Infrastructure](#infrastructure)
     - [Wireless Mesh Topology](#wireless-mesh-topology)
     - [Comparison](#comparison)
+  - [SOHO Device](#soho-device)
+    - [What Is a SOHO Device?](#what-is-a-soho-device)
+    - [Core Functions](#core-functions)
+    - [Additional Features](#additional-features)
 - [Physical - OSI layer 1 - Network Access - TCP/IP Layer 1](#physical---osi-layer-1---network-access---tcpip-layer-1)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
     - [What is a NIC?](#what-is-a-nic)
@@ -76,6 +80,12 @@
     - [What is a Wireless Range Extender?](#what-is-a-wireless-range-extender)
     - [How Does It Work](#how-does-it-work)
     - [When Would You Use One?](#when-would-you-use-one)
+  - [Modem](#modem)
+    - [What Is a Modem?](#what-is-a-modem)
+    - [Cable Internet Example](#cable-internet-example)
+  - [Media Converter](#media-converter)
+    - [What Is a Media Converter?](#what-is-a-media-converter)
+    - [Why Do We Need One?](#why-do-we-need-one)
 - [Data link - OSI layer 2 - Network Access - TCP/IP Layer 1](#data-link---osi-layer-2---network-access---tcpip-layer-1)
   - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
     - [What is a MAC Address?](#what-is-a-mac-address)
@@ -736,6 +746,54 @@ Node A ─── ❌ Node B
 | Self-healing         | ❌            | ❌                    | **✅**                  |
 | Common use           | P2P/personal | Home & business WLAN | Large homes/businesses |
 
+## SOHO Device
+
+### What Is a SOHO Device?
+
+- SOHO = Small Office / Home Office
+- A SOHO device is essentially an all-in-one wireless router with expanded capabilities.
+- People commonly call it a wireless router, which is understandable, but technically it usually contains many other network functions
+
+```
+              SOHO DEVICE
+┌─────────────────────────────────────┐
+│                                     │
+│  Router                             │
+│  Wireless Access Point (WAP)        │
+│  Switch                             │
+│  Firewall                           │
+│  DHCP Server                        │
+│  NAT                                │
+│  + Other features                   │
+│                                     │
+└─────────────────────────────────────┘
+```
+
+### Core Functions
+
+- There is no strict universal list of what a SOHO device must contain.
+- However, typical consumer SOHO devices provide at least
+
+| Function        | Purpose                                  |
+| --------------- | ---------------------------------------- |
+| **Router**      | Connects different IP networks           |
+| **WAP**         | Provides Wi-Fi connectivity              |
+| **Switch**      | Connects wired devices                   |
+| **Firewall**    | Controls network traffic                 |
+| **DHCP Server** | Automatically assigns IP addresses       |
+| **NAT**         | Translates private ↔ public IP addresses |
+
+### Additional Features
+
+- More expensive SOHO devices may provide additional functionality such as:
+  - File server
+  - Proxy server
+  - Quality of Service (QoS)
+  - Gaming optimization
+  - Traffic management
+  - Protocol-specific optimization
+  - USB/network storage features
+  - VPN functionality
 
 # Physical - OSI layer 1 - Network Access - TCP/IP Layer 1
 
@@ -876,6 +934,75 @@ Wireless Access Point
   - Some rooms are outside the WAP's effective coverage.
   - There is radio-frequency interference.
   - You have multiple floors.
+
+## Modem
+
+### What Is a Modem?
+
+- **Modem = Modulator + Demodulator**. The name comes from:
+  - Mo → Modulator
+  - Dem → Demodulator
+- Its basic job is to convert signals between the communication medium and the form used by the computer/network equipment.
+
+### Cable Internet Example
+
+- A typical home cable Internet setup
+
+```
+          ISP / Internet
+                │
+          Coaxial Cable
+        (lecture: analog)
+                │
+                ▼
+            [Modem]
+        Analog ↔ Digital
+                │
+            RJ-45 Ethernet
+                │
+                ▼
+        [SOHO Device]
+                │
+            Router
+                │
+            Firewall
+                │
+      ┌─────────┴───────┐
+      │                 │
+      WAP              DHCP
+      │                 │
+      └────────┬────────┘
+               │
+            Home LAN
+```
+
+## Media Converter
+
+### What Is a Media Converter?
+
+- A media converter is a device that converts a network signal from one physical media type to another.
+- The most common example is: **Copper Ethernet ↔ Fiber Optic**
+
+```
+[Switch]
+   │
+   │ RJ-45 / Copper
+   ▼
+[Media Converter]
+   │
+   │ Fiber Optic
+   ▼
+[Server]
+```
+
+### Why Do We Need One?
+
+- Different network devices may use different physical media.
+- For example:
+  - Switch → Copper Ethernet (RJ-45)
+  - Server → Fiber optic
+  - They cannot directly connect using their different cable types.
+  - The media converter sits between them and converts the physical signal
 
 # Data link - OSI layer 2 - Network Access - TCP/IP Layer 1
 
