@@ -72,6 +72,10 @@
     - [Why Are Hubs Bad?](#why-are-hubs-bad)
       - [Network Collisions](#network-collisions)
       - [Security Problem](#security-problem)
+  - [Wireless Range Extender - Wi-Fi Repeater](#wireless-range-extender---wi-fi-repeater)
+    - [What is a Wireless Range Extender?](#what-is-a-wireless-range-extender)
+    - [How Does It Work](#how-does-it-work)
+    - [When Would You Use One?](#when-would-you-use-one)
 - [Data link - OSI layer 2 - Network Access - TCP/IP Layer 1](#data-link---osi-layer-2---network-access---tcpip-layer-1)
   - [MAC Addresses - Media Access Control (MAC)](#mac-addresses---media-access-control-mac)
     - [What is a MAC Address?](#what-is-a-mac-address)
@@ -88,12 +92,23 @@
     - [Broadcast Domain](#broadcast-domain)
     - [Why the switch can still have one large broadcast domain?](#why-the-switch-can-still-have-one-large-broadcast-domain)
     - [Switch vs. Hub](#switch-vs-hub)
+  - [Wireless Access Point (WAP)](#wireless-access-point-wap)
+    - [What is a Wireless Access Point?](#what-is-a-wireless-access-point)
+    - [WAP is NOT a Router](#wap-is-not-a-router)
+    - [What Devices Connect to a WAP?](#what-devices-connect-to-a-wap)
 - [Network - OSI layer 3 - Internet - TCP/IP Layer 2](#network---osi-layer-3---internet---tcpip-layer-2)
   - [IP Address](#ip-address)
     - [What is an IP Address?](#what-is-an-ip-address)
     - [IP Address vs MAC Address](#ip-address-vs-mac-address)
     - [Internet Protocol version 4 - IPv4](#internet-protocol-version-4---ipv4)
     - [Internet Protocol version 6 - IPv6](#internet-protocol-version-6---ipv6)
+  - [Router](#router)
+    - [What Does a Router Do?](#what-does-a-router-do)
+    - [Router Uses IP Addresses](#router-uses-ip-addresses)
+    - [Router vs Switch](#router-vs-switch)
+    - [Routers Determine the Best Path](#routers-determine-the-best-path)
+    - [A router separates broadcast domains](#a-router-separates-broadcast-domains)
+    - [Example](#example)
 
 # Introduction Network
 
@@ -828,6 +843,40 @@ PC1 ──> HUB ──> PC2
   - Other devices may receive traffic that wasn't intended for them.
   - A switch, on the other hand, can make forwarding decisions based on MAC addresses, so traffic can normally be sent only toward the appropriate destination port.
 
+## Wireless Range Extender - Wi-Fi Repeater
+
+### What is a Wireless Range Extender?
+
+- A Wireless Range Extender is a device that extends the coverage/range of an existing Wi-Fi network.
+- It works similarly to a repeater
+  - The extender receives the wireless signal from the WAP and rebroadcasts it to areas where the original signal is weak.
+
+### How Does It Work
+
+- So the extender does not create a completely new network connection. 
+- It mainly repeats/rebroadcasts the existing wireless signal.
+
+```
+Wireless Access Point
+        │
+        │ Wi-Fi signal
+        ▼
+[Range Extender]
+        │
+        │ Re-broadcast
+        ▼
+  Extended Wi-Fi Area
+```
+
+### When Would You Use One?
+
+- A range extender is useful when
+  - Your house is large.
+  - Your office has areas with weak Wi-Fi.
+  - Some rooms are outside the WAP's effective coverage.
+  - There is radio-frequency interference.
+  - You have multiple floors.
+
 # Data link - OSI layer 2 - Network Access - TCP/IP Layer 1
 
 ## MAC Addresses - Media Access Control (MAC)
@@ -984,6 +1033,48 @@ Switch
 | Collision domains  | **1 large**     | **Multiple smaller** |
 | Modern LANs        | Legacy          | **Standard**         |
 
+## Wireless Access Point (WAP)
+
+### What is a Wireless Access Point?
+
+- A Wireless Access Point (WAP) is a dedicated network device that bridges a wired network to a wireless network.
+
+```
+Wired Network
+     │
+     │ Ethernet cable
+     ▼
+   [ WAP ]
+   /  |  \
+  /   |   \
+Wi-Fi Wi-Fi Wi-Fi
+ PC  Phone  Tablet
+```
+
+### WAP is NOT a Router
+
+| Device          | Main Function                                               |
+| --------------- | ----------------------------------------------------------- |
+| **WAP**         | Bridges wired network ↔ wireless network                    |
+| **Router**      | Connects different IP networks and performs Layer 3 routing |
+| **SOHO device** | Usually combines router + switch + WAP + other functions    |
+
+
+### What Devices Connect to a WAP?
+
+- A WAP allows many wireless devices to connect to the network:
+  - Smartphones
+  - Laptops
+  - Tablets
+  - IoT devices
+  - Smart speakers
+  - Smart lights
+  - Smart plugs
+  - Smart refrigerators
+  - Smart garage doors
+  - Other wireless devices
+
+
 # Network - OSI layer 3 - Internet - TCP/IP Layer 2
 
 ## IP Address
@@ -1017,8 +1108,121 @@ Switch
 | **Example of communication** | Your home network → Router → Internet → Gmail network → Gmail server                                   | PC → Switch → PC / Printer                                                                                   |
 | **Key concept**              | **Routing**                                                                                            | **Switching**                                                                                                |
 
-
-
 ### Internet Protocol version 4 - IPv4
 
 ### Internet Protocol version 6 - IPv6
+
+
+## Router
+
+### What Does a Router Do?
+
+- A router connects different networks together.
+- This is the key difference:
+  - Switch → connects devices within the same network
+  - Router → connects different networks
+
+- Example: If PC1 wants to communicate with PC3, they are on different networks, so the traffic must pass through the router.
+
+```
+Network A                              Network B
+192.168.1.0/24                         192.168.2.0/24
+
+ PC1 ──┐                              ┌── PC3
+       │                              │
+    [Switch]                        [Switch]
+       │                              │
+ PC2 ──┘                              └── PC4
+       │                              │
+       ↓                              ↓
+   [Router A] ──────────────── [Router B]
+       │        Network Link        │
+       └────────────────────────────┘
+```
+
+### Router Uses IP Addresses
+
+- A router operates primarily at: **OSI Layer 3 — Network Layer**
+- It uses **IP addresses** to determine where packets should go.
+
+| Device | OSI Layer | Main Address | Main Function                  |
+| ------ | --------: | ------------ | ------------------------------ |
+| Hub    |   Layer 1 | —            | Repeat signals                 |
+| Switch |   Layer 2 | **MAC**      | Forward frames within LAN      |
+| Router |   Layer 3 | **IP**       | Route packets between networks |
+
+### Router vs Switch
+
+- **Switch**: "Which port is this MAC address connected to?"
+
+```
+# Same Network
+
+PC1 ─── Switch ─── PC2
+       MAC address
+```
+
+- **Router**: "Which network should I send this IP packet toward?"
+
+```
+# Different Networks
+
+PC1 ─── Switch ─── Router ─── Switch ─── PC2
+                  IP address
+```
+
+### Routers Determine the Best Path
+
+- The routers determine an appropriate/best route toward the destination based on their routing information
+
+### A router separates broadcast domains
+
+- A router therefore creates a boundary between different Layer 3 networks/broadcast domains.
+
+```
+ Broadcast Domain A
+ PC1 ── Switch ──┐
+                 │
+              [Router]
+                 │
+                 └── Switch ── PC3
+                     Broadcast Domain B
+```
+
+### Example
+
+```
+# When PC1 wants to communicate with PC3:
+
+PC1
+Network: 192.168.1.0/24
+
+        ↓
+
+[Switch]
+
+        ↓
+
+[Router]
+
+        ↓
+
+[Switch]
+
+        ↓
+
+PC3
+Network: 192.168.2.0/24
+```
+
+- Step 1 — PC1 sends the frame
+  - PC1 sends traffic toward the router through the local switch.
+- Step 2 — Switch forwards using MAC
+  - The switch examines the destination MAC address and uses its CAM/MAC table to determine the correct port.
+- Step 3 — Router receives the packet
+  - The router examines the destination IP address
+- Step 4 — Router chooses the route
+  - The router checks its routing information and determines where to forward the packet.
+- Step 5 — Destination network
+  - Eventually the packet reaches the destination network.
+  - The destination switch then uses MAC addresses to deliver the frame to PC3
