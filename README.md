@@ -131,6 +131,12 @@
     - [A router separates broadcast domains](#a-router-separates-broadcast-domains)
     - [Example](#example)
 - [Application - OSI layer 7 - Application - TCP/IP Layer 4](#application---osi-layer-7---application---tcpip-layer-4)
+  - [DHCP](#dhcp)
+    - [What Is DHCP?](#what-is-dhcp)
+    - [Static IP vs DHCP](#static-ip-vs-dhcp)
+    - [Basic DHCP Architecture](#basic-dhcp-architecture)
+      - [DORA Process](#dora-process)
+    - [What Else Can DHCP Provide?](#what-else-can-dhcp-provide)
 
 # Introduction Network
 
@@ -1502,3 +1508,62 @@ Network: 192.168.2.0/24
   - The destination switch then uses MAC addresses to deliver the frame to PC3
 
 # Application - OSI layer 7 - Application - TCP/IP Layer 4
+
+## DHCP
+
+### What Is DHCP?
+
+- DHCP = Dynamic Host Configuration Protocol
+- A DHCP server automatically assigns IP addresses to devices on a network.
+
+### Static IP vs DHCP
+
+- For a network with hundreds of devices, manually managing every IP becomes inconvenient and increases the chance of configuration mistakes or conflicts.
+
+| Method     | How IP is assigned                   | Suitable for                             |
+| ---------- | ------------------------------------ | ---------------------------------------- |
+| **Static IP** | Administrator manually configures IP | Small networks, servers, special devices |
+| **DHCP**   | Server automatically assigns IP      | Medium/large networks, clients           |
+
+
+### Basic DHCP Architecture
+
+- The new PC doesn't initially have an IP address, so it communicates on the network to find a DHCP server.
+- The DHCP server can then provide an IP configuration.
+
+```
+# DORA Process
+                 Network
+                    │
+          ┌─────────┴─────────┐
+          │                   │
+       [DHCP Server]        [New PC]
+          │                   │
+          │◄──── Request ─────┤
+          │                   │
+          ├──── IP Offer ────►│
+          │                   │
+          │◄──── Request ─────┤
+          │                   │
+          └──── ACK ─────────►│
+```
+
+#### DORA Process
+
+- The DHCP address-assignment process is commonly remembered as DORA:
+
+| Step  | Name                 | Basic meaning                             |
+| ----- | -------------------- | ----------------------------------------- |
+| **D** | Discover             | Client looks for DHCP servers             |
+| **O** | Offer                | DHCP server offers an IP configuration    |
+| **R** | Request              | Client requests the offered configuration |
+| **A** | Acknowledgment (ACK) | Server confirms the assignment            |
+
+### What Else Can DHCP Provide?
+
+- DHCP can provide other network configuration information as well, such as:
+  - IP address
+  - Subnet mask
+  - Default gateway
+  - DNS server
+  - Lease duration
