@@ -64,6 +64,17 @@
     - [What Is a SOHO Device?](#what-is-a-soho-device)
     - [Core Functions](#core-functions)
     - [Additional Features](#additional-features)
+  - [Firewall](#firewall)
+    - [What Is a Firewall?](#what-is-a-firewall)
+    - [Two Primary Categories](#two-primary-categories)
+      - [Network-based](#network-based)
+      - [Host-based](#host-based)
+    - [Why Use Firewalls?](#why-use-firewalls)
+    - [Defense in Depth](#defense-in-depth)
+    - [Three Firewall Generations](#three-firewall-generations)
+      - [First Generation — Packet Filtering](#first-generation--packet-filtering)
+      - [Second Generation — Circuit-Level Firewall](#second-generation--circuit-level-firewall)
+      - [Third Generation — Application Layer / NGFW](#third-generation--application-layer--ngfw)
 - [Physical - OSI layer 1 - Network Access - TCP/IP Layer 1](#physical---osi-layer-1---network-access---tcpip-layer-1)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
     - [What is a NIC?](#what-is-a-nic)
@@ -119,6 +130,7 @@
     - [Routers Determine the Best Path](#routers-determine-the-best-path)
     - [A router separates broadcast domains](#a-router-separates-broadcast-domains)
     - [Example](#example)
+- [Application - OSI layer 7 - Application - TCP/IP Layer 4](#application---osi-layer-7---application---tcpip-layer-4)
 
 # Introduction Network
 
@@ -795,6 +807,141 @@ Node A ─── ❌ Node B
   - USB/network storage features
   - VPN functionality
 
+## Firewall
+
+### What Is a Firewall?
+
+- A firewall is a fundamental IT security mechanism used to control and filter network traffic.
+- Its primary purpose is to:
+  - Allow legitimate traffic and block unwanted or potentially malicious traffic according to security rules.
+- A firewall can protect:
+  - An entire network
+  - Individual computers/hosts
+  - Specific sensitive areas of a network
+
+### Two Primary Categories
+
+- There are two major categories:
+
+| Type                       | Also called                   | Protects                     |
+| -------------------------- | ----------------------------- | ---------------------------- |
+| **Network-based firewall** | Hardware / Appliance firewall | A network or network segment |
+| **Host-based firewall**    | Software firewall             | Individual computer/server   |
+
+
+#### Network-based
+
+- The firewall sits at a strategic point and controls traffic passing between networks.
+
+```
+Internet
+   │
+   ▼
+[Firewall]
+   │
+   ▼
+Internal Network
+ ┌──┼──┐
+PC Server PC
+```
+
+#### Host-based
+
+- The firewall runs directly on the operating system.
+  - For example, modern operating systems commonly include a built-in software firewall
+
+```
+        Network
+           │
+           ▼
+      ┌─────────┐
+      │  PC     │
+      │ Firewall│
+      └─────────┘
+```
+
+### Why Use Firewalls?
+
+- A basic security principle is: **Don't automatically trust traffic coming from outside your trusted network.**
+- The firewall acts as a security boundary between networks with different trust levels.
+- It examines traffic and applies its configured security rules.
+
+### Defense in Depth
+
+- Use multiple independent security controls/layers rather than relying on a single protection mechanism.
+
+```
+# A network doesn't necessarily rely on only one firewall.
+
+Internet
+   │
+   ▼
+[Firewall 1]
+   │
+   ▼
+General LAN
+   │
+   ├───────────────┐
+   │               │
+   ▼               ▼
+Marketing       [Firewall 2]
+                    │
+                    ▼
+              Server Network
+```
+
+### Three Firewall Generations
+
+| Generation | Type                                         | Main idea                                                            |
+| ---------- | -------------------------------------------- | -------------------------------------------------------------------- |
+| **1st**    | Packet-filtering firewall                    | Filters based on basic packet information                            |
+| **2nd**    | Circuit-level firewall                       | Monitors TCP sessions/connections                                    |
+| **3rd**    | Application-layer / Next-Generation Firewall | Provides more advanced inspection and application-aware capabilities |
+
+
+#### First Generation — Packet Filtering
+
+- This is the most basic type.
+- It applies rules based on information such as:
+  - Source IP
+  - Destination IP
+  - Protocol
+  - Port number
+- Example Rule:
+  - Source IP     → 192.168.1.50
+  - Protocol      → TCP
+  - Destination   → Port 80
+  - Action        → DENY
+
+#### Second Generation — Circuit-Level Firewall
+
+- A circuit-level firewall focuses on connections/sessions, particularly TCP sessions.
+- The firewall monitors whether traffic belongs to a valid/established session.
+
+```
+# TCP establishes a connection using the famous:
+
+Client                 Server
+
+  SYN ────────────────►
+      ◄──────── SYN/ACK
+  ACK ────────────────►
+
+# TCP session established
+```
+
+#### Third Generation — Application Layer / NGFW
+
+- These firewalls can provide significantly more advanced traffic inspection and application-aware security capabilities than basic packet filtering.
+
+```
+# OSI:
+
+Layer 7 ─ Application
+          ↑
+NGFW / Application-aware
+```
+
 # Physical - OSI layer 1 - Network Access - TCP/IP Layer 1
 
 ## Network Interface Card (NIC)
@@ -1353,3 +1500,5 @@ Network: 192.168.2.0/24
 - Step 5 — Destination network
   - Eventually the packet reaches the destination network.
   - The destination switch then uses MAC addresses to deliver the frame to PC3
+
+# Application - OSI layer 7 - Application - TCP/IP Layer 4
