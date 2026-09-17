@@ -39,10 +39,10 @@
     - [Unicast](#unicast)
     - [Multicast](#multicast)
     - [Broadcast](#broadcast)
-- [Ethernet](#ethernet)
-  - [What is Ethernet?](#what-is-ethernet)
-  - [Ethernet and the OSI Model](#ethernet-and-the-osi-model)
-  - [Ethernet as a Network Access Method](#ethernet-as-a-network-access-method)
+  - [Ethernet](#ethernet)
+    - [What is Ethernet?](#what-is-ethernet)
+    - [Ethernet and the OSI Model](#ethernet-and-the-osi-model)
+    - [Ethernet as a Network Access Method](#ethernet-as-a-network-access-method)
 - [Network Topology](#network-topology)
   - [What is Network Topology?](#what-is-network-topology)
   - [Physical Topology](#physical-topology)
@@ -499,9 +499,9 @@ PC 1 ←───────── PC 2
 
 ![OSI Model comunication](./static/tutorial_0005.png)
 
-# Ethernet
+## Ethernet
 
-## What is Ethernet?
+### What is Ethernet?
 
 - Ethernet is a family of networking standards used primarily for communication within **Local Area Networks (LANs)**.
 - It covers both:
@@ -509,7 +509,7 @@ PC 1 ←───────── PC 2
   - Logical/data communication aspects
 - So Ethernet is not just about cables.
 
-## Ethernet and the OSI Model
+### Ethernet and the OSI Model
 
 - Ethernet is associated with both:
   - Layer 1 — Physical: Ethernet defines physical aspects such as
@@ -523,7 +523,7 @@ PC 1 ←───────── PC 2
     - Access to the shared network medium
 - Therefore: thernet operates across OSI Layer 1 and Layer 2.
 
-## Ethernet as a Network Access Method
+### Ethernet as a Network Access Method
 
 - Ethernet provides rules for how devices access and communicate over the network medium.
 - The lecture introduces CSMA: **Carrier Sense Multiple Access**
