@@ -43,6 +43,9 @@
     - [What is Ethernet?](#what-is-ethernet)
     - [Ethernet and the OSI Model](#ethernet-and-the-osi-model)
     - [Ethernet as a Network Access Method](#ethernet-as-a-network-access-method)
+    - [Ethernet Naming Convention](#ethernet-naming-convention)
+      - [Baseband](#baseband)
+    - [Ethernet Logical Component](#ethernet-logical-component)
 - [Network Topology](#network-topology)
   - [What is Network Topology?](#what-is-network-topology)
   - [Physical Topology](#physical-topology)
@@ -89,6 +92,11 @@
       - [Software VoIP / Softphone](#software-voip--softphone)
     - [VoIP vs POTS](#voip-vs-pots)
 - [Physical - OSI layer 1 - Network Access - TCP/IP Layer 1](#physical---osi-layer-1---network-access---tcpip-layer-1)
+  - [Network Cabling](#network-cabling)
+    - [Types of Network Cabling](#types-of-network-cabling)
+  - [Coaxial Cable](#coaxial-cable)
+  - [Twisted Pair](#twisted-pair)
+  - [Fiber Optic](#fiber-optic)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
     - [What is a NIC?](#what-is-a-nic)
     - [NIC and MAC Address](#nic-and-mac-address)
@@ -516,6 +524,12 @@ PC 1 ←───────── PC 2
 - It covers both:
   - Physical aspects of networking 
   - Logical/data communication aspects
+
+| Aspect       | What it covers                                    |
+| ------------ | ------------------------------------------------- |
+| **Physical** | Cables, connectors, signals, transmission speed   |
+| **Logical**  | How devices access/transmit data over the network |
+
 - So Ethernet is not just about cables.
 
 ### Ethernet and the OSI Model
@@ -530,13 +544,53 @@ PC 1 ←───────── PC 2
     - Frames
     - MAC addresses
     - Access to the shared network medium
-- Therefore: thernet operates across OSI Layer 1 and Layer 2.
+- Therefore: ethernet operates across OSI Layer 1 and Layer 2.
 
 ### Ethernet as a Network Access Method
 
 - Ethernet provides rules for how devices access and communicate over the network medium.
 - The lecture introduces CSMA: **Carrier Sense Multiple Access**
   - The idea is that devices can sense the communication medium before transmitting
+
+### Ethernet Naming Convention
+
+- A common Ethernet naming format is: `N + Base + X`
+- Example: **10Base-T**
+
+```
+10Base-T
+ │  │  │
+ │  │  └── Twisted-pair copper
+ │  │
+ │  └────── Baseband signaling
+ └───────── Signaling rate: 10 Mbps
+```
+
+#### Baseband
+
+- Baseband means the Ethernet transmission uses the medium for a baseband digital signal rather than broadband-style multiple frequency channels
+  - **Base = Baseband = digital network signaling**
+
+### Ethernet Logical Component
+
+- **CSMA/CD** → associated historically with shared/half-duplex wired Ethernet
+- **CSMA/CA** → used by wireless LANs
+  - Modern switched full-duplex Ethernet generally doesn't need CSMA/CD for collision handling, because collisions don't occur on a dedicated full-duplex switch link
+
+```
+# These are logical access methods, rather than cable specifications.
+
+Ethernet
+├── Physical
+│   ├── Cable
+│   ├── Connector
+│   ├── Signal
+│   └── Speed
+│
+└── Logical
+    ├── CSMA/CD
+    └── CSMA/CA
+```
 
 # Network Topology
 
@@ -1072,6 +1126,27 @@ VoIP Phone
 
 
 # Physical - OSI layer 1 - Network Access - TCP/IP Layer 1
+
+## Network Cabling
+
+### Types of Network Cabling
+
+- There are 3 main types of network cabling introduced in this section:
+
+| Cable Type       | Basic Description                                        | Common Use                          |
+| ---------------- | -------------------------------------------------------- | ----------------------------------- |
+| **Coaxial**      | Central conductor surrounded by insulation and shielding | Cable Internet, legacy networks     |
+| **Twisted Pair** | Pairs of copper wires twisted together                   | Most traditional Ethernet LANs      |
+| **Fiber Optic**  | Uses light through optical fiber                         | High-speed/long-distance networking |
+
+## Coaxial Cable
+
+![Coaxial Cable](./static/tutorial_0013.png)
+
+## Twisted Pair
+
+## Fiber Optic
+
 
 ## Network Interface Card (NIC)
 
