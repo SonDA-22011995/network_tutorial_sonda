@@ -79,6 +79,15 @@
       - [Third Generation — Application Layer / NGFW](#third-generation--application-layer--ngfw)
   - [VoIP Endpoint](#voip-endpoint)
     - [What Is VoIP?](#what-is-voip)
+    - [Traditional Phone vs VoIP](#traditional-phone-vs-voip)
+      - [Traditional POTS](#traditional-pots)
+      - [VoIP](#voip)
+    - [VoIP Phone Is a Network Device](#voip-phone-is-a-network-device)
+    - [VoIP Uses Specialized Protocols](#voip-uses-specialized-protocols)
+    - [Hardware vs Software VoIP](#hardware-vs-software-voip)
+      - [Hardware VoIP phone](#hardware-voip-phone)
+      - [Software VoIP / Softphone](#software-voip--softphone)
+    - [VoIP vs POTS](#voip-vs-pots)
 - [Physical - OSI layer 1 - Network Access - TCP/IP Layer 1](#physical---osi-layer-1---network-access---tcpip-layer-1)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
     - [What is a NIC?](#what-is-a-nic)
@@ -969,6 +978,98 @@ NGFW / Application-aware
   - Physical VoIP phone
   - Software/softphone on a computer
   - Mobile/other VoIP applications
+
+### Traditional Phone vs VoIP
+
+#### Traditional POTS
+
+- POTS = Plain Old Telephone Service
+
+```
+Telephone
+    │
+Telephone Line
+    │
+Telephone Network
+```
+
+#### VoIP
+
+- The major difference is that the VoIP phone becomes an IP network device.
+
+```
+VoIP Phone
+    │
+ Ethernet / Wi-Fi
+    │
+   LAN
+    │
+ IP Network
+```
+
+### VoIP Phone Is a Network Device
+
+- A physical VoIP phone connects to the network like other devices.
+- It typically has:
+  - MAC address
+  - IP address
+  - Network interface
+  - Network configuration
+
+### VoIP Uses Specialized Protocols
+
+- VoIP systems use specialized protocols to establish and manage calls.
+- One important example is: **SIP — Session Initiation Protocol**
+  - **SIP** is used for things such as:
+    - Establishing calls
+    - Managing sessions
+    - Ending calls
+
+### Hardware vs Software VoIP
+
+- VoIP endpoints can be either hardware or software.
+
+#### Hardware VoIP phone
+
+- Looks like a traditional office phone but connects to the IP network.
+
+```
+       [VoIP Phone]
+             │
+          Ethernet
+             │
+          [Switch]
+             │
+           Network
+```
+
+#### Software VoIP / Softphone
+
+- A software application can turn a computer into a phone.
+
+```
+# Laptop
+┌──────────────────┐
+│   Softphone      │
+│                  │
+│  ☎ Call         │
+│  Voicemail       │
+└──────────────────┘
+        │
+      Network
+```
+
+### VoIP vs POTS
+
+| Feature            | POTS                            | VoIP                                        |
+| ------------------ | ------------------------------- | ------------------------------------------- |
+| Full name          | Plain Old Telephone Service     | Voice over Internet Protocol                |
+| Network            | Traditional telephone network   | IP network                                  |
+| Addressing         | Traditional telephone numbering | IP/network infrastructure + phone numbering |
+| Endpoint           | Traditional telephone           | IP phone / software                         |
+| Network connection | Telephone line                  | Ethernet/Wi-Fi/IP network                   |
+| Protocols          | Traditional telephony protocols | SIP and other VoIP protocols                |
+
 
 # Physical - OSI layer 1 - Network Access - TCP/IP Layer 1
 
