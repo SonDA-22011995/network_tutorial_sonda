@@ -42,11 +42,11 @@
     - [What is Ethernet?](#what-is-ethernet)
     - [Ethernet and the OSI Model](#ethernet-and-the-osi-model)
     - [Ethernet as a Network Access Method](#ethernet-as-a-network-access-method)
-  - [Network Topology](#network-topology)
-    - [What is Network Topology?](#what-is-network-topology)
-    - [Physical Topology](#physical-topology)
-    - [Logical Topology](#logical-topology)
-    - [Physical vs. Logical](#physical-vs-logical)
+- [Network Topology](#network-topology)
+  - [What is Network Topology?](#what-is-network-topology)
+  - [Physical Topology](#physical-topology)
+  - [Logical Topology](#logical-topology)
+  - [Physical vs. Logical](#physical-vs-logical)
   - [Wired Network Topologies](#wired-network-topologies)
     - [Ring Topology](#ring-topology)
     - [Star Topology](#star-topology)
@@ -60,6 +60,7 @@
     - [Infrastructure](#infrastructure)
     - [Wireless Mesh Topology](#wireless-mesh-topology)
     - [Comparison](#comparison)
+- [Network devices are not assigned to a specific OSI layer](#network-devices-are-not-assigned-to-a-specific-osi-layer)
   - [SOHO Device](#soho-device)
     - [What Is a SOHO Device?](#what-is-a-soho-device)
     - [Core Functions](#core-functions)
@@ -75,6 +76,8 @@
       - [First Generation — Packet Filtering](#first-generation--packet-filtering)
       - [Second Generation — Circuit-Level Firewall](#second-generation--circuit-level-firewall)
       - [Third Generation — Application Layer / NGFW](#third-generation--application-layer--ngfw)
+  - [VoIP Endpoint](#voip-endpoint)
+    - [What Is VoIP?](#what-is-voip)
 - [Physical - OSI layer 1 - Network Access - TCP/IP Layer 1](#physical---osi-layer-1---network-access---tcpip-layer-1)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
     - [What is a NIC?](#what-is-a-nic)
@@ -523,9 +526,9 @@ PC 1 ←───────── PC 2
 - The lecture introduces CSMA: **Carrier Sense Multiple Access**
   - The idea is that devices can sense the communication medium before transmitting
 
-## Network Topology
+# Network Topology
 
-### What is Network Topology?
+## What is Network Topology?
 
 - Network Topology can be thought of as a blueprint of a network.
 - A Network has two aspects:
@@ -533,7 +536,7 @@ PC 1 ←───────── PC 2
   - Logical
 Therefore, we have: **Physical topology** and **Logical topology**
 
-### Physical Topology
+## Physical Topology
 
 - Physical topology describes where devices are physically located and how they are physically connected.
 - It includes:
@@ -555,7 +558,7 @@ Therefore, we have: **Physical topology** and **Logical topology**
        PC   Server Printer
 ```
 
-### Logical Topology
+## Logical Topology
 
 - Logical topology describes how data flows through the network.
 - It isn't primarily concerned with where the devices physically sit. Instead, it focuses on the rules and protocols that determine how data is transmitted.
@@ -565,7 +568,7 @@ Therefore, we have: **Physical topology** and **Logical topology**
   - IEEE 802.11
   - CSMA/CA
 
-### Physical vs. Logical
+## Physical vs. Logical
 
 |                | **Physical Topology**                     | **Logical Topology**        |
 | -------------- | ----------------------------------------- | --------------------------- |
@@ -764,6 +767,10 @@ Node A ─── ❌ Node B
 | Self-healing         | ❌            | ❌                    | **✅**                  |
 | Common use           | P2P/personal | Home & business WLAN | Large homes/businesses |
 
+
+# Network devices are not assigned to a specific OSI layer
+
+
 ## SOHO Device
 
 ### What Is a SOHO Device?
@@ -947,6 +954,18 @@ Layer 7 ─ Application
           ↑
 NGFW / Application-aware
 ```
+
+## VoIP Endpoint
+
+### What Is VoIP?
+
+- VoIP = Voice over Internet Protocol
+- VoIP allows voice communication to run over an IP network instead of traditional telephone networks.
+- A VoIP endpoint is a device used to make/receive VoIP calls.
+- Examples:
+  - Physical VoIP phone
+  - Software/softphone on a computer
+  - Mobile/other VoIP applications
 
 # Physical - OSI layer 1 - Network Access - TCP/IP Layer 1
 
