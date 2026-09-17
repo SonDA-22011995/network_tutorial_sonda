@@ -96,6 +96,8 @@
     - [Types of Network Cabling](#types-of-network-cabling)
   - [Coaxial Cable](#coaxial-cable)
   - [Twisted Pair](#twisted-pair)
+    - [Twisted-Pair Cable Categories](#twisted-pair-cable-categories)
+    - [Cable Category vs Ethernet Standard](#cable-category-vs-ethernet-standard)
   - [Fiber Optic](#fiber-optic)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
     - [What is a NIC?](#what-is-a-nic)
@@ -1144,6 +1146,47 @@ VoIP Phone
 ![Coaxial Cable](./static/tutorial_0013.png)
 
 ## Twisted Pair
+
+### Twisted-Pair Cable Categories
+
+| Category   | Example Ethernet standard | Approx. maximum speed* | Typical max distance |
+| ---------- | ------------------------- | ---------------------: | -------------------: |
+| **Cat 3**  | 10Base-T                  |                10 Mbps |                100 m |
+| **Cat 5**  | 100Base-TX                |               100 Mbps |                100 m |
+| **Cat 5e** | 1000Base-T                |                 1 Gbps |                100 m |
+| **Cat 6**  | 1000Base-T / 10GBASE-T    |              1–10 Gbps |         100 m / 55 m |
+| **Cat 6a** | 10GBASE-T                 |                10 Gbps |                100 m |
+| **Cat 7**  | 10 Gbps-class             |               10 Gbps+ |              ~100 m* |
+| **Cat 8**  | 25/40GBASE-T              |             25–40 Gbps |                 30 m |
+
+- The general progression is:
+  - Higher bandwidth → higher speed → better signal performance
+  - However, higher category doesn't automatically mean longer distance
+    - Higher speed can require shorter cable distances.
+
+```
+Cat 3
+  ↓
+Cat 5
+  ↓
+Cat 5e
+  ↓
+Cat 6
+  ↓
+Cat 6a
+  ↓
+Cat 7
+  ↓
+Cat 8
+```
+
+### Cable Category vs Ethernet Standard
+
+- Retailers usually advertise the Cat number.
+- So when shopping for a cable, you're much more likely to search for:
+  - Cat 6 Ethernet cable rather than 1000Base-T cable
+
+![Twisted Pair](./static/tutorial_0014.png)
 
 ## Fiber Optic
 
