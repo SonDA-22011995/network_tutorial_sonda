@@ -128,6 +128,20 @@
       - [Modern Gigabit Ethernet (GBase-T)](#modern-gigabit-ethernet-gbase-t)
     - [Other Copper Connectors](#other-copper-connectors)
   - [Fiber Optic](#fiber-optic)
+    - [What Is Fiber Optic Cabling?](#what-is-fiber-optic-cabling)
+    - [Advantages of Fiber Optic](#advantages-of-fiber-optic)
+      - [Higher bandwidth](#higher-bandwidth)
+      - [Much longer distance](#much-longer-distance)
+      - [Fiber Is Not Affected by EMI](#fiber-is-not-affected-by-emi)
+    - [Types of Fiber](#types-of-fiber)
+      - [Multimode Fiber](#multimode-fiber)
+      - [Single-Mode Fiber](#single-mode-fiber)
+      - [Multimode vs Single-Mode](#multimode-vs-single-mode)
+    - [Fiber Optic Connectors](#fiber-optic-connectors)
+      - [LC — Lucent Connector](#lc--lucent-connector)
+      - [SC — Subscriber Connector](#sc--subscriber-connector)
+      - [ST — Straight Tip](#st--straight-tip)
+      - [MTRJ — Mechanical Transfer Registered Jack](#mtrj--mechanical-transfer-registered-jack)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
     - [What is a NIC?](#what-is-a-nic)
     - [NIC and MAC Address](#nic-and-mac-address)
@@ -1536,6 +1550,116 @@ RX Pin 6 ◄────────────────────── P
 
 ## Fiber Optic
 
+### What Is Fiber Optic Cabling?
+
+- Fiber optic cabling is different from traditional twisted-pair copper cabling because it does not transmit electrical signals.
+- Instead, fiber optic cable uses photons (light) to transmit data.
+- The center of the cable contains a glass or plastic core through which light pulses travel
+  - The outer jacket, buffer, and cladding protect the core.
+- Fiber is commonly used in:
+  - Enterprise networks
+  - WANs
+  - Long-distance network connections
+  - ISP networks
+
+![Fiber Optic](./static/tutorial_0023.png)
+
+### Advantages of Fiber Optic
+
+- Fiber optic is more expensive than twisted-pair copper, including both the cable and related equipment. However, it provides several major advantages
+
+#### Higher bandwidth
+
+- Fiber can support significantly higher speeds
+
+#### Much longer distance
+
+- Copper twisted-pair: 100 meters
+- Fiber can reach: 75 miles or more in the example given.
+
+#### Fiber Is Not Affected by EMI
+
+- Another major advantage is that fiber optic cabling:
+  - Does not suffer from electromagnetic interference (EMI)
+  - Does not emanate electrical signals
+
+### Types of Fiber
+
+![Types of Fiber](./static/tutorial_0024.png)
+
+#### Multimode Fiber
+
+- Multimode fiber has a larger core: 50–62.5 microns
+- It allows multiple light beams to travel through the fiber simultaneously.
+- The light can bounce off the walls of the core, which limits its distance and speed compared with single-mode fiber.
+- Typical use:
+  - LANs
+  - Campus networks
+  - Building-to-building connections
+  - Shorter distances
+
+#### Single-Mode Fiber
+
+- Single-mode fiber has a much smaller core: 8–10 microns
+- It carries essentially one light beam at a time.
+- Because the light does not bounce off the walls in the same way as multimode transmission, it can support:
+  - Longer distances
+  - Higher speeds
+- Typical use:
+  - ISP networks
+  - Metropolitan Area Networks (MANs)
+  - Long-distance connections
+
+#### Multimode vs Single-Mode
+
+| Feature     | Multimode              | Single-mode               |
+| ----------- | ---------------------- | ------------------------- |
+| Core size   | 50–62.5 µm             | 8–10 µm                   |
+| Light       | Multiple beams         | One beam                  |
+| Distance    | Shorter                | Much longer               |
+| Speed       | Lower than single-mode | Higher                    |
+| Typical use | LAN / campus           | ISP / MAN / long-distance |
+
+
+### Fiber Optic Connectors
+
+![Fiber Optic Connectors](./static/tutorial_0025.png)
+
+#### LC — Lucent Connector
+
+- Small connector
+- Uses a locking flange similar in appearance to RJ-45
+- Designed for one fiber
+- Used with both multimode and Single-Mode Fiber 
+- Common in Gigabit and 10-Gigabit Ethernet applications
+
+![LC — Lucent Connector](./static/tutorial_0026.png)
+
+#### SC — Subscriber Connector
+
+- Square-shaped connector
+- Uses a push-pull mechanism
+- Used with Multimode Fiber and Single-Mode Fiber Gigabit Ethernet applications.
+
+![SC — Subscriber Connector](./static/tutorial_0027.png)
+
+#### ST — Straight Tip
+
+- Round connector
+- Uses a bayonet-style twist-and-lock mechanism
+- Similar to the locking mechanism used by older BNC-style connectors.
+- Historically used with multimode fiber.
+- No longer commonly used
+
+![ST — Straight Tip](./static/tutorial_0028.png)
+
+#### MTRJ — Mechanical Transfer Registered Jack
+
+- Similar appearance to LC
+- Designed for two fibers
+- Commonly associated with multimode fiber in the lecture
+
+![MTRJ](./static/tutorial_0029.png)
 
 ## Network Interface Card (NIC)
 
