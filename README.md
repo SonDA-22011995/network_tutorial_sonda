@@ -106,9 +106,18 @@
     - [Why Are the Wires Twisted?](#why-are-the-wires-twisted)
       - [Crosstalk](#crosstalk)
       - [Electromagnetic Interference (EMI)](#electromagnetic-interference-emi)
+    - [UTP vs STP](#utp-vs-stp)
+    - [Factors Affecting Cable Speed](#factors-affecting-cable-speed)
+      - [Twist rate](#twist-rate)
+      - [Conductor Quality](#conductor-quality)
+      - [Insulation and separation](#insulation-and-separation)
+      - [Shielding](#shielding)
+      - [Supported frequency](#supported-frequency)
     - [Twisted-Pair Cable Categories](#twisted-pair-cable-categories)
     - [Cable Category vs Ethernet Standard](#cable-category-vs-ethernet-standard)
     - [Common Categories](#common-categories)
+      - [RJ-45 Connectors](#rj-45-connectors)
+      - [Other Copper Connectors](#other-copper-connectors)
   - [Fiber Optic](#fiber-optic)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
     - [What is a NIC?](#what-is-a-nic)
@@ -1247,6 +1256,66 @@ Green pair  ──────┘
 
 #### Electromagnetic Interference (EMI)
 
+- Twisting makes the cable less susceptible to EMI
+  - EMI is disruption to electronic equipment caused by electromagnetic fields from other electronic devices.
+- Examples include environments containing:
+  - Manufacturing equipment
+  - Motors
+  - Large electrical devices
+  - Other sources of electromagnetic fields
+
+### UTP vs STP
+
+- There are two major forms of twisted-pair cabling:
+
+| Type    | Meaning                 | Shielding            | Typical environment   |
+| ------- | ----------------------- | -------------------- | --------------------- |
+| **UTP** | Unshielded Twisted Pair | No additional shield | Normal offices/homes  |
+| **STP** | Shielded Twisted Pair   | Yes                  | High-EMI environments |
+
+- UTP
+  - cheaper
+  - common in normal offices
+- STP
+  - better protection against EMI
+  - more expensive
+  - useful in manufacturing/industrial environments with significant EMI.
+
+### Factors Affecting Cable Speed
+
+#### Twist rate
+
+- Higher-category cables generally have more twists per inch.
+- More twisting helps reduce crosstalk and interference
+
+```
+CAT 5e  → fewer twists
+CAT 6   → more twists
+CAT 7   → more twists
+CAT 8   → more twists
+```
+
+#### Conductor Quality
+
+- Better-quality copper and more consistent wire diameter can improve:
+  - Signal transmission
+  - Signal integrity
+  - Data rates
+
+#### Insulation and separation
+
+- Better insulation and physical separation between pairs help reduce:
+  - Interference
+  - Signal degradation
+
+#### Shielding
+
+- Shielding helps block EMI, especially in electrically noisy environments.
+
+#### Supported frequency
+
+- Higher maximum frequency generally allows the cable to support higher network speeds.
+
 ### Twisted-Pair Cable Categories
 
 | Category   | Example Ethernet standard | Approx. maximum speed* | Typical max distance |
@@ -1310,6 +1379,33 @@ Cat 8
   - Cat 8: very short, high-speed data-center/server-room links
 
 ![Twisted Pair](./static/tutorial_0014.png)
+
+#### RJ-45 Connectors
+
+#### Other Copper Connectors
+
+- RJ-11
+  - Smaller than RJ-45
+  - Uses two twisted pairs / four wires in the lecture's description
+  - Primarily associated with telephone/landline connections
+  - Not normally used for Ethernet networking.
+
+![RJ-11](./static/tutorial_0018.png)
+
+- DB-9
+  - Used for serial connections.
+  - A typical networking use is connecting directly to a managed:
+    - Switch
+    - Router
+    - for access to its CLI/console management interface.
+
+![DB-9](./static/tutorial_0019.png)
+
+- DB-25
+  - An older connector historically used for things such as serial printer connections. 
+  - It is now largely obsolete
+
+![DB-25](./static/tutorial_0020.png)
 
 ## Fiber Optic
 
