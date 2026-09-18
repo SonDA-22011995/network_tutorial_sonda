@@ -116,8 +116,9 @@
     - [Twisted-Pair Cable Categories](#twisted-pair-cable-categories)
     - [Cable Category vs Ethernet Standard](#cable-category-vs-ethernet-standard)
     - [Common Categories](#common-categories)
-      - [RJ-45 Connectors](#rj-45-connectors)
-      - [Other Copper Connectors](#other-copper-connectors)
+    - [RJ-45 Connectors](#rj-45-connectors)
+      - [Four Color-Coded Pairs](#four-color-coded-pairs)
+    - [Other Copper Connectors](#other-copper-connectors)
   - [Fiber Optic](#fiber-optic)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
     - [What is a NIC?](#what-is-a-nic)
@@ -1380,9 +1381,22 @@ Cat 8
 
 ![Twisted Pair](./static/tutorial_0014.png)
 
-#### RJ-45 Connectors
+### RJ-45 Connectors
 
-#### Other Copper Connectors
+#### Four Color-Coded Pairs
+
+- The four twisted pairs are color-coded:
+  - Orange / Orange-White
+  - Green  / Green-White
+  - Blue   / Blue-White
+  - Brown  / Brown-White
+- So 8 wires -> 4 twisted pairs -> RJ-45 connector
+
+![RJ-45 Connectors](./static/tutorial_0021.png)
+
+![RJ-45 Connectors](./static/tutorial_0022.png)
+
+### Other Copper Connectors
 
 - RJ-11
   - Smaller than RJ-45
