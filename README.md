@@ -95,6 +95,11 @@
   - [Network Cabling](#network-cabling)
     - [Types of Network Cabling](#types-of-network-cabling)
   - [Coaxial Cable](#coaxial-cable)
+    - [What is the Coaxial Cable?](#what-is-the-coaxial-cable)
+    - [Coaxial Cable Structure](#coaxial-cable-structure)
+    - [Coaxial Cable Connectors](#coaxial-cable-connectors)
+      - [BNC Connector (Bayonet Neill–Concelman)](#bnc-connector-bayonet-neillconcelman)
+      - [F Connector](#f-connector)
   - [Twisted Pair](#twisted-pair)
     - [Twisted-Pair Cable Categories](#twisted-pair-cable-categories)
     - [Cable Category vs Ethernet Standard](#cable-category-vs-ethernet-standard)
@@ -1144,7 +1149,60 @@ VoIP Phone
 
 ## Coaxial Cable
 
+### What is the Coaxial Cable?
+
+- Coaxial cable is largely obsolete/antiquated technology for modern internal computer networks.
+- It was commonly used in network infrastructure in the 1980s.
+- Today, the main place you are likely to encounter coaxial cable is with:
+  - Cable modem connections
+  - Cable TV
+
 ![Coaxial Cable](./static/tutorial_0013.png)
+
+### Coaxial Cable Structure
+
+- Outer PVC jacket
+  - Protects the cable physically.
+  - Often black, white, etc.
+- Metallic shield
+  - Provides shielding against electromagnetic interference.
+- Insulator
+  - Separates the shield from the center conductor.
+- Metallic center conductor
+  - Carries the electrical signal.
+
+```
+┌─────────────────────────────┐
+│ Outer PVC Jacket            │
+│ ┌─────────────────────────┐ │
+│ │ Metallic Shield         │ │
+│ │ ┌─────────────────────┐ │ │
+│ │ │ Insulator           │ │ │
+│ │ │   ┌─────────────┐   │ │ │
+│ │ │   │ Center      │   │ │ │
+│ │ │   │ Conductor   │   │ │ │
+│ │ │   └─────────────┘   │ │ │
+│ │ └─────────────────────┘ │ │
+│ └─────────────────────────┘ │
+└─────────────────────────────┘
+```
+
+### Coaxial Cable Connectors
+
+#### BNC Connector (Bayonet Neill–Concelman)
+
+- Commonly used with coaxial networks in the 1980s.
+- Uses a push-and-twist locking mechanism
+
+![BNC Connector](./static/tutorial_0015.png)
+
+#### F Connector
+
+- The F-type connector is commonly used for:
+  - Cable modems  
+  - Cable TV
+
+![F Connector](./static/tutorial_0016.png)
 
 ## Twisted Pair
 
