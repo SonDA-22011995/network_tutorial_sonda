@@ -118,6 +118,13 @@
     - [Common Categories](#common-categories)
     - [RJ-45 Connectors](#rj-45-connectors)
       - [Four Color-Coded Pairs](#four-color-coded-pairs)
+      - [TIA/EIA 568A and 568B](#tiaeia-568a-and-568b)
+      - [568A Pinout](#568a-pinout)
+      - [568B Pinout](#568b-pinout)
+      - [Straight-Through vs Crossover](#straight-through-vs-crossover)
+        - [Straight-through](#straight-through)
+        - [Crossover](#crossover)
+      - [Why Do We Need Crossover Cables?](#why-do-we-need-crossover-cables)
     - [Other Copper Connectors](#other-copper-connectors)
   - [Fiber Optic](#fiber-optic)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
@@ -1391,6 +1398,90 @@ Cat 8
   - Blue   / Blue-White
   - Brown  / Brown-White
 - So 8 wires -> 4 twisted pairs -> RJ-45 connector
+
+#### TIA/EIA 568A and 568B
+
+- TIA/EIA 568A and 568B are industry wiring standards that define how the 8 wires are arranged on an RJ-45 connector. There are two standards: 568A and 568B.
+- 568A → original standard
+- 568B → newer standard and commonly used
+- Both can work for network cabling.
+- The important thing is to use one standard consistently throughout a network.
+
+#### 568A Pinout
+
+| Pin | Wire         |
+| --: | ------------ |
+|   1 | White/Green  |
+|   2 | Green        |
+|   3 | White/Orange |
+|   4 | Blue         |
+|   5 | White/Blue   |
+|   6 | Orange       |
+|   7 | White/Brown  |
+|   8 | Brown        |
+
+
+#### 568B Pinout
+
+| Pin | Wire         |
+| --: | ------------ |
+|   1 | White/Orange |
+|   2 | Orange       |
+|   3 | White/Green  |
+|   4 | Blue         |
+|   5 | White/Blue   |
+|   6 | Green        |
+|   7 | White/Brown  |
+|   8 | Brown        |
+
+#### Straight-Through vs Crossover
+
+- There are two traditional Ethernet cable types:
+  - Straight-through  
+  - Crossover
+  - The difference is the pinout on each end
+
+##### Straight-through
+
+- Both ends use the same standard:
+
+```
+568B ───────────── 568B
+```
+
+```
+568A ───────────── 568A
+```
+
+- Traditionally used to connect unlike devices:
+
+```
+PC ─────── Switch
+Switch ─── Router
+```
+
+##### Crossover
+
+- The two ends use different standards:
+
+```
+568A ───────────── 568B
+```
+
+- Traditionally used to connect like devices
+
+```
+PC ───── PC
+Router ─ Router
+```
+
+#### Why Do We Need Crossover Cables?
+
+- This comes from obsolete/antiquated  Ethernet technology. For 10Base-T and 100Base-T
+  - One pair was used for transmitting (TX).
+  - One pair was used for receiving (RX).
+  - Only pins 1, 2, 3, and 6 were used.
+  - The green and orange pairs had different TX/RX roles.
 
 ![RJ-45 Connectors](./static/tutorial_0021.png)
 
