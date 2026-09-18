@@ -125,6 +125,7 @@
         - [Straight-through](#straight-through)
         - [Crossover](#crossover)
       - [Why Do We Need Crossover Cables?](#why-do-we-need-crossover-cables)
+      - [Modern Gigabit Ethernet (GBase-T)](#modern-gigabit-ethernet-gbase-t)
     - [Other Copper Connectors](#other-copper-connectors)
   - [Fiber Optic](#fiber-optic)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
@@ -1482,6 +1483,27 @@ Router ─ Router
   - One pair was used for receiving (RX).
   - Only pins 1, 2, 3, and 6 were used.
   - The green and orange pairs had different TX/RX roles.
+
+- Example: If both PCs use a straight-through cable
+
+```
+PC A                         PC B
+
+TX Pin 1 ──────────────────────► Pin 1 TX
+TX Pin 2 ──────────────────────► Pin 2 TX
+
+RX Pin 3 ◄────────────────────── Pin 3 RX
+RX Pin 6 ◄────────────────────── Pin 6 RX
+```
+
+#### Modern Gigabit Ethernet (GBase-T)
+
+- Starting with Gigabit Ethernet / Cat 5e and newer:
+  - Uses all four pairs
+  - Uses the blue and brown pairs in addition to green and orange.
+  - Each pair can support bidirectional transmission.
+  - Data can travel in both directions on each pair.
+- Therefore: Crossover cables became largely unnecessary with modern Gigabit Ethernet equipment.
 
 ![RJ-45 Connectors](./static/tutorial_0021.png)
 
