@@ -98,6 +98,7 @@
   - [Twisted Pair](#twisted-pair)
     - [Twisted-Pair Cable Categories](#twisted-pair-cable-categories)
     - [Cable Category vs Ethernet Standard](#cable-category-vs-ethernet-standard)
+    - [Common Categories](#common-categories)
   - [Fiber Optic](#fiber-optic)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
     - [What is a NIC?](#what-is-a-nic)
@@ -1185,6 +1186,27 @@ Cat 8
 - Retailers usually advertise the Cat number.
 - So when shopping for a cable, you're much more likely to search for:
   - Cat 6 Ethernet cable rather than 1000Base-T cable
+
+### Common Categories
+
+- Cat 5e
+  - Up to 1 Gbps
+  - Inexpensive
+  - Very common
+- Cat 6
+  - Up to 1 Gbps at 100 m
+  - Can support 10 Gbps over shorter distances
+  - Slightly more expensive
+  - Very common
+- Cat 6a
+  - Designed for 10 Gbps up to 100 m
+  - More expensive than Cat 6
+- Cat 7 / Cat 8 More specialized:
+  - Higher performance
+  - Often shielded
+  - More expensive
+  - Cat 7: useful in environments with higher EMI requirements
+  - Cat 8: very short, high-speed data-center/server-room links
 
 ![Twisted Pair](./static/tutorial_0014.png)
 
