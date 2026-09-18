@@ -102,6 +102,10 @@
       - [F Connector](#f-connector)
     - [RG-59 vs RG-6](#rg-59-vs-rg-6)
   - [Twisted Pair](#twisted-pair)
+    - [What is the Twisted Pair?](#what-is-the-twisted-pair)
+    - [Why Are the Wires Twisted?](#why-are-the-wires-twisted)
+      - [Crosstalk](#crosstalk)
+      - [Electromagnetic Interference (EMI)](#electromagnetic-interference-emi)
     - [Twisted-Pair Cable Categories](#twisted-pair-cable-categories)
     - [Cable Category vs Ethernet Standard](#cable-category-vs-ethernet-standard)
     - [Common Categories](#common-categories)
@@ -1217,6 +1221,32 @@ VoIP Phone
 
 ## Twisted Pair
 
+### What is the Twisted Pair?
+
+- Twisted pair copper cabling is the most common type of network cabling.
+- It normally uses an RJ-45 connector.
+- Each cable contains four twisted pairs, for a total of 8 copper wires
+- Each pair carries balanced signals
+  - Wire 1 -> Positive signal
+  - Wire 2 -> Negative signal
+
+### Why Are the Wires Twisted?
+
+- The main purpose of twisting is to reduce interference
+
+#### Crosstalk
+
+- Crosstalk occurs when a signal from one pair interferes with another pair.
+  - The twisting helps reduce this interference between pairs
+
+```
+Orange pair ──────┐
+                  ├── Signal interference
+Green pair  ──────┘
+```
+
+#### Electromagnetic Interference (EMI)
+
 ### Twisted-Pair Cable Categories
 
 | Category   | Example Ethernet standard | Approx. maximum speed* | Typical max distance |
@@ -1249,6 +1279,8 @@ Cat 7
   ↓
 Cat 8
 ```
+
+![Twisted-Pair Cable Categories](./static/tutorial_0017.png)
 
 ### Cable Category vs Ethernet Standard
 
