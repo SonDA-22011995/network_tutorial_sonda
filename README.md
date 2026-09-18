@@ -100,6 +100,7 @@
     - [Coaxial Cable Connectors](#coaxial-cable-connectors)
       - [BNC Connector (Bayonet Neill–Concelman)](#bnc-connector-bayonet-neillconcelman)
       - [F Connector](#f-connector)
+    - [RG-59 vs RG-6](#rg-59-vs-rg-6)
   - [Twisted Pair](#twisted-pair)
     - [Twisted-Pair Cable Categories](#twisted-pair-cable-categories)
     - [Cable Category vs Ethernet Standard](#cable-category-vs-ethernet-standard)
@@ -1203,6 +1204,16 @@ VoIP Phone
   - Cable TV
 
 ![F Connector](./static/tutorial_0016.png)
+
+### RG-59 vs RG-6
+
+- There are different types/thicknesses of coaxial cable.
+
+| Type      | Characteristics | Typical use              |
+| --------- | --------------- | ------------------------ |
+| **RG-59** | Thinner         | Older/video applications |
+| **RG-6**  | Thicker         | Cable modem / cable TV   |
+
 
 ## Twisted Pair
 
