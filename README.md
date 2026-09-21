@@ -48,6 +48,14 @@
       - [Flow control](#flow-control)
         - [Buffering](#buffering)
         - [Windowing](#windowing)
+    - [OSI Layer 3 — Network Layer](#osi-layer-3--network-layer)
+      - [Overview](#overview-4)
+      - [Main Functions](#main-functions)
+      - [Routing](#routing)
+      - [Routing Update Packets](#routing-update-packets)
+    - [OSI Layer 2 — Data Link Layer](#osi-layer-2--data-link-layer)
+      - [Overview](#overview-5)
+        - [MAC – Media Access Control](#mac--media-access-control)
     - [OSI Layer 1 — Physical Layer](#osi-layer-1--physical-layer)
       - [What is the Physical Layer?](#what-is-the-physical-layer)
       - [What Does Layer 1 Deal With?](#what-does-layer-1-deal-with)
@@ -673,6 +681,43 @@ Reassembled in the correct order
 
 - Windowing is another mechanism associated with flow control, particularly TCP
 - The sender and receiver determine how much data can be sent before additional acknowledgment/flow-control feedback is needed
+
+### OSI Layer 3 — Network Layer
+
+#### Overview
+
+- It is the highest layer of the Media Layers:
+- Layer 3 is also called the Routing Layer.
+
+#### Main Functions
+
+- The two key responsibilities are:
+  - Path determination → deciding the route/path for data.
+  - Logical addressing → using IP addresses to identify source and destination.
+  - Therefore: **Layer 3 = IP Addressing + Routing**
+
+#### Routing
+
+- There are two major approaches:
+  - Static routing: Routes are manually configured by an administrator.
+  - Dynamic routing: Routers use routing protocols to exchange routing information automatically.
+    - Examples of dynamic routing protocols: RIP,OSPF,EIGRP
+
+#### Routing Update Packets
+
+- Routers need to exchange information about the networks they know.
+  - For example: 
+    - A routing protocol can communicate information such as "I know how to reach network X."
+    - This allows routers to maintain and update their routing information.
+
+### OSI Layer 2 — Data Link Layer
+
+#### Overview
+
+- Layer 2 is often called the Switching Layer.
+- Its main concern is local delivery of frames within the same network/LAN
+
+##### MAC – Media Access Control
 
 ### OSI Layer 1 — Physical Layer
 
