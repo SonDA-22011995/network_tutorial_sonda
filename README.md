@@ -34,6 +34,20 @@
         - [Data formatting / translation](#data-formatting--translation)
         - [Encryption and decryption](#encryption-and-decryption)
         - [Compression](#compression)
+    - [OSI Layer 5 — Session Layer](#osi-layer-5--session-layer)
+      - [Overview](#overview-2)
+      - [Main responsibilities](#main-responsibilities)
+      - [Simplex, Half-Duplex and Full-Duplex](#simplex-half-duplex-and-full-duplex)
+        - [Simplex](#simplex)
+        - [Half-duplex](#half-duplex)
+        - [Full-duplex](#full-duplex)
+    - [OSI Layer 4 — Transport Layer](#osi-layer-4--transport-layer)
+      - [Overview](#overview-3)
+      - [Main responsibilities](#main-responsibilities-1)
+      - [Data is divided into segments](#data-is-divided-into-segments)
+      - [Flow control](#flow-control)
+        - [Buffering](#buffering)
+        - [Windowing](#windowing)
     - [OSI Layer 1 — Physical Layer](#osi-layer-1--physical-layer)
       - [What is the Physical Layer?](#what-is-the-physical-layer)
       - [What Does Layer 1 Deal With?](#what-does-layer-1-deal-with)
@@ -45,7 +59,7 @@
     - [Important Protocol Examples](#important-protocol-examples)
   - [Duplex Communication](#duplex-communication)
     - [What is the Duplex Communication?](#what-is-the-duplex-communication)
-    - [Half-Duplex](#half-duplex)
+    - [Half-Duplex](#half-duplex-1)
   - [Network Transmission Types](#network-transmission-types)
     - [Unicast](#unicast)
     - [Multicast](#multicast)
@@ -207,6 +221,10 @@
     - [Routers Determine the Best Path](#routers-determine-the-best-path)
     - [A router separates broadcast domains](#a-router-separates-broadcast-domains)
     - [Example](#example)
+- [Transport - OSI layer 4 - Transport - TCP/IP Layer 3](#transport---osi-layer-4---transport---tcpip-layer-3)
+  - [Transmission Control Protocol - TCP](#transmission-control-protocol---tcp)
+  - [User Datagram Protocol - UDP](#user-datagram-protocol---udp)
+  - [TCP vs UDP](#tcp-vs-udp)
 - [Application - OSI layer 7 - Application - TCP/IP Layer 4](#application---osi-layer-7---application---tcpip-layer-4)
   - [DHCP](#dhcp)
     - [What Is DHCP?](#what-is-dhcp)
@@ -526,6 +544,135 @@ Application Data
 
 - The Presentation Layer can also handle data compression
   - The purpose is to reduce the amount of data that needs to be transmitted
+
+### OSI Layer 5 — Session Layer
+
+#### Overview
+
+- It is one of the Host Layers (Layers 5–7).
+- Its primary responsibility is to establish, manage, and terminate communication sessions between applications/devices.
+
+#### Main responsibilities
+
+
+| Function                  | Description                                              |
+| ------------------------- | -------------------------------------------------------- |
+| **Session establishment** | Starts a communication session                           |
+| **Session management**    | Maintains and coordinates the session                    |
+| **Session termination**   | Ends the session                                         |
+| **Session separation**    | Keeps different application sessions logically separate  |
+| **Session recovery**      | Can help resume/restart communication after interruption |
+
+#### Simplex, Half-Duplex and Full-Duplex
+
+| Mode            | Communication                   | Example            |
+| --------------- | ------------------------------- | ------------------ |
+| **Simplex**     | One-way only                    | Radio/TV broadcast |
+| **Half-duplex** | Two-way, but one side at a time | Walkie-talkie      |
+| **Full-duplex** | Two-way simultaneously          | Telephone call     |
+
+##### Simplex
+
+- Only A sends data.
+
+```
+Device A ─────────→ Device B
+```
+
+##### Half-duplex
+
+- Both devices can communicate, but not at the same time.
+
+```
+Device A ─────────→ Device B
+Device A ←───────── Device B
+```
+
+##### Full-duplex
+
+- Both sides can send and receive at the same time
+
+```
+Device A <─────────> Device B
+```
+
+### OSI Layer 4 — Transport Layer
+
+#### Overview
+
+- This is the bottom Host Layer.
+- Unlike Layers 5–7, Layer 4 is where the data is divided into smaller units called segments when using TCP.
+- The two major Transport Layer protocols are: TCP(Transmission Control Protocol), UDP(User Datagram Protocol)
+
+#### Main responsibilities
+
+- The Transport Layer is responsible for mechanisms that help ensure the data reaches the destination appropriately.
+  - Segmenting data
+  - Reassembling data
+  - Maintaining the correct sequence
+  - Error/reliability mechanisms
+  - Flow control
+  - End-to-end communication
+
+#### Data is divided into segments
+
+- Large data is not normally sent as one giant block.
+- For example, if you download a 1 GB file
+
+```
+1 GB File
+    ↓
+┌────────┬────────┬────────┬────────┬───────┐
+│Segment │Segment │Segment │Segment │  ...  │
+└────────┴────────┴────────┴────────┴───────┘
+    ↓
+Network
+    ↓
+Destination
+    ↓
+Reassembled in the correct order
+```
+
+#### Flow control
+
+- Important distinction
+  - Buffering: Temporarily stores data in memory.
+  - Windowing: Controls how much data can be sent/accepted during communication.
+
+##### Buffering
+
+- Buffering is a form of data flow control.
+- The server can produce data faster than the client can consume it.
+- Instead of immediately discarding the excess data, the system can temporarily store it in a memory buffer
+
+```
+        Server
+          │
+          │  TCP Segments
+          ↓
+      Network
+          │
+          ↓
+       Client
+          │
+          ↓
+   ┌──────────────────┐
+   │  Memory Buffer   │
+   ├──────────────────┤
+   │ Segment 1        │
+   │ Segment 2        │
+   │ Segment 3        │
+   │ Segment 4        │
+   └──────────────────┘
+          │
+          ↓
+     Application
+```
+
+##### Windowing
+
+- Windowing is another mechanism associated with flow control, particularly TCP
+- The sender and receiver determine how much data can be sent before additional acknowledgment/flow-control feedback is needed
 
 ### OSI Layer 1 — Physical Layer
 
@@ -2335,6 +2482,47 @@ Network: 192.168.2.0/24
 - Step 5 — Destination network
   - Eventually the packet reaches the destination network.
   - The destination switch then uses MAC addresses to deliver the frame to PC3
+
+# Transport - OSI layer 4 - Transport - TCP/IP Layer 3
+
+## Transmission Control Protocol - TCP
+
+- Before transmitting application data, TCP establishes a connection using the three-way handshake:
+
+```
+Client                 Server
+  │                       │
+  │────── SYN ───────────→│
+  │                       │
+  │←──── SYN + ACK ───────│
+  │                       │
+  │────── ACK ───────────→│
+  │                       │
+  │   Connection ready    │
+```
+
+## User Datagram Protocol - UDP
+
+- UDP doesn't establish a TCP-style connection before sending data.
+  - This reduces overhead, but UDP itself does not provide TCP's reliability mechanisms.
+
+```
+Client ───────────────→ Server
+        UDP data
+```
+
+## TCP vs UDP
+
+| TCP                           | UDP                                    |
+| ----------------------------- | -------------------------------------- |
+| Transmission Control Protocol | User Datagram Protocol                 |
+| Connection-oriented           | Connectionless                         |
+| Uses connection establishment | No connection establishment            |
+| Reliable delivery mechanisms  | No built-in reliable delivery          |
+| Sequencing                    | No TCP-style sequencing/retransmission |
+| More overhead                 | Lower overhead                         |
+| Generally slower              | Generally faster/lower latency         |
+
 
 # Application - OSI layer 7 - Application - TCP/IP Layer 4
 
