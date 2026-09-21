@@ -480,6 +480,38 @@
 | **Encryption / decryption**       | Protects data during transmission                       |
 | **Compression / decompression**   | Reduces the amount of data that needs to be transmitted |
 
+```
+# Sending
+
+Application Data
+      ↓
+Data Formatting
+      ↓
+Translation
+      ↓
+Compression
+      ↓
+Encryption
+      ↓
+Network
+```
+
+```
+# Receiving
+
+Network
+      ↓
+Decryption
+      ↓
+Decompression
+      ↓
+Translation
+      ↓
+Data Formatting
+      ↓
+Application Data
+```
+
 ##### Data formatting / translation
 
 - Computers don't necessarily transmit data in the same representation that humans see.
