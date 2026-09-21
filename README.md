@@ -23,6 +23,14 @@
     - [What is the OSI Model?](#what-is-the-osi-model)
     - [The 7 Layers of the OSI Model](#the-7-layers-of-the-osi-model)
     - [How Data Travels Through the OSI Model](#how-data-travels-through-the-osi-model)
+    - [OSI Layer 7 — Application Layer](#osi-layer-7--application-layer)
+      - [Overview](#overview)
+      - [What happens at the Application Layer?](#what-happens-at-the-application-layer)
+      - [Application vs. Application Layer Protocol](#application-vs-application-layer-protocol)
+      - [Common Layer 7 Protocols](#common-layer-7-protocols)
+    - [OSI Layer 6 — Presentation Layer](#osi-layer-6--presentation-layer)
+      - [Overview](#overview-1)
+      - [Main functions of the Presentation Layer](#main-functions-of-the-presentation-layer)
     - [OSI Layer 1 — Physical Layer](#osi-layer-1--physical-layer)
       - [What is the Physical Layer?](#what-is-the-physical-layer)
       - [What Does Layer 1 Deal With?](#what-does-layer-1-deal-with)
@@ -408,6 +416,67 @@
 ```
 
 ![OSI Model comunication](./static/tutorial_0001.png)
+
+### OSI Layer 7 — Application Layer
+
+#### Overview
+
+- Layer 7 – Application Layer is a Host Layer.
+- Host layers (Layers 5–7) operate within the end devices/computers.
+- It is the layer closest to the end user.
+
+#### What happens at the Application Layer?
+
+- The Application Layer is where users interact with network services through applications.
+- Examples:
+  - Open Outlook → send/receive email.
+  - Open Google Chrome → access websites.
+  - Open PuTTY → remotely connect to another computer
+- However, an important distinction:
+  - Applications themselves do NOT reside in the Application Layer of the OSI Model.
+  - Instead, applications interface with Application Layer protocols
+
+#### Application vs. Application Layer Protocol
+
+- Think of it this way: **User → Application → Application Layer Protocol → Network**
+  - When you type: `https://google.com`
+    - You interact with Chrome, but Chrome uses HTTP/HTTPS to communicate with the web server.
+
+| Application   | Application Layer Protocols |
+| ------------- | --------------------------- |
+| Outlook       | IMAP, POP3, SMTP            |
+| Chrome / Edge | HTTP, HTTPS                 |
+| PuTTY         | SSH, Telnet                 |
+
+#### Common Layer 7 Protocols
+
+| Protocol   | Purpose                                   |
+| ---------- | ----------------------------------------- |
+| **HTTP**   | Web communication                         |
+| **HTTPS**  | Secure web communication                  |
+| **SMTP**   | Sending email                             |
+| **POP3**   | Receiving/downloading email               |
+| **IMAP**   | Accessing/managing email on a mail server |
+| **SSH**    | Secure remote access                      |
+| **Telnet** | Remote access, without encryption         |
+
+### OSI Layer 6 — Presentation Layer
+
+#### Overview
+
+- It is a Host Layer, operating within end devices.
+- Its main responsibility is to ensure that data is represented in a format that the application can understand.
+
+#### Main functions of the Presentation Layer
+
+- There are 3 major functions:
+
+| Function                          | Purpose                                                 |
+| --------------------------------- | ------------------------------------------------------- |
+| **Data formatting / translation** | Converts data between different representations         |
+| **Encryption / decryption**       | Protects data during transmission                       |
+| **Compression / decompression**   | Reduces the amount of data that needs to be transmitted |
+
 
 ### OSI Layer 1 — Physical Layer
 
