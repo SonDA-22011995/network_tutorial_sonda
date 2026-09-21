@@ -31,6 +31,9 @@
     - [OSI Layer 6 — Presentation Layer](#osi-layer-6--presentation-layer)
       - [Overview](#overview-1)
       - [Main functions of the Presentation Layer](#main-functions-of-the-presentation-layer)
+        - [Data formatting / translation](#data-formatting--translation)
+        - [Encryption and decryption](#encryption-and-decryption)
+        - [Compression](#compression)
     - [OSI Layer 1 — Physical Layer](#osi-layer-1--physical-layer)
       - [What is the Physical Layer?](#what-is-the-physical-layer)
       - [What Does Layer 1 Deal With?](#what-does-layer-1-deal-with)
@@ -477,6 +480,20 @@
 | **Encryption / decryption**       | Protects data during transmission                       |
 | **Compression / decompression**   | Reduces the amount of data that needs to be transmitted |
 
+##### Data formatting / translation
+
+- Computers don't necessarily transmit data in the same representation that humans see.
+- The Presentation Layer can perform character-code conversion and data representation so that data can be correctly interpreted by the receiving application.
+
+##### Encryption and decryption
+
+- The Presentation Layer can be associated with transforming data into an encrypted representation before transmission and decrypting it when received
+  - For example, **TLS** is commonly associated with secure network communication
+
+##### Compression
+
+- The Presentation Layer can also handle data compression
+  - The purpose is to reduce the amount of data that needs to be transmitted
 
 ### OSI Layer 1 — Physical Layer
 
