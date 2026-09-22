@@ -23,6 +23,10 @@
     - [What is the OSI Model?](#what-is-the-osi-model)
     - [The 7 Layers of the OSI Model](#the-7-layers-of-the-osi-model)
     - [How Data Travels Through the OSI Model](#how-data-travels-through-the-osi-model)
+    - [Encapsulation \& De-encapsulation](#encapsulation--de-encapsulation)
+      - [What is Encapsulation?](#what-is-encapsulation)
+        - [Encapsulation Process](#encapsulation-process)
+        - [De-encapsulation process](#de-encapsulation-process)
     - [OSI Layer 7 — Application Layer](#osi-layer-7--application-layer)
       - [Overview](#overview)
       - [What happens at the Application Layer?](#what-happens-at-the-application-layer)
@@ -448,6 +452,46 @@
 ```
 
 ![OSI Model comunication](./static/tutorial_0001.png)
+
+### Encapsulation & De-encapsulation
+
+#### What is Encapsulation?
+
+- Encapsulation is the process of adding headers/trailers to data as it moves DOWN the OSI Model from Layer 7 → Layer 1.
+- De-encapsulation is the reverse process: removing headers/trailers as data moves UP the OSI Model from Layer 1 → Layer 7.
+
+##### Encapsulation Process
+
+- Layer 7–5: The application generates the original data 
+  - `[ DATA ]`
+  - it is called a **Data**
+- Layer 4 — Transport: The Transport Layer adds a TCP or UDP header 
+  - `[ TCP/UDP Header ][ DATA ]`
+  - Now we call it a **Segment**
+  - The header can contain information such as
+    - Source port
+    - Destination port
+    - Sequence number, etc. for TCP
+- Layer 3 — Network: The Network Layer adds an IP header 
+  - `[ IP Header ][ TCP/UDP Header ][ DATA ]`
+  - Now it is called a: **Packet**
+  - The IP header contains, among other things: Source IP, Destination IP
+- Layer 2 — Data Link: The Data Link Layer adds Frame header, Frame trailer
+  - `[ Frame Header ][ IP Header ][ TCP Header ][ DATA ][ Frame Trailer ]`
+  - Now it is called a Frame
+- Layer 1 — Physical: Finally, the frame is converted into bits/signals.
+  - Those bits are transmitted through the physical medium.
+
+##### De-encapsulation process
+
+- The receiving computer performs the opposite process
+- Layer 1: Receives the electrical/optical/radio signals and converts them into bits.
+- Layer 2: Receives the frame and removes the Layer 2 header/trailer.
+- Layer 3: Processes the IP packet and removes the IP header.
+- Layer 4: Processes the TCP/UDP segment and removes the TCP/UDP header.
+- Layer 5–7: The remaining data is passed to the application.
+
+
 
 ### OSI Layer 7 — Application Layer
 
