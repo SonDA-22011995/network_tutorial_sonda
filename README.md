@@ -616,12 +616,12 @@ Device A <─────────> Device B
 #### Main responsibilities
 
 - The Transport Layer is responsible for mechanisms that help ensure the data reaches the destination appropriately.
-  - Segmenting data
-  - Reassembling data
-  - Maintaining the correct sequence
-  - Error/reliability mechanisms
-  - Flow control
-  - End-to-end communication
+  - Breaking large data into smaller segments
+  - Delivering segments to the destination
+  - Ensuring proper sequence/order
+  - Providing reliable delivery when required
+  - Controlling the flow of data
+  - Reassembling data at the destination
 
 #### Data is divided into segments
 
