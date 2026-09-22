@@ -56,7 +56,9 @@
       - [Routing Update Packets](#routing-update-packets)
     - [OSI Layer 2 — Data Link Layer](#osi-layer-2--data-link-layer)
       - [Overview](#overview-5)
-        - [MAC – Media Access Control](#mac--media-access-control)
+      - [Two Sublayers of Layer 2](#two-sublayers-of-layer-2)
+        - [LLC — Logical Link Control](#llc--logical-link-control)
+        - [MAC — Media Access Control](#mac--media-access-control)
     - [OSI Layer 1 — Physical Layer](#osi-layer-1--physical-layer)
       - [What is the Physical Layer?](#what-is-the-physical-layer)
       - [What Does Layer 1 Deal With?](#what-does-layer-1-deal-with)
@@ -736,9 +738,48 @@ Reassembled in the correct order
 #### Overview
 
 - Layer 2 is often called the Switching Layer.
-- Its main concern is local delivery of frames within the same network/LAN
+- Its main responsibility is local delivery of frames within the same network (LAN).
 
-##### MAC – Media Access Control
+#### Two Sublayers of Layer 2
+
+- The Data Link Layer consists of two sublayers
+
+```
+                 OSI Layer 2
+               DATA LINK LAYER
+                      │
+          ┌───────────┴───────────┐
+          │                       │
+        LLC                      MAC
+          │                       │
+   Error control             MAC address
+   Flow control              Media access
+                              Ethernet
+                              CSMA/CD
+                              CSMA/CA
+```
+
+##### LLC — Logical Link Control
+
+- Main functions:
+  - Error control - Helps detect/correct problems with data frames.
+  - Flow control - Controls how much data is transmitted so that the receiving device isn't overwhelmed
+  - Managing communication between devices at the local link level
+
+##### MAC — Media Access Control
+
+- Physical addressing - Uses MAC addresses `00:1A:2B:3C:4D:5E`
+- Media access - Determines how devices access the shared network medium
+  - Logical Topology
+    - Ethernet — dominant today
+    - Token Ring — obsolete/legacy technology
+  - CSMA (Carrier Sense Multiple Access)
+    - The basic idea is: Before transmitting, a device checks whether the medium is available.
+  - CSMA/CD (Carrier Sense Multiple Access / Collision Detection)
+    - Historically used with shared, half-duplex Etherne
+  - CSMA/CA (Carrier Sense Multiple Access / Collision Avoidance)
+    - Used with Wi-Fi.
+    - Because wireless devices cannot reliably detect collisions while transmitting, Wi-Fi focuses on avoiding collisions.
 
 ### OSI Layer 1 — Physical Layer
 
