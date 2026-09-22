@@ -50,7 +50,8 @@
         - [Windowing](#windowing)
     - [OSI Layer 3 — Network Layer](#osi-layer-3--network-layer)
       - [Overview](#overview-4)
-      - [Main Functions](#main-functions)
+      - [Main responsibilities](#main-responsibilities-2)
+      - [IP – Internet Protocol](#ip--internet-protocol)
       - [Routing](#routing)
       - [Routing Update Packets](#routing-update-packets)
     - [OSI Layer 2 — Data Link Layer](#osi-layer-2--data-link-layer)
@@ -686,25 +687,45 @@ Reassembled in the correct order
 
 #### Overview
 
-- It is the highest layer of the Media Layers:
+- It is the highest layer of the Media Layers
 - Layer 3 is also called the Routing Layer.
+- Layer 3 Devices
+  - Router
+  - Multilayer Switch - A multilayer switch can operate at both:
+    - Layer 2 – Data Link
+    - Layer 3 – Network
 
-#### Main Functions
+#### Main responsibilities
 
-- The two key responsibilities are:
-  - Path determination → deciding the route/path for data.
-  - Logical addressing → using IP addresses to identify source and destination.
-  - Therefore: **Layer 3 = IP Addressing + Routing**
+- Path determination / Routing
+  - Determines how packets travel from one network to another.
+  - Routers operate primarily at this layer.
+- Logical addressing 
+  - Uses IP addresses to identify source and destination systems.
+  - Main protocols: IPv4, IPv6
+
+#### IP – Internet Protocol
+
+- It is the primary network-layer protocol used to route data between networks, particularly across the Internet and WANs
+- IP provides the logical addressing needed to determine:
+  - Where did the packet come from? -> Where should it go?
+
+| Protocol | Address             |
+| -------- | ------------------- |
+| IPv4     | e.g. `192.168.1.10` |
+| IPv6     | e.g. `2001:db8::10` |
 
 #### Routing
 
 - There are two major approaches:
-  - Static routing: Routes are manually configured by an administrator.
-  - Dynamic routing: Routers use routing protocols to exchange routing information automatically.
+  - **Static routing**: Routes are manually configured by an administrator.
+  - **Dynamic routing**: 
+    - Routers use routing protocols to exchange routing information automatically.
     - Examples of dynamic routing protocols: RIP,OSPF,EIGRP
 
 #### Routing Update Packets
 
+- Used by dynamic routing protocols to exchange routing information between routers
 - Routers need to exchange information about the networks they know.
   - For example: 
     - A routing protocol can communicate information such as "I know how to reach network X."
