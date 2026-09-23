@@ -922,6 +922,7 @@ Network Interface  ───────>   Data Link
 | Security / Transport | **TLS/SSL (Transport Layer Security / Secure Sockets Layer)** | Encrypts data and provides authentication and integrity for network communications. |
 | Application Layer | **SSH (Secure Shell)** | Provides secure remote login and command-line access to network devices and servers. |
 | **Application Layer**       | **SMTP**              | Sending email                                                        |
+| Application Layer | **SNMP (Simple Network Management Protocol)** | Monitors and manages network devices such as routers, switches, and servers. |
 | Application Layer | **IMAP4 (Internet Message Access Protocol version 4)** | Accesses and manages emails while keeping them stored on the mail server. |
 | Application Layer | **NTP (Network Time Protocol)** | Synchronizes the clocks of computers and network devices over a network. |
 | Application Layer | **Telnet** | Provides remote command-line access, but sends data without encryption. |
