@@ -918,7 +918,6 @@ Network Interface  ───────>   Data Link
 | Application Layer | **DNS (Domain Name System)** | Resolves domain names into IP addresses and vice versa. |
 | Application Layer | **HTTP (Hypertext Transfer Protocol)** | Transfers web pages and other web resources between clients and servers. |
 | Application Layer | **HTTPS (HTTP Secure)** | Provides secure HTTP communication using TLS encryption. |
-| Security / Transport | **TLS/SSL (Transport Layer Security / Secure Sockets Layer)** | Encrypts data and provides authentication and integrity for network communications. |
 | Application Layer | **SSH (Secure Shell)** | Provides secure remote login and command-line access to network devices and servers. |
 | **Application Layer**       | **SMTP (Simple Mail Transfer Protocol)**              | Sending email                                                        |
 | Application Layer | **SNMP (Simple Network Management Protocol)** | Monitors and manages network devices such as routers, switches, and servers. |
@@ -930,6 +929,7 @@ Network Interface  ───────>   Data Link
 | **Transport Layer**         | **UDP**               | Fast, connectionless transport of data, No guarantee of delivery                               |
 | **Transport Layer**         | **Port**               | Identify specific applications/services on a device, Common protocols use well-known port numbers|
 | **Internet Layer**          | **IP (IPv4 and IPv6)**                | Logical addressing and routing                                       |
+| Transport Layer | **TLS/SSL (Transport Layer Security / Secure Sockets Layer)** | Encrypts data and provides authentication and integrity for network communications. |
 | **Internet Layer**          | **ARP (Address Resolution Protocol)**               | Resolving IP addresses to MAC addresses in IPv4 networks             |
 | **Internet Layer**          | **ICMP (Internet Control Message Protocol)**               | Used for network diagnostics and error reporting            |
 | **Network Interface Layer** | **Ethernet**          | Accessing the network and transmitting data over Ethernet networks   |
