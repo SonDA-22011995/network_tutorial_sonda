@@ -915,6 +915,7 @@ Network Interface  ───────>   Data Link
 | --------------------------- | --------------------- | -------------------------------------------------------------------- |
 | **Application Layer**       | **HTTP/HTTPS**        | Web communication                                                    |
 | **Application Layer**       | **FTP**               | File transfer                                                        |
+| Application Layer | **TFTP (Trivial File Transfer Protocol)** | Provides simple file transfers, commonly used for boot files and network device configuration. |
 | **Application Layer**       | **SMTP**              | Sending email                                                        |
 | **Application Layer**       | **POP3**              | Receiving email                                                      |
 | **Transport Layer**         | **TCP**               | Reliable transport of data, Three-way handshake                                           |
