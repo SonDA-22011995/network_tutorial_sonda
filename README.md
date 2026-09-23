@@ -913,20 +913,19 @@ Network Interface  ───────>   Data Link
 
 | Layer                       | Protocol / Technology | Purpose                                                              |
 | --------------------------- | --------------------- | -------------------------------------------------------------------- |
-| **Application Layer**       | **HTTP/HTTPS**        | Web communication                                                    |
-| **Application Layer**       | **FTP**               | File transfer                                                        |
+| **Application Layer**       | **FTP (File Transfer Protocol)**               | File transfer                                                        |
 | Application Layer | **TFTP (Trivial File Transfer Protocol)** | Provides simple file transfers, commonly used for boot files and network device configuration. |
 | Application Layer | **DNS (Domain Name System)** | Resolves domain names into IP addresses and vice versa. |
 | Application Layer | **HTTP (Hypertext Transfer Protocol)** | Transfers web pages and other web resources between clients and servers. |
 | Application Layer | **HTTPS (HTTP Secure)** | Provides secure HTTP communication using TLS encryption. |
 | Security / Transport | **TLS/SSL (Transport Layer Security / Secure Sockets Layer)** | Encrypts data and provides authentication and integrity for network communications. |
 | Application Layer | **SSH (Secure Shell)** | Provides secure remote login and command-line access to network devices and servers. |
-| **Application Layer**       | **SMTP**              | Sending email                                                        |
+| **Application Layer**       | **SMTP (Simple Mail Transfer Protocol)**              | Sending email                                                        |
 | Application Layer | **SNMP (Simple Network Management Protocol)** | Monitors and manages network devices such as routers, switches, and servers. |
 | Application Layer | **IMAP4 (Internet Message Access Protocol version 4)** | Accesses and manages emails while keeping them stored on the mail server. |
 | Application Layer | **NTP (Network Time Protocol)** | Synchronizes the clocks of computers and network devices over a network. |
 | Application Layer | **Telnet** | Provides remote command-line access, but sends data without encryption. |
-| **Application Layer**       | **POP3**              | Receiving email                                                      |
+| Application Layer | **POP3 (Post Office Protocol version 3)** | Retrieves emails from a mail server, typically downloading them to the client. |
 | **Transport Layer**         | **TCP**               | Reliable transport of data, Three-way handshake                                           |
 | **Transport Layer**         | **UDP**               | Fast, connectionless transport of data, No guarantee of delivery                               |
 | **Transport Layer**         | **Port**               | Identify specific applications/services on a device, Common protocols use well-known port numbers|
