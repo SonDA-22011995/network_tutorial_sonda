@@ -865,10 +865,13 @@ Reassembled in the correct order
 
 ### What is the TCP/IP Model?
 
+- TCP/IP stands for Transmission Control Protocol / Internet Protocol.
 - TCP/IP is the most widely used networking protocol suite today and forms the foundation of the Internet.
 - Unlike the OSI model:
-  - OSI => conceptual/reference model, never implemented as a real-world networking architecture.
-  - TCP/IP => actually implemented and widely used in real network
+  - OSI model is a conceptual/teaching model with 7 layers and was never implemented as a networking protocol.
+  - TCP/IP was implemented and is the most widely used networking protocol suite, used on
+    - The Internet (WAN)
+    - Private/local networks (LANs)
 
 ### The Four Layers of TCP/IP
 
@@ -914,10 +917,12 @@ Network Interface  ───────>   Data Link
 | **Application Layer**       | **FTP**               | File transfer                                                        |
 | **Application Layer**       | **SMTP**              | Sending email                                                        |
 | **Application Layer**       | **POP3**              | Receiving email                                                      |
-| **Transport Layer**         | **TCP**               | Reliable transport of data                                           |
-| **Transport Layer**         | **UDP**               | Fast, connectionless transport of data                               |
-| **Internet Layer**          | **IP**                | Logical addressing and routing                                       |
-| **Internet Layer**          | **ARP**               | Resolving IP addresses to MAC addresses in IPv4 networks             |
+| **Transport Layer**         | **TCP**               | Reliable transport of data, Three-way handshake                                           |
+| **Transport Layer**         | **UDP**               | Fast, connectionless transport of data, No guarantee of delivery                               |
+| **Transport Layer**         | **Port**               | Identify specific applications/services on a device, Common protocols use well-known port numbers|
+| **Internet Layer**          | **IP (IPv4 and IPv6)**                | Logical addressing and routing                                       |
+| **Internet Layer**          | **ARP (Address Resolution Protocol)**               | Resolving IP addresses to MAC addresses in IPv4 networks             |
+| **Internet Layer**          | **ICMP (Internet Control Message Protocol)**               | Used for network diagnostics and error reporting            |
 | **Network Interface Layer** | **Ethernet**          | Accessing the network and transmitting data over Ethernet networks   |
 | **Network Interface Layer** | **Token Ring**        | Accessing the network and transmitting data over Token Ring networks |
 
