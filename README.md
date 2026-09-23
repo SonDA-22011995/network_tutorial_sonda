@@ -916,6 +916,11 @@ Network Interface  ───────>   Data Link
 | **Application Layer**       | **HTTP/HTTPS**        | Web communication                                                    |
 | **Application Layer**       | **FTP**               | File transfer                                                        |
 | Application Layer | **TFTP (Trivial File Transfer Protocol)** | Provides simple file transfers, commonly used for boot files and network device configuration. |
+| Application Layer | **DNS (Domain Name System)** | Resolves domain names into IP addresses and vice versa. |
+| Application Layer | **HTTP (Hypertext Transfer Protocol)** | Transfers web pages and other web resources between clients and servers. |
+| Application Layer | **HTTPS (HTTP Secure)** | Provides secure HTTP communication using TLS encryption. |
+| Security / Transport | **TLS/SSL (Transport Layer Security / Secure Sockets Layer)** | Encrypts data and provides authentication and integrity for network communications. |
+| Application Layer | **SSH (Secure Shell)** | Provides secure remote login and command-line access to network devices and servers. |
 | **Application Layer**       | **SMTP**              | Sending email                                                        |
 | **Application Layer**       | **POP3**              | Receiving email                                                      |
 | **Transport Layer**         | **TCP**               | Reliable transport of data, Three-way handshake                                           |
