@@ -72,6 +72,10 @@
     - [The Four Layers of TCP/IP](#the-four-layers-of-tcpip)
     - [TCP/IP vs. OSI Model](#tcpip-vs-osi-model)
     - [Important Protocol Examples](#important-protocol-examples)
+  - [Network Access Methodologies](#network-access-methodologies)
+    - [CSMA (Carrier Sense Multiple Access)](#csma-carrier-sense-multiple-access)
+    - [Token Ring](#token-ring)
+    - [CSMA vs. Token Ring](#csma-vs-token-ring)
   - [Duplex Communication](#duplex-communication)
     - [What is the Duplex Communication?](#what-is-the-duplex-communication)
     - [Half-Duplex](#half-duplex-1)
@@ -934,6 +938,44 @@ Network Interface  ───────>   Data Link
 | **Internet Layer**          | **ICMP (Internet Control Message Protocol)**               | Used for network diagnostics and error reporting            |
 | **Network Interface Layer** | **Ethernet**          | Accessing the network and transmitting data over Ethernet networks   |
 | **Network Interface Layer** | **Token Ring**        | Accessing the network and transmitting data over Token Ring networks |
+
+## Network Access Methodologies
+
+### CSMA (Carrier Sense Multiple Access)
+
+- CSMA is the most common network access methodology in modern TCP/IP networks.
+  - Carrier Sense: A device checks whether the network is currently being used before transmitting data.
+  - Multiple Access: Multiple devices can access the same network medium.
+  - Because multiple devices may transmit, collisions can occur.
+
+- CSMA has two main variants:
+
+| Method                            | Network           | Purpose                                                |
+| --------------------------------- | ----------------- | ------------------------------------------------------ |
+| **CSMA/CD** (Collision Detection) | Wired Ethernet    | Detects collisions and retransmits data when necessary |
+| **CSMA/CA** (Collision Avoidance) | Wireless networks | Attempts to avoid collisions before transmitting       |
+
+### Token Ring
+
+- Token Ring is an older/antiquated network access methodology that is rarely used in modern networks.
+  - A logical token circulates from one device to another.
+  - Only the device currently holding the token can transmit data.
+  - After transmitting, the device passes the token to the next device.
+  - If a device has no data to send, it passes the token immediately.
+  - Because only one device can transmit at a time, collisions are prevented.
+- Key idea: Token Ring uses controlled access through a token, allowing only one device to transmit at a time.
+
+### CSMA vs. Token Ring
+
+| Feature      | CSMA                                   | Token Ring           |
+| ------------ | -------------------------------------- | -------------------- |
+| Access       | Multiple devices can access the medium | One device at a time |
+| Collision    | Possible                               | Prevented            |
+| Mechanism    | Sense the medium before transmission   | Wait for the token   |
+| Wired        | CSMA/CD                                | Token Ring           |
+| Wireless     | CSMA/CA                                | —                    |
+| Modern usage | Very common                            | Mostly obsolete      |
+| Scalability  | Generally scales better                | More limited         |
 
 
 ## Duplex Communication
