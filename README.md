@@ -253,6 +253,12 @@
       - [IP Addresses](#ip-addresses)
       - [Characteristics of IP](#characteristics-of-ip)
       - [Packets Can Take Different Paths](#packets-can-take-different-paths)
+    - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
+      - [What is ICMP?](#what-is-icmp)
+      - [Key Characteristics](#key-characteristics)
+      - [ICMP Demo](#icmp-demo)
+        - [Traceroute / Tracert](#traceroute--tracert)
+        - [Ping](#ping)
 - [Transport - OSI layer 4 - Transport - TCP/IP Layer 3](#transport---osi-layer-4---transport---tcpip-layer-3)
   - [Network Protocol](#network-protocol-2)
     - [Transmission Control Protocol - TCP](#transmission-control-protocol---tcp)
@@ -2825,6 +2831,51 @@ IP provides logical addressing. There are two major versions:
 #### Packets Can Take Different Paths
 
 - Because IP works with routing, different packets belonging to the same communication may take different paths.
+
+### ICMP - Internet Control Message Protocol
+
+#### What is ICMP?
+
+- ICMP (Internet Control Message Protocol) is a companion protocol to IP and operates at the OSI Layer 3 – Network Layer.
+- Its main purpose is:
+  - Reporting network errors
+  - Reporting delivery problems
+  - Performing network diagnostics
+  - Helping troubleshoot connectivity
+- Important: ICMP reports problems but does not fix them.
+
+#### Key Characteristics
+
+- ICMP does not establish a session before sending messages
+
+| Characteristic       | Description                            |
+| -------------------- | -------------------------------------- |
+| **Layer**            | OSI Layer 3 – Network                  |
+| **Works with**       | IP                                     |
+| **Connection**       | Connectionless                         |
+| **Purpose**          | Error reporting and diagnostics        |
+| **Application data** | Does not carry normal application data |
+| **Common tools**     | `ping`, `traceroute` / `tracert`       |
+
+#### ICMP Demo
+
+##### Traceroute / Tracert
+
+- Traceroute is used to discover the network path from a source to a destination
+
+| OS      | Command                    |
+| ------- | -------------------------- |
+| Linux   | `traceroute <destination>` |
+| macOS   | `traceroute <destination>` |
+| Windows | `tracert <destination>`    |
+
+##### Ping
+
+- `ping` is used to test whether a destination responds to ICMP Echo messages
+
+```bash
+ping 192.168.0.20
+```
 
 # Transport - OSI layer 4 - Transport - TCP/IP Layer 3
 
