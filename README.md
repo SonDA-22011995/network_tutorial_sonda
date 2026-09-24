@@ -233,6 +233,7 @@
       - [Where does ARP work?](#where-does-arp-work)
       - [ARP Request vs ARP Reply](#arp-request-vs-arp-reply)
       - [How ARP works](#how-arp-works)
+      - [Viewing the ARP table](#viewing-the-arp-table)
 - [Network - OSI layer 3 - Internet - TCP/IP Layer 2](#network---osi-layer-3---internet---tcpip-layer-2)
   - [IP Address](#ip-address)
     - [What is an IP Address?](#what-is-an-ip-address)
@@ -246,10 +247,13 @@
     - [Routers Determine the Best Path](#routers-determine-the-best-path)
     - [A router separates broadcast domains](#a-router-separates-broadcast-domains)
     - [Example](#example)
+  - [Network Protocol](#network-protocol-1)
+    - [Internet Protocol - IP](#internet-protocol---ip)
 - [Transport - OSI layer 4 - Transport - TCP/IP Layer 3](#transport---osi-layer-4---transport---tcpip-layer-3)
-  - [Transmission Control Protocol - TCP](#transmission-control-protocol---tcp)
-  - [User Datagram Protocol - UDP](#user-datagram-protocol---udp)
-  - [TCP vs UDP](#tcp-vs-udp)
+  - [Network Protocol](#network-protocol-2)
+    - [Transmission Control Protocol - TCP](#transmission-control-protocol---tcp)
+    - [User Datagram Protocol - UDP](#user-datagram-protocol---udp)
+    - [TCP vs UDP](#tcp-vs-udp)
 - [Application - OSI layer 7 - Application - TCP/IP Layer 4](#application---osi-layer-7---application---tcpip-layer-4)
   - [DHCP](#dhcp)
     - [What Is DHCP?](#what-is-dhcp)
@@ -2624,6 +2628,10 @@ Interface: 192.168.56.1 --- 0xb
 ....................................................
 ```
 
+#### Viewing the ARP table
+
+- The basic command on macOS, Linux, Windows is `arp -a`
+
 # Network - OSI layer 3 - Internet - TCP/IP Layer 2
 
 ## IP Address
@@ -2776,9 +2784,15 @@ Network: 192.168.2.0/24
   - Eventually the packet reaches the destination network.
   - The destination switch then uses MAC addresses to deliver the frame to PC3
 
+## Network Protocol
+
+### Internet Protocol - IP
+
 # Transport - OSI layer 4 - Transport - TCP/IP Layer 3
 
-## Transmission Control Protocol - TCP
+## Network Protocol
+
+### Transmission Control Protocol - TCP
 
 - Before transmitting application data, TCP establishes a connection using the three-way handshake:
 
@@ -2794,7 +2808,7 @@ Client                 Server
   │   Connection ready    │
 ```
 
-## User Datagram Protocol - UDP
+### User Datagram Protocol - UDP
 
 - UDP doesn't establish a TCP-style connection before sending data.
   - This reduces overhead, but UDP itself does not provide TCP's reliability mechanisms.
@@ -2804,7 +2818,7 @@ Client ───────────────→ Server
         UDP data
 ```
 
-## TCP vs UDP
+### TCP vs UDP
 
 | TCP                           | UDP                                    |
 | ----------------------------- | -------------------------------------- |
