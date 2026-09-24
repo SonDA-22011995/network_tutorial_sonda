@@ -261,6 +261,13 @@
         - [Ping](#ping)
 - [Transport - OSI layer 4 - Transport - TCP/IP Layer 3](#transport---osi-layer-4---transport---tcpip-layer-3)
   - [Network Protocol](#network-protocol-2)
+    - [Understanding Protocols, Ports, and Sockets](#understanding-protocols-ports-and-sockets)
+      - [Protocols](#protocols)
+      - [Logical Ports](#logical-ports)
+        - [Why Do We Need Ports?](#why-do-we-need-ports)
+        - [Three Types of Ports](#three-types-of-ports)
+      - [Socket](#socket)
+      - [Common Network Services and Port Numbers](#common-network-services-and-port-numbers)
     - [Transmission Control Protocol - TCP](#transmission-control-protocol---tcp)
     - [User Datagram Protocol - UDP](#user-datagram-protocol---udp)
     - [TCP vs UDP](#tcp-vs-udp)
@@ -2880,6 +2887,95 @@ ping 192.168.0.20
 # Transport - OSI layer 4 - Transport - TCP/IP Layer 3
 
 ## Network Protocol
+
+### Understanding Protocols, Ports, and Sockets
+
+#### Protocols
+
+- A protocol is a set of rules that defines how computers communicate and exchange data.
+- Examples from the lecture:  DN ,DHC ,HTTP / IIS
+- For more detail: [Introduction to Computer Networking Protocols](#introduction-to-computer-networking-protocols)
+
+#### Logical Ports
+
+- A port in networking is a logical port, not a physical port such as USB or RJ-45.
+- Ports allow a computer to distinguish between different network applications running on the same machine
+- A protocol is associated with a specific port number.
+
+| Protocol |    Port | Purpose                  |
+| -------- | ------: | ------------------------ |
+| FTP      |      21 | File Transfer            |
+| HTTP     |      80 | Web                      |
+| DNS      |      53 | Domain Name System       |
+| DHCP     | 67 / 68 | Dynamic IP configuration |
+| HTTPS    |     443 | Secure Web               |
+
+- Example
+  - A server has `IP: 192.168.1.100`
+  - It can simultaneously run
+    - FTP  → 21
+    - HTTP → 80
+    - DNS  → 53
+  - So a client can specify
+    - 192.168.1.100:21  → FTP
+    - 192.168.1.100:80  → HTTP
+    - 192.168.1.100:53  → DNS
+
+##### Why Do We Need Ports?
+
+- A server can run multiple network services simultaneously
+- Without port numbers, the operating system would not know which application should receive incoming network traffic
+
+```
+                Server
+            192.168.1.100
+                   │
+       ┌───────────┼───────────┐
+       ↓           ↓           ↓
+     FTP         HTTP         DNS
+     :21         :80          :53
+```
+
+##### Three Types of Ports
+
+| Port Type            |       Range | Description                                    |
+| -------------------- | ----------: | ---------------------------------------------- |
+| **Well-known ports** |      0–1023 | Used by well-known protocols                   |
+| **Registered ports** |  1024–49151 | Registered for specific applications/protocols |
+| **Dynamic ports**    | 49152–65535 | Used dynamically, typically by clients         |
+
+
+#### Socket
+
+- A socket is the combination of **IP Address + Port Number**
+- This allows the operating system to identify a specific network endpoint
+- For example: `192.168.1.1:80` is a socket
+
+#### Common Network Services and Port Numbers
+
+| Service, Protocol, or Application | Port Number(s) | TCP or UDP |
+|---|---:|---|
+| FTP (File Transfer Protocol) | 20, 21 | TCP |
+| SFTP (Secure File Transfer Protocol) | 22 | TCP |
+| SSH (Secure Shell Protocol) | 22 | TCP |
+| Telnet | 23 | TCP |
+| SMTP (Simple Mail Transfer Protocol) | 25 | TCP |
+| DNS (Domain Name System) | 53 | UDP |
+| DHCP (Dynamic Host Configuration Protocol) | 67, 68 | UDP |
+| TFTP (Trivial File Transfer Protocol) | 69 | UDP |
+| HTTP (Hypertext Transfer Protocol) | 80 | TCP |
+| POP3 (Post Office Protocol version 3) | 110 | TCP |
+| NTP (Network Time Protocol) | 123 | UDP |
+| IMAP4 (Internet Message Access Protocol version 4) | 143 | TCP |
+| SNMP (Simple Network Management Protocol) | 161 | UDP |
+| LDAP (Lightweight Directory Access Protocol) | 389 | TCP |
+| HTTPS (Hypertext Transfer Protocol Secure) | 443 | TCP |
+| SMB (Server Message Block) | 445 | TCP |
+| LDAPS (Lightweight Directory Access Protocol Secure) | 636 | TCP |
+| RDP (Remote Desktop Protocol) | 3389 | TCP |
+| ITU Telecommunication Standardization Sector A/V Recommendation | 1720 | TCP |
+| SIP (Session Initiation Protocol) | 5060, 5061 | TCP |
+
 
 ### Transmission Control Protocol - TCP
 
