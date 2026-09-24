@@ -227,6 +227,12 @@
     - [What is a Wireless Access Point?](#what-is-a-wireless-access-point)
     - [WAP is NOT a Router](#wap-is-not-a-router)
     - [What Devices Connect to a WAP?](#what-devices-connect-to-a-wap)
+  - [Network Protocol](#network-protocol)
+    - [ARP - Address Resolution Protocol](#arp---address-resolution-protocol)
+      - [What is ARP?](#what-is-arp)
+      - [Where does ARP work?](#where-does-arp-work)
+      - [ARP Request vs ARP Reply](#arp-request-vs-arp-reply)
+      - [How ARP works](#how-arp-works)
 - [Network - OSI layer 3 - Internet - TCP/IP Layer 2](#network---osi-layer-3---internet---tcpip-layer-2)
   - [IP Address](#ip-address)
     - [What is an IP Address?](#what-is-an-ip-address)
@@ -2537,6 +2543,86 @@ Wi-Fi Wi-Fi Wi-Fi
   - Smart garage doors
   - Other wireless devices
 
+## Network Protocol
+
+### ARP - Address Resolution Protocol
+
+#### What is ARP?
+
+- ARP (Address Resolution Protocol) is used to resolve an IP address to its corresponding MAC address. 
+  - **IP address → MAC address**
+- ARP is needed when a device knows the destination's IP address but does not know its MAC address.
+
+#### Where does ARP work?
+
+- ARP works within the local area network (LAN).
+  - ARP uses broadcast messages to find the device with a specific IP address.
+  - Broadcast traffic is not forwarded by routers.
+  - Therefore, ARP cannot directly resolve the MAC address of a device on another network.
+  - For more detail broadcast: [Broadcast](#broadcast)
+
+```
+Same LAN:
+PC1 ─── Switch ─── PC2
+       ARP works
+
+Different LAN:
+PC1 ─── Router ─── PC2
+       ARP does NOT cross the router
+```
+
+#### ARP Request vs ARP Reply
+
+| Message         | Destination     | Purpose                               |
+| --------------- | --------------- | ------------------------------------- |
+| **ARP Request** | Broadcast       | Ask which device owns an IP address   |
+| **ARP Reply**   | Usually Unicast | Return the MAC address of that device |
+
+
+#### How ARP works
+
+- Suppose
+
+```
+PC1:
+IP: 192.168.1.100
+MAC: Unknown
+
+PC2:
+IP: 192.168.1.115
+MAC: AA:BB:CC:DD:EE:FF
+```
+
+- PC1 wants to communicate with PC2 but only knows `192.168.1.115`
+  - PC1 sends an **ARP Request** as a broadcast: **Who has 192.168.1.115? Tell me your MAC address**
+
+- Every device on the LAN receives the broadcast
+  - Only PC2 recognizes that the requested IP belongs to it, so PC2 sends an **ARP Reply** **192.168.1.115 is at AA:BB:CC:DD:EE:FF.**
+
+- PC1 can then associate **192.168.1.115 → AA:BB:CC:DD:EE:FF**
+  - And use the MAC address to deliver the Ethernet frame
+
+- After learning the MAC address, the device stores the mapping in its ARP cache/table
+  - Example
+
+```
+Interface: 192.168.2.48 --- 0x5
+  Internet Address      Physical Address      Type
+  192.168.2.1           14-49-bc-6e-82-90     dynamic
+  192.168.2.10          58-cd-c9-51-e3-e3     dynamic
+  192.168.2.12          a8-42-a1-c3-cf-6f     dynamic
+  192.168.2.13          20-0b-74-13-a4-fe     dynamic
+  192.168.2.14          e4-24-6c-a7-1a-2b     dynamic
+  192.168.2.17          6e-76-54-32-9b-26     dynamic
+.....................................................
+
+Interface: 192.168.56.1 --- 0xb
+  Internet Address      Physical Address      Type
+  192.168.56.255        ff-ff-ff-ff-ff-ff     static
+  224.0.0.2             01-00-5e-00-00-02     static
+  224.0.0.22            01-00-5e-00-00-16     static
+....................................................
+```
 
 # Network - OSI layer 3 - Internet - TCP/IP Layer 2
 
