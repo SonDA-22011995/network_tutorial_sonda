@@ -249,6 +249,10 @@
     - [Example](#example)
   - [Network Protocol](#network-protocol-1)
     - [Internet Protocol - IP](#internet-protocol---ip)
+      - [What is IP?](#what-is-ip)
+      - [IP Addresses](#ip-addresses)
+      - [Characteristics of IP](#characteristics-of-ip)
+      - [Packets Can Take Different Paths](#packets-can-take-different-paths)
 - [Transport - OSI layer 4 - Transport - TCP/IP Layer 3](#transport---osi-layer-4---transport---tcpip-layer-3)
   - [Network Protocol](#network-protocol-2)
     - [Transmission Control Protocol - TCP](#transmission-control-protocol---tcp)
@@ -2787,6 +2791,40 @@ Network: 192.168.2.0/24
 ## Network Protocol
 
 ### Internet Protocol - IP
+
+#### What is IP?
+
+- IP (Internet Protocol) is a protocol of the TCP/IP Internet layer and corresponds primarily to Layer 3 (Network Layer) of the OSI model.
+- IP provides end-to-end connectivity between different Layer 2 networks.
+- Its two major responsibilities are:
+  - Logical addressing → IP addresses
+  - Routing → moving packets between different networks
+
+#### IP Addresses
+
+IP provides logical addressing. There are two major versions:
+
+| Version | Name                        | Example        |
+| ------- | --------------------------- | -------------- |
+| IPv4    | Internet Protocol version 4 | `192.168.1.10` |
+| IPv6    | Internet Protocol version 6 | `2001:db8::1`  |
+
+#### Characteristics of IP
+
+| Characteristic               | Description                                                     |
+| ---------------------------- | --------------------------------------------------------------- |
+| **Connectionless**           | IP does not establish a connection before sending packets.      |
+| **Unreliable**               | IP does not guarantee packet delivery.                          |
+| **Best effort**              | IP attempts to deliver packets but provides no guarantee.       |
+| **Independent packets**      | Each packet is handled independently.                           |
+| **No sequencing**            | IP does not ensure packets arrive in the correct order.         |
+| **No error recovery**        | IP does not retransmit lost or corrupted packets.               |
+| **No delivery confirmation** | IP does not check whether the destination received the packet.  |
+| **Supports routing**         | Routers use IP information to forward packets between networks. |
+
+#### Packets Can Take Different Paths
+
+- Because IP works with routing, different packets belonging to the same communication may take different paths.
 
 # Transport - OSI layer 4 - Transport - TCP/IP Layer 3
 
