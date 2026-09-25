@@ -274,15 +274,19 @@
         - [Common Administration Workflow](#common-administration-workflow)
         - [For more detailed information](#for-more-detailed-information)
     - [Transmission Control Protocol - TCP](#transmission-control-protocol---tcp)
+      - [TCP Three-Way Handshake - to establish a connection](#tcp-three-way-handshake---to-establish-a-connection)
+      - [Four-way termination - to close a connection](#four-way-termination---to-close-a-connection)
     - [User Datagram Protocol - UDP](#user-datagram-protocol---udp)
+      - [Typical UDP Applications](#typical-udp-applications)
     - [TCP vs UDP](#tcp-vs-udp)
 - [Application - OSI layer 7 - Application - TCP/IP Layer 4](#application---osi-layer-7---application---tcpip-layer-4)
-  - [DHCP](#dhcp)
-    - [What Is DHCP?](#what-is-dhcp)
-    - [Static IP vs DHCP](#static-ip-vs-dhcp)
-    - [Basic DHCP Architecture](#basic-dhcp-architecture)
-      - [DORA Process](#dora-process)
-    - [What Else Can DHCP Provide?](#what-else-can-dhcp-provide)
+  - [Network Protocols](#network-protocols)
+    - [Management Protocols](#management-protocols)
+      - [DNS — Domain Name System](#dns--domain-name-system)
+      - [DHCP - Dynamic Host Configuration Protocol](#dhcp---dynamic-host-configuration-protocol)
+        - [Static IP vs DHCP](#static-ip-vs-dhcp)
+        - [Basic DHCP Architecture](#basic-dhcp-architecture)
+        - [DORA Process](#dora-process)
 
 # Introduction Network
 
@@ -3064,7 +3068,20 @@ netstat -abno
 
 ### Transmission Control Protocol - TCP
 
+- TCP is connection-oriented and designed to provide reliable data delivery
 - Before transmitting application data, TCP establishes a connection using the three-way handshake:
+  - **Three-way handshake** — establishes a connection before data transfer.
+  - **Acknowledgments (ACK)** — confirms that data has been received.
+  - **Checksum** — detects corrupted data.
+  - **Sequence numbers** — keep track of transmitted segments.
+  - **Retransmission** — lost or corrupted data can be sent again.
+
+#### TCP Three-Way Handshake - to establish a connection
+
+- Step 1 — SYN: The client sends a SYN request to initiate a connection.
+- Step 2 — SYN-ACK: The server responds with SYN + ACK, acknowledging the client's request.
+- Step 3 — ACK: The client sends an ACK back.
+- After these three steps, the connection is established and data can be exchanged.
 
 ```
 Client                 Server
@@ -3076,41 +3093,122 @@ Client                 Server
   │────── ACK ───────────→│
   │                       │
   │   Connection ready    │
+  |   Data Transfer       |
+```
+
+#### Four-way termination - to close a connection
+
+- When communication is finished, the client initiates the shutdown by sending a FIN (Finish) packet.
+- The four steps are:
+  - FIN — The client tells the server that it has finished sending data.
+  - ACK — The server acknowledges the client's FIN.
+  - FIN — The server sends its own FIN, indicating that it has also finished.
+  - ACK — The client acknowledges the server's FIN.
+- The session is then closed. The lecture describes this as a four-way ending: **FIN → ACK → FIN → ACK**
+
+```
+Client                         Server
+  |                              |
+  | -------- FIN, ACK ---------->|
+  |                              |
+  | <----------- ACK ------------|
+  |                              |
+  | <----------- FIN ------------|
+  |                              |
+  | ------------ ACK ----------> |
+  |                              |
+  |       Connection Closed      |
+```
+
+- Why Four Steps?
+  - The important idea is that each side independently indicates that it has finished.
+
+```
+Client: "I'm finished."  → FIN
+Server: "I received that." → ACK
+
+Server: "I'm finished too." → FIN
+Client: "I received that." → ACK
 ```
 
 ### User Datagram Protocol - UDP
 
-- UDP doesn't establish a TCP-style connection before sending data.
-  - This reduces overhead, but UDP itself does not provide TCP's reliability mechanisms.
+- UDP is connectionless. 
+  - It does not establish a connection before sending data and does not use a three-way handshake
+  - Therefore, UDP is considered a best-effort protocol.
+- However, this makes UDP faster and lightweight, which is useful when speed and real-time delivery are more important than reliability.
 
 ```
 Client ───────────────→ Server
         UDP data
 ```
 
+#### Typical UDP Applications
+
+- UDP is commonly used when speed and real-time performance are more important than guaranteed delivery:
+  - DNS
+  - DHCP
+  - VoIP
+  - Video streaming
+  - Audio streaming
+  - Online gaming
+  - Other real-time and network-management applications.
+
+- For example
+  - If a few VoIP audio packets are lost, retransmitting them later would not be useful because the conversation has already moved forward.
+
 ### TCP vs UDP
 
-| TCP                           | UDP                                    |
-| ----------------------------- | -------------------------------------- |
-| Transmission Control Protocol | User Datagram Protocol                 |
-| Connection-oriented           | Connectionless                         |
-| Uses connection establishment | No connection establishment            |
-| Reliable delivery mechanisms  | No built-in reliable delivery          |
-| Sequencing                    | No TCP-style sequencing/retransmission |
-| More overhead                 | Lower overhead                         |
-| Generally slower              | Generally faster/lower latency         |
+| Feature          | TCP                    | UDP                                    |
+| ---------------- | ---------------------- | -------------------------------------- |
+| Layer            | Transport Layer        | Transport Layer                        |
+| Connection       | Connection-oriented    | Connectionless                         |
+| Handshake        | Yes — 3-way handshake  | No                                     |
+| Reliability      | Reliable               | Best effort                            |
+| ACK              | Yes                    | No                                     |
+| Sequence numbers | Yes                    | No                                     |
+| Retransmission   | Yes                    | No                                     |
+| Header size      | **20 bytes**           | **8 bytes**                            |
+| Speed            | Generally slower       | Generally faster                       |
+| Overhead         | Higher                 | Lower                                  |
+| Typical use      | Reliable data transfer | Real-time / performance-sensitive data |
+
 
 
 # Application - OSI layer 7 - Application - TCP/IP Layer 4
 
-## DHCP
+## Network Protocols
 
-### What Is DHCP?
+### Management Protocols
 
-- DHCP = Dynamic Host Configuration Protocol
-- A DHCP server automatically assigns IP addresses to devices on a network.
+- Management protocols are network protocols used to monitor, configure, manage, and maintain network devices and services
 
-### Static IP vs DHCP
+#### DNS — Domain Name System
+
+- Key idea: DNS translates human-readable names into network addresses.
+- Port: 53
+- Transport: UDP by default
+- Purpose: Resolves domain names → IP addresses.
+- Example: **google.com → IP address**
+- DNS is important because humans remember domain names more easily than IP addresses.
+- Modern websites may have multiple IP addresses, especially when using a CDN (Content Delivery Network).
+- DNS can be thought of as the "Internet's phone book."
+
+#### DHCP - Dynamic Host Configuration Protocol
+
+- Key idea: DHCP automatically configures a device's network settings.
+- Ports: 67 and 68
+- Transport: UDP
+- Purpose: Automatically provides network configuration to devices.
+- DHCP can assign:
+  - IP address
+  - Subnet mask
+  - Default gateway
+  - DNS server
+- It simplifies network administration and helps prevent IP address conflicts.
+- DHCP is commonly used in home, small-business, and enterprise networks.
+
+##### Static IP vs DHCP
 
 - For a network with hundreds of devices, manually managing every IP becomes inconvenient and increases the chance of configuration mistakes or conflicts.
 
@@ -3120,7 +3218,7 @@ Client ───────────────→ Server
 | **DHCP**   | Server automatically assigns IP      | Medium/large networks, clients           |
 
 
-### Basic DHCP Architecture
+##### Basic DHCP Architecture
 
 - The new PC doesn't initially have an IP address, so it communicates on the network to find a DHCP server.
 - The DHCP server can then provide an IP configuration.
@@ -3142,7 +3240,7 @@ Client ───────────────→ Server
           └──── ACK ─────────►│
 ```
 
-#### DORA Process
+##### DORA Process
 
 - The DHCP address-assignment process is commonly remembered as DORA:
 
@@ -3152,12 +3250,3 @@ Client ───────────────→ Server
 | **O** | Offer                | DHCP server offers an IP configuration    |
 | **R** | Request              | Client requests the offered configuration |
 | **A** | Acknowledgment (ACK) | Server confirms the assignment            |
-
-### What Else Can DHCP Provide?
-
-- DHCP can provide other network configuration information as well, such as:
-  - IP address
-  - Subnet mask
-  - Default gateway
-  - DNS server
-  - Lease duration
