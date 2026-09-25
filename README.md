@@ -138,54 +138,54 @@
 - [Physical - OSI layer 1 - Network Access - TCP/IP Layer 1](#physical---osi-layer-1---network-access---tcpip-layer-1)
   - [Network Cabling](#network-cabling)
     - [Types of Network Cabling](#types-of-network-cabling)
-  - [Coaxial Cable](#coaxial-cable)
-    - [What is the Coaxial Cable?](#what-is-the-coaxial-cable)
-    - [Coaxial Cable Structure](#coaxial-cable-structure)
-    - [Coaxial Cable Connectors](#coaxial-cable-connectors)
-      - [BNC Connector (Bayonet Neill–Concelman)](#bnc-connector-bayonet-neillconcelman)
-      - [F Connector](#f-connector)
-    - [RG-59 vs RG-6](#rg-59-vs-rg-6)
-  - [Twisted Pair](#twisted-pair)
-    - [What is the Twisted Pair?](#what-is-the-twisted-pair)
-    - [Why Are the Wires Twisted?](#why-are-the-wires-twisted)
-      - [Crosstalk](#crosstalk)
-      - [Electromagnetic Interference (EMI)](#electromagnetic-interference-emi)
-    - [UTP vs STP](#utp-vs-stp)
-    - [Factors Affecting Cable Speed](#factors-affecting-cable-speed)
-      - [Twist rate](#twist-rate)
-      - [Conductor Quality](#conductor-quality)
-      - [Insulation and separation](#insulation-and-separation)
-      - [Shielding](#shielding)
-      - [Supported frequency](#supported-frequency)
-    - [Twisted-Pair Cable Categories](#twisted-pair-cable-categories)
-    - [Cable Category vs Ethernet Standard](#cable-category-vs-ethernet-standard)
-    - [Common Categories](#common-categories)
-    - [RJ-45 Connectors](#rj-45-connectors)
-      - [Four Color-Coded Pairs](#four-color-coded-pairs)
-      - [TIA/EIA 568A and 568B](#tiaeia-568a-and-568b)
-      - [568A Pinout](#568a-pinout)
-      - [568B Pinout](#568b-pinout)
-      - [Straight-Through vs Crossover](#straight-through-vs-crossover)
-        - [Straight-through](#straight-through)
-        - [Crossover](#crossover)
-      - [Why Do We Need Crossover Cables?](#why-do-we-need-crossover-cables)
-      - [Modern Gigabit Ethernet (GBase-T)](#modern-gigabit-ethernet-gbase-t)
-    - [Other Copper Connectors](#other-copper-connectors)
-  - [Fiber Optic](#fiber-optic)
-    - [What Is Fiber Optic Cabling?](#what-is-fiber-optic-cabling)
-    - [Advantages of Fiber Optic](#advantages-of-fiber-optic)
-      - [Higher bandwidth](#higher-bandwidth)
-      - [Much longer distance](#much-longer-distance)
-      - [Fiber Is Not Affected by EMI](#fiber-is-not-affected-by-emi)
-    - [Types of Fiber](#types-of-fiber)
-      - [Multimode Fiber](#multimode-fiber)
-      - [Single-Mode Fiber](#single-mode-fiber)
-      - [Multimode vs Single-Mode](#multimode-vs-single-mode)
-    - [Fiber Optic Connectors](#fiber-optic-connectors)
-      - [LC — Lucent Connector](#lc--lucent-connector)
-      - [SC — Subscriber Connector](#sc--subscriber-connector)
-      - [ST — Straight Tip](#st--straight-tip)
-      - [MTRJ — Mechanical Transfer Registered Jack](#mtrj--mechanical-transfer-registered-jack)
+    - [Coaxial Cable](#coaxial-cable)
+      - [What is the Coaxial Cable?](#what-is-the-coaxial-cable)
+      - [Coaxial Cable Structure](#coaxial-cable-structure)
+      - [Coaxial Cable Connectors](#coaxial-cable-connectors)
+        - [BNC Connector (Bayonet Neill–Concelman)](#bnc-connector-bayonet-neillconcelman)
+        - [F Connector](#f-connector)
+      - [RG-59 vs RG-6](#rg-59-vs-rg-6)
+    - [Twisted Pair](#twisted-pair)
+      - [What is the Twisted Pair?](#what-is-the-twisted-pair)
+      - [Why Are the Wires Twisted?](#why-are-the-wires-twisted)
+        - [Crosstalk](#crosstalk)
+        - [Electromagnetic Interference (EMI)](#electromagnetic-interference-emi)
+      - [UTP vs STP](#utp-vs-stp)
+      - [Factors Affecting Cable Speed](#factors-affecting-cable-speed)
+        - [Twist rate](#twist-rate)
+        - [Conductor Quality](#conductor-quality)
+        - [Insulation and separation](#insulation-and-separation)
+        - [Shielding](#shielding)
+        - [Supported frequency](#supported-frequency)
+      - [Twisted-Pair Cable Categories](#twisted-pair-cable-categories)
+      - [Cable Category vs Ethernet Standard](#cable-category-vs-ethernet-standard)
+      - [Common Categories](#common-categories)
+      - [RJ-45 Connectors](#rj-45-connectors)
+        - [Four Color-Coded Pairs](#four-color-coded-pairs)
+        - [TIA/EIA 568A and 568B](#tiaeia-568a-and-568b)
+        - [568A Pinout](#568a-pinout)
+        - [568B Pinout](#568b-pinout)
+        - [Straight-Through vs Crossover](#straight-through-vs-crossover)
+          - [Straight-through](#straight-through)
+          - [Crossover](#crossover)
+        - [Why Do We Need Crossover Cables?](#why-do-we-need-crossover-cables)
+        - [Modern Gigabit Ethernet (GBase-T)](#modern-gigabit-ethernet-gbase-t)
+      - [Other Copper Connectors](#other-copper-connectors)
+    - [Fiber Optic](#fiber-optic)
+      - [What Is Fiber Optic Cabling?](#what-is-fiber-optic-cabling)
+      - [Advantages of Fiber Optic](#advantages-of-fiber-optic)
+        - [Higher bandwidth](#higher-bandwidth)
+        - [Much longer distance](#much-longer-distance)
+        - [Fiber Is Not Affected by EMI](#fiber-is-not-affected-by-emi)
+      - [Types of Fiber](#types-of-fiber)
+        - [Multimode Fiber](#multimode-fiber)
+        - [Single-Mode Fiber](#single-mode-fiber)
+        - [Multimode vs Single-Mode](#multimode-vs-single-mode)
+      - [Fiber Optic Connectors](#fiber-optic-connectors)
+        - [LC — Lucent Connector](#lc--lucent-connector)
+        - [SC — Subscriber Connector](#sc--subscriber-connector)
+        - [ST — Straight Tip](#st--straight-tip)
+        - [MTRJ — Mechanical Transfer Registered Jack](#mtrj--mechanical-transfer-registered-jack)
   - [Network Interface Card (NIC)](#network-interface-card-nic)
     - [What is a NIC?](#what-is-a-nic)
     - [NIC and MAC Address](#nic-and-mac-address)
@@ -1686,9 +1686,9 @@ VoIP Phone
 | **Twisted Pair** | Pairs of copper wires twisted together                   | Most traditional Ethernet LANs      |
 | **Fiber Optic**  | Uses light through optical fiber                         | High-speed/long-distance networking |
 
-## Coaxial Cable
+### Coaxial Cable
 
-### What is the Coaxial Cable?
+#### What is the Coaxial Cable?
 
 - Coaxial cable is largely obsolete/antiquated technology for modern internal computer networks.
 - It was commonly used in network infrastructure in the 1980s.
@@ -1698,7 +1698,7 @@ VoIP Phone
 
 ![Coaxial Cable](./static/tutorial_0013.png)
 
-### Coaxial Cable Structure
+#### Coaxial Cable Structure
 
 - Outer PVC jacket
   - Protects the cable physically.
@@ -1726,16 +1726,16 @@ VoIP Phone
 └─────────────────────────────┘
 ```
 
-### Coaxial Cable Connectors
+#### Coaxial Cable Connectors
 
-#### BNC Connector (Bayonet Neill–Concelman)
+##### BNC Connector (Bayonet Neill–Concelman)
 
 - Commonly used with coaxial networks in the 1980s.
 - Uses a push-and-twist locking mechanism
 
 ![BNC Connector](./static/tutorial_0015.png)
 
-#### F Connector
+##### F Connector
 
 - The F-type connector is commonly used for:
   - Cable modems  
@@ -1743,7 +1743,7 @@ VoIP Phone
 
 ![F Connector](./static/tutorial_0016.png)
 
-### RG-59 vs RG-6
+#### RG-59 vs RG-6
 
 - There are different types/thicknesses of coaxial cable.
 
@@ -1753,9 +1753,9 @@ VoIP Phone
 | **RG-6**  | Thicker         | Cable modem / cable TV   |
 
 
-## Twisted Pair
+### Twisted Pair
 
-### What is the Twisted Pair?
+#### What is the Twisted Pair?
 
 - Twisted pair copper cabling is the most common type of network cabling.
 - It normally uses an RJ-45 connector.
@@ -1764,11 +1764,11 @@ VoIP Phone
   - Wire 1 -> Positive signal
   - Wire 2 -> Negative signal
 
-### Why Are the Wires Twisted?
+#### Why Are the Wires Twisted?
 
 - The main purpose of twisting is to reduce interference
 
-#### Crosstalk
+##### Crosstalk
 
 - Crosstalk occurs when a signal from one pair interferes with another pair.
   - The twisting helps reduce this interference between pairs
@@ -1779,7 +1779,7 @@ Orange pair ──────┐
 Green pair  ──────┘
 ```
 
-#### Electromagnetic Interference (EMI)
+##### Electromagnetic Interference (EMI)
 
 - Twisting makes the cable less susceptible to EMI
   - EMI is disruption to electronic equipment caused by electromagnetic fields from other electronic devices.
@@ -1789,7 +1789,7 @@ Green pair  ──────┘
   - Large electrical devices
   - Other sources of electromagnetic fields
 
-### UTP vs STP
+#### UTP vs STP
 
 - There are two major forms of twisted-pair cabling:
 
@@ -1806,9 +1806,9 @@ Green pair  ──────┘
   - more expensive
   - useful in manufacturing/industrial environments with significant EMI.
 
-### Factors Affecting Cable Speed
+#### Factors Affecting Cable Speed
 
-#### Twist rate
+##### Twist rate
 
 - Higher-category cables generally have more twists per inch.
 - More twisting helps reduce crosstalk and interference
@@ -1820,28 +1820,28 @@ CAT 7   → more twists
 CAT 8   → more twists
 ```
 
-#### Conductor Quality
+##### Conductor Quality
 
 - Better-quality copper and more consistent wire diameter can improve:
   - Signal transmission
   - Signal integrity
   - Data rates
 
-#### Insulation and separation
+##### Insulation and separation
 
 - Better insulation and physical separation between pairs help reduce:
   - Interference
   - Signal degradation
 
-#### Shielding
+##### Shielding
 
 - Shielding helps block EMI, especially in electrically noisy environments.
 
-#### Supported frequency
+##### Supported frequency
 
 - Higher maximum frequency generally allows the cable to support higher network speeds.
 
-### Twisted-Pair Cable Categories
+#### Twisted-Pair Cable Categories
 
 | Category   | Example Ethernet standard | Approx. maximum speed* | Typical max distance |
 | ---------- | ------------------------- | ---------------------: | -------------------: |
@@ -1876,13 +1876,13 @@ Cat 8
 
 ![Twisted-Pair Cable Categories](./static/tutorial_0017.png)
 
-### Cable Category vs Ethernet Standard
+#### Cable Category vs Ethernet Standard
 
 - Retailers usually advertise the Cat number.
 - So when shopping for a cable, you're much more likely to search for:
   - Cat 6 Ethernet cable rather than 1000Base-T cable
 
-### Common Categories
+#### Common Categories
 
 - Cat 5e
   - Up to 1 Gbps
@@ -1905,9 +1905,9 @@ Cat 8
 
 ![Twisted Pair](./static/tutorial_0014.png)
 
-### RJ-45 Connectors
+#### RJ-45 Connectors
 
-#### Four Color-Coded Pairs
+##### Four Color-Coded Pairs
 
 - The four twisted pairs are color-coded:
   - Orange / Orange-White
@@ -1916,7 +1916,7 @@ Cat 8
   - Brown  / Brown-White
 - So 8 wires -> 4 twisted pairs -> RJ-45 connector
 
-#### TIA/EIA 568A and 568B
+##### TIA/EIA 568A and 568B
 
 - TIA/EIA 568A and 568B are industry wiring standards that define how the 8 wires are arranged on an RJ-45 connector. There are two standards: 568A and 568B.
 - 568A → original standard
@@ -1924,7 +1924,7 @@ Cat 8
 - Both can work for network cabling.
 - The important thing is to use one standard consistently throughout a network.
 
-#### 568A Pinout
+##### 568A Pinout
 
 | Pin | Wire         |
 | --: | ------------ |
@@ -1938,7 +1938,7 @@ Cat 8
 |   8 | Brown        |
 
 
-#### 568B Pinout
+##### 568B Pinout
 
 | Pin | Wire         |
 | --: | ------------ |
@@ -1951,14 +1951,14 @@ Cat 8
 |   7 | White/Brown  |
 |   8 | Brown        |
 
-#### Straight-Through vs Crossover
+##### Straight-Through vs Crossover
 
 - There are two traditional Ethernet cable types:
   - Straight-through  
   - Crossover
   - The difference is the pinout on each end
 
-##### Straight-through
+###### Straight-through
 
 - Both ends use the same standard:
 
@@ -1977,7 +1977,7 @@ PC ─────── Switch
 Switch ─── Router
 ```
 
-##### Crossover
+###### Crossover
 
 - The two ends use different standards:
 
@@ -1992,7 +1992,7 @@ PC ───── PC
 Router ─ Router
 ```
 
-#### Why Do We Need Crossover Cables?
+##### Why Do We Need Crossover Cables?
 
 - This comes from obsolete/antiquated  Ethernet technology. For 10Base-T and 100Base-T
   - One pair was used for transmitting (TX).
@@ -2012,7 +2012,7 @@ RX Pin 3 ◄────────────────────── P
 RX Pin 6 ◄────────────────────── Pin 6 RX
 ```
 
-#### Modern Gigabit Ethernet (GBase-T)
+##### Modern Gigabit Ethernet (GBase-T)
 
 - Starting with Gigabit Ethernet / Cat 5e and newer:
   - Uses all four pairs
@@ -2025,7 +2025,7 @@ RX Pin 6 ◄────────────────────── P
 
 ![RJ-45 Connectors](./static/tutorial_0022.png)
 
-### Other Copper Connectors
+#### Other Copper Connectors
 
 - RJ-11
   - Smaller than RJ-45
@@ -2050,9 +2050,9 @@ RX Pin 6 ◄────────────────────── P
 
 ![DB-25](./static/tutorial_0020.png)
 
-## Fiber Optic
+### Fiber Optic
 
-### What Is Fiber Optic Cabling?
+#### What Is Fiber Optic Cabling?
 
 - Fiber optic cabling is different from traditional twisted-pair copper cabling because it does not transmit electrical signals.
 - Instead, fiber optic cable uses photons (light) to transmit data.
@@ -2066,30 +2066,30 @@ RX Pin 6 ◄────────────────────── P
 
 ![Fiber Optic](./static/tutorial_0023.png)
 
-### Advantages of Fiber Optic
+#### Advantages of Fiber Optic
 
 - Fiber optic is more expensive than twisted-pair copper, including both the cable and related equipment. However, it provides several major advantages
 
-#### Higher bandwidth
+##### Higher bandwidth
 
 - Fiber can support significantly higher speeds
 
-#### Much longer distance
+##### Much longer distance
 
 - Copper twisted-pair: 100 meters
 - Fiber can reach: 75 miles or more in the example given.
 
-#### Fiber Is Not Affected by EMI
+##### Fiber Is Not Affected by EMI
 
 - Another major advantage is that fiber optic cabling:
   - Does not suffer from electromagnetic interference (EMI)
   - Does not emanate electrical signals
 
-### Types of Fiber
+#### Types of Fiber
 
 ![Types of Fiber](./static/tutorial_0024.png)
 
-#### Multimode Fiber
+##### Multimode Fiber
 
 - Multimode fiber has a larger core: 50–62.5 microns
 - It allows multiple light beams to travel through the fiber simultaneously.
@@ -2100,7 +2100,7 @@ RX Pin 6 ◄────────────────────── P
   - Building-to-building connections
   - Shorter distances
 
-#### Single-Mode Fiber
+##### Single-Mode Fiber
 
 - Single-mode fiber has a much smaller core: 8–10 microns
 - It carries essentially one light beam at a time.
@@ -2112,7 +2112,7 @@ RX Pin 6 ◄────────────────────── P
   - Metropolitan Area Networks (MANs)
   - Long-distance connections
 
-#### Multimode vs Single-Mode
+##### Multimode vs Single-Mode
 
 | Feature     | Multimode              | Single-mode               |
 | ----------- | ---------------------- | ------------------------- |
@@ -2123,11 +2123,11 @@ RX Pin 6 ◄────────────────────── P
 | Typical use | LAN / campus           | ISP / MAN / long-distance |
 
 
-### Fiber Optic Connectors
+#### Fiber Optic Connectors
 
 ![Fiber Optic Connectors](./static/tutorial_0025.png)
 
-#### LC — Lucent Connector
+##### LC — Lucent Connector
 
 - Small connector
 - Uses a locking flange similar in appearance to RJ-45
@@ -2137,7 +2137,7 @@ RX Pin 6 ◄────────────────────── P
 
 ![LC — Lucent Connector](./static/tutorial_0026.png)
 
-#### SC — Subscriber Connector
+##### SC — Subscriber Connector
 
 - Square-shaped connector
 - Uses a push-pull mechanism
@@ -2145,7 +2145,7 @@ RX Pin 6 ◄────────────────────── P
 
 ![SC — Subscriber Connector](./static/tutorial_0027.png)
 
-#### ST — Straight Tip
+##### ST — Straight Tip
 
 - Round connector
 - Uses a bayonet-style twist-and-lock mechanism
@@ -2155,7 +2155,7 @@ RX Pin 6 ◄────────────────────── P
 
 ![ST — Straight Tip](./static/tutorial_0028.png)
 
-#### MTRJ — Mechanical Transfer Registered Jack
+##### MTRJ — Mechanical Transfer Registered Jack
 
 - Similar appearance to LC
 - Designed for two fibers
