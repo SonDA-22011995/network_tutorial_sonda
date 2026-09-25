@@ -287,6 +287,11 @@
         - [Static IP vs DHCP](#static-ip-vs-dhcp)
         - [Basic DHCP Architecture](#basic-dhcp-architecture)
         - [DORA Process](#dora-process)
+      - [NTP — Network Time Protocol](#ntp--network-time-protocol)
+      - [SNMP — Simple Network Management Protocol](#snmp--simple-network-management-protocol)
+      - [LDAP — Lightweight Directory Access Protocol](#ldap--lightweight-directory-access-protocol)
+      - [LDAPS](#ldaps)
+      - [SMB — Server Message Block](#smb--server-message-block)
 
 # Introduction Network
 
@@ -3250,3 +3255,66 @@ Client ───────────────→ Server
 | **O** | Offer                | DHCP server offers an IP configuration    |
 | **R** | Request              | Client requests the offered configuration |
 | **A** | Acknowledgment (ACK) | Server confirms the assignment            |
+
+#### NTP — Network Time Protocol
+
+- Key idea: NTP keeps computers' clocks synchronized
+- Port: 123
+- Transport: UDP
+- Purpose: Synchronizes a system's date and time with a network time server.
+- Accurate time is important because many applications, protocols, and authentication systems are time-sensitive.
+- Incorrect system time can cause authentication or network-service failures.
+
+#### SNMP — Simple Network Management Protocol
+
+- Key idea: SNMP provides centralized monitoring and management of network devices.
+- Port: 161
+- Transport: UDP by default
+- Purpose: Allows administrators to monitor and manage network devices centrally.
+- A management system can collect information such as:
+  - CPU usage
+  - Memory
+  - Bandwidth
+  - Performance
+  - Device status
+  - Errors
+- Instead of connecting to each network device individually, administrators can monitor many devices from a centralized management system.
+
+#### LDAP — Lightweight Directory Access Protocol
+
+- Key idea: LDAP provides a standardized way to access and manage directory information.
+- Port: 389
+- Transport: TCP
+- Purpose: Provides access to and querying of directory services.
+- Directory information can include:
+  - User accounts
+  - Computer accounts
+  - Printers
+  - Usernames and passwords
+  - Security groups and roles
+- Microsoft Active Directory is described in the lecture as the most popular implementation associated with LDAP.
+
+
+#### LDAPS
+
+- LDAPS is the secure/encrypted version of LDAP.
+  - Port/Transport: 636/TCP
+  - LDAPS: LDAP traffic protected using encryption
+  - Purpose: Protect LDAP network traffic from being transmitted unencrypted
+
+#### SMB — Server Message Block
+
+- Key idea: SMB enables computers to share files and printers over a network.
+- Port: 445
+- Transport: TCP
+- Purpose: Network and file sharing, especially in Microsoft/Windows environments.
+- Used for:
+  - File sharing
+  - Printer sharing
+- For example, when Windows computers share files or printers over a network, SMB is the protocol enabling that functionality.
+
+
+
+
+
+
