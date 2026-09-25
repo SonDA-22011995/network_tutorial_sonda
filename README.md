@@ -268,6 +268,9 @@
         - [Three Types of Ports](#three-types-of-ports)
       - [Socket](#socket)
       - [Common Network Services and Port Numbers](#common-network-services-and-port-numbers)
+      - [`netstat` command](#netstat-command)
+        - [What Does 0.0.0.0 Mean?](#what-does-0000-mean)
+        - [LISTENING vs. ESTABLISHED](#listening-vs-established)
     - [Transmission Control Protocol - TCP](#transmission-control-protocol---tcp)
     - [User Datagram Protocol - UDP](#user-datagram-protocol---udp)
     - [TCP vs UDP](#tcp-vs-udp)
@@ -2976,6 +2979,63 @@ ping 192.168.0.20
 | ITU Telecommunication Standardization Sector A/V Recommendation | 1720 | TCP |
 | SIP (Session Initiation Protocol) | 5060, 5061 | TCP |
 
+#### `netstat` command
+
+- `netstat -aon` is a Windows command used to display network connections, listening ports, and the Process ID (PID) associated with each connection or port
+
+| Option | Meaning                                                                                   |
+| ------ | ----------------------------------------------------------------------------------------- |
+| `-a`   | Displays **all** active connections and listening ports                                   |
+| `-o`   | Displays **the Process ID (PID)** associated with each connection                         |
+| `-n`   | Displays IP addresses and port numbers in **numerical format** instead of resolving names |
+
+```
+Active Connections
+
+  Proto  Local Address          Foreign Address        State           PID
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING       2044
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:5040           0.0.0.0:0              LISTENING       7044
+  TCP    0.0.0.0:5357           0.0.0.0:0              LISTENING       4
+............................................................................
+```
+
+- This means:
+  - TCP → The connection uses TCP.
+  - 0.0.0.0:135 → The computer is listening on port 135 on all IPv4 network interfaces.
+  - LISTENING → The application is waiting for incoming connections.
+  - 2044 → The PID of the process using port 135.
+
+##### What Does 0.0.0.0 Mean?
+
+- `0.0.0.0:8080` means that the application is listening on all IPv4 network interfaces.
+- For example, if a server has:
+  - 192.168.1.10
+  - 10.0.0.10
+  - 127.0.0.1
+- The service may accept connections through:
+  - 192.168.1.10:8080
+  - 10.0.0.10:8080
+  - 127.0.0.1:8080
+- In contrast, if an application is bound only to `127.0.0.1:8080`
+  - it can normally be accessed only from the local machine.
+
+##### LISTENING vs. ESTABLISHED
+
+- LISTENING
+  - The server has port 443 open and is waiting for incoming TCP connections.
+
+```
+TCP    0.0.0.0:443    0.0.0.0:0    LISTENING
+```
+
+
+- ESTABLISHED
+  - The TCP connection between the two endpoints has been successfully established.
+
+```
+TCP    192.168.2.48:55560    113.176.13.49:80    ESTABLISHED
+```
 
 ### Transmission Control Protocol - TCP
 
