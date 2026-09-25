@@ -271,6 +271,8 @@
       - [`netstat` command](#netstat-command)
         - [What Does 0.0.0.0 Mean?](#what-does-0000-mean)
         - [LISTENING vs. ESTABLISHED](#listening-vs-established)
+        - [Common Administration Workflow](#common-administration-workflow)
+        - [For more detailed information](#for-more-detailed-information)
     - [Transmission Control Protocol - TCP](#transmission-control-protocol---tcp)
     - [User Datagram Protocol - UDP](#user-datagram-protocol---udp)
     - [TCP vs UDP](#tcp-vs-udp)
@@ -3036,6 +3038,29 @@ TCP    0.0.0.0:443    0.0.0.0:0    LISTENING
 ```
 TCP    192.168.2.48:55560    113.176.13.49:80    ESTABLISHED
 ```
+
+##### Common Administration Workflow
+
+- Suppose you want to find out which process is using port 443.
+
+```
+netstat -aon | findstr :443
+
+tasklist /FI "PID eq 1234"
+```
+
+##### For more detailed information
+
+```
+netstat -abno
+```
+
+| Option | Meaning |
+|---|---|
+| `-a` | Display all connections and listening ports |
+| `-b` | Display the executable involved in creating the connection |
+| `-n` | Display addresses and ports numerically |
+| `-o` | Display the Process ID (PID) |
 
 ### Transmission Control Protocol - TCP
 
