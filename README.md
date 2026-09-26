@@ -292,6 +292,11 @@
       - [LDAP — Lightweight Directory Access Protocol](#ldap--lightweight-directory-access-protocol)
       - [LDAPS](#ldaps)
       - [SMB — Server Message Block](#smb--server-message-block)
+    - [Remote Communication Protocols](#remote-communication-protocols)
+      - [Telnet — Terminal Access](#telnet--terminal-access)
+      - [SSH — Secure Shell](#ssh--secure-shell)
+        - [Telnet vs SSH](#telnet-vs-ssh)
+      - [RDP — Remote Desktop Protocol](#rdp--remote-desktop-protocol)
 
 # Introduction Network
 
@@ -3313,8 +3318,53 @@ Client ───────────────→ Server
   - Printer sharing
 - For example, when Windows computers share files or printers over a network, SMB is the protocol enabling that functionality.
 
+### Remote Communication Protocols
 
+#### Telnet — Terminal Access
 
+- Port: 23
+- Transport: TCP
+- Purpose: Connect to a remote host and access its command-line interface (CLI).
+- Security: 
+  - Insecure — data is transmitted in clear text.
+  - Never use Telnet for remote communication across a network when SSH is available.
+- Telnet has largely been replaced by SSH.
+- Use case
+  - Telnet may still be used with older managed network devices, such as routers and switches.
+  - The lecture gives an example of connecting directly to a device using a local serial connection to configure it. In this situation, the communication is not going across the network, so the clear-text limitation is less relevant.
 
+#### SSH — Secure Shell
 
+- Port: 22
+- Transport: TCP
+- Purpose: Securely connect to a remote host through a terminal/command-line interface.
+- Security: Encrypted
+- Commonly used with:
+  - Linux
+  - Unix
+  - Windows
+  - macOS
+
+##### Telnet vs SSH
+
+| Feature      | Telnet                 | SSH                           |
+| ------------ | ---------------------- | ----------------------------- |
+| Port         | **23**                 | **22**                        |
+| Transport    | TCP                    | TCP                           |
+| Remote CLI   | ✅                      | ✅                             |
+| Encryption   | ❌ Clear text           | ✅ Encrypted                   |
+| Modern usage | Legacy                 | Widely used                   |
+| Main purpose | Remote terminal access | Secure remote terminal access |
+
+#### RDP — Remote Desktop Protocol
+
+- Port: 3389
+- Transport: TCP
+- Purpose: Remotely connect to, view, and control a computer's graphical desktop.
+- Developed/used primarily in Microsoft/Windows environments.
+- RDP is commonly used for:
+  - Remote administration
+  - Remote support
+  - Working on computers without a directly connected monitor
+- Unlike SSH and Telnet, which primarily provide a command-line interface, RDP provides a graphical desktop interface.
 
