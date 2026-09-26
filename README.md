@@ -297,6 +297,11 @@
       - [SSH — Secure Shell](#ssh--secure-shell)
         - [Telnet vs SSH](#telnet-vs-ssh)
       - [RDP — Remote Desktop Protocol](#rdp--remote-desktop-protocol)
+    - [File Transfer Protocols](#file-transfer-protocols)
+      - [FTP — File Transfer Protocol](#ftp--file-transfer-protocol)
+      - [SFTP — SSH File Transfer Protocol](#sftp--ssh-file-transfer-protocol)
+      - [TFTP — Trivial File Transfer Protocol](#tftp--trivial-file-transfer-protocol)
+      - [FTP vs SFTP vs TFTP](#ftp-vs-sftp-vs-tftp)
 
 # Introduction Network
 
@@ -3368,3 +3373,69 @@ Client ───────────────→ Server
   - Working on computers without a directly connected monitor
 - Unlike SSH and Telnet, which primarily provide a command-line interface, RDP provides a graphical desktop interface.
 
+### File Transfer Protocols
+
+#### FTP — File Transfer Protocol
+
+- FTP is a protocol used to transfer files between systems.
+- It is considered a legacy protocol because it sends data, including credentials, in clear text.
+- FTP is a full-featured file transfer protocol. It allows users to:
+  - Upload files
+  - Download files
+  - List files and directories
+  - Create and delete files
+  - Rename files
+  - View and modify permissions
+  - Navigate directories
+  - Authenticate using a username and password
+
+- Transport: TCP
+  - FTP uses TCP because it requires reliable, session-oriented communication.
+- FTP ports
+
+|   Port | Purpose          |
+| -----: | ---------------- |
+| **20** | Data transfer    |
+| **21** | Commands/control |
+
+#### SFTP — SSH File Transfer Protocol
+
+- SFTP provides essentially the same general purpose as FTP: secure file transfer between systems.
+- SFTP is technically not "FTP with encryption." It is a separate file-transfer protocol that operates over SSH.
+- The key difference is that SFTP transfers data through SSH, so communication is encrypted.
+
+| Feature      | SFTP                 |
+| ------------ | -------------------- |
+| Purpose      | Secure file transfer |
+| Transport    | TCP                  |
+| Default port | **22**               |
+| Security     | Encrypted            |
+| Technology   | SSH                  |
+
+
+#### TFTP — Trivial File Transfer Protocol
+
+- TFTP is a very simple and lightweight version of file transfer.
+- Its primary purpose is simple file transfer.
+- Transport: UDP
+- TFTP port:	69
+- Unlike FTP/SFTP, it provides very limited functionality.
+- It generally does not provide:
+  - User authentication
+  - Directory navigation
+  - File management features
+  - Permission management
+
+#### FTP vs SFTP vs TFTP
+
+| Feature              | FTP                         | SFTP                       | TFTP                               |
+| -------------------- | --------------------------- | -------------------------- | ---------------------------------- |
+| Full name            | File Transfer Protocol      | SSH File Transfer Protocol | Trivial File Transfer Protocol     |
+| Purpose              | Full-featured file transfer | Secure file transfer       | Simple file transfer               |
+| Default port         | **20/21**                   | **22**                     | **69**                             |
+| Transport            | **TCP**                     | **TCP**                    | **UDP**                            |
+| Encryption           | ❌                           | ✅                          | ❌                                  |
+| Authentication       | ✅                           | ✅                          | ❌                                  |
+| Directory navigation | ✅                           | ✅                          | ❌                                  |
+| File management      | ✅                           | ✅                          | Very limited                       |
+| Typical use          | Legacy file transfer        | Secure file administration | Network devices / simple transfers |
