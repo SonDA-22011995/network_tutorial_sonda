@@ -253,6 +253,9 @@
         - [Why Binary Math Matters](#why-binary-math-matters)
         - [The IPv4 Binary Weight Table](#the-ipv4-binary-weight-table)
         - [Binary to Decimal](#binary-to-decimal)
+        - [Decimal to Binary](#decimal-to-binary)
+      - [Decimal Fractions to Binary](#decimal-fractions-to-binary)
+      - [Binary Fractions to Decimal](#binary-fractions-to-decimal)
       - [What is IP?](#what-is-ip)
       - [What is an IP Addresses?](#what-is-an-ip-addresses)
       - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
@@ -2887,6 +2890,62 @@ Network: 192.168.2.0/24
  1   0   1   0    1   0   1   0
 ```
 
+##### Decimal to Binary
+
+- Can I use this value without making the total greater than the target number?
+  - Yes → write 1 and subtract/use the value
+  - No → write 0
+- Example: 192 → Binary
+  - Target 192
+  - Start with 128
+    - Because 128 = 2^7 < 192 and 2^8 = 256 > 192
+  - Write 1. Remaining 192 - 128 = 64
+  - Then 64 = 2^6 ≤ 64
+  - Write another 1 Remaining: 64 - 64 = 0
+  - All remaining bits are 0
+  - Therefore 192 = 11000000
+
+![Decimal to Binary](./static/tutorial_0031.png)
+
+#### Decimal Fractions to Binary
+
+- Multiply the fractional part by 2.
+- Record the integer part of the result (0 or 1).
+- Keep only the fractional part and multiply it by 2 again.
+- Repeat until the fractional part becomes 0 or until you have enough binary digits.
+- Read the recorded integer parts from top to bottom.
+- Example
+
+```
+0.625 × 2 = 1.25 → 1 
+0.25 × 2 = 0.50 → 0 
+0.50 × 2 = 1.00 → 1
+
+# Therefore: 0.625₁₀ = 0.101₂
+```
+
+#### Binary Fractions to Decimal
+
+- To convert the fractional part of a binary number to decimal:
+  - Each position after the binary point represents a negative power of 2
+
+```
+2⁻¹ 2⁻² 2⁻³ 2⁻⁴
+```
+
+- Example
+  - Convert 0.101₂ to decimal:
+
+```
+0.101₂
+= 1 × 2⁻¹ + 0 × 2⁻² + 1 × 2⁻³
+= 1 × 0.5 + 0 × 0.25 + 1 × 0.125
+= 0.625
+
+Therefore:
+
+0.101₂ = 0.625₁₀
+```
 
 #### What is IP?
 
