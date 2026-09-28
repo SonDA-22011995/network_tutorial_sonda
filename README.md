@@ -2877,7 +2877,10 @@ Network: 192.168.2.0/24
   - 0 → ignore the value
 - Example 1
   - Convert `10101010`
-  - Only add the values where the bit is 1 `1 × 2^7 + 0 × 2^6 + 1 × 2^5 + 0 × 2^4 + 1 × 2^3 + 0 × 2^2 + 1 × 2^1 + 0 × 2^0 = 128 + 32 + 8 + 2 = 170`
+  - Only add the values where the bit is 1 
+    - `1 × 2^7 + 0 × 2^6 + 1 × 2^5 + 0 × 2^4 + 1 × 2^3 + 0 × 2^2 + 1 × 2^1 + 0 × 2^0`
+    - `128 + 32 + 8 + 2`
+    - Therefore `10101010 = 170`
 
 ```
 128  64  32  16   8   4   2   1
