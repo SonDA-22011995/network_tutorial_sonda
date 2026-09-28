@@ -254,6 +254,9 @@
       - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
       - [IPv4 Address Structure](#ipv4-address-structure)
         - [What is an Octet?](#what-is-an-octet)
+        - [Network Portion and Host Portion](#network-portion-and-host-portion)
+      - [IPv4 Address Components](#ipv4-address-components)
+        - [IP Address](#ip-address-1)
       - [Characteristics of IP](#characteristics-of-ip)
       - [Packets Can Take Different Paths](#packets-can-take-different-paths)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
@@ -2900,6 +2903,29 @@ Octet Octet Octet Octet
 00000001
 10000011
 ```
+
+##### Network Portion and Host Portion
+
+- An IPv4 address consists conceptually of two parts
+
+```
++-------------------+----------------+
+| Network Portion   | Host Portion   |
++-------------------+----------------+
+```
+
+- The network portion identifies the network.
+- The host portion identifies a specific device within that network.
+- The exact boundary between network and host cannot be determined from the **IP address** alone.
+  - We need **the subnet mask**
+
+#### IPv4 Address Components
+
+![IPv4 Address Components](./static/tutorial_0030.png)
+
+##### IP Address
+
+- Unique logical address assigned to each device on a network
 
 #### Characteristics of IP
 
