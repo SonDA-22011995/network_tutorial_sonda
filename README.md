@@ -3062,11 +3062,11 @@ Octet Octet Octet Octet
 
 - IPv4 originally used a classful addressing system consisting mainly of three classes:
 
-| Class | Network Bits | Host Bits | Address Range | Default Subnet Mask | Address Range           |
-| ----- | ------------ | --------- | ------------- | ------------------- |-------------------------|
-| **A** |            8 |        24 | 1–126         | `255.0.0.0`         |`1.0.0.0–126.255.255.255`|
-| **B** |           16 |        16 | 128–191       | `255.255.0.0`       |`128.0.0.0–191.255.255.255`|
-| **C** |           24 |         8 | 192–223       | `255.255.255.0`     |`192.0.0.0 – 223.255.255.255`|
+| Class | Network Bits | Host Bits | Number of Networks | Hosts per Network | Address Range                 | Default Subnet Mask |
+| ----- | -----------: | --------: | -----------------: | ----------------: | ----------------------------- | ------------------- |
+| **A** |            8 |        24 |                126 |        16,777,214 | `1.0.0.0 – 126.255.255.255`   | `255.0.0.0`         |
+| **B** |           16 |        16 |             16,384 |            65,534 | `128.0.0.0 – 191.255.255.255` | `255.255.0.0`       |
+| **C** |           24 |         8 |          2,097,152 |               254 | `192.0.0.0 – 223.255.255.255` | `255.255.255.0`     |
 
 
 - 127 is excluded because it is reserved for a special purpose
