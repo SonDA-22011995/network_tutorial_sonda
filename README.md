@@ -307,6 +307,9 @@
       - [POP3 — Post Office Protocol Version 3](#pop3--post-office-protocol-version-3)
       - [IMAP — Internet Message Access Protocol](#imap--internet-message-access-protocol)
       - [SMTP vs POP3 vs IMAP](#smtp-vs-pop3-vs-imap)
+    - [Web Browser Application Protocols](#web-browser-application-protocols)
+      - [HTTP - Hypertext Transfer Protocol](#http---hypertext-transfer-protocol)
+      - [HTTPS](#https)
 
 # Introduction Network
 
@@ -3521,3 +3524,32 @@ Mail Server ─────┼── Laptop
 | Keeps email on server | N/A            | Usually no*        | **Yes**                      |
 | Multiple devices      | Not applicable | Limited            | **Excellent**                |
 | Modern usage          | **Yes**        | Less common        | **Very common**              |
+
+### Web Browser Application Protocols
+
+#### HTTP - Hypertext Transfer Protocol 
+
+- Uses TCP port 80 by default.
+- Data is transmitted in plain text.
+- HTTP is therefore vulnerable to network interception.
+- An attacker monitoring the network may be able to read the HTTP traffic.
+- Example
+  - When you visit a website 
+
+```
+Web Browser
+     │
+     │ HTTP Request
+     ▼
+Web Server
+     │
+     │ HTTP Response
+     ▼
+Web Browser
+```
+  
+  -  The server can return resources such as: HTML ,JavaScript ,CSS ,Images ,Other web resources
+  -  The browser then interprets these resources and renders the webpage for the user.
+
+#### HTTPS
+
