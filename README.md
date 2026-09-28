@@ -264,11 +264,13 @@
       - [IPv4 Address Structure](#ipv4-address-structure)
         - [What is an Octet?](#what-is-an-octet)
         - [Network Portion and Host Portion](#network-portion-and-host-portion)
+      - [IPv4 Address Classes](#ipv4-address-classes)
       - [IPv4 Address Components](#ipv4-address-components)
         - [IP Address](#ip-address-1)
         - [Subnet Mask](#subnet-mask)
         - [Default Gateway](#default-gateway)
-        - [IPv4 Address Classes](#ipv4-address-classes)
+      - [Subnetting](#subnetting)
+        - [Why Subnetting Is Needed?](#why-subnetting-is-needed)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
       - [Key Characteristics](#key-characteristics)
@@ -3039,30 +3041,7 @@ Octet Octet Octet Octet
 - The exact boundary between network and host cannot be determined from the **IP address** alone.
   - We need **the subnet mask**
 
-#### IPv4 Address Components
-
-![IPv4 Address Components](./static/tutorial_0030.png)
-
-##### IP Address
-
-- Unique logical address assigned to each device on a network
-
-##### Subnet Mask
-
-- The subnet mask tells us which part of an IPv4 address represents:
-  - The network
-  - The host
-
-##### Default Gateway
-
-- The default gateway is typically the IP address of a router on the local network.
-- It allows a device to communicate with other networks
-- If the destination is outside the local subnet, the computer sends the traffic toward the default gateway
-- Is Default Gateway Mandatory? **No**
-  - A device can communicate with devices on its local subnet without a default gateway.
-  - For example, an isolated network could have `PC1 ─── PC2 ─── PC3` with no Internet or external network connection.
-
-##### IPv4 Address Classes
+#### IPv4 Address Classes
 
 - IPv4 originally used a classful addressing system consisting mainly of three classes:
 
@@ -3080,7 +3059,46 @@ Octet Octet Octet Octet
   - There are 256 possible values, because zero is included `2⁸ = 256`
   - The maximum value is `128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255`
 
+#### IPv4 Address Components
 
+![IPv4 Address Components](./static/tutorial_0030.png)
+
+##### IP Address
+
+- Unique logical address assigned to each device on a network
+
+##### Subnet Mask
+
+- The subnet mask tells us which part of an IPv4 address represents:
+  - The network
+  - The host
+
+- Default masks
+
+```
+Class A → 255.0.0.0
+Class B → 255.255.0.0
+Class C → 255.255.255.0
+```
+
+##### Default Gateway
+
+- The default gateway is typically the IP address of a router on the local network.
+- It allows a device to communicate with other networks
+- If the destination is outside the local subnet, the computer sends the traffic toward the default gateway
+- Is Default Gateway Mandatory? **No**
+  - A device can communicate with devices on its local subnet without a default gateway.
+  - For example, an isolated network could have `PC1 ─── PC2 ─── PC3` with no Internet or external network connection.
+
+
+
+#### Subnetting
+
+##### Why Subnetting Is Needed?
+
+- For example, a Class A network can contain approximately 16.7 million addresses, which is far more than many organizations need.
+- Subnetting solves this problem by dividing one large network into multiple smaller networks called subnets.
+- This allows IP address space to be used more efficiently
 
 ### ICMP - Internet Control Message Protocol
 
