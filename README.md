@@ -309,7 +309,9 @@
       - [SMTP vs POP3 vs IMAP](#smtp-vs-pop3-vs-imap)
     - [Web Browser Application Protocols](#web-browser-application-protocols)
       - [HTTP - Hypertext Transfer Protocol](#http---hypertext-transfer-protocol)
-      - [HTTPS](#https)
+      - [HTTPS - HTTP Secure](#https---http-secure)
+        - [Why HTTPS Is Important](#why-https-is-important)
+        - [Internet vs. World Wide Web](#internet-vs-world-wide-web)
 
 # Introduction Network
 
@@ -3534,7 +3536,9 @@ Mail Server ─────┼── Laptop
 - HTTP is therefore vulnerable to network interception.
 - An attacker monitoring the network may be able to read the HTTP traffic.
 - Example
-  - When you visit a website 
+  - When you visit a website (HTTP request)
+  - The server can return resources such as (HTTP response): HTML ,JavaScript ,CSS ,Images ,Other web resources
+  - The browser then interprets these resources and renders the webpage for the user.
 
 ```
 Web Browser
@@ -3548,8 +3552,57 @@ Web Server
 Web Browser
 ```
   
-  -  The server can return resources such as: HTML ,JavaScript ,CSS ,Images ,Other web resources
-  -  The browser then interprets these resources and renders the webpage for the user.
+#### HTTPS - HTTP Secure
 
-#### HTTPS
+- HTTPS protects HTTP communication by using TLS (Transport Layer Security)
+- Uses TCP port 443 by default.
+- Encrypts HTTP traffic.
+- Protects sensitive information from being easily read by someone monitoring the network.
+- Examples of sensitive information include:
+  - Login credentials
+  - Banking information
+  - Personal information
+  - Session cookies
+  - Data submitted through forms
 
+##### Why HTTPS Is Important
+
+- HTTP
+
+```
+Browser ──── plaintext ────> Server
+                 ↑
+            Attacker may
+            read traffic
+```
+
+- HTTPS
+
+```
+Browser ──── encrypted ────> Server
+                 ↑
+            Attacker sees
+            encrypted data
+```
+
+- HTTPS therefore provides important protection against network eavesdropping.  
+
+##### Internet vs. World Wide Web
+
+- Internet
+  - The overall global network infrastructure.
+  - Includes many different services and protocols.
+
+```
+Internet
+├── World Wide Web → HTTP/HTTPS
+├── Email → SMTP/IMAP/POP3
+├── DNS
+├── SSH
+├── FTP
+└── Other services
+```
+
+- World Wide Web (WWW)
+  - A service running on the Internet.
+  - Primarily uses HTTP/HTTPS to access websites and web resources.
