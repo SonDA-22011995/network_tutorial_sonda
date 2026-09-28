@@ -249,6 +249,10 @@
     - [Example](#example)
   - [Network Protocol](#network-protocol-1)
     - [Internet Protocol - IP](#internet-protocol---ip)
+      - [Binary math basic](#binary-math-basic)
+        - [Why Binary Math Matters](#why-binary-math-matters)
+        - [The IPv4 Binary Weight Table](#the-ipv4-binary-weight-table)
+        - [Binary to Decimal](#binary-to-decimal)
       - [What is IP?](#what-is-ip)
       - [What is an IP Addresses?](#what-is-an-ip-addresses)
       - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
@@ -2846,6 +2850,40 @@ Network: 192.168.2.0/24
 ## Network Protocol
 
 ### Internet Protocol - IP
+
+#### Binary math basic
+
+##### Why Binary Math Matters
+
+- IPv4 addresses can be represented in two formats:
+  - Dotted-decimal: `192.168.1.100`
+  - Binary: `11000000.10101000.00000001.01100100`
+- Understanding binary is important because:
+- It helps you understand the internal structure of IPv4 addresses.
+- It is essential for subnetting, an important networking skill
+
+##### The IPv4 Binary Weight Table
+
+```
+| Bit             | 128 | 64 | 32 | 16 |  8 |  4 |  2 |  1 |
+| --------------- | --: | -: | -: | -: | -: | -: | -: | -: |
+| Binary position |  2⁷ | 2⁶ | 2⁵ | 2⁴ | 2³ | 2² | 2¹ | 2⁰ |
+```
+
+##### Binary to Decimal
+
+- Rule for each bit:
+  - 1 → add the corresponding value
+  - 0 → ignore the value
+- Example 1
+  - Convert `10101010`
+  - Only add the values where the bit is 1 `1 × 2^7 + 0 × 2^6 + 1 × 2^5 + 0 × 2^4 + 1 × 2^3 + 0 × 2^2 + 1 × 2^1 + 0 × 2^0 = 128 + 32 + 8 + 2 = 170`
+
+```
+128  64  32  16   8   4   2   1
+ 1   0   1   0    1   0   1   0
+```
+
 
 #### What is IP?
 
