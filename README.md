@@ -252,6 +252,8 @@
       - [What is IP?](#what-is-ip)
       - [What is an IP Addresses?](#what-is-an-ip-addresses)
       - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
+      - [IPv4 Address Structure](#ipv4-address-structure)
+        - [What is an Octet?](#what-is-an-octet)
       - [Characteristics of IP](#characteristics-of-ip)
       - [Packets Can Take Different Paths](#packets-can-take-different-paths)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
@@ -2872,6 +2874,32 @@ Network: 192.168.2.0/24
   - Subnetting
 - IPv6 is more advanced. For basic IT knowledge, an introductory understanding is usually sufficient.
 - Deeper IPv6 knowledge becomes more important for network engineers, especially when pursuing Cisco/Juniper-oriented networking paths
+
+#### IPv4 Address Structure
+
+- An IPv4 address contains: **32 binary bits = 4 octets = 4 bytes**
+- Example:
+  - `192.168.1.131`
+  - The computer internally represents this using binary `11000000.10101000.00000001.10000011`
+
+##### What is an Octet?
+
+- An IPv4 address is divided into four octets:
+
+```
+192 . 168 . 1 . 131
+ ↑     ↑    ↑    ↑
+Octet Octet Octet Octet
+```
+
+- Each octet contains 8 bits:
+
+```
+11000000
+10101000
+00000001
+10000011
+```
 
 #### Characteristics of IP
 
