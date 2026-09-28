@@ -254,8 +254,8 @@
         - [The IPv4 Binary Weight Table](#the-ipv4-binary-weight-table)
         - [Binary to Decimal](#binary-to-decimal)
         - [Decimal to Binary](#decimal-to-binary)
-      - [Decimal Fractions to Binary](#decimal-fractions-to-binary)
-      - [Binary Fractions to Decimal](#binary-fractions-to-decimal)
+        - [Decimal Fractions to Binary](#decimal-fractions-to-binary)
+        - [Binary Fractions to Decimal](#binary-fractions-to-decimal)
       - [What is IP?](#what-is-ip)
       - [What is an IP Addresses?](#what-is-an-ip-addresses)
       - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
@@ -2907,7 +2907,7 @@ Network: 192.168.2.0/24
 
 ![Decimal to Binary](./static/tutorial_0031.png)
 
-#### Decimal Fractions to Binary
+##### Decimal Fractions to Binary
 
 - Multiply the fractional part by 2.
 - Record the integer part of the result (0 or 1).
@@ -2924,7 +2924,7 @@ Network: 192.168.2.0/24
 # Therefore: 0.625₁₀ = 0.101₂
 ```
 
-#### Binary Fractions to Decimal
+##### Binary Fractions to Decimal
 
 - To convert the fractional part of a binary number to decimal:
   - Each position after the binary point represents a negative power of 2
