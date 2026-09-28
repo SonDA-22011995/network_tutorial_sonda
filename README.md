@@ -267,6 +267,7 @@
         - [IP Address](#ip-address-1)
         - [Subnet Mask](#subnet-mask)
         - [Default Gateway](#default-gateway)
+        - [IPv4 Address Classes](#ipv4-address-classes)
       - [Packets Can Take Different Paths](#packets-can-take-different-paths)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
@@ -3057,6 +3058,19 @@ Octet Octet Octet Octet
   - A device can communicate with devices on its local subnet without a default gateway.
   - For example, an isolated network could have `PC1 ─── PC2 ─── PC3` with no Internet or external network connection.
 
+##### IPv4 Address Classes
+
+- IPv4 originally used a classful addressing system consisting mainly of three classes:
+
+| Class | Network Bits | Host Bits | Address Range | Default Subnet Mask | Address Range           |
+| ----- | ------------ | --------- | ------------- | ------------------- |-------------------------|
+| **A** |            8 |        24 | 1–126         | `255.0.0.0`         |`1.0.0.0–126.255.255.255`|
+| **B** |           16 |        16 | 128–191       | `255.255.0.0`       |`128.0.0.0–191.255.255.255`|
+| **C** |           24 |         8 | 192–223       | `255.255.255.0`     |`192.0.0.0 – 223.255.255.255`|
+
+
+- 127 is excluded because it is reserved for a special purpose
+- Class D and Class E also exist, but they are outside the main scope of this lecture.
 
 #### Packets Can Take Different Paths
 
