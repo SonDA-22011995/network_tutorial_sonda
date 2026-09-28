@@ -250,7 +250,8 @@
   - [Network Protocol](#network-protocol-1)
     - [Internet Protocol - IP](#internet-protocol---ip)
       - [What is IP?](#what-is-ip)
-      - [IP Addresses](#ip-addresses)
+      - [What is an IP Addresses?](#what-is-an-ip-addresses)
+      - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
       - [Characteristics of IP](#characteristics-of-ip)
       - [Packets Can Take Different Paths](#packets-can-take-different-paths)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
@@ -2847,14 +2848,30 @@ Network: 192.168.2.0/24
   - Logical addressing → IP addresses
   - Routing → moving packets between different networks
 
-#### IP Addresses
+#### What is an IP Addresses?
 
-IP provides logical addressing. There are two major versions:
+- A logical address assigned to a device.
+- It can be assigned:
+  - Manually → Static IP
+  - Dynamically → DHCP
+- It identifies a device on an IP-based network.
+- There are two major versions:
 
 | Version | Name                        | Example        |
 | ------- | --------------------------- | -------------- |
 | IPv4    | Internet Protocol version 4 | `192.168.1.10` |
 | IPv6    | Internet Protocol version 6 | `2001:db8::1`  |
+
+#### IPv4 vs. IPv6
+
+- IPv4 is still widely used, especially in many LANs.
+- IPv4 is important for IT certifications because you need to understand:
+  - IPv4 address structure
+  - Network and host portions
+  - Subnet masks
+  - Subnetting
+- IPv6 is more advanced. For basic IT knowledge, an introductory understanding is usually sufficient.
+- Deeper IPv6 knowledge becomes more important for network engineers, especially when pursuing Cisco/Juniper-oriented networking paths
 
 #### Characteristics of IP
 
