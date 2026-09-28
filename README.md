@@ -302,6 +302,11 @@
       - [SFTP — SSH File Transfer Protocol](#sftp--ssh-file-transfer-protocol)
       - [TFTP — Trivial File Transfer Protocol](#tftp--trivial-file-transfer-protocol)
       - [FTP vs SFTP vs TFTP](#ftp-vs-sftp-vs-tftp)
+    - [Email Protocols](#email-protocols)
+      - [SMTP — Simple Mail Transfer Protocol](#smtp--simple-mail-transfer-protocol)
+      - [POP3 — Post Office Protocol Version 3](#pop3--post-office-protocol-version-3)
+      - [IMAP — Internet Message Access Protocol](#imap--internet-message-access-protocol)
+      - [SMTP vs POP3 vs IMAP](#smtp-vs-pop3-vs-imap)
 
 # Introduction Network
 
@@ -3439,3 +3444,80 @@ Client ───────────────→ Server
 | Directory navigation | ✅                           | ✅                          | ❌                                  |
 | File management      | ✅                           | ✅                          | Very limited                       |
 | Typical use          | Legacy file transfer        | Secure file administration | Network devices / simple transfers |
+
+### Email Protocols
+
+#### SMTP — Simple Mail Transfer Protocol
+
+- **Purpose**: Send emails.
+- SMTP is used in two main situations:
+  - Sending an email from an email client to a mail server.
+  - Sending an email between mail servers.
+
+| Protocol | Default Port |   Secure Port | Encryption                    | Transport |
+| -------- | -----------: | ------------: | ----------------------------- | --------- |
+| SMTP     |       **25** | **465 / 587** | 465: SSL/TLS, 587: STARTTLS | TCP       |
+
+- **Important**:
+  - Port 25 is traditionally unencrypted and is mainly used for server-to-server SMTP.
+  - Modern email clients typically use:
+    - 465 → SMTP over SSL/TLS
+    - 587 → SMTP with STARTTLS
+  - The email provider determines which port and encryption method should be used.
+
+#### POP3 — Post Office Protocol Version 3
+
+- **Purpose**: Retrieve/download emails from a mail server.
+
+| Protocol | Default Port | Secure Port | Encryption   | Transport |
+| -------- | -----------: | ----------: | ------------ | --------- |
+| POP3     |      **110** |     **995** | 995: SSL/TLS | TCP       |
+
+- The traditional POP3 behavior is:
+  - After downloading, POP3 may delete the emails from the server, depending on configuration.
+  - Therefore, POP3 is less convenient when you want to access the same mailbox from multiple devices.
+
+```
+Server
+ ├── Email A
+ ├── Email B
+ └── Email C
+       │
+       │ POP3 download
+       ▼
+    Laptop
+
+# Emails may be removed from server
+```
+
+#### IMAP — Internet Message Access Protocol
+
+- **Purpose**: Access and synchronize emails while keeping them on the server.
+
+| Protocol | Default Port | Secure Port | Encryption                    | Transport |
+| -------- | -----------: | ----------: | ----------------------------- | --------- |
+| IMAP     |      **143** |     **993** | 143: STARTTLS<br>993: SSL/TLS | TCP       |
+
+- Unlike traditional POP3, IMAP keeps emails on the server.
+  - All devices can access the same mailbox and synchronize its state
+- This makes it suitable for multiple devices:
+
+```
+                 ┌── Desktop
+                 │
+Mail Server ─────┼── Laptop
+                 │
+                 └── Phone
+```
+
+#### SMTP vs POP3 vs IMAP
+
+| Feature               | SMTP           | POP3               | IMAP                         |
+| --------------------- | -------------- | ------------------ | ---------------------------- |
+| Main purpose          | **Send** email | **Retrieve** email | **Access/synchronize** email |
+| Default port          | 25             | 110                | 143                          |
+| Secure port           | 465 / 587      | 995                | 993                          |
+| Transport             | TCP            | TCP                | TCP                          |
+| Keeps email on server | N/A            | Usually no*        | **Yes**                      |
+| Multiple devices      | Not applicable | Limited            | **Excellent**                |
+| Modern usage          | **Yes**        | Less common        | **Very common**              |
