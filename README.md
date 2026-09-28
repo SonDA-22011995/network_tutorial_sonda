@@ -257,6 +257,8 @@
         - [Network Portion and Host Portion](#network-portion-and-host-portion)
       - [IPv4 Address Components](#ipv4-address-components)
         - [IP Address](#ip-address-1)
+        - [Subnet Mask](#subnet-mask)
+        - [Default Gateway](#default-gateway)
       - [Characteristics of IP](#characteristics-of-ip)
       - [Packets Can Take Different Paths](#packets-can-take-different-paths)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
@@ -2926,6 +2928,21 @@ Octet Octet Octet Octet
 ##### IP Address
 
 - Unique logical address assigned to each device on a network
+
+##### Subnet Mask
+
+- The subnet mask tells us which part of an IPv4 address represents:
+  - The network
+  - The host
+
+##### Default Gateway
+
+- The default gateway is typically the IP address of a router on the local network.
+- It allows a device to communicate with other networks
+- If the destination is outside the local subnet, the computer sends the traffic toward the default gateway
+- Is Default Gateway Mandatory? **No**
+  - A device can communicate with devices on its local subnet without a default gateway.
+  - For example, an isolated network could have `PC1 ─── PC2 ─── PC3` with no Internet or external network connection.
 
 #### Characteristics of IP
 
