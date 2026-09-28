@@ -257,6 +257,7 @@
         - [Decimal Fractions to Binary](#decimal-fractions-to-binary)
         - [Binary Fractions to Decimal](#binary-fractions-to-decimal)
       - [What is IP?](#what-is-ip)
+      - [Characteristics of IP](#characteristics-of-ip)
       - [What is an IP Addresses?](#what-is-an-ip-addresses)
       - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
       - [IPv4 Address Structure](#ipv4-address-structure)
@@ -266,7 +267,6 @@
         - [IP Address](#ip-address-1)
         - [Subnet Mask](#subnet-mask)
         - [Default Gateway](#default-gateway)
-      - [Characteristics of IP](#characteristics-of-ip)
       - [Packets Can Take Different Paths](#packets-can-take-different-paths)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
@@ -2955,6 +2955,19 @@ Therefore:
   - Logical addressing → IP addresses
   - Routing → moving packets between different networks
 
+#### Characteristics of IP
+
+| Characteristic               | Description                                                     |
+| ---------------------------- | --------------------------------------------------------------- |
+| **Connectionless**           | IP does not establish a connection before sending packets.      |
+| **Unreliable**               | IP does not guarantee packet delivery.                          |
+| **Best effort**              | IP attempts to deliver packets but provides no guarantee.       |
+| **Independent packets**      | Each packet is handled independently.                           |
+| **No sequencing**            | IP does not ensure packets arrive in the correct order.         |
+| **No error recovery**        | IP does not retransmit lost or corrupted packets.               |
+| **No delivery confirmation** | IP does not check whether the destination received the packet.  |
+| **Supports routing**         | Routers use IP information to forward packets between networks. |
+
 #### What is an IP Addresses?
 
 - A logical address assigned to a device.
@@ -3044,18 +3057,6 @@ Octet Octet Octet Octet
   - A device can communicate with devices on its local subnet without a default gateway.
   - For example, an isolated network could have `PC1 ─── PC2 ─── PC3` with no Internet or external network connection.
 
-#### Characteristics of IP
-
-| Characteristic               | Description                                                     |
-| ---------------------------- | --------------------------------------------------------------- |
-| **Connectionless**           | IP does not establish a connection before sending packets.      |
-| **Unreliable**               | IP does not guarantee packet delivery.                          |
-| **Best effort**              | IP attempts to deliver packets but provides no guarantee.       |
-| **Independent packets**      | Each packet is handled independently.                           |
-| **No sequencing**            | IP does not ensure packets arrive in the correct order.         |
-| **No error recovery**        | IP does not retransmit lost or corrupted packets.               |
-| **No delivery confirmation** | IP does not check whether the destination received the packet.  |
-| **Supports routing**         | Routers use IP information to forward packets between networks. |
 
 #### Packets Can Take Different Paths
 
