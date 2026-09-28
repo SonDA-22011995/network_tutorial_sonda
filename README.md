@@ -258,6 +258,7 @@
         - [Binary Fractions to Decimal](#binary-fractions-to-decimal)
       - [What is IP?](#what-is-ip)
       - [Characteristics of IP](#characteristics-of-ip)
+      - [Packets Can Take Different Paths](#packets-can-take-different-paths)
       - [What is an IP Addresses?](#what-is-an-ip-addresses)
       - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
       - [IPv4 Address Structure](#ipv4-address-structure)
@@ -268,7 +269,6 @@
         - [Subnet Mask](#subnet-mask)
         - [Default Gateway](#default-gateway)
         - [IPv4 Address Classes](#ipv4-address-classes)
-      - [Packets Can Take Different Paths](#packets-can-take-different-paths)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
       - [Key Characteristics](#key-characteristics)
@@ -2969,6 +2969,10 @@ Therefore:
 | **No delivery confirmation** | IP does not check whether the destination received the packet.  |
 | **Supports routing**         | Routers use IP information to forward packets between networks. |
 
+#### Packets Can Take Different Paths
+
+- Because IP works with routing, different packets belonging to the same communication may take different paths.
+
 #### What is an IP Addresses?
 
 - A logical address assigned to a device.
@@ -3071,10 +3075,12 @@ Octet Octet Octet Octet
 
 - 127 is excluded because it is reserved for a special purpose
 - Class D and Class E also exist, but they are outside the main scope of this lecture.
+- Each IPv4 octet contains 8 bits.
+  - Therefore, each octet can contain values from `0 → 255`
+  - There are 256 possible values, because zero is included `2⁸ = 256`
+  - The maximum value is `128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255`
 
-#### Packets Can Take Different Paths
 
-- Because IP works with routing, different packets belonging to the same communication may take different paths.
 
 ### ICMP - Internet Control Message Protocol
 
