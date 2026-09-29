@@ -3195,7 +3195,8 @@ n bits → 2ⁿ
 - It identifies the network itself rather than a specific host.
 - The host portion of the IP address is set to all `0`
 - How to Find the Network Address
-  - IP Address: `192.168.1.25/24`
+  - IP Address: `192.168.1.25/24` in binary is `11000000.10101000.00000001.00011001`
+  - IP Address: `192.168.1.25/24` it is 24 network bits and 8 host bits
   - Set all host bits to `0` is `11000000.10101000.00000001.00000000`
   - Therefore, Network Address = `192.168.1.0`
 
@@ -3255,6 +3256,13 @@ n bits → 2ⁿ
 - They are unregistered and can be freely reused by different organizations.
 - They are intended for internal/private networks.
 - Different homes or companies can use the same private IP ranges without conflict because their networks are separate.
+
+| Class | Private Range                   | Number of Networks | Addresses per Network |
+| ----- | ------------------------------- | ------------------ | --------------------- |
+| **A** | `10.0.0.0 – 10.255.255.255`     |                  1 |            16,777,216 |
+| **B** | `172.16.0.0 – 172.31.255.255`   |                 16 |                65,536 |
+| **C** | `192.168.0.0 – 192.168.255.255` |                256 |                   256 |
+
 
 #### Private vs. Public IP Addresses
 
