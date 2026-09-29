@@ -3203,9 +3203,12 @@ n bits → 2ⁿ
 #### Private IP Addresses
 
 - Private IP addresses are not routable on the public Internet.
+  - Private IP addresses cannot directly communicate across the public Internet.
+  - Therefore, networks commonly use NAT (Network Address Translation) or PAT (Port Address Translation)
 - They are unregistered and can be freely reused by different organizations.
 - They are intended for internal/private networks.
 - Different homes or companies can use the same private IP ranges without conflict because their networks are separate.
+
 
 ### ICMP - Internet Control Message Protocol
 
