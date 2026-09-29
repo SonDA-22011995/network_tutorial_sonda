@@ -270,6 +270,7 @@
           - [Don't Determine the Class From IP Alone](#dont-determine-the-class-from-ip-alone)
           - [CIDR Notation](#cidr-notation)
           - [Calculate the Subnet Mask from CIDR Notation](#calculate-the-subnet-mask-from-cidr-notation)
+          - [Common Subnet Mask Values](#common-subnet-mask-values)
         - [Default Gateway](#default-gateway)
         - [Network Address](#network-address)
         - [Broadcast Address](#broadcast-address)
@@ -3198,6 +3199,26 @@ n bits → 2ⁿ
     - 11111111 = 255
     - 11000000 = 192
 - Therefore: `/26` = `255.255.255.192`
+
+###### Common Subnet Mask Values
+
+|  CIDR | Binary                                | Subnet Mask       |
+
+| ----: | ------------------------------------- | ----------------- |
+
+| `/24` | `11111111.11111111.11111111.00000000` | `255.255.255.0`   |
+
+| `/25` | `11111111.11111111.11111111.10000000` | `255.255.255.128` |
+
+| `/26` | `11111111.11111111.11111111.11000000` | `255.255.255.192` |
+
+| `/27` | `11111111.11111111.11111111.11100000` | `255.255.255.224` |
+
+| `/28` | `11111111.11111111.11111111.11110000` | `255.255.255.240` |
+
+| `/29` | `11111111.11111111.11111111.11111000` | `255.255.255.248` |
+
+| `/30` | `11111111.11111111.11111111.11111100` | `255.255.255.252` |
 
 ##### Default Gateway
 
