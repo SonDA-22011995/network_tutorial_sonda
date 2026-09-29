@@ -280,6 +280,8 @@
         - [Network Structure](#network-structure)
         - [Private IP Addresses](#private-ip-addresses)
         - [Public IP Address](#public-ip-address)
+        - [NAT (Network Address Translation)](#nat-network-address-translation)
+        - [Router Interfaces](#router-interfaces)
       - [Loopback Address](#loopback-address)
         - [What is the Loopback Address?](#what-is-the-loopback-address)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
@@ -3333,7 +3335,41 @@ n bits → 2ⁿ
 192.168.100.11 ── NAT ──> 140.100.100.150
 ```
 
+##### NAT (Network Address Translation)
 
+- NAT translates private IP addresses into a public IP address when devices communicate with the Internet.
+
+
+##### Router Interfaces
+
+- Public interface
+  - Faces the Internet.
+  - Uses a public IP address.
+  - Receives/sends traffic to external networks.
+- Private interface
+  - Faces the internal LAN.
+  - Uses a private IP address.
+  - Communicates with devices inside the network.
+
+```
+                    Internet
+                       |
+                       |
+             Public Interface
+             140.100.100.150
+                       |
+                +-------------+
+                |   Router    |
+                |     NAT     |
+                +-------------+
+                       |
+             Private Interface
+              192.168.100.1
+                       |
+                       |
+                Internal LAN
+              192.168.100.0/24
+```
 
 #### Loopback Address
 
