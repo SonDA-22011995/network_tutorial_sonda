@@ -268,6 +268,8 @@
       - [IPv4 Address Components](#ipv4-address-components)
         - [IP Address](#ip-address-1)
         - [Subnet Mask](#subnet-mask)
+          - [Don't Determine the Class From IP Alone](#dont-determine-the-class-from-ip-alone)
+          - [CIDR Notation](#cidr-notation)
         - [Default Gateway](#default-gateway)
       - [Subnetting](#subnetting)
         - [Why Subnetting Is Needed?](#why-subnetting-is-needed)
@@ -3072,13 +3074,55 @@ Octet Octet Octet Octet
 - The subnet mask tells us which part of an IPv4 address represents:
   - The network
   - The host
+- The subnet mask uses
+  - 1 = Network portion
+  - 0 = Host portion
+- Example
+```
+# Class C:
 
-- Default masks
+# Subnet mask:
+11111111.11111111.11111111.00000000
+|                        | |      |   
+|-------Network----------| |-Host-|
+        24 bits             8 bits
+
+# Class A:
+
+# Subnet mask:
+11111111.00000000.00000000.00000000
+|       |                        |
+|-------Network------------------|
+  8 bits             24 bits
+           Host
+
+
+# Class B:
+
+# Subnet mask:
+11111111.11111111.00000000.00000000
+|                | |              |
+|------Network---| |-----Host-----|
+      16 bits          16 bits
+```
+
+
+###### Don't Determine the Class From IP Alone
+
+- An IP address may originally fall within a Class A, B, or C range, but subnetting can change the subnet mask and divide the original network into smaller networks.
+
+###### CIDR Notation
+
+- CIDR = Classless Inter-Domain Routing
+- CIDR provides a shorthand way to represent the subnet mask.
+- The number after `/` represents the number of network bits.
+- Examples `192.168.1.0/24` means
 
 ```
-Class A → 255.0.0.0
-Class B → 255.255.0.0
-Class C → 255.255.255.0
+# 24 network bits
+# 8 host bits
+
+255.255.255.0
 ```
 
 ##### Default Gateway
