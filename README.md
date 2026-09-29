@@ -3099,6 +3099,13 @@ n bits → 2ⁿ
 128 - 2 = 126 usable host addresses
 ```
 
+| Class       | Network Bits | Host Bits | Default Subnet Mask     | Total Addresses / Network | Usable Host Addresses |
+| ----------- | -----------: | --------: | ----------------------- | ------------------------: | --------------------: |
+| **Class A** |            8 |        24 | `255.0.0.0` (`/8`)      |      2²⁴ = **16,777,216** |        **16,777,214** |
+| **Class B** |           16 |        16 | `255.255.0.0` (`/16`)   |          2¹⁶ = **65,536** |            **65,534** |
+| **Class C** |           24 |         8 | `255.255.255.0` (`/24`) |              2⁸ = **256** |               **254** |
+
+
 #### IPv4 Address Components
 
 ![IPv4 Address Components](./static/tutorial_0030.png)
