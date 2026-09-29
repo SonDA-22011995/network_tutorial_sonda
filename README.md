@@ -261,6 +261,8 @@
         - [What is an Octet?](#what-is-an-octet)
         - [Network Portion and Host Portion](#network-portion-and-host-portion)
       - [IPv4 Address Classes](#ipv4-address-classes)
+      - [Usable IPv4 Addresses](#usable-ipv4-addresses)
+        - [Power of Two](#power-of-two)
       - [IPv4 Address Components](#ipv4-address-components)
         - [IP Address](#ip-address)
         - [Subnet Mask](#subnet-mask)
@@ -3039,6 +3041,43 @@ Octet Octet Octet Octet
   - Therefore, each octet can contain values from `0 → 255`
   - There are 256 possible values, because zero is included `2⁸ = 256`
   - The maximum value is `128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255`
+
+#### Usable IPv4 Addresses 
+
+##### Power of Two
+
+- In binary, the number of possible combinations is calculated using the power of two:
+
+```
+1 bit → 2¹ = 2
+2 bits → 2² = 4
+3 bits → 2³ = 8
+...
+n bits → 2ⁿ
+```
+
+- For networking, understanding powers of two is important because they are used to calculate:
+  - Number of networks
+  - Number of IP addresses
+  - Number of hosts per network
+  - Number of subnets
+  - Number of hosts per subnet
+
+| Power | Value |
+| ----: | ----: |
+|    2¹ |     2 |
+|    2² |     4 |
+|    2³ |     8 |
+|    2⁴ |    16 |
+|    2⁵ |    32 |
+|    2⁶ |    64 |
+|    2⁷ |   128 |
+|    2⁸ |   256 |
+|    2⁹ |   512 |
+|   2¹⁰ | 1,024 |
+|   2¹¹ | 2,048 |
+|   2¹² | 4,096 |
+
 
 #### IPv4 Address Components
 
