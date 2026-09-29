@@ -269,6 +269,7 @@
         - [Subnet Mask](#subnet-mask)
           - [Don't Determine the Class From IP Alone](#dont-determine-the-class-from-ip-alone)
           - [CIDR Notation](#cidr-notation)
+          - [Calculate the Subnet Mask from CIDR Notation](#calculate-the-subnet-mask-from-cidr-notation)
         - [Default Gateway](#default-gateway)
         - [Network Address](#network-address)
         - [Broadcast Address](#broadcast-address)
@@ -284,6 +285,7 @@
         - [Router Interfaces](#router-interfaces)
       - [Loopback Address](#loopback-address)
         - [What is the Loopback Address?](#what-is-the-loopback-address)
+        - [What Does Loopback Mean?](#what-does-loopback-mean)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
       - [Key Characteristics](#key-characteristics)
@@ -3182,6 +3184,21 @@ n bits → 2ⁿ
 255.255.255.0
 ```
 
+###### Calculate the Subnet Mask from CIDR Notation
+
+- IPv4 addresses contain **32 bits**
+- If the CIDR prefix is `/n`:
+- The first **n** bits are set to **1**.
+- The remaining **32 - n** bits are set to **0**
+- Example: `/26`
+  - `11111111.11111111.11111111.11000000`
+  - Convert each octet to decimal:
+    - 11111111 = 255
+    - 11111111 = 255
+    - 11111111 = 255
+    - 11000000 = 192
+- Therefore: `/26` = `255.255.255.192`
+
 ##### Default Gateway
 
 - The default gateway is typically the IP address of a router on the local network.
@@ -3375,7 +3392,37 @@ n bits → 2ⁿ
 
 ##### What is the Loopback Address?
 
+- The loopback address is a special IP address used by a computer to communicate with itself.
+- In IPv4, the loopback range is: `127.0.0.0 - 127.255.255.255`
+- In the traditional IPv4 address classes system **Class A: 1 – 126**
+  - You may notice that 127 is missing.
+  - This is because the entire `127.0.0.0 - 127.255.255.255` range is reserved for loopback
+- The most commonly used loopback address is `127.0.0.1`
+- It is also commonly called `localhost`
 
+##### What Does Loopback Mean?
+
+- Loopback means that network traffic is sent back to the same host.
+- The packet is handled internally by the operating system. It does not need to go through:
+  - Network Interface Card (NIC)
+  - Ethernet/Wi-Fi
+  - Network cable
+  - Router
+  - Switch
+  - Internet
+- Example
+
+```
+Application
+    ↓
+TCP/IP Stack
+    ↓
+127.0.0.1
+    ↓
+TCP/IP Stack
+    ↓
+Application
+```
 
 ### ICMP - Internet Control Message Protocol
 
