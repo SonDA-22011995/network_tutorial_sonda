@@ -270,6 +270,7 @@
           - [Don't Determine the Class From IP Alone](#dont-determine-the-class-from-ip-alone)
           - [CIDR Notation](#cidr-notation)
         - [Default Gateway](#default-gateway)
+        - [Network Address](#network-address)
         - [Broadcast Address](#broadcast-address)
       - [Subnetting](#subnetting)
         - [Why Subnetting Is Needed?](#why-subnetting-is-needed)
@@ -3187,6 +3188,23 @@ n bits → 2ⁿ
 - Is Default Gateway Mandatory? **No**
   - A device can communicate with devices on its local subnet without a default gateway.
   - For example, an isolated network could have `PC1 ─── PC2 ─── PC3` with no Internet or external network connection.
+
+##### Network Address
+
+- A Network Address is the first IP address in a network. 
+- It identifies the network itself rather than a specific host.
+- The host portion of the IP address is set to all `0`
+- How to Find the Network Address
+  - IP Address: `192.168.1.25/24`
+  - Set all host bits to `0` is `11000000.10101000.00000001.00000000`
+  - Therefore, Network Address = `192.168.1.0`
+
+```
+# IP Address 192.168.1.25/24
+
+11000000.10101000.00000001.00011001
+|------- Network --------| |-Host-|                            
+```
 
 ##### Broadcast Address
 
