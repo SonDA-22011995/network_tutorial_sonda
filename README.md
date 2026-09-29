@@ -253,9 +253,9 @@
         - [Binary Fractions to Decimal](#binary-fractions-to-decimal)
       - [What is IP?](#what-is-ip)
       - [Characteristics of IP](#characteristics-of-ip)
-      - [IP Address vs MAC Address](#ip-address-vs-mac-address)
       - [Packets Can Take Different Paths](#packets-can-take-different-paths)
       - [What is an IP Addresses?](#what-is-an-ip-addresses)
+      - [IP Address vs MAC Address](#ip-address-vs-mac-address)
       - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
       - [IPv4 Address Structure](#ipv4-address-structure)
         - [What is an Octet?](#what-is-an-octet)
@@ -2933,25 +2933,6 @@ Therefore:
 | **No delivery confirmation** | IP does not check whether the destination received the packet.  |
 | **Supports routing**         | Routers use IP information to forward packets between networks. |
 
-
-#### IP Address vs MAC Address
-
-| **Category**                 | **IP Address**                                                                                         | **MAC Address**                                                                                              |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| **Definition**               | A **logical address**                                                                                  | A **physical/hardware address** associated with a network interface card (NIC)                               |
-| **OSI Layer**                | **Layer 3 — Network Layer**                                                                            | **Layer 2 — Data Link Layer**                                                                                |
-| **Main Purpose**             | Used for **network-to-network communication**, especially when traffic needs to travel through routers | Used primarily for **communication within a local network (LAN)**                                            |
-| **Communication**            | **Network → Network**                                                                                  | **Device/interface → Device/interface within a local network**                                               |
-| **Main Network Device**      | **Router**                                                                                             | **Switch**                                                                                                   |
-| **Assignment**               | **Static** or **Dynamic**                                                                              | Associated with the **NIC hardware**                                                                         |
-| **Static Assignment**        | Manually configured by a network administrator                                                         | Normally associated with the network interface hardware                                                      |
-| **Dynamic Assignment**       | Automatically assigned by a **DHCP server**                                                            | Not normally assigned by DHCP                                                                                |
-| **Can be spoofed?**          | Yes                                                                                                    | Yes — the OS can spoof a MAC address, but this does not physically change the address stored by the hardware |
-| **Example**                  | `192.168.1.10`                                                                                         | `00:1A:2B:3C:4D:5E`                                                                                          |
-| **Example of communication** | Your home network → Router → Internet → Gmail network → Gmail server                                   | PC → Switch → PC / Printer                                                                                   |
-| **Key concept**              | **Routing**                                                                                            | **Switching**                                                                                                |
-
-
 #### Packets Can Take Different Paths
 
 - Because IP works with routing, different packets belonging to the same communication may take different paths.
@@ -2970,6 +2951,24 @@ Therefore:
 | ------- | --------------------------- | -------------- |
 | IPv4    | Internet Protocol version 4 | `192.168.1.10` |
 | IPv6    | Internet Protocol version 6 | `2001:db8::1`  |
+
+#### IP Address vs MAC Address
+
+| **Category**                 | **IP Address**                                                                                         | **MAC Address**                                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| **Definition**               | A **logical address**                                                                                  | A **physical/hardware address** associated with a network interface card (NIC)                               |
+| **OSI Layer**                | **Layer 3 — Network Layer**                                                                            | **Layer 2 — Data Link Layer**                                                                                |
+| **Main Purpose**             | Used for **network-to-network communication**, especially when traffic needs to travel through routers | Used primarily for **communication within a local network (LAN)**                                            |
+| **Communication**            | **Network → Network**                                                                                  | **Device/interface → Device/interface within a local network**                                               |
+| **Main Network Device**      | **Router**                                                                                             | **Switch**                                                                                                   |
+| **Assignment**               | **Static** or **Dynamic**                                                                              | Associated with the **NIC hardware**                                                                         |
+| **Static Assignment**        | Manually configured by a network administrator                                                         | Normally associated with the network interface hardware                                                      |
+| **Dynamic Assignment**       | Automatically assigned by a **DHCP server**                                                            | Not normally assigned by DHCP                                                                                |
+| **Can be spoofed?**          | Yes                                                                                                    | Yes — the OS can spoof a MAC address, but this does not physically change the address stored by the hardware |
+| **Example**                  | `192.168.1.10`                                                                                         | `00:1A:2B:3C:4D:5E`                                                                                          |
+| **Example of communication** | Your home network → Router → Internet → Gmail network → Gmail server                                   | PC → Switch → PC / Printer                                                                                   |
+| **Key concept**              | **Routing**                                                                                            | **Switching**                                                                                                |
+
 
 #### IPv4 vs. IPv6
 
