@@ -263,6 +263,7 @@
       - [IPv4 Address Classes](#ipv4-address-classes)
       - [Usable IPv4 Addresses](#usable-ipv4-addresses)
         - [Power of Two](#power-of-two)
+        - [Total IP Addresses vs. Usable IP Addresses](#total-ip-addresses-vs-usable-ip-addresses)
       - [IPv4 Address Components](#ipv4-address-components)
         - [IP Address](#ip-address)
         - [Subnet Mask](#subnet-mask)
@@ -3078,6 +3079,25 @@ n bits → 2ⁿ
 |   2¹¹ | 2,048 |
 |   2¹² | 4,096 |
 
+##### Total IP Addresses vs. Usable IP Addresses
+
+- The total number of IP addresses in a network is not the same as the number of usable host addresses.
+- Each IPv4 network **reserves two addresses**:
+  - **Network address** → identifies the network itself
+  - **Broadcast address** → used to send traffic to all hosts in the network
+- Therefore, **Usable Hosts = 2^n - 2**
+  - `n` = number of host bits
+  - `2^n` = total addresses in the block
+  - `-2` = network address + broadcast address
+- Example
+
+```
+# If a network has 7 host bits:
+
+2^7 = 128 total addresses
+
+128 - 2 = 126 usable host addresses
+```
 
 #### IPv4 Address Components
 
