@@ -235,11 +235,6 @@
       - [How ARP works](#how-arp-works)
       - [Viewing the ARP table](#viewing-the-arp-table)
 - [Network - OSI layer 3 - Internet - TCP/IP Layer 2](#network---osi-layer-3---internet---tcpip-layer-2)
-  - [IP Address](#ip-address)
-    - [What is an IP Address?](#what-is-an-ip-address)
-    - [IP Address vs MAC Address](#ip-address-vs-mac-address)
-    - [Internet Protocol version 4 - IPv4](#internet-protocol-version-4---ipv4)
-    - [Internet Protocol version 6 - IPv6](#internet-protocol-version-6---ipv6)
   - [Router](#router)
     - [What Does a Router Do?](#what-does-a-router-do)
     - [Router Uses IP Addresses](#router-uses-ip-addresses)
@@ -258,6 +253,7 @@
         - [Binary Fractions to Decimal](#binary-fractions-to-decimal)
       - [What is IP?](#what-is-ip)
       - [Characteristics of IP](#characteristics-of-ip)
+      - [IP Address vs MAC Address](#ip-address-vs-mac-address)
       - [Packets Can Take Different Paths](#packets-can-take-different-paths)
       - [What is an IP Addresses?](#what-is-an-ip-addresses)
       - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
@@ -266,7 +262,7 @@
         - [Network Portion and Host Portion](#network-portion-and-host-portion)
       - [IPv4 Address Classes](#ipv4-address-classes)
       - [IPv4 Address Components](#ipv4-address-components)
-        - [IP Address](#ip-address-1)
+        - [IP Address](#ip-address)
         - [Subnet Mask](#subnet-mask)
           - [Don't Determine the Class From IP Alone](#dont-determine-the-class-from-ip-alone)
           - [CIDR Notation](#cidr-notation)
@@ -2705,42 +2701,6 @@ Interface: 192.168.56.1 --- 0xb
 
 # Network - OSI layer 3 - Internet - TCP/IP Layer 2
 
-## IP Address
-
-### What is an IP Address?
-
-- IP stands for Internet Protocol.
-- An IP address is a logical address used to identify a device on a network.
-- Unlike a MAC address, an IP address is configured by the operating system/network configuration.
-  - It can be assigned in two main ways:
-    - Automatically -> using DHCP
-    - Manually -> Manually configured. The administrator enters the IP address.
-- Example
-  - Pv4 - 192.168.1.10
-  - IPv6 - 2001:db8::1
-
-### IP Address vs MAC Address
-
-| **Category**                 | **IP Address**                                                                                         | **MAC Address**                                                                                              |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| **Definition**               | A **logical address**                                                                                  | A **physical/hardware address** associated with a network interface card (NIC)                               |
-| **OSI Layer**                | **Layer 3 — Network Layer**                                                                            | **Layer 2 — Data Link Layer**                                                                                |
-| **Main Purpose**             | Used for **network-to-network communication**, especially when traffic needs to travel through routers | Used primarily for **communication within a local network (LAN)**                                            |
-| **Communication**            | **Network → Network**                                                                                  | **Device/interface → Device/interface within a local network**                                               |
-| **Main Network Device**      | **Router**                                                                                             | **Switch**                                                                                                   |
-| **Assignment**               | **Static** or **Dynamic**                                                                              | Associated with the **NIC hardware**                                                                         |
-| **Static Assignment**        | Manually configured by a network administrator                                                         | Normally associated with the network interface hardware                                                      |
-| **Dynamic Assignment**       | Automatically assigned by a **DHCP server**                                                            | Not normally assigned by DHCP                                                                                |
-| **Can be spoofed?**          | Yes                                                                                                    | Yes — the OS can spoof a MAC address, but this does not physically change the address stored by the hardware |
-| **Example**                  | `192.168.1.10`                                                                                         | `00:1A:2B:3C:4D:5E`                                                                                          |
-| **Example of communication** | Your home network → Router → Internet → Gmail network → Gmail server                                   | PC → Switch → PC / Printer                                                                                   |
-| **Key concept**              | **Routing**                                                                                            | **Switching**                                                                                                |
-
-### Internet Protocol version 4 - IPv4
-
-### Internet Protocol version 6 - IPv6
-
-
 ## Router
 
 ### What Does a Router Do?
@@ -2973,6 +2933,25 @@ Therefore:
 | **No delivery confirmation** | IP does not check whether the destination received the packet.  |
 | **Supports routing**         | Routers use IP information to forward packets between networks. |
 
+
+#### IP Address vs MAC Address
+
+| **Category**                 | **IP Address**                                                                                         | **MAC Address**                                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| **Definition**               | A **logical address**                                                                                  | A **physical/hardware address** associated with a network interface card (NIC)                               |
+| **OSI Layer**                | **Layer 3 — Network Layer**                                                                            | **Layer 2 — Data Link Layer**                                                                                |
+| **Main Purpose**             | Used for **network-to-network communication**, especially when traffic needs to travel through routers | Used primarily for **communication within a local network (LAN)**                                            |
+| **Communication**            | **Network → Network**                                                                                  | **Device/interface → Device/interface within a local network**                                               |
+| **Main Network Device**      | **Router**                                                                                             | **Switch**                                                                                                   |
+| **Assignment**               | **Static** or **Dynamic**                                                                              | Associated with the **NIC hardware**                                                                         |
+| **Static Assignment**        | Manually configured by a network administrator                                                         | Normally associated with the network interface hardware                                                      |
+| **Dynamic Assignment**       | Automatically assigned by a **DHCP server**                                                            | Not normally assigned by DHCP                                                                                |
+| **Can be spoofed?**          | Yes                                                                                                    | Yes — the OS can spoof a MAC address, but this does not physically change the address stored by the hardware |
+| **Example**                  | `192.168.1.10`                                                                                         | `00:1A:2B:3C:4D:5E`                                                                                          |
+| **Example of communication** | Your home network → Router → Internet → Gmail network → Gmail server                                   | PC → Switch → PC / Printer                                                                                   |
+| **Key concept**              | **Routing**                                                                                            | **Switching**                                                                                                |
+
+
 #### Packets Can Take Different Paths
 
 - Because IP works with routing, different packets belonging to the same communication may take different paths.
@@ -2980,8 +2959,9 @@ Therefore:
 #### What is an IP Addresses?
 
 - A logical address assigned to a device.
+- Unlike a MAC address, an IP address is configured by the operating system/network configuration.
 - It can be assigned:
-  - Manually → Static IP
+  - Manually → Static IP (Manually configured. The administrator enters the IP address.)
   - Dynamically → DHCP
 - It identifies a device on an IP-based network.
 - There are two major versions:
