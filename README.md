@@ -270,10 +270,17 @@
           - [Don't Determine the Class From IP Alone](#dont-determine-the-class-from-ip-alone)
           - [CIDR Notation](#cidr-notation)
         - [Default Gateway](#default-gateway)
+        - [Broadcast Address](#broadcast-address)
       - [Subnetting](#subnetting)
         - [Why Subnetting Is Needed?](#why-subnetting-is-needed)
-      - [Public IP Addresses](#public-ip-addresses)
-      - [Private IP Addresses](#private-ip-addresses)
+      - [Public IPv4 Addresses](#public-ipv4-addresses)
+      - [Private IPv4 Addresses](#private-ipv4-addresses)
+      - [Private vs. Public IP Addresses](#private-vs-public-ip-addresses)
+        - [Network Structure](#network-structure)
+        - [Private IP Addresses](#private-ip-addresses)
+        - [Public IP Address](#public-ip-address)
+      - [Loopback Address](#loopback-address)
+        - [What is the Loopback Address?](#what-is-the-loopback-address)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
       - [Key Characteristics](#key-characteristics)
@@ -3181,6 +3188,28 @@ n bits → 2ⁿ
   - A device can communicate with devices on its local subnet without a default gateway.
   - For example, an isolated network could have `PC1 ─── PC2 ─── PC3` with no Internet or external network connection.
 
+##### Broadcast Address
+
+- A broadcast address is the last IP address in a network. 
+- It is used to send a packet to all hosts within the same network.
+- Formula To find the broadcast address, set all host bits to `1`
+  - **Broadcast Address = Network bits + all Host bits set to 1**
+
+- Example
+  - Given the network `192.168.0.0/16` 
+    - 16 network bits (For more detail [CIDR Notation](#cidr-notation))
+    - 32 - 16 = 16 host bits (For more detail [IPv4 Address Structure](#ipv4-address-structure))
+  - The subnet mask is `255.255.0.0`
+  - To find the broadcast address, set all host bits to `1` **192.168.255.255**
+
+```
+# The subnet mask 255.255.0.0
+
+11111111.11111111.00000000.00000000
+|---Network-----| |------Host-----|
+    16 bits            16 bits
+```
+
 #### Subnetting
 
 ##### Why Subnetting Is Needed?
@@ -3189,7 +3218,7 @@ n bits → 2ⁿ
 - Subnetting solves this problem by dividing one large network into multiple smaller networks called subnets.
 - This allows IP address space to be used more efficiently
 
-#### Public IP Addresses
+#### Public IPv4 Addresses
 
 - Public IP addresses are routable on the Internet.
 - Must be Globally Unique
@@ -3200,7 +3229,7 @@ n bits → 2ⁿ
 - Organizations had to register public IP addresses.
 - The original classful design eventually caused IPv4 address exhaustion because the number of Internet-connected devices grew rapidly.
 
-#### Private IP Addresses
+#### Private IPv4 Addresses
 
 - Private IP addresses are not routable on the public Internet.
   - Private IP addresses cannot directly communicate across the public Internet.
@@ -3208,6 +3237,82 @@ n bits → 2ⁿ
 - They are unregistered and can be freely reused by different organizations.
 - They are intended for internal/private networks.
 - Different homes or companies can use the same private IP ranges without conflict because their networks are separate.
+
+#### Private vs. Public IP Addresses
+
+##### Network Structure
+
+- A typical SOHO (Small Office/Home Office) network has:
+  - Internal network (LAN) → uses private IP addresses.
+  - SOHO device/router → connects the internal network to the Internet.
+  - External network (Internet) → uses public IP addresses.
+  - The SOHO device can provide several functions:
+    - Router
+    - Wireless Access Point
+    - Firewall
+    - NAT device
+    - Switch
+
+```
+                         INTERNET
+                             │
+                             │
+                   Public IP: 140.100.100.150
+                             │
+                    ┌─────────────────┐
+                    │   SOHO Router   │
+                    │  NAT / Firewall │
+                    └────────┬────────┘
+                             │
+                             │
+                      Private Network
+                      192.168.100.0/24
+                             │
+                    ┌────────┴────────┐
+                    │      Switch     │
+                    └────────┬────────┘
+                             │
+              ┌──────────────┼──────────────┐
+              │              │              │
+           Tablet         Laptop         Smart TV
+       192.168.100.10  192.168.100.11  192.168.100.12
+              │
+           Desktop
+       192.168.100.13
+```
+
+##### Private IP Addresses
+
+- Devices inside the LAN use private IP addresses.
+- These addresses are used for communication inside the local network
+
+- Example:
+  - Network address: 192.168.0.0/16
+  - Broadcast address: 192.168.255.255
+  - Router:     192.168.100.1
+  - Tablet:     192.168.100.10
+  - Laptop:     192.168.100.11
+  - Smart TV:   192.168.100.12
+  - Desktop:    192.168.100.13
+
+##### Public IP Address
+
+- The router has a public IP address on its Internet-facing interface.
+  - This address is visible to systems on the Internet.
+  - Multiple devices inside the network can share the same public IP address
+- Example:
+
+```
+  Private IP                  Public IP 
+192.168.100.11 ── NAT ──> 140.100.100.150
+```
+
+
+
+#### Loopback Address
+
+##### What is the Loopback Address?
+
 
 
 ### ICMP - Internet Control Message Protocol
