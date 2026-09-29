@@ -272,6 +272,8 @@
         - [Default Gateway](#default-gateway)
       - [Subnetting](#subnetting)
         - [Why Subnetting Is Needed?](#why-subnetting-is-needed)
+      - [Public IP Addresses](#public-ip-addresses)
+      - [Private IP Addresses](#private-ip-addresses)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
       - [Key Characteristics](#key-characteristics)
@@ -3179,8 +3181,6 @@ n bits → 2ⁿ
   - A device can communicate with devices on its local subnet without a default gateway.
   - For example, an isolated network could have `PC1 ─── PC2 ─── PC3` with no Internet or external network connection.
 
-
-
 #### Subnetting
 
 ##### Why Subnetting Is Needed?
@@ -3188,6 +3188,24 @@ n bits → 2ⁿ
 - For example, a Class A network can contain approximately 16.7 million addresses, which is far more than many organizations need.
 - Subnetting solves this problem by dividing one large network into multiple smaller networks called subnets.
 - This allows IP address space to be used more efficiently
+
+#### Public IP Addresses
+
+- Public IP addresses are routable on the Internet.
+- Must be Globally Unique
+  - Web Servers
+  - DNS Servers
+  - Routers
+- Originally, the IPv4 Class A, B, and C address spaces were designed primarily for public use.
+- Organizations had to register public IP addresses.
+- The original classful design eventually caused IPv4 address exhaustion because the number of Internet-connected devices grew rapidly.
+
+#### Private IP Addresses
+
+- Private IP addresses are not routable on the public Internet.
+- They are unregistered and can be freely reused by different organizations.
+- They are intended for internal/private networks.
+- Different homes or companies can use the same private IP ranges without conflict because their networks are separate.
 
 ### ICMP - Internet Control Message Protocol
 
