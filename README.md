@@ -3257,11 +3257,11 @@ n bits → 2ⁿ
 - They are intended for internal/private networks.
 - Different homes or companies can use the same private IP ranges without conflict because their networks are separate.
 
-| Class | Private Range                   | Number of Networks | Addresses per Network |
-| ----- | ------------------------------- | ------------------ | --------------------- |
-| **A** | `10.0.0.0 – 10.255.255.255`     |                  1 |            16,777,216 |
-| **B** | `172.16.0.0 – 172.31.255.255`   |                 16 |                65,536 |
-| **C** | `192.168.0.0 – 192.168.255.255` |                256 |                   256 |
+| **Class** | **Private Range**               |   **Network ID** | **Number of Networks** | **Addresses per Network** |
+| --------- | ------------------------------- | ---------------: | ---------------------: | ------------------------: |
+| **A**     | `10.0.0.0 – 10.255.255.255`     |     `10.0.0.0/8` |                      1 |                16,777,216 |
+| **B**     | `172.16.0.0 – 172.31.255.255`   |  `172.16.0.0-172.31.0.0/16` |                     16 |                    65,536 |
+| **C**     | `192.168.0.0 – 192.168.255.255` | `192.168.0.0-192.168.255.0/16` |                    256 |                       256 |
 
 
 #### Private vs. Public IP Addresses
