@@ -287,6 +287,7 @@
       - [Loopback Address](#loopback-address)
         - [What is the Loopback Address?](#what-is-the-loopback-address)
         - [What Does Loopback Mean?](#what-does-loopback-mean)
+        - [Purpose of Loopback](#purpose-of-loopback)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
       - [Key Characteristics](#key-characteristics)
@@ -3436,6 +3437,20 @@ TCP/IP Stack
 TCP/IP Stack
     ↓
 Application
+```
+
+##### Purpose of Loopback
+
+- The main purpose is to test the TCP/IP networking stack of the operating system
+- Example
+
+
+```bash
+ping 127.0.0.1
+
+# If you receive replies: Reply from 127.0.0.1
+# it indicates that the TCP/IP stack on the operating system is functioning.
+# However, it does not prove that the physical network is working.
 ```
 
 ### ICMP - Internet Control Message Protocol
