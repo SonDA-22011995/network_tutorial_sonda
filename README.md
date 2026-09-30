@@ -274,8 +274,6 @@
         - [Default Gateway](#default-gateway)
         - [Network Address](#network-address)
         - [Broadcast Address](#broadcast-address)
-      - [Subnetting](#subnetting)
-        - [Why Subnetting Is Needed?](#why-subnetting-is-needed)
       - [Public IPv4 Addresses](#public-ipv4-addresses)
       - [Private IPv4 Addresses](#private-ipv4-addresses)
       - [Private vs. Public IP Addresses](#private-vs-public-ip-addresses)
@@ -288,6 +286,10 @@
         - [What is the Loopback Address?](#what-is-the-loopback-address)
         - [What Does Loopback Mean?](#what-does-loopback-mean)
         - [Purpose of Loopback](#purpose-of-loopback)
+      - [Subnetting](#subnetting)
+        - [Why Subnetting Is Needed?](#why-subnetting-is-needed)
+        - [Benefits of Subnetting](#benefits-of-subnetting)
+        - [Types of Subnetting](#types-of-subnetting)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
       - [Key Characteristics](#key-characteristics)
@@ -3263,14 +3265,6 @@ n bits → 2ⁿ
     16 bits            16 bits
 ```
 
-#### Subnetting
-
-##### Why Subnetting Is Needed?
-
-- For example, a Class A network can contain approximately 16.7 million addresses, which is far more than many organizations need.
-- Subnetting solves this problem by dividing one large network into multiple smaller networks called subnets.
-- This allows IP address space to be used more efficiently
-
 #### Public IPv4 Addresses
 
 - Public IP addresses are routable on the Internet.
@@ -3451,6 +3445,77 @@ ping 127.0.0.1
 # If you receive replies: Reply from 127.0.0.1
 # it indicates that the TCP/IP stack on the operating system is functioning.
 # However, it does not prove that the physical network is working.
+```
+
+#### Subnetting
+
+##### Why Subnetting Is Needed?
+
+- Subnetting divides a large IP network into multiple smaller networks called subnets.
+- The original classful IPv4 system was inefficient because Class A, B, and C networks had very different sizes:
+  - Class A: ~16.7 million addresses per network
+  - Class B: ~65,000 addresses per network
+  - Class C: ~254 usable host addresses
+- Many organizations need something between these sizes. 
+  - Subnetting allows a large network to be divided into smaller, more appropriate networks
+
+##### Benefits of Subnetting
+
+- Subnetting provides several benefits:
+  - More efficient use of IP addresses
+  - More efficient routing
+  - Improved network security
+  - Logical separation of different groups or systems
+
+##### Types of Subnetting
+
+- FLSM — Fixed-Length Subnet Mask
+  - Every subnet has the same size.
+
+- VLSM — Variable-Length Subnet Mask
+  - Subnets can have different sizes.
+
+```
+# FLSM — Fixed-Length Subnet Mask
+
+192.168.1.0/26
+├── Network:   192.168.1.0
+├── Hosts:     192.168.1.1 - 192.168.1.62
+└── Broadcast: 192.168.1.63
+
+192.168.1.64/26
+├── Network:   192.168.1.64
+├── Hosts:     192.168.1.65 - 192.168.1.126
+└── Broadcast: 192.168.1.127
+
+192.168.1.128/26
+├── Network:   192.168.1.128
+├── Hosts:     192.168.1.129 - 192.168.1.190
+└── Broadcast: 192.168.1.191
+
+192.168.1.192/26
+├── Network:   192.168.1.192
+├── Hosts:     192.168.1.193 - 192.168.1.254
+└── Broadcast: 192.168.1.255
+```
+
+```
+# VLSM — Variable-Length Subnet Mask
+
+192.168.1.0/25
+├── Network:   192.168.1.0
+├── Hosts:     192.168.1.1 - 192.168.1.126
+└── Broadcast: 192.168.1.127
+
+192.168.1.128/26
+├── Network:   192.168.1.128
+├── Hosts:     192.168.1.129 - 192.168.1.190
+└── Broadcast: 192.168.1.191
+
+192.168.1.192/28
+├── Network:   192.168.1.192
+├── Hosts:     192.168.1.193 - 192.168.1.206
+└── Broadcast: 192.168.1.207
 ```
 
 ### ICMP - Internet Control Message Protocol
