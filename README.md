@@ -286,6 +286,10 @@
         - [What is the Loopback Address?](#what-is-the-loopback-address)
         - [What Does Loopback Mean?](#what-does-loopback-mean)
         - [Purpose of Loopback](#purpose-of-loopback)
+      - [How to Determine Whether Two IP Addresses Are on the Same Network](#how-to-determine-whether-two-ip-addresses-are-on-the-same-network)
+        - [Basic rule](#basic-rule)
+        - [How to calculate network IDs](#how-to-calculate-network-ids)
+        - [Example](#example-1)
       - [Subnetting](#subnetting)
         - [Why Subnetting Is Needed?](#why-subnetting-is-needed)
         - [Benefits of Subnetting](#benefits-of-subnetting)
@@ -293,7 +297,8 @@
         - [Calculating the Number of Subnets](#calculating-the-number-of-subnets)
         - [Calculating Hosts per Subnet](#calculating-hosts-per-subnet)
         - [Types of Subnetting](#types-of-subnetting)
-        - [Subnetting a Class C Network into Two Subnets](#subnetting-a-class-c-network-into-two-subnets)
+        - [FLSM - Subnetting a Class C Network into Two Subnets](#flsm---subnetting-a-class-c-network-into-two-subnets)
+        - [FLSM - Subnetting a Class C Network into Four Subnets](#flsm---subnetting-a-class-c-network-into-four-subnets)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
       - [Key Characteristics](#key-characteristics)
@@ -3451,6 +3456,110 @@ ping 127.0.0.1
 # However, it does not prove that the physical network is working.
 ```
 
+#### How to Determine Whether Two IP Addresses Are on the Same Network
+
+##### Basic rule
+
+- Two IP addresses are on the same network if their **Network IDs (or Network Address)** are the same.
+
+##### How to calculate network IDs
+
+- An IPv4 address consists of two logical parts:
+
+```
+# IP Address
+┌────────────────────┬───────────────┐
+│     Network Part   │   Host Part   │
+└────────────────────┴───────────────┘
+```
+
+- The subnet mask tells us where the Network Part ends and the Host Part begins.
+  - The `1` represent the network bits.
+  - The `0` represent the host bits
+- For example
+
+```
+# IP Address:
+192.168.1.10
+
+# Subnet Mask:
+255.255.255.0
+
+# IP Address in binary:
+11000000.10101000.00000001.00001010
+
+# Subnet Mask in binary:
+11111111.11111111.11111111.00000000
+```
+
+- So the Network ID (Network Address) is: `192.168.1.0`
+
+```
+11000000.10101000.00000001.00001010
+11111111.11111111.11111111.00000000
+-----------------------------------
+11000000.10101000.00000001.00000000
+
+192.168.1.0
+```
+
+##### Example
+
+- Given
+
+```
+IP 1:       192.168.1.10
+IP 2:       192.168.2.20
+Subnet:     255.255.255.0
+```
+
+- Determine host bits and network bits
+  - `255.255.255.0 = /24`
+
+```
+255       . 255       . 255       . 0
+11111111  . 11111111  . 11111111  . 00000000
+
+# 24 network bits
+# 8 host bits
+```
+
+- Calculate the Network Address
+  - For IP1 192.168.1.10 -> Network Address = 192.168.1.0
+  - For IP2 192.168.2.20 -> Network Address = 192.168.2.0
+  - They are different -> Different Networks
+
+```
+# IP 1
+
+192       . 168       . 1         . 10
+11000000  . 10101000  . 00000001  . 00001010
+
+255       . 255       . 255       . 0
+11111111  . 11111111  . 11111111  . 00000000
+
+# Network addess
+11000000  . 10101000  . 00000001  . 00000000
+192       . 168       . 1         . 0
+
+```
+
+```
+# IP 2
+
+192       . 168       . 2         . 20
+11000000  . 10101000  . 00000010  . 00010100
+
+255       . 255       . 255       . 0
+11111111  . 11111111  . 11111111  . 00000000
+
+# Network addess
+11000000  . 10101000  . 00000010  . 00000000
+192       . 168       . 2         . 0
+
+```
+
+
 #### Subnetting
 
 ##### Why Subnetting Is Needed?
@@ -3554,7 +3663,7 @@ Network | Subnet | Host Host Host Host Host Host
 └── Broadcast: 192.168.1.207
 ```
 
-##### Subnetting a Class C Network into Two Subnets
+##### FLSM - Subnetting a Class C Network into Two Subnets
 
 - Starting Network
 
@@ -3598,6 +3707,51 @@ CIDR:         /24
     - Hosts:     192.168.1.129 - 192.168.1.254
     - Broadcast: 192.168.1.255
 
+##### FLSM - Subnetting a Class C Network into Four Subnets
+
+- Given:
+
+```
+Network: 192.168.1.0
+Default Class C mask: /24 → 255.255.255.0
+Required subnets: 4
+```
+
+- Borrow host bits
+  - We need 4 subnets 2^n = 4 => Therefore: n = 2
+  - So we borrow 2 host bits
+    - The original `/24` becomes `/26`
+    - New subnet mask `255.255.255.192`
+
+- Calculate addresses per subnet
+  - A `/26` leaves `32 - 26 = 6 host bits`
+  - Total addresses per subnet: `2^6 = 64`
+  - Usable host addresses: `2^6 - 2 = 62`
+    - We subtract 2 because each subnet has: 1 Network Address, 1 Broadcast Address
+
+- The four subnets
+
+```
+192.168.1.0/26
+├── Network:   192.168.1.0
+├── Hosts:     192.168.1.1 - 192.168.1.62
+└── Broadcast: 192.168.1.63
+
+192.168.1.64/26
+├── Network:   192.168.1.64
+├── Hosts:     192.168.1.65 - 192.168.1.126
+└── Broadcast: 192.168.1.127
+
+192.168.1.128/26
+├── Network:   192.168.1.128
+├── Hosts:     192.168.1.129 - 192.168.1.190
+└── Broadcast: 192.168.1.191
+
+192.168.1.192/26
+├── Network:   192.168.1.192
+├── Hosts:     192.168.1.193 - 192.168.1.254
+└── Broadcast: 192.168.1.255
+```
 
 ### ICMP - Internet Control Message Protocol
 
