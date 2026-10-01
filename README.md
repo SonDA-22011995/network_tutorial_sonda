@@ -257,6 +257,8 @@
       - [What is an IP Addresses?](#what-is-an-ip-addresses)
       - [IP Address vs MAC Address](#ip-address-vs-mac-address)
       - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
+      - [Static IP Address](#static-ip-address)
+      - [Dynamic IP Address](#dynamic-ip-address)
       - [IPv4 Address Structure](#ipv4-address-structure)
         - [What is an Octet?](#what-is-an-octet)
         - [Network Portion and Host Portion](#network-portion-and-host-portion)
@@ -3010,6 +3012,36 @@ Therefore:
   - Subnetting
 - IPv6 is more advanced. For basic IT knowledge, an introductory understanding is usually sufficient.
 - Deeper IPv6 knowledge becomes more important for network engineers, especially when pursuing Cisco/Juniper-oriented networking paths
+
+#### Static IP Address
+
+- A static IP address is manually configured by an administrator or user.
+  - The IP address does not change automatically.
+  - It only changes when someone manually reconfigures it.
+  - Static IPs are commonly used for devices that need a predictable address.
+- Typical examples:
+  - Servers/infrastructure → usually Static
+  - DNS servers
+  - Web servers
+  - Network printers
+  - Routers / default gateways
+- Advantages:
+  - Predictable and easy to locate
+  - Easier for administrators to manage
+  - Prevents services from becoming unreachable because an IP changed
+
+#### Dynamic IP Address
+
+- A dynamic IP address is automatically assigned by a mechanism such as:
+  - DHCP (Dynamic Host Configuration Protocol)
+  - APIPA (Automatic Private IP Addressing)
+  - IPv6 Stateless Address Autoconfiguration (SLAAC)
+- Dynamic addresses can change over time.
+- Typical examples
+  - End-user devices → usually Dynamic/DHCP
+  - PCs
+  - Laptops 
+  - Smartphones
 
 #### IPv4 Address Structure
 
