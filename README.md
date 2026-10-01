@@ -256,9 +256,9 @@
       - [Packets Can Take Different Paths](#packets-can-take-different-paths)
       - [What is an IP Addresses?](#what-is-an-ip-addresses)
       - [IP Address vs MAC Address](#ip-address-vs-mac-address)
-      - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
       - [Static IP Address](#static-ip-address)
       - [Dynamic IP Address](#dynamic-ip-address)
+      - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
       - [IPv4 Address Structure](#ipv4-address-structure)
         - [What is an Octet?](#what-is-an-octet)
         - [Network Portion and Host Portion](#network-portion-and-host-portion)
@@ -3001,18 +3001,6 @@ Therefore:
 | **Example of communication** | Your home network → Router → Internet → Gmail network → Gmail server                                   | PC → Switch → PC / Printer                                                                                   |
 | **Key concept**              | **Routing**                                                                                            | **Switching**                                                                                                |
 
-
-#### IPv4 vs. IPv6
-
-- IPv4 is still widely used, especially in many LANs.
-- IPv4 is important for IT certifications because you need to understand:
-  - IPv4 address structure
-  - Network and host portions
-  - Subnet masks
-  - Subnetting
-- IPv6 is more advanced. For basic IT knowledge, an introductory understanding is usually sufficient.
-- Deeper IPv6 knowledge becomes more important for network engineers, especially when pursuing Cisco/Juniper-oriented networking paths
-
 #### Static IP Address
 
 - A static IP address is manually configured by an administrator or user.
@@ -3042,6 +3030,17 @@ Therefore:
   - PCs
   - Laptops 
   - Smartphones
+
+#### IPv4 vs. IPv6
+
+- IPv4 is still widely used, especially in many LANs.
+- IPv4 is important for IT certifications because you need to understand:
+  - IPv4 address structure
+  - Network and host portions
+  - Subnet masks
+  - Subnetting
+- IPv6 is more advanced. For basic IT knowledge, an introductory understanding is usually sufficient.
+- Deeper IPv6 knowledge becomes more important for network engineers, especially when pursuing Cisco/Juniper-oriented networking paths
 
 #### IPv4 Address Structure
 
