@@ -289,6 +289,9 @@
       - [Subnetting](#subnetting)
         - [Why Subnetting Is Needed?](#why-subnetting-is-needed)
         - [Benefits of Subnetting](#benefits-of-subnetting)
+        - [What Happens When We Subnet?](#what-happens-when-we-subnet)
+        - [Calculating the Number of Subnets](#calculating-the-number-of-subnets)
+        - [Calculating Hosts per Subnet](#calculating-hosts-per-subnet)
         - [Types of Subnetting](#types-of-subnetting)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
@@ -3466,6 +3469,38 @@ ping 127.0.0.1
   - More efficient routing
   - Improved network security
   - Logical separation of different groups or systems
+
+
+##### What Happens When We Subnet?
+
+- An IPv4 address consists of: `Network Portion | Host Portion`
+- Subnetting works by borrowing bits from the host portion and using them to create additional subnetworks
+- The important trade-off is:
+  - **More subnet bits → more subnets, but fewer host addresses per subnet.**
+
+```
+# Before subnetting:
+
+Network | Host Host Host Host Host Host Host Host
+
+# After subnetting:
+
+Network | Subnet | Host Host Host Host Host Host
+```
+
+##### Calculating the Number of Subnets
+
+- The number of subnets is calculated using `Number of subnets = 2^X`
+  - `X` = number of borrowed host bits
+
+##### Calculating Hosts per Subnet
+
+- The number of addresses in each subnet is: `Block Size = 2^Y`
+- The number of usable host addresses is: `Usable Hosts = 2^Y - 2`
+  - `Y` =  number of remaining host bits
+  - The `-2` is because:
+    - One address is reserved for the network address
+    - One address is reserved for the broadcast address
 
 ##### Types of Subnetting
 
