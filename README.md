@@ -293,6 +293,7 @@
         - [Calculating the Number of Subnets](#calculating-the-number-of-subnets)
         - [Calculating Hosts per Subnet](#calculating-hosts-per-subnet)
         - [Types of Subnetting](#types-of-subnetting)
+        - [Subnetting a Class C Network into Two Subnets](#subnetting-a-class-c-network-into-two-subnets)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
       - [Key Characteristics](#key-characteristics)
@@ -3552,6 +3553,51 @@ Network | Subnet | Host Host Host Host Host Host
 ├── Hosts:     192.168.1.193 - 192.168.1.206
 └── Broadcast: 192.168.1.207
 ```
+
+##### Subnetting a Class C Network into Two Subnets
+
+- Starting Network
+
+```
+# Given:
+
+# A Class C /24 network has 8 host bits in the last octet
+
+Network:     192.168.1.0
+Default Mask: 255.255.255.0
+CIDR:         /24
+```
+
+- Borrowing Bits
+  - To create 2 subnets, we need: `2^n = number of subnets` => `2^1 = 2`
+  - Therefore, we borrow 1 host bit.
+    - Original:  `/24`
+    - Borrow:     1 bit
+    - New mask:  `/25`
+  - The last octet becomes: `10000000`
+    - which equals: `128`
+    - Subnet Mask: `255.255.255.128`
+    - CIDR: `/25`
+  
+- Hosts per Subnet
+  - After borrowing 1 bit, 7 host bits remain.
+    - `Total addresses = 2^7 = 128 addresses`
+  - Each subnet has
+    - 126 usable host addresses = 128 total addresses - 1 network address - 1 broadcast address
+
+- The Two Subnets
+  - The block size is 128, so the subnet boundaries are:
+    - 192.168.1.0
+    - 192.168.1.128
+  - Subnet 1
+    - Network:   192.168.1.0/25
+    - Hosts:     192.168.1.1 - 192.168.1.126
+    - Broadcast: 192.168.1.127
+  - Subnet 2
+    - Network:   192.168.1.128/25
+    - Hosts:     192.168.1.129 - 192.168.1.254
+    - Broadcast: 192.168.1.255
+
 
 ### ICMP - Internet Control Message Protocol
 
