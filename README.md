@@ -338,6 +338,8 @@
         - [DHCP Server Configuration](#dhcp-server-configuration)
           - [Address Scope / Address Pool](#address-scope--address-pool)
           - [Other DHCP Options](#other-dhcp-options)
+        - [DHCP Relay Agent](#dhcp-relay-agent)
+          - [Why use a relay agent?](#why-use-a-relay-agent)
       - [NTP — Network Time Protocol](#ntp--network-time-protocol)
       - [SNMP — Simple Network Management Protocol](#snmp--simple-network-management-protocol)
       - [LDAP — Lightweight Directory Access Protocol](#ldap--lightweight-directory-access-protocol)
@@ -4214,6 +4216,41 @@ A DHCP server needs to be configured with several important parameters.
   - **DNS servers** — DNS servers clients should use.
   - **MAC address assignments/reservations** — assigning a specific IP address to a particular device based on its MAC address.
   - **Exclusions** — addresses inside a broader scope that DHCP should not assign.
+
+##### DHCP Relay Agent
+
+- A DHCP server does not necessarily need to exist on every subnet
+- A DHCP relay agent forwards DHCP requests and replies between clients and a DHCP server located on a different subnet/network.
+
+```
+Subnet A       Subnet B       Subnet C
+   |              |              |
+   |              |              |
+   +------ DHCP Relay Agents ----+
+                  |
+                  |
+            DHCP Server
+```
+
+###### Why use a relay agent?
+
+- Instead of deploying
+
+```
+Subnet A → DHCP Server
+Subnet B → DHCP Server
+Subnet C → DHCP Server
+```
+
+- You can have
+
+```
+Subnet A ─┐
+Subnet B ─┼→ DHCP Relay → One DHCP Server
+Subnet C ─┘
+```
+
+- This simplifies DHCP administration.
 
 #### NTP — Network Time Protocol
 
