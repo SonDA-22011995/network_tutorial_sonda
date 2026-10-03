@@ -335,6 +335,9 @@
         - [Static IP vs DHCP](#static-ip-vs-dhcp)
         - [Basic DHCP Architecture](#basic-dhcp-architecture)
         - [DORA Process](#dora-process)
+        - [DHCP Server Configuration](#dhcp-server-configuration)
+          - [Address Scope / Address Pool](#address-scope--address-pool)
+          - [Other DHCP Options](#other-dhcp-options)
       - [NTP — Network Time Protocol](#ntp--network-time-protocol)
       - [SNMP — Simple Network Management Protocol](#snmp--simple-network-management-protocol)
       - [LDAP — Lightweight Directory Access Protocol](#ldap--lightweight-directory-access-protocol)
@@ -4135,7 +4138,8 @@ Client ───────────────→ Server
 - Key idea: DHCP automatically configures a device's network settings.
 - Ports: 67 and 68
 - Transport: UDP
-- Purpose: Automatically provides network configuration to devices.
+- Purpose: 
+  - Automatically provides network configuration to devices
 - DHCP can assign:
   - IP address
   - Subnet mask
@@ -4178,6 +4182,9 @@ Client ───────────────→ Server
 
 ##### DORA Process
 
+- When a client is configured to obtain its IP address dynamically, it follows the DORA process:
+  - **Discover → Offer → Request → Acknowledgement**
+
 - The DHCP address-assignment process is commonly remembered as DORA:
 
 | Step  | Name                 | Basic meaning                             |
@@ -4186,6 +4193,27 @@ Client ───────────────→ Server
 | **O** | Offer                | DHCP server offers an IP configuration    |
 | **R** | Request              | Client requests the offered configuration |
 | **A** | Acknowledgment (ACK) | Server confirms the assignment            |
+
+
+##### DHCP Server Configuration
+
+A DHCP server needs to be configured with several important parameters.
+
+###### Address Scope / Address Pool
+
+- The scope defines the range of IP addresses that DHCP can assign to clients.
+  - Example: `192.168.0.20 -> 192.168.0.254`
+  - Addresses between `.20` and `.254` are available for DHCP leases.
+  - Addresses outside this range can be reserved for devices that require static IP addresses, such as servers
+
+###### Other DHCP Options
+
+- A DHCP server can also configure:
+  - **Lease time** — how long a client can use an IP address.
+  - **Default gateway** — the gateway clients use to reach other networks.
+  - **DNS servers** — DNS servers clients should use.
+  - **MAC address assignments/reservations** — assigning a specific IP address to a particular device based on its MAC address.
+  - **Exclusions** — addresses inside a broader scope that DHCP should not assign.
 
 #### NTP — Network Time Protocol
 
