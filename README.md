@@ -3057,6 +3057,17 @@ Therefore:
 - IPv6 is more advanced. For basic IT knowledge, an introductory understanding is usually sufficient.
 - Deeper IPv6 knowledge becomes more important for network engineers, especially when pursuing Cisco/Juniper-oriented networking paths
 
+| Feature               | IPv4                                                | IPv6                                                             |
+| --------------------- | --------------------------------------------------- | ---------------------------------------------------------------- |
+| Address size          | 32 bits                                             | 128 bits                                                         |
+| Address space         | Approximately 4.3 billion                           | Approximately \\(3.4 \times 10^{38}\\)                           |
+| Header size           | Variable, 20–60 bytes                               | Fixed 40-byte base header                                        |
+| Routing               | Less efficient in some scenarios                    | Designed to simplify routing                                     |
+| Address configuration | Manual or DHCP                                      | Manual, DHCPv6, or SLAAC                                         |
+| IPsec                 | Optional                                            | Support is part of the IPv6 specifications; not mandatory to use |
+| Address classes       | Traditional classful addressing exists historically | No Class A, B, or C                                              |
+| Deployment            | Introduced in 1981                                  | Standardized and deployed beginning in the late 1990s            |
+
 #### IPv4 Address Structure
 
 - An IPv4 address contains: **32 binary bits = 4 octets = 4 bytes**
