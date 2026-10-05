@@ -337,6 +337,9 @@
         - [Top-Level Domain (TLD)](#top-level-domain-tld)
           - [Host Names and Subdomains](#host-names-and-subdomains)
         - [DNS Resolution Process](#dns-resolution-process)
+        - [DNS Record Types](#dns-record-types)
+          - [Introduction to DNS Records](#introduction-to-dns-records)
+          - [Common DNS Record Types](#common-dns-record-types)
       - [DHCP - Dynamic Host Configuration Protocol](#dhcp---dynamic-host-configuration-protocol)
         - [Static IP vs DHCP](#static-ip-vs-dhcp)
         - [Basic DHCP Architecture](#basic-dhcp-architecture)
@@ -4291,6 +4294,34 @@ technet.microsoft.com
 - Step 3: Authoritative DNS server
   - The authoritative server can provide the DNS record for `technet.microsoft.com`
   - Which may contain the corresponding IP address.
+
+##### DNS Record Types
+
+###### Introduction to DNS Records
+
+- DNS (Domain Name System) records are stored on DNS servers and provide information about domain names, IP addresses, mail servers, and other network services.
+- Each DNS record type serves a specific purpose. 
+- The most common DNS records are A, AAAA, PTR, CNAME, MX, and NS.
+
+###### Common DNS Record Types
+
+
+| Record Type | Full Name             | Purpose                                                                   |
+| ----------- | --------------------- | ------------------------------------------------------------------------- |
+| A           | Address Record        | Maps a domain name to an IPv4 address.                                    |
+| AAAA        | IPv6 Address Record   | Maps a domain name to an IPv6 address.                                    |
+| PTR         | Pointer Record        | Maps an IP address to a domain name (reverse DNS lookup).                 |
+| CNAME       | Canonical Name Record | Creates an alias that points to another domain name.                      |
+| MX          | Mail Exchange Record  | Specifies the mail servers responsible for receiving emails for a domain. |
+| NS          | Name Server Record    | Identifies the authoritative DNS servers for a domain.                    |
+
+- Examples
+  - A record: example.com → 192.0.2.10
+  - AAAA record: example.com → 2001:db8::10
+  - PTR record: 192.0.2.10 → server.example.com
+  - CNAME record: www.example.com → example.com
+  - MX record: example.com → mail.example.com
+  - NS record: example.com → ns1.example.net
 
 #### DHCP - Dynamic Host Configuration Protocol
 
