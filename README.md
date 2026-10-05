@@ -336,6 +336,7 @@
         - [DNS Hierarchy](#dns-hierarchy)
         - [Top-Level Domain (TLD)](#top-level-domain-tld)
           - [Host Names and Subdomains](#host-names-and-subdomains)
+        - [DNS Resolution Process](#dns-resolution-process)
       - [DHCP - Dynamic Host Configuration Protocol](#dhcp---dynamic-host-configuration-protocol)
         - [Static IP vs DHCP](#static-ip-vs-dhcp)
         - [Basic DHCP Architecture](#basic-dhcp-architecture)
@@ -4188,7 +4189,7 @@ Root
         │
         └── instructoralton.com # Second-Level Domain
               │
-              ├── www # Subdomain
+              ├── www # Subdomain or host name
               ├── mail
               └── hq
                     │
@@ -4254,6 +4255,42 @@ hq.instructoralton.com
 printers.hq.instructoralton.com
 fileserver.hq.instructoralton.com
 ```
+
+##### DNS Resolution Process
+
+- Suppose a client wants to access `technet.microsoft.com`
+  - But its local DNS server doesn't already know the answer
+- The DNS resolution process can involve:
+
+```
+Client
+  ↓
+Local DNS Resolver
+  ↓
+Root DNS Server
+  ↓
+.com DNS Server
+  ↓
+microsoft.com DNS Server
+  ↓
+technet.microsoft.com
+```
+
+- Step 1: Root DNS server
+  - The root server doesn't normally provide the final IP address.
+  - Instead, it tells the resolver: "For `.com`, ask the `.com` TLD servers.
+  - DNS Doesn't Always Start at the Root
+    - If the DNS resolver already knows the answer because of:
+      - Cached DNS information
+      - Its own DNS records
+      - Information obtained previously
+    - then it doesn't need to start from the root.
+- Step 2: `.com` TLD server
+  - It tells the resolver where to find the authoritative DNS servers for: `microsoft.com`
+  - A commonly used **public DNS resolver** is Google's: `8.8.8.8`
+- Step 3: Authoritative DNS server
+  - The authoritative server can provide the DNS record for `technet.microsoft.com`
+  - Which may contain the corresponding IP address.
 
 #### DHCP - Dynamic Host Configuration Protocol
 
