@@ -331,6 +331,11 @@
   - [Network Protocols](#network-protocols)
     - [Management Protocols](#management-protocols)
       - [DNS — Domain Name System](#dns--domain-name-system)
+        - [What is DNS?](#what-is-dns)
+        - [Fully Qualified Domain Name](#fully-qualified-domain-name)
+        - [DNS Hierarchy](#dns-hierarchy)
+        - [Top-Level Domain (TLD)](#top-level-domain-tld)
+          - [Host Names and Subdomains](#host-names-and-subdomains)
       - [DHCP - Dynamic Host Configuration Protocol](#dhcp---dynamic-host-configuration-protocol)
         - [Static IP vs DHCP](#static-ip-vs-dhcp)
         - [Basic DHCP Architecture](#basic-dhcp-architecture)
@@ -340,6 +345,7 @@
           - [Other DHCP Options](#other-dhcp-options)
         - [DHCP Relay Agent](#dhcp-relay-agent)
           - [Why use a relay agent?](#why-use-a-relay-agent)
+        - [APIPA - Automatic Private IP Addressing](#apipa---automatic-private-ip-addressing)
       - [NTP — Network Time Protocol](#ntp--network-time-protocol)
       - [SNMP — Simple Network Management Protocol](#snmp--simple-network-management-protocol)
       - [LDAP — Lightweight Directory Access Protocol](#ldap--lightweight-directory-access-protocol)
@@ -4135,6 +4141,120 @@ Client ───────────────→ Server
 - Modern websites may have multiple IP addresses, especially when using a CDN (Content Delivery Network).
 - DNS can be thought of as the "Internet's phone book."
 
+##### What is DNS?
+
+- DNS (Domain Name System) provides TCP/IP name resolution services.
+- Its fundamental purpose is to translate between:
+  - Domain/host name → IP address — forward lookup
+  - IP address → Domain/host name — reverse lookup
+- DNS works with both:
+  - IPv4
+  - IPv6
+- Example
+
+```
+# forward lookup
+www.google.com → IP address
+
+# reverse lookup
+IP address → www.google.com
+```
+
+##### Fully Qualified Domain Name 
+
+- A Fully Qualified Domain Name (FQDN) identifies a host within the DNS hierarchy.
+- A Fully Qualified Domain Name consists of:
+  - Host name
+  - Domain name
+  - Top-Level Domain (TLD)
+- Example
+
+```
+www.instructoralton.com
+│   │                │
+│   │                └── Top-Level Domain (TLD)
+│   └─────────────────── Domain Name
+└─────────────────────── Host Name
+```
+
+##### DNS Hierarchy
+
+- DNS uses a hierarchical system. A simplified hierarchy is:
+
+```
+Root
+  │
+  └── .com # Top-Level Domain
+        │
+        └── instructoralton.com # Second-Level Domain
+              │
+              ├── www # Subdomain
+              ├── mail
+              └── hq
+                    │
+                    ├── printers # Further subdomain
+                    └── fileserver
+```
+
+- The major levels are
+
+```
+Root
+  ↓
+Top-Level Domain (TLD)
+  ↓
+Second-Level Domain
+  ↓
+Subdomain / Host
+  ↓
+Further subdomains
+```
+
+##### Top-Level Domain (TLD)
+
+- The TLD is the highest visible level of a domain name
+- Example
+
+```
+xxxxx.com
+xxxxx.net
+xxxxx.org
+xxxxx.edu
+xxxxx.mil
+```
+
+- A domain owner can register different domain names under different TLDs if they are available
+
+###### Host Names and Subdomains
+
+- After registering a domain such as `instructoralton.com`
+- You can create multiple DNS names underneath it
+  - `www.instructoralton.com`
+  - `mail.instructoralton.com`
+  - `hq.instructoralton.com`
+- These can point to different servers or services
+
+```
+www.instructoralton.com
+        ↓
+    Web Server
+
+mail.instructoralton.com
+        ↓
+    Mail Server
+
+hq.instructoralton.com
+        ↓
+ Headquarters
+```
+
+- You can create additional levels:
+
+```
+printers.hq.instructoralton.com
+fileserver.hq.instructoralton.com
+```
+
 #### DHCP - Dynamic Host Configuration Protocol
 
 - Key idea: DHCP automatically configures a device's network settings.
@@ -4251,6 +4371,13 @@ Subnet C ─┘
 ```
 
 - This simplifies DHCP administration.
+
+##### APIPA - Automatic Private IP Addressing
+
+- APIPA is used when a client is configured for DHCP but cannot reach a DHCP server
+- Instead of remaining without an IP address, the system automatically assigns itself an address
+  - APIPA range `169.254.0.1 -> 169.254.255.254`
+  - 
 
 #### NTP — Network Time Protocol
 
