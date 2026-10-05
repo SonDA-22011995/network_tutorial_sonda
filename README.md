@@ -258,6 +258,9 @@
       - [IP Address vs MAC Address](#ip-address-vs-mac-address)
       - [Static IP Address](#static-ip-address)
       - [Dynamic IP Address](#dynamic-ip-address)
+      - [Disadvantages of IPv4](#disadvantages-of-ipv4)
+        - [Why Is IPv4 Still Used?](#why-is-ipv4-still-used)
+      - [Advantages of IPv6](#advantages-of-ipv6)
       - [IPv4 vs. IPv6](#ipv4-vs-ipv6)
       - [IPv4 Address Structure](#ipv4-address-structure)
         - [What is an Octet?](#what-is-an-octet)
@@ -3045,6 +3048,32 @@ Therefore:
   - PCs
   - Laptops 
   - Smartphones
+
+#### Disadvantages of IPv4
+
+- IPv4 has several limitations that IPv6 was designed to address.
+- Limited address space: 
+  - IPv4 uses 32-bit addresses, providing approximately 4.3 billion possible addresses. 
+  - The growing number of Internet-connected devices makes this insufficient.
+- Less efficient routing: IPv4 has a variable-length header, which can make packet processing and routing more complex.
+- Optional security: Security mechanisms such as IPsec can be used with IPv4, but they are not mandatory.
+- Increasing demand: Computers, smartphones, smart TVs, and IoT devices all require network connectivity, increasing the demand for IP addresses.
+
+##### Why Is IPv4 Still Used?
+
+- Despite IPv6's advantages, IPv4 remains widely used because several techniques help conserve its address space.
+  - Subnetting: Divides a network into smaller networks, allowing IP addresses to be allocated more efficiently
+  - Private IP addresses: Allow devices within private networks, such as office LANs and home networks, to communicate without each device requiring its own public IP address
+  - Network Address Translation (NAT): Allows multiple devices using private IP addresses to share a public IPv4 address when accessing the Internet.
+
+#### Advantages of IPv6
+
+- IPv6 introduces several improvements over IPv4.
+- Larger address space: IPv6 uses 128-bit addresses, providing 2^128 possible addresses
+- Simplified routing: IPv6 has a fixed 40-byte base header, helping simplify packet processing.
+- Automatic configuration: IPv6 supports Stateless Address Autoconfiguration (SLAAC), allowing devices to configure their own IP addresses without requiring a dedicated DHCP server.
+- Improved security support: IPv6 includes support for IPsec, which provides authentication and encryption capabilities.
+- Simplified addressing: IPv6 eliminates the traditional Class A, Class B, and Class C addressing system used in classful IPv4 networking.
 
 #### IPv4 vs. IPv6
 
