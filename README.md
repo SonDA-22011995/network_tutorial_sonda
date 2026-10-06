@@ -231,6 +231,21 @@
     - [Switch vs. Hub](#switch-vs-hub)
     - [Unmanaged Switches](#unmanaged-switches)
     - [Managed Switches](#managed-switches)
+    - [Access port](#access-port)
+    - [Trunk port](#trunk-port)
+    - [Virtual LANs (VLANs)](#virtual-lans-vlans)
+      - [What Is a VLAN?](#what-is-a-vlan)
+      - [Why Do We Use VLANs?](#why-do-we-use-vlans)
+      - [How VLANs Work Across Multiple Switches](#how-vlans-work-across-multiple-switches)
+    - [Layer 3 Switches](#layer-3-switches)
+      - [What Is a Layer 3 Switch?](#what-is-a-layer-3-switch)
+      - [Layer 2 Switch vs. Layer 3 Switch](#layer-2-switch-vs-layer-3-switch)
+    - [Port Mirroring (SPAN)](#port-mirroring-span)
+      - [What Is Port Mirroring?](#what-is-port-mirroring)
+      - [How Does Port Mirroring Work?](#how-does-port-mirroring-work)
+    - [Power over Ethernet (PoE)](#power-over-ethernet-poe)
+      - [What Is Power over Ethernet?](#what-is-power-over-ethernet)
+      - [Common PoE Devices](#common-poe-devices)
   - [Wireless Access Point (WAP)](#wireless-access-point-wap)
     - [What is a Wireless Access Point?](#what-is-a-wireless-access-point)
     - [WAP is NOT a Router](#wap-is-not-a-router)
@@ -250,6 +265,13 @@
     - [Routers Determine the Best Path](#routers-determine-the-best-path)
     - [A router separates broadcast domains](#a-router-separates-broadcast-domains)
     - [Example](#example)
+  - [Network Address Translation (NAT)](#network-address-translation-nat)
+    - [What Is NAT?](#what-is-nat)
+    - [Benefits of NAT](#benefits-of-nat)
+    - [Type of NAT](#type-of-nat)
+      - [Static NAT](#static-nat)
+      - [Dynamic NAT](#dynamic-nat)
+      - [Port Address Translation (PAT)](#port-address-translation-pat)
   - [Network Protocol](#network-protocol-1)
     - [Internet Protocol - IP](#internet-protocol---ip)
       - [Binary math basic](#binary-math-basic)
@@ -2714,6 +2736,93 @@ Switch
 - Common management protocols include SSH, SNMP, and, on older systems, Telnet. 
   - Telnet is unencrypted and should generally be avoided in favor of SSH.
 
+### Access port
+
+- Typically connects to an end device, such as a PC or printer.
+- Assigned to a single VLAN for ordinary access traffic.
+- Frames sent by the end device are usually untagged.
+- The switch associates incoming frames with the port's configured VLAN.
+
+### Trunk port
+
+- Commonly connects switches to carry multiple VLANs over one link.
+- Carries traffic for multiple VLANs.
+- Uses IEEE 802.1Q tags to identify VLAN membership for tagged frames.
+- Allows the same VLAN to span multiple switches.
+
+### Virtual LANs (VLANs)
+
+#### What Is a VLAN?
+
+- A VLAN (Virtual Local Area Network) is a logical network created within a physical switched network. 
+- It divides one physical LAN into multiple separate logical networks.
+- A managed switch can assign different physical ports to different VLANs, allowing devices to be grouped by department, function, or security requirements rather than physical location.
+
+#### Why Do We Use VLANs?
+
+- Broadcast domain separation: Broadcast traffic in one VLAN is not normally forwarded into another VLAN.
+- Improved security: Departments can be isolated from each other, with access controlled through routing, firewall rules, and other security policies.
+- Logical segmentation: Devices can belong to the same department network even when located on different floors.
+- Better network organization: Administrators can group devices according to business roles rather than physical location.
+- Scalability: Multiple managed switches can carry the same VLANs across a building or campus
+
+#### How VLANs Work Across Multiple Switches
+
+- The switches use a trunk link to carry traffic for both VLANs
+- For example, when an HR computer on Floor 1 sends a frame to an HR computer on Floor 2:
+  - The first switch receives the frame on an access port assigned to VLAN 10.
+  - The switch forwards the frame through the trunk link, tagging it with VLAN ID 10.
+  - The second switch reads the tag and identifies the frame as belonging to VLAN 10.
+  - The second switch forwards the frame through the appropriate VLAN 10 access port.
+
+### Layer 3 Switches
+
+#### What Is a Layer 3 Switch?
+
+- A Layer 3 switch is a managed network switch that supports both:
+  - Layer 2 switching (Data Link Layer): Uses MAC addresses to forward Ethernet frames within a VLAN.
+  - Layer 3 routing (Network Layer): Uses IP addresses to route packets between different networks, including different VLANs.
+
+#### Layer 2 Switch vs. Layer 3 Switch
+
+| Feature                       | Layer 2 Switch                      | Layer 3 Switch                           |
+| ----------------------------- | ----------------------------------- | ---------------------------------------- |
+| OSI layer                     | Layer 2                             | Layers 2 and 3                           |
+| Forwarding information        | MAC addresses                       | MAC addresses and IP routing information |
+| Connect devices within a VLAN | Yes                                 | Yes                                      |
+| Route between VLANs           | No, not by itself                   | Yes                                      |
+| Inter-VLAN routing            | Requires a router or Layer 3 device | Can perform routing directly             |
+| Typical usage                 | LAN connectivity                    | Enterprise LANs and inter-VLAN routing   |
+
+### Port Mirroring (SPAN)
+
+#### What Is Port Mirroring?
+
+- Port mirroring is a feature on managed switches that copies network traffic from one or more source ports (or VLANs) to a designated monitoring port.
+- It is used for network monitoring, diagnostics, and troubleshooting without interrupting normal network communication.
+- Port mirroring is also commonly called SPAN (Switched Port Analyzer), particularly on Cisco switches.
+
+#### How Does Port Mirroring Work?
+
+- The process works as follows:
+  - The administrator selects the source ports or VLANs to monitor.
+  - The switch copies traffic from those sources.
+  - The switch sends the copies to the designated monitoring port.
+  - A monitoring device captures and analyzes the traffic.
+
+### Power over Ethernet (PoE)
+
+#### What Is Power over Ethernet?
+
+- Power over Ethernet (PoE) is a technology that allows Ethernet cables to carry both data and electrical power to network devices.
+- Instead of using separate cables for network connectivity and power, a single Ethernet cable can provide both.
+
+#### Common PoE Devices
+
+- VoIP phones — Voice over IP communication.
+- Wireless access points (APs) — Provide Wi-Fi connectivity.
+- IP security cameras — Enable network video surveillance.
+
 ## Wireless Access Point (WAP)
 
 ### What is a Wireless Access Point?
@@ -2955,6 +3064,53 @@ Network: 192.168.2.0/24
 - Step 5 — Destination network
   - Eventually the packet reaches the destination network.
   - The destination switch then uses MAC addresses to deliver the frame to PC3
+
+## Network Address Translation (NAT)
+
+### What Is NAT?
+
+- Network Address Translation (NAT) is a technique that translates IP addresses, typically allowing devices with private IPv4 addresses to communicate with devices on the public Internet.
+- For example:
+  - Devices in a home network use private IP addresses, while the router uses a public IP address to communicate with the Interne
+
+### Benefits of NAT
+
+- Conserves public IPv4 addresses: Multiple devices can share a public IP address when using PAT.
+- Hides internal addressing: External devices normally see the translated public address rather than the private source address.
+- Supports private networks: Devices can use private IPv4 addresses while accessing public Internet services.
+
+### Type of NAT
+
+#### Static NAT
+
+- Static NAT = One private IP address mapped to one public IP address.
+- The mapping is fixed and remains configured until it is changed.
+- Example:
+  - Private IP: 192.168.1.10	
+  - Public IP: 203.0.113.10
+- A common use case is mapping an internal server to a dedicated public IP address.
+  - The server can be reachable from the Internet if the routing and firewall rules allow it.
+  - The external user connects to the public IP, not the server's private IP.
+  - Each statically mapped device generally requires its own public IP address.
+
+#### Dynamic NAT
+
+- Dynamic NAT = Private IP addresses are mapped to available public IP addresses from a pool.
+- Example: A network has four computers but only three available public IP addresses.
+  - When all three public addresses are in use, the fourth computer cannot obtain a mapping until an address becomes available.
+  - Dynamic NAT can reuse a smaller pool of public addresses across devices that need access at different times. 
+  - However, it does not let all four devices simultaneously use the three addresses through ordinary dynamic NAT alone.
+
+| Device | Private IP   | Public IP Mapping        |
+| ------ | ------------ | ------------------------ |
+| PC 1   | 192.168.1.10 | 203.0.113.10             |
+| PC 2   | 192.168.1.11 | 203.0.113.11             |
+| PC 3   | 192.168.1.12 | 203.0.113.12             |
+| PC 4   | 192.168.1.13 | No address available yet |
+
+#### Port Address Translation (PAT)
+
+
 
 ## Network Protocol
 
