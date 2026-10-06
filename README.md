@@ -218,11 +218,19 @@
     - [What is a Switch?](#what-is-a-switch)
     - [MAC Address Table / CAM Table](#mac-address-table--cam-table)
     - [How a Switch Forwards Data](#how-a-switch-forwards-data)
+    - [MAC Address Learning](#mac-address-learning)
     - [Collision Domains](#collision-domains)
-    - [Security Advantage](#security-advantage)
+      - [What Is a Collision Domain?](#what-is-a-collision-domain)
+      - [Hub — One Collision Domain](#hub--one-collision-domain)
+      - [Switch in Half-Duplex Mode — Multiple Collision Domains](#switch-in-half-duplex-mode--multiple-collision-domains)
+      - [Switch in Full-Duplex Mode — No Collisions](#switch-in-full-duplex-mode--no-collisions)
+      - [How Are Collisions Mitigated?](#how-are-collisions-mitigated)
     - [Broadcast Domain](#broadcast-domain)
+    - [Security Advantage](#security-advantage)
     - [Why the switch can still have one large broadcast domain?](#why-the-switch-can-still-have-one-large-broadcast-domain)
     - [Switch vs. Hub](#switch-vs-hub)
+    - [Unmanaged Switches](#unmanaged-switches)
+    - [Managed Switches](#managed-switches)
   - [Wireless Access Point (WAP)](#wireless-access-point-wap)
     - [What is a Wireless Access Point?](#what-is-a-wireless-access-point)
     - [WAP is NOT a Router](#wap-is-not-a-router)
@@ -314,6 +322,9 @@
           - [IPv6 Data Transmission Types](#ipv6-data-transmission-types)
         - [IPv6 Unicast Address Types](#ipv6-unicast-address-types)
           - [Global Unicast Address](#global-unicast-address)
+          - [Unique Local Address (ULA)](#unique-local-address-ula)
+          - [Link-Local Address](#link-local-address)
+          - [Loopback Address](#loopback-address-1)
           - [Compare types of IPv6 Addresses](#compare-types-of-ipv6-addresses)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
@@ -2534,6 +2545,7 @@ Wireless Access Point
 ### What is a Switch?
 
 - A switch is a network device used to connect multiple devices in a LAN (Local Area Network).
+- It uses MAC addresses to forward Ethernet frames to the appropriate destination port
 - Like a hub, a switch can act as the central connecting device in a star topology.
   - Although a hub and switch may look similar physically, they work very differently internally.
 
@@ -2558,28 +2570,66 @@ PC2 ──── Switch ──── PC3
 PC1 ──> Switch ──> MAC Address Table -> MAC Destination -> Port -> PC4
 ```
 
+- How a Switch Works
+  - Reads the source and destination MAC addresses.
+  - Learns or updates the source MAC address and its associated port.
+  - Looks up the destination MAC address in its MAC address table.
+  - Forwards the frame through the appropriate port if the destination is known.
+
 - Suppose PC1 wants to send data to PC4.
   - The switch checks its MAC/CAM table: `PC4's MAC → Port 4`
   - Therefore, it forwards the frame only through Port 4.
   - Another devices don't receive the frame
 
+### MAC Address Learning
+
+- A switch needs to learn which MAC addresses are reachable through which ports.
+  - Known destination: Forward the frame to the associated port.
+  - Unknown destination: Flood the frame to other ports in the same VLAN.
+  - Broadcast destination: Flood the frame within the VLAN, excluding the incoming port.
+
 ### Collision Domains
 
+#### What Is a Collision Domain?
+
+- A collision domain is a network segment in which data-frame collisions can potentially occur when devices transmit simultaneously.
+- Collisions can occur in traditional Ethernet networks using hubs or switches operating in half-duplex mode.
 - One of the biggest advantages of a switch is that it breaks up collision domains.
-- **Hub**: A hub creates essentially one large collision domain
-- **Switch**: With a switch, each switch port represents a separate collision domain in the traditional Ethernet model
+  - **Hub**: A hub creates essentially one large collision domain
+  - **Switch**: With a switch, each switch port represents a separate collision domain in the traditional Ethernet model
 
-### Security Advantage
+#### Hub — One Collision Domain
 
-- Switches are also more secure than hubs.
-- Remember
-  - A switch does not automatically make a network completely secure. 
-  - There are techniques such as MAC flooding, port mirroring, ARP spoofing, etc., that can affect Layer 2 security.
+- A hub operates as a multiport repeater.
+- Incoming signals are repeated to all other ports.
+- All connected devices share one collision domain.
+- Simultaneous transmissions can cause collisions throughout the shared network segment.
+- As the network grows, collisions can degrade performance.
 
-| **Hub**                                                                                                                    | **Switch**                                                                 |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| Because the hub **repeats the signal to every port**, another device connected to the hub may potentially capture traffic. | The switch normally **forwards the frame only toward the appropriate por** |
+#### Switch in Half-Duplex Mode — Multiple Collision Domains
 
+- Each switch port creates a separate collision domain.
+- A switch forwards frames to the appropriate destination port rather than repeating every frame to all devices.
+- Collisions are confined to the individual collision domain where they occur.
+- This reduces the impact of collisions compared with a hub.
+
+#### Switch in Full-Duplex Mode — No Collisions
+
+- Each device can transmit and receive simultaneously.
+- There is no shared transmission medium competing for access in each direction.
+- Ethernet collisions do not occur during normal full-duplex operation.
+- Full-duplex improves network efficiency and allows simultaneous transmission and reception.
+
+#### How Are Collisions Mitigated?
+
+- CSMA/CD stands for Carrier Sense Multiple Access with Collision Detection.
+- It is a mechanism used by traditional shared Ethernet and half-duplex Ethernet to manage collisions.
+- Its basic process is:
+  - Carrier Sense: Listen to the medium before transmitting.
+  - Multiple Access: Multiple devices share the same medium.
+  - Collision Detection: Detect a collision while transmitting.
+  - Recovery: Stop transmission, wait for a random backoff period, and retry
+- **Note** that CSMA/CD is not needed for normal full-duplex Ethernet because collisions do not occur in that mode
 
 ### Broadcast Domain
 
@@ -2597,6 +2647,18 @@ PC3 → SWITCH ─┼──→ PC4
 ```
 
 - Therefore: **A basic Layer 2 switch = multiple collision domains but one broadcast domain.**
+
+
+### Security Advantage
+
+- Switches are also more secure than hubs.
+- Remember
+  - A switch does not automatically make a network completely secure. 
+  - There are techniques such as MAC flooding, port mirroring, ARP spoofing, etc., that can affect Layer 2 security.
+
+| **Hub**                                                                                                                    | **Switch**                                                                 |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Because the hub **repeats the signal to every port**, another device connected to the hub may potentially capture traffic. | The switch normally **forwards the frame only toward the appropriate por** |
 
 ### Why the switch can still have one large broadcast domain?
 
@@ -2633,6 +2695,24 @@ Switch
 | Traffic            | To all ports    | To destination port  |
 | Collision domains  | **1 large**     | **Multiple smaller** |
 | Modern LANs        | Legacy          | **Standard**         |
+
+### Unmanaged Switches
+
+- An unmanaged switch is a simple network device designed to work without manual configuration or administration.
+  - Typically used in homes and small offices.
+  - Plug-and-play: connect the power and Ethernet cables, and it works.
+  - Requires little to no network administration.
+  - Offers limited monitoring and configuration capabilities.
+  - Generally cheaper than managed switches.
+- Example: Connecting desktop computers, printers, and other wired devices in a home LAN.
+
+### Managed Switches
+
+- A managed switch provides advanced configuration, monitoring, and network management features. 
+  - It is commonly used in business and enterprise networks.
+- Network administrators can configure and manage it through a command-line interface (CLI), web interface, or management software.
+- Common management protocols include SSH, SNMP, and, on older systems, Telnet. 
+  - Telnet is unencrypted and should generally be avoided in favor of SSH.
 
 ## Wireless Access Point (WAP)
 
@@ -3995,6 +4075,28 @@ Required subnets: 4
 - Globally unique and routable across the Internet.
 - Used for communication between devices on different networks.
 - IPv6 Global Unicast addresses belong to the prefix `2000::/3`.
+
+###### Unique Local Address (ULA)
+
+- Similar to a private IPv4 address, such as `192.168.1.10`.
+- Used for internal communication within private networks.
+- Routable within an organization's internal network but not globally routable over the public Internet.
+- Uses the prefix `FC00::/7`; in practice, locally assigned ULAs commonly begin with FD.
+
+###### Link-Local Address
+
+- Similar in purpose to an IPv4 APIPA address, although their operation and use are not identical.
+- Automatically assigned to IPv6 interfaces, or it can be configured manually.
+- Used for communication on the same local network link.
+- Not forwarded by routers to other links.
+- Uses the prefix `FE80::/10`
+
+###### Loopback Address
+
+- IPv6 loopback address: `::1`
+- IPv4 loopback address: `127.0.0.1`
+- Used to test the local device's networking stack without sending traffic to another device.
+- The hostname localhost may resolve to either `127.0.0.1` or `::1`, depending on the system configuration and address selection.
 
 ###### Compare types of IPv6 Addresses
 
