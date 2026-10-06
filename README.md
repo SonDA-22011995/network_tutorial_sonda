@@ -308,6 +308,9 @@
         - [Introduction to IPv6](#introduction-to-ipv6)
         - [IPv6 Address Format](#ipv6-address-format)
           - [Number systems used in IPv6](#number-systems-used-in-ipv6)
+          - [IPv6 Address Components](#ipv6-address-components)
+          - [Simplifying IPv6 Addresses](#simplifying-ipv6-addresses)
+          - [IPv6 CIDR Notation](#ipv6-cidr-notation)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
       - [Key Characteristics](#key-characteristics)
@@ -3890,6 +3893,56 @@ Required subnets: 4
 | 13      | D           | 1101   |
 | 14      | E           | 1110   |
 | 15      | F           | 1111   |
+
+- Why hexadecimal? 
+  - Each hexadecimal digit represents exactly 4 bits, making a 128-bit address more compact and readable than its binary representation.
+
+###### IPv6 Address Components
+
+- An IPv6 address can be divided into network and interface portions
+  - Network ID includes
+    - Site prefix 
+    - Subnet ID
+  - Interface ID
+
+| Component    | Purpose                                                         |
+| ------------ | --------------------------------------------------------------- |
+| Network ID   | Identifies the network portion of the address.                  |
+| Site Prefix  | Used for routing purposes over the Internet.                    |
+| Subnet ID    | Identifies subnets within an internal network.                  |
+| Interface ID | Identifies a network interface within the addressing structure. |
+
+- The Interface ID can be configured automatically using information derived from a MAC address, generated using EUI-64, or configured using DHCP or other supported methods.
+
+###### Simplifying IPv6 Addresses
+
+- Rule 1: Omit leading zeros
+  - Leading zeros in any 16-bit block can be removed.
+
+```
+# Original: 
+2001:0DB8:0000:0000:0370:0000:0000:0001
+
+# Shortened: 
+2001:DB8:0:0:370:0:0:1
+```
+
+- Rule 2: Replace consecutive zero blocks with `::`
+  - A single sequence of consecutive all-zero blocks can be replaced with a double colon.
+  - Important: `::` can be used only once in an IPv6 address
+  - Otherwise, the number of omitted zero blocks would be ambiguous.
+
+```
+# Original: 
+2001:0DB8:0000:0000:0370:0000:0000:0001
+
+# Shortened: 
+2001:DB8::370:0:0:1
+```
+
+###### IPv6 CIDR Notation
+
+
 
 ### ICMP - Internet Control Message Protocol
 
