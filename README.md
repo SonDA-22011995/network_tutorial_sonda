@@ -311,6 +311,10 @@
           - [IPv6 Address Components](#ipv6-address-components)
           - [Simplifying IPv6 Addresses](#simplifying-ipv6-addresses)
           - [IPv6 CIDR Notation](#ipv6-cidr-notation)
+          - [IPv6 Data Transmission Types](#ipv6-data-transmission-types)
+        - [IPv6 Unicast Address Types](#ipv6-unicast-address-types)
+          - [Global Unicast Address](#global-unicast-address)
+          - [Compare types of IPv6 Addresses](#compare-types-of-ipv6-addresses)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
       - [Key Characteristics](#key-characteristics)
@@ -3914,6 +3918,8 @@ Required subnets: 4
 
 - The Interface ID can be configured automatically using information derived from a MAC address, generated using EUI-64, or configured using DHCP or other supported methods.
 
+![IPv6 Address Components](./static/tutorial_0032.png)
+
 ###### Simplifying IPv6 Addresses
 
 - Rule 1: Omit leading zeros
@@ -3942,7 +3948,62 @@ Required subnets: 4
 
 ###### IPv6 CIDR Notation
 
+- IPv6 supports CIDR (Classless Inter-Domain Routing) notation, just like IPv4
+- Unlike traditional IPv4 subnet masks such as `255.255.255.0`, IPv6 commonly expresses the network prefix length directly using CIDR notation.
 
+```
+# The /64 indicates that the first 64 bits represent the network prefix, leaving the remaining 64 bits for the interface identifier under this addressing arrangement
+
+2001:DB8:1234:5678:0000:0000:0000:0001/64
+```
+
+| Prefix length | Network prefix | Remaining bits     |
+| ------------- | -------------- | ------------------ |
+| `/64`         | 64 bits        | 128 − 64 = 64 bits |
+| `/65`         | 65 bits        | 128 − 65 = 63 bits |
+| `/48`         | 48 bits        | 128 − 48 = 80 bits |
+
+###### IPv6 Data Transmission Types
+
+- Unicast — One-to-One
+  - Communication occurs between one source and one destination.
+  - The packet is delivered to a specific network interface.
+  - Unicast works similarly in IPv4 and IPv6.
+
+- Multicast — One-to-Many
+  - One source sends packets to a multicast group.
+  - Only interfaces that are members of the group are intended to receive the multicast traffic.
+  - IPv6 does not use broadcast. Multicast supports many functions that would otherwise require one-to-all delivery.
+
+- Anycast — One-to-One-of-Many
+  - The same anycast address is assigned to multiple network interfaces.
+  - A packet sent to that address is routed to one of those interfaces, typically the nearest according to routing metrics.
+  - It is useful for distributing traffic among multiple servers or routers.
+
+##### IPv6 Unicast Address Types
+
+- IPv6 unicast addresses are used for one-to-one communication between devices. 
+- There are three main types of IPv6 unicast addresses, plus a special loopback address.
+  - Global Unicast
+  - Unique Local
+  - Link-Local
+  - Loopback
+
+###### Global Unicast Address
+
+- Similar to a public IPv4 address.
+- Globally unique and routable across the Internet.
+- Used for communication between devices on different networks.
+- IPv6 Global Unicast addresses belong to the prefix `2000::/3`.
+
+###### Compare types of IPv6 Addresses
+
+| Address Type   | Prefix / Example                                | Purpose                                             | Internet Routable? |
+| -------------- | ----------------------------------------------- | --------------------------------------------------- | ------------------ |
+| Global Unicast | `2000::/3` (commonly starts with `2000`–`3FFF`) | Communication across networks and over the Internet | Yes                |
+| Unique Local   | `FC00::/7` (commonly starts with `FC` or `FD`)  | Private communication within internal networks      | No                 |
+| Link-Local     | `FE80::/10`                                     | Communication within the local network link         | No                 |
+| Loopback       | `::1`                                           | Testing the local device's IPv6 networking stack    | No                 |
 
 ### ICMP - Internet Control Message Protocol
 
