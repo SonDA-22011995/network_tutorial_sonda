@@ -3097,6 +3097,7 @@ Therefore:
 | Address classes       | Traditional classful addressing exists historically | No Class A, B, or C                                              |
 | Deployment            | Introduced in 1981                                  | Standardized and deployed beginning in the late 1990s            |
 
+
 #### IPv4 Address Structure
 
 - An IPv4 address contains: **32 binary bits = 4 octets = 4 bytes**
