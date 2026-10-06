@@ -304,6 +304,10 @@
         - [Types of Subnetting](#types-of-subnetting)
         - [FLSM - Subnetting a Class C Network into Two Subnets](#flsm---subnetting-a-class-c-network-into-two-subnets)
         - [FLSM - Subnetting a Class C Network into Four Subnets](#flsm---subnetting-a-class-c-network-into-four-subnets)
+      - [IPv6](#ipv6)
+        - [Introduction to IPv6](#introduction-to-ipv6)
+        - [IPv6 Address Format](#ipv6-address-format)
+          - [Number systems used in IPv6](#number-systems-used-in-ipv6)
     - [ICMP - Internet Control Message Protocol](#icmp---internet-control-message-protocol)
       - [What is ICMP?](#what-is-icmp)
       - [Key Characteristics](#key-characteristics)
@@ -3839,6 +3843,53 @@ Required subnets: 4
 ├── Hosts:     192.168.1.193 - 192.168.1.254
 └── Broadcast: 192.168.1.255
 ```
+
+#### IPv6
+
+##### Introduction to IPv6
+
+- IPv6 (Internet Protocol version 6) uses 128-bit addresses, compared with IPv4's 32-bit addresses. - IPv6 provides a much larger address space and uses hexadecimal notation to make addresses shorter and easier to read.
+- IPv6 addresses are more complex to understand, so this lecture focuses on their basic structure
+
+##### IPv6 Address Format
+
+- An IPv6 address consists of eight 16-bit hexadecimal blocks, separated by colons `:`
+
+```
+2001:0DB8:0000:0000:0000:0000:0370:0001
+```
+
+- Each hexadecimal block contains four hexadecimal digits, and each digit represents 4 bits.
+  - Therefore `8 * 16 = 128 bits`
+
+###### Number systems used in IPv6
+
+| Number system | Base | Digits used |
+| ------------- | ---- | ----------- |
+| Binary        | 2    | 0–1         |
+| Decimal       | 10   | 0–9         |
+| Hexadecimal   | 16   | 0–9 and A–F |
+
+- Hexadecimal represents decimal values 10–15 using letters
+
+| Decimal | Hexadecimal | Binary |
+| ------- | ----------- | ------ |
+| 0       | 0           | 0000   |
+| 1       | 1           | 0001   |
+| 2       | 2           | 0010   |
+| 3       | 3           | 0011   |
+| 4       | 4           | 0100   |
+| 5       | 5           | 0101   |
+| 6       | 6           | 0110   |
+| 7       | 7           | 0111   |
+| 8       | 8           | 1000   |
+| 9       | 9           | 1001   |
+| 10      | A           | 1010   |
+| 11      | B           | 1011   |
+| 12      | C           | 1100   |
+| 13      | D           | 1101   |
+| 14      | E           | 1110   |
+| 15      | F           | 1111   |
 
 ### ICMP - Internet Control Message Protocol
 
