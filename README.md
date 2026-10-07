@@ -281,6 +281,7 @@
     - [Typical DMZ Network Designs](#typical-dmz-network-designs)
       - [Three-Legged Design](#three-legged-design)
       - [Back-to-Back Configuration (Screened Subnet)](#back-to-back-configuration-screened-subnet)
+    - [How a DMZ Works](#how-a-dmz-works)
   - [Network Protocol](#network-protocol-1)
     - [Internet Protocol - IP](#internet-protocol---ip)
       - [Binary math basic](#binary-math-basic)
@@ -3184,6 +3185,14 @@ Network: 192.168.2.0/24
 - Provides an additional security boundary but requires more equipment and configuration.
 
 ![Back-to-Back Configuration](./static/tutorial_0034.png)
+
+### How a DMZ Works
+
+- An external user sends a request to a public-facing server.
+- The firewall permits the request if it matches the configured security rules.
+- The user accesses the service hosted in the DMZ.
+- The firewall prevents unauthorized access from the DMZ to the internal LAN.
+- Only explicitly permitted traffic can pass between network segments.
 
 ## Network Protocol
 
