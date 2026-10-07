@@ -258,13 +258,14 @@
       - [How ARP works](#how-arp-works)
       - [Viewing the ARP table](#viewing-the-arp-table)
 - [Network - OSI layer 3 - Internet - TCP/IP Layer 2](#network---osi-layer-3---internet---tcpip-layer-2)
-  - [Router](#router)
-    - [What Does a Router Do?](#what-does-a-router-do)
-    - [Router Uses IP Addresses](#router-uses-ip-addresses)
-    - [Router vs Switch](#router-vs-switch)
-    - [Routers Determine the Best Path](#routers-determine-the-best-path)
-    - [A router separates broadcast domains](#a-router-separates-broadcast-domains)
-    - [Example](#example)
+  - [Network device](#network-device)
+    - [Router](#router)
+      - [What Does a Router Do?](#what-does-a-router-do)
+      - [Router Uses IP Addresses](#router-uses-ip-addresses)
+      - [Router vs Switch](#router-vs-switch)
+      - [Routers Determine the Best Path](#routers-determine-the-best-path)
+      - [A router separates broadcast domains](#a-router-separates-broadcast-domains)
+      - [Example](#example)
   - [Network Address Translation (NAT)](#network-address-translation-nat)
     - [What Is NAT?](#what-is-nat)
     - [Benefits of NAT](#benefits-of-nat)
@@ -2951,9 +2952,11 @@ Interface: 192.168.56.1 --- 0xb
 
 # Network - OSI layer 3 - Internet - TCP/IP Layer 2
 
-## Router
+## Network device
 
-### What Does a Router Do?
+### Router
+
+#### What Does a Router Do?
 
 - A router connects different networks together.
 - This is the key difference:
@@ -2978,7 +2981,7 @@ Network A                              Network B
        └────────────────────────────┘
 ```
 
-### Router Uses IP Addresses
+#### Router Uses IP Addresses
 
 - A router operates primarily at: **OSI Layer 3 — Network Layer**
 - It uses **IP addresses** to determine where packets should go.
@@ -2989,7 +2992,7 @@ Network A                              Network B
 | Switch |   Layer 2 | **MAC**      | Forward frames within LAN      |
 | Router |   Layer 3 | **IP**       | Route packets between networks |
 
-### Router vs Switch
+#### Router vs Switch
 
 - **Switch**: "Which port is this MAC address connected to?"
 
@@ -3009,11 +3012,11 @@ PC1 ─── Switch ─── Router ─── Switch ─── PC2
                   IP address
 ```
 
-### Routers Determine the Best Path
+#### Routers Determine the Best Path
 
 - The routers determine an appropriate/best route toward the destination based on their routing information
 
-### A router separates broadcast domains
+#### A router separates broadcast domains
 
 - A router therefore creates a boundary between different Layer 3 networks/broadcast domains.
 
@@ -3027,7 +3030,7 @@ PC1 ─── Switch ─── Router ─── Switch ─── PC2
                      Broadcast Domain B
 ```
 
-### Example
+#### Example
 
 ```
 # When PC1 wants to communicate with PC3:
