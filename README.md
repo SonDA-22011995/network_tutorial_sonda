@@ -282,6 +282,11 @@
       - [Three-Legged Design](#three-legged-design)
       - [Back-to-Back Configuration (Screened Subnet)](#back-to-back-configuration-screened-subnet)
     - [How a DMZ Works](#how-a-dmz-works)
+  - [Port Forwarding - Port Redirection](#port-forwarding---port-redirection)
+    - [What Is Port Forwarding?](#what-is-port-forwarding)
+    - [How Port Forwarding Works](#how-port-forwarding-works)
+    - [Port Forwarding vs. Static NAT](#port-forwarding-vs-static-nat)
+    - [Common Uses](#common-uses)
   - [Network Protocol](#network-protocol-1)
     - [Internet Protocol - IP](#internet-protocol---ip)
       - [Binary math basic](#binary-math-basic)
@@ -3193,6 +3198,60 @@ Network: 192.168.2.0/24
 - The user accesses the service hosted in the DMZ.
 - The firewall prevents unauthorized access from the DMZ to the internal LAN.
 - Only explicitly permitted traffic can pass between network segments.
+
+## Port Forwarding - Port Redirection
+
+### What Is Port Forwarding?
+
+- Port forwarding is a networking technique that allows users on an external network, such as the Internet, to access a specific service or device inside a private LAN.
+- It creates a mapping between:
+  - **Public IP : External Port** → **Private IP : Internal Port**
+- Port forwarding is commonly configured on SOHO (Small Office/Home Office) routers.
+
+### How Port Forwarding Works
+
+- Suppose a home network contains a web server:
+
+| Component | Address |
+|---|---|
+| Router public IP | `203.0.113.10` |
+| Web server private IP | `192.168.1.100` |
+| External port | `80` |
+| Internal port | `80` |
+
+- The router can be configured with
+
+```
+203.0.113.10:80
+        │
+        │ Port Forwarding
+        ▼
+192.168.1.100:80
+```
+
+- When an Internet user sends a request to `http://203.0.113.10:80`
+  - The router recognizes the port-forwarding rule and sends the traffic to `192.168.1.100:80`
+  - The internal web server then processes the request
+
+### Port Forwarding vs. Static NAT
+
+- Port forwarding is closely related to Static NAT, but port forwarding also uses port numbers to determine where traffic should go.
+
+| Static NAT | Port Forwarding |
+|---|---|
+| Maps one IP address to another IP address | Maps an IP + port to another IP + port |
+| `Public IP → Private IP` | `Public IP:Port → Private IP:Port` |
+| Usually exposes an address mapping | Exposes specific services |
+| Example: `203.0.113.10 → 192.168.1.100` | `203.0.113.10:80 → 192.168.1.100:80` |
+
+### Common Uses
+
+- Port forwarding is often used to provide remote access to:
+  - Web servers
+  - Game servers
+  - NAS devices
+  - Remote-access services
+  - Other self-hosted applications
 
 ## Network Protocol
 
