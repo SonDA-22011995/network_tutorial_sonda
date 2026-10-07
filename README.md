@@ -277,6 +277,10 @@
     - [Which Devices Can Perform NAT?](#which-devices-can-perform-nat)
   - [Demilitarized Zone - DMZ](#demilitarized-zone---dmz)
     - [What Is a DMZ?](#what-is-a-dmz)
+    - [Common Services Hosted in a DMZ](#common-services-hosted-in-a-dmz)
+    - [Typical DMZ Network Designs](#typical-dmz-network-designs)
+      - [Three-Legged Design](#three-legged-design)
+      - [Back-to-Back Configuration (Screened Subnet)](#back-to-back-configuration-screened-subnet)
   - [Network Protocol](#network-protocol-1)
     - [Internet Protocol - IP](#internet-protocol---ip)
       - [Binary math basic](#binary-math-basic)
@@ -3153,7 +3157,33 @@ Network: 192.168.2.0/24
   - An insurance company has an internal LAN containing private files, employee information, and internal email servers. 
   - Its public website is placed in a DMZ so that Internet users can access the website without gaining direct access to the internal LAN.
 
+### Common Services Hosted in a DMZ
 
+- These services are isolated from the internal network to reduce the risk of unauthorized access.
+  - Web servers: Host publicly accessible websites.
+  - FTP servers: Provide file downloads, such as software and device drivers.
+  - Email servers or gateways: Handle email services that need to communicate with external networks.
+
+### Typical DMZ Network Designs
+
+#### Three-Legged Design
+
+- Uses one firewall/router with three network interfaces.
+- One interface connects to the Internet, one to the internal LAN, and one to the DMZ.
+- Firewall rules control traffic between all three networks.
+- Requires fewer devices and is generally simpler to deploy.
+
+
+![Three-Legged Design](./static/tutorial_0033.png)
+
+#### Back-to-Back Configuration (Screened Subnet)
+
+- Uses two firewalls, with the DMZ positioned between them.
+- The external firewall controls traffic from the Internet to the DMZ.
+- The internal firewall controls traffic from the DMZ to the internal LAN.
+- Provides an additional security boundary but requires more equipment and configuration.
+
+![Back-to-Back Configuration](./static/tutorial_0034.png)
 
 ## Network Protocol
 
