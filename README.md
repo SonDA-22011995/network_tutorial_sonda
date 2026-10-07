@@ -287,6 +287,7 @@
     - [How Port Forwarding Works](#how-port-forwarding-works)
     - [Port Forwarding vs. Static NAT](#port-forwarding-vs-static-nat)
     - [Common Uses](#common-uses)
+    - [Security Considerations](#security-considerations)
   - [Network Protocol](#network-protocol-1)
     - [Internet Protocol - IP](#internet-protocol---ip)
       - [Binary math basic](#binary-math-basic)
@@ -3252,6 +3253,13 @@ Network: 192.168.2.0/24
   - NAS devices
   - Remote-access services
   - Other self-hosted applications
+
+### Security Considerations
+
+- Port forwarding exposes a service inside the private network to the Internet.
+- Unlike a properly segmented DMZ, the server may still reside on the same LAN as other internal devices
+- If the exposed server is compromised, it may provide an attacker with opportunities to attack other devices on the same network.
+- Therefore, only necessary ports should be forwarded, and exposed services should be properly secured and kept updated.
 
 ## Network Protocol
 
