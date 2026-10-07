@@ -288,6 +288,9 @@
     - [Port Forwarding vs. Static NAT](#port-forwarding-vs-static-nat)
     - [Common Uses](#common-uses)
     - [Security Considerations](#security-considerations)
+  - [Access Control Lists - ACLs](#access-control-lists---acls)
+    - [What is an ACL?](#what-is-an-acl)
+    - [ACL Rules](#acl-rules)
   - [Network Protocol](#network-protocol-1)
     - [Internet Protocol - IP](#internet-protocol---ip)
       - [Binary math basic](#binary-math-basic)
@@ -3260,6 +3263,28 @@ Network: 192.168.2.0/24
 - Unlike a properly segmented DMZ, the server may still reside on the same LAN as other internal devices
 - If the exposed server is compromised, it may provide an attacker with opportunities to attack other devices on the same network.
 - Therefore, only necessary ports should be forwarded, and exposed services should be properly secured and kept updated.
+
+## Access Control Lists - ACLs
+
+### What is an ACL?
+
+- Access Control List (ACL) is a security feature used to create allow/deny rules that filter network traffic.
+- ACLs can be configured on various network devices, including:
+  - Routers
+  - Firewalls
+  - Proxy servers
+  - End-user devices
+- They can control traffic entering or leaving a network
+
+### ACL Rules
+
+- The ACL is applied to the interface connected to the Internet.
+
+| Rule | Destination | Ports | Action | Purpose |
+|---|---|---|---|---|
+| 1 | `192.168.100.0/24` | `0–65535` | **Deny** | Block Internet access to internal network |
+| 2 | `192.168.200.1/24` | `0–79`, `81–65535` | **Deny** | Block all ports on web server except HTTP |
+| 3 | `192.168.200.1/24` | `80` | **Allow** | Allow HTTP access to web server |
 
 ## Network Protocol
 
