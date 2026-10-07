@@ -273,6 +273,10 @@
       - [Static NAT](#static-nat)
       - [Dynamic NAT](#dynamic-nat)
       - [Port Address Translation (PAT)](#port-address-translation-pat)
+        - [How PAT works](#how-pat-works)
+    - [Which Devices Can Perform NAT?](#which-devices-can-perform-nat)
+  - [Demilitarized Zone - DMZ](#demilitarized-zone---dmz)
+    - [What Is a DMZ?](#what-is-a-dmz)
   - [Network Protocol](#network-protocol-1)
     - [Internet Protocol - IP](#internet-protocol---ip)
       - [Binary math basic](#binary-math-basic)
@@ -3078,7 +3082,7 @@ Network: 192.168.2.0/24
 
 ### Benefits of NAT
 
-- Conserves public IPv4 addresses: Multiple devices can share a public IP address when using PAT.
+- Conserves public IPv4 addresses: Multiple devices can share a public IP address when using NAT.
 - Hides internal addressing: External devices normally see the translated public address rather than the private source address.
 - Supports private networks: Devices can use private IPv4 addresses while accessing public Internet services.
 
@@ -3112,6 +3116,42 @@ Network: 192.168.2.0/24
 | PC 4   | 192.168.1.13 | No address available yet |
 
 #### Port Address Translation (PAT)
+
+- PAT = Many private IP addresses share one public IP address by using different port numbers
+- PAT is also known as NAT Overload and is commonly used in home and small office networks
+- Example
+
+| Internal Device | Private IP and Port  | Translated Public IP and Port |
+| --------------- | -------------------- | ----------------------------- |
+| PC 1            | `192.168.1.10:50001` | `203.0.113.10:40001`          |
+| PC 2            | `192.168.1.11:50002` | `203.0.113.10:40002`          |
+| PC 3            | `192.168.1.12:50003` | `203.0.113.10:40003`          |
+| PC 4            | `192.168.1.13:50004` | `203.0.113.10:40004`          |
+
+##### How PAT works
+
+- A computer sends a packet to an Internet server.
+- The router replaces the private source IP with its public IP and assigns or selects a translated source port.
+- The router records the mapping in its NAT/PAT translation table.
+- When the response returns, the router checks the destination public IP and port to identify the correct internal connection.
+- The router translates the destination back to the private IP and port, then forwards the packet to the correct devic
+
+
+### Which Devices Can Perform NAT?
+
+- Routers: The most common device performing NAT in home and business networks.
+- Firewalls: Many firewalls also provide NAT and security policy enforcement.
+- Proxy servers: Can mediate connections between clients and external services, but a proxy is not necessarily performing IP-level NAT.
+
+## Demilitarized Zone - DMZ
+
+### What Is a DMZ?
+
+- A Demilitarized Zone (DMZ) is a perimeter network designed to isolate publicly accessible services from an organization's internal private network (Intranet).
+- The main purpose of a DMZ is to provide access to public-facing resources while protecting the internal network from untrusted users on the Internet.
+- Example: 
+  - An insurance company has an internal LAN containing private files, employee information, and internal email servers. 
+  - Its public website is placed in a DMZ so that Internet users can access the website without gaining direct access to the internal LAN.
 
 
 
