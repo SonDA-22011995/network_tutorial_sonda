@@ -457,6 +457,12 @@
   - [Defense in Depth](#defense-in-depth-1)
     - [What is the Defense in Depth?](#what-is-the-defense-in-depth)
     - [Main Layers of Defense](#main-layers-of-defense)
+  - [Intranet vs Extranet vs Internet](#intranet-vs-extranet-vs-internet)
+    - [Core Concept](#core-concept)
+    - [Internet](#internet)
+    - [Extranet](#extranet)
+    - [Intranet](#intranet)
+    - [Comparison](#comparison-1)
 
 # Introduction Network
 
@@ -5574,3 +5580,92 @@ Organization can hold employee accountable
         │ └─────────────────────────┘ │
         └─────────────────────────────┘
 ```
+
+## Intranet vs Extranet vs Internet
+
+### Core Concept
+
+- Intranet, Extranet, and Internet are different network zones with different levels of trust and security.
+
+### Internet
+
+- The Internet is the public network.
+  - Users are considered untrusted from the organization's security perspective.
+  - The organization does not know who the users are.
+  - Incoming Internet traffic should not be trusted by default.
+  - Internet users should only be allowed to access services that are intentionally exposed.
+
+- Examples:
+  - Public website
+  - Public file download server
+  - Public APIs
+
+```
+Internet
+   ↓
+Untrusted users
+   ↓
+Only explicitly allowed services
+```
+
+### Extranet
+
+- An Extranet is a network zone specifically designed to provide controlled access to business partners.
+- Examples of business partners:
+  - Vendors
+  - Suppliers
+  - Contractors
+  - Third-party companies
+
+```
+Business Partners
+       ↓
+    Internet
+       ↓
+    Firewall
+       ↓
+   EXTRANET
+   Web Portal
+       ↓
+    Firewall
+       X
+   INTRANET
+```
+
+### Intranet
+
+-The Intranet is the organization's private internal network.
+- It contains internal business resources such as:
+  - HR systems
+  - Marketing files
+  - Internal applications
+  - Internal databases
+  - Employee resources
+  - Business-critical systems
+
+```
+                 Company Network
+
+Internet ──→ Extranet ──→ [Controlled Services]
+
+                    X
+                    │
+                    ↓
+              ┌─────────────┐
+              │   INTRANET  │
+              │             │
+              │ HR          │
+              │ Marketing   │
+              │ Databases   │
+              │ Internal    │
+              │ Applications│
+              └─────────────┘
+```
+
+### Comparison
+
+| Network Zone | Users | Trust Level | Typical Purpose |
+|---|---|---|---|
+| **Internet** | General public | 🔴 Untrusted | Public services |
+| **Extranet** | Business partners | 🟠 Controlled / limited trust | Partner portal, vendor access |
+| **Intranet** | Employees / internal systems | 🟢 More trusted | Internal business operations |
