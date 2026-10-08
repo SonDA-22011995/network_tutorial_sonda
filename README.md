@@ -450,6 +450,13 @@
   - [Least Privilege](#least-privilege)
     - [What is Least Privilege?](#what-is-least-privilege)
     - [How Least Privilege Is Implemented](#how-least-privilege-is-implemented)
+  - [Acceptable Use Policy - AUP](#acceptable-use-policy---aup)
+    - [What is an Acceptable Use Policy?](#what-is-an-acceptable-use-policy)
+    - [AUP and Insider Threats](#aup-and-insider-threats)
+    - [Employee Accountability](#employee-accountability)
+  - [Defense in Depth](#defense-in-depth-1)
+    - [What is the Defense in Depth?](#what-is-the-defense-in-depth)
+    - [Main Layers of Defense](#main-layers-of-defense)
 
 # Introduction Network
 
@@ -5492,3 +5499,78 @@ Internet
   - Authentication and authorization
   - Access-control policies
   - Processes and procedures for managing permissions
+
+## Acceptable Use Policy - AUP
+
+### What is an Acceptable Use Policy?
+
+- An Acceptable Use Policy (AUP) is a company policy that defines:
+  - What employees are allowed to do with company IT systems
+  - What employees are not allowed to do
+  - The rules employees must follow when using company technology
+- Employees typically sign the AUP when joining an organization.
+- AUP = Rules defining acceptable and unacceptable use of company IT resources.
+
+### AUP and Insider Threats
+
+- AUP is particularly important for reducing insider threats.
+- An insider threat is not necessarily a malicious employee.
+- It can be:
+
+| Type | Example |
+|---|---|
+| **Malicious** | Employee intentionally steals company data |
+| **Accidental** | Junior administrator accidentally formats a file server |
+| **Negligent / Uninformed** | Employee downloads malware from an unsafe website |
+| **Configuration mistake** | Network administrator accidentally creates a firewall rule that exposes the network |
+
+### Employee Accountability
+
+- The typical process is:
+
+```
+Employee joins company
+        ↓
+Reviews Acceptable Use Policy
+        ↓
+Signs / acknowledges policy
+        ↓
+Uses IT systems according to the rules
+        ↓
+Violation occurs
+        ↓
+Organization can hold employee accountable
+```
+
+## Defense in Depth
+
+### What is the Defense in Depth?
+
+- Defense in Depth (DiD) is an IT security strategy that uses multiple layers of security controls to protect systems, networks, and data.
+- Core idea: If one security layer fails, additional layers remain to prevent or limit an attack.
+
+### Main Layers of Defense
+
+| Layer | Examples | Purpose |
+|---|---|---|
+| **Policies & Procedures** | Security policies, access procedures, incident response | Define how security should be managed |
+| **Physical Security** | Cameras, security guards, fences, locks | Prevent unauthorized physical access |
+| **Perimeter Security** | Firewalls, multiple firewalls, DMZ | Protect the network boundary |
+| **Internal Security** | Additional firewalls, segmentation, access controls | Protect internal networks and systems |
+| **Protected Network** | Critical servers, databases, sensitive systems | Final protected environment |
+
+```
+        ┌─────────────────────────────┐
+        │ Policies & Procedures       │
+        │ ┌─────────────────────────┐ │
+        │ │ Physical Security       │ │
+        │ │ ┌─────────────────────┐ │ │
+        │ │ │ Perimeter Security  │ │ │
+        │ │ │ ┌─────────────────┐ │ │ │
+        │ │ │ │ Protected       │ │ │ │
+        │ │ │ │ Internal Network│ │ │ │
+        │ │ │ └─────────────────┘ │ │ │
+        │ │ └─────────────────────┘ │ │
+        │ └─────────────────────────┘ │
+        └─────────────────────────────┘
+```
