@@ -116,8 +116,9 @@
   - [Firewall](#firewall)
     - [What Is a Firewall?](#what-is-a-firewall)
     - [Two Primary Categories](#two-primary-categories)
-      - [Network-based](#network-based)
-      - [Host-based](#host-based)
+      - [Network-based firewall](#network-based-firewall)
+      - [Host-based firewall](#host-based-firewall)
+      - [A good security strategy uses both](#a-good-security-strategy-uses-both)
     - [Why Use Firewalls?](#why-use-firewalls)
     - [Defense in Depth](#defense-in-depth)
     - [Three Firewall Generations](#three-firewall-generations)
@@ -1645,7 +1646,7 @@ Node A ─── ❌ Node B
 | **Host-based firewall**    | Software firewall             | Individual computer/server   | Windows Defender Firewall |
 
 
-#### Network-based
+#### Network-based firewall
 
 - The firewall sits at a strategic point and controls traffic passing between networks.
 
@@ -1661,7 +1662,7 @@ Internal Network
 PC Server PC
 ```
 
-#### Host-based
+#### Host-based firewall
 
 - The firewall runs directly on the operating system.
   - For example, modern operating systems commonly include a built-in software firewall
@@ -1674,6 +1675,20 @@ PC Server PC
       │  PC     │
       │ Firewall│
       └─────────┘
+```
+
+#### A good security strategy uses both
+
+```
+Internet
+   ↓
+Network Firewall
+   ↓
+Internal Network
+   ↓
+Host Firewall
+   ↓
+Server / PC
 ```
 
 ### Why Use Firewalls?
@@ -1708,26 +1723,29 @@ Marketing       [Firewall 2]
 
 ### Three Firewall Generations
 
-| Generation | Type                                         | Main idea                                                            |
-| ---------- | -------------------------------------------- | -------------------------------------------------------------------- |
-| **1st**    | Packet-filtering firewall                    | Filters based on basic packet information                            |
-| **2nd**    | Circuit-level firewall                       | Monitors TCP sessions/connections                                    |
-| **3rd**    | Application-layer / Next-Generation Firewall | Provides more advanced inspection and application-aware capabilities |
+| Generation | Type                                         | Main idea| OSI Layer |
+| ---------- | -------------------------------------------- |----------|-----------| -------------------------------------------------------------------- |
+| **1st**    | Packet-filtering firewall                    | Filters based on basic packet information (Filter based on IP/port) | L3/L4 |
+| **2nd**    | Circuit-level firewall / Stateful Inspection                      | Monitors TCP sessions/connections| L4 |
+| **3rd**    | Application-layer / Next-Generation Firewall | Provides more advanced inspection and application-aware capabilities | L7 |
 
 
 #### First Generation — Packet Filtering
 
 - This is the most basic type.
 - It applies rules based on information such as:
-  - Source IP
-  - Destination IP
-  - Protocol
-  - Port number
+  - Source IP address
+  - Destination IP address
+  - Source TCP/UDP port
+  - Destination TCP/UDP port
+  - Inbound/outbound direction
 - Example Rule:
   - Source IP     → 192.168.1.50
   - Protocol      → TCP
   - Destination   → Port 80
   - Action        → DENY
+- Stateless
+  - A packet-filtering firewall is generally considered stateless because it does not track whether packets belong to an established/valid connection.
 
 #### Second Generation — Circuit-Level Firewall
 
