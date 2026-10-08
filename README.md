@@ -441,6 +441,15 @@
       - [HTTPS - HTTP Secure](#https---http-secure)
         - [Why HTTPS Is Important](#why-https-is-important)
         - [Internet vs. World Wide Web](#internet-vs-world-wide-web)
+- [Network security](#network-security)
+  - [CIA Triad](#cia-triad)
+    - [What is the CIA Triad?](#what-is-the-cia-triad)
+    - [Confidentiality](#confidentiality)
+    - [Integrity](#integrity)
+    - [Availability](#availability)
+  - [Least Privilege](#least-privilege)
+    - [What is Least Privilege?](#what-is-least-privilege)
+    - [How Least Privilege Is Implemented](#how-least-privilege-is-implemented)
 
 # Introduction Network
 
@@ -5415,3 +5424,71 @@ Internet
 - World Wide Web (WWW)
   - A service running on the Internet.
   - Primarily uses HTTP/HTTPS to access websites and web resources.
+
+# Network security
+
+## CIA Triad
+
+### What is the CIA Triad?
+
+- The CIA Triad is one of the most fundamental concepts in IT security.
+- CIA = Confidentiality + Integrity + Availability
+- It represents three key security objectives that must be balanced.
+
+| Principle | Goal | Key Question |
+|---|---|---|
+| **Confidentiality** | Prevent unauthorized access to data | **Who can access the data?** |
+| **Integrity** | Prevent unauthorized modification of data | **Has the data been changed?** |
+| **Availability** | Ensure data/services are accessible when needed | **Can authorized users access it when needed?** |
+
+
+### Confidentiality
+
+- Confidentiality means protecting data from unauthorized access or disclosure.
+- The goal is to ensure that only authorized people can access sensitive information.
+- Example:
+  - HR has a file server containing employee information.
+  - Marketing employees should not be able to access HR files.
+  - We use authentication and access controls to restrict access to authorized HR users.
+
+### Integrity
+
+- Integrity means ensuring that data has not been improperly modified, corrupted, or tampered with.
+- Integrity applies to both:
+  - Data at rest → data stored on a server
+  - Data in transit → data moving across a network
+- Example: Hashing - A website may provide a file together with a hash value.
+  - After downloading the file
+  - Calculate the hash of the downloaded file.
+  - Compare it with the hash provided by the website.
+  - If they match → the file has most likely not been modified.
+  - If they don't match → the file may have been altered or corrupted.
+
+### Availability
+
+- Availability means ensuring that authorized users can access data and services when they need them.
+- This is particularly important from a business perspective.
+- Security cannot simply lock everything down. A company still needs to operate.
+- For example
+  - Employees need access to business applications.
+  - Customers need access to websites.
+  - Administrators need access to servers.
+  - Applications need access to databases.
+
+## Least Privilege
+
+### What is Least Privilege?
+
+- Least Privilege is a fundamental IT security principle where a user, system, process, or application is given only the permissions necessary to perform its assigned tasks — and nothing more.
+- Least Privilege = Minimum permissions required to do the job
+  - The goal is to reduce the potential damage caused by mistakes, compromised accounts, or malicious activity.
+
+### How Least Privilege Is Implemented
+
+- Organizations commonly use:
+  - Security groups
+  - Role-based access
+  - Standardized user accounts
+  - Authentication and authorization
+  - Access-control policies
+  - Processes and procedures for managing permissions
