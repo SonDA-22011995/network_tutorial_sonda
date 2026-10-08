@@ -1723,12 +1723,11 @@ Marketing       [Firewall 2]
 
 ### Three Firewall Generations
 
-| Generation | Type                                         | Main idea| OSI Layer |
-| ---------- | -------------------------------------------- |----------|-----------| -------------------------------------------------------------------- |
-| **1st**    | Packet-filtering firewall                    | Filters based on basic packet information (Filter based on IP/port) | L3/L4 |
-| **2nd**    | Circuit-level firewall / Stateful Inspection                      | Monitors TCP sessions/connections| L4 |
-| **3rd**    | Application-layer / Next-Generation Firewall | Provides more advanced inspection and application-aware capabilities | L7 |
-
+| Generation | Type | Main Idea | OSI Layer |
+|---|---|---|---|
+| **1st** | Packet-filtering firewall | Filters based on basic packet information (IP address/port) | L3/L4 |
+| **2nd** | Circuit-level firewall / Stateful Inspection | Monitors TCP sessions/connections | L4 |
+| **3rd** | Application-layer / Next-Generation Firewall | Provides more advanced inspection and application-aware capabilities | L7 |
 
 #### First Generation — Packet Filtering
 
