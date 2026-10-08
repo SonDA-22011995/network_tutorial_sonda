@@ -463,6 +463,14 @@
     - [Extranet](#extranet)
     - [Intranet](#intranet)
     - [Comparison](#comparison-1)
+  - [VPN - Virtual Private Network](#vpn---virtual-private-network)
+    - [What is the VPN?](#what-is-the-vpn)
+    - [How a VPN Works](#how-a-vpn-works)
+    - [Business VPN Types](#business-vpn-types)
+      - [Client-to-Site VPN or Remote Access VPN](#client-to-site-vpn-or-remote-access-vpn)
+      - [Site-to-Site VPN or Intranet VPN](#site-to-site-vpn-or-intranet-vpn)
+      - [VPN Device](#vpn-device)
+  - [Firewalls](#firewalls)
 
 # Introduction Network
 
@@ -1631,10 +1639,10 @@ Node A ─── ❌ Node B
 
 - There are two major categories:
 
-| Type                       | Also called                   | Protects                     |
-| -------------------------- | ----------------------------- | ---------------------------- |
-| **Network-based firewall** | Hardware / Appliance firewall | A network or network segment |
-| **Host-based firewall**    | Software firewall             | Individual computer/server   |
+| Type                       | Also called                   | Protects                     | Example             |
+| -------------------------- | ----------------------------- | ---------------------------- | ---------------|
+| **Network-based firewall** | Hardware / Appliance firewall | A network or network segment | FortiGate, Cisco Firewall |
+| **Host-based firewall**    | Software firewall             | Individual computer/server   | Windows Defender Firewall |
 
 
 #### Network-based
@@ -5669,3 +5677,74 @@ Internet ──→ Extranet ──→ [Controlled Services]
 | **Internet** | General public | 🔴 Untrusted | Public services |
 | **Extranet** | Business partners | 🟠 Controlled / limited trust | Partner portal, vendor access |
 | **Intranet** | Employees / internal systems | 🟢 More trusted | Internal business operations |
+
+
+## VPN - Virtual Private Network
+
+### What is the VPN?
+
+- VPN (Virtual Private Network) is a technology that creates a secure, encrypted connection over an untrusted network such as the Internet.
+- A VPN typically consists of:
+  - VPN Client → runs on the user's device
+  - VPN Server → located at the remote network/service
+  - VPN Tunnel → protected communication path between them
+
+### How a VPN Works
+
+- The VPN encapsulates traffic and protects it while it travels across the Internet.
+
+```
+Home PC
+VPN Client
+    │
+    │  Encrypted VPN Tunnel
+    │══════════════════════════╗
+    │                          ║
+    ↓                          ↓
+ Internet                  VPN Server
+                               │
+                               ↓
+                         Private Network
+```
+
+### Business VPN Types
+
+- The lecture introduces two major types of business VPNs
+
+| Type | Connection | Main Purpose |
+|---|---|---|
+| **Remote Access VPN** | Client-to-Site | Remote employee → company network |
+| **Site-to-Site VPN** | Site-to-Site | Office A ↔ Office B |
+
+#### Client-to-Site VPN or Remote Access VPN
+
+- A Remote Access VPN allows an individual user to securely connect to a company's private network from a remote location.
+- Common use cases:
+  - Working from home
+  - Remote administration
+  - Accessing internal applications
+  - Accessing internal file servers
+  - Accessing company resources securely
+
+#### Site-to-Site VPN or Intranet VPN
+
+- A Site-to-Site VPN connects two or more networks together through an encrypted VPN tunnel.
+- Common use cases:
+  - Headquarters ↔ Branch office
+  - Office ↔ Data center
+  - Company network ↔ Cloud network
+
+#### VPN Device
+
+| Device Type                  | Site-to-Site VPN | Examples                                           |
+| ---------------------------- | ---------------- | -------------------------------------------------- |
+| 🔥 **Firewall**              | ✅ Very common    | FortiGate, Cisco Firepower, Palo Alto, Sophos     |
+| 🌐 **Router**                | ✅ Yes            | Cisco ISR, MikroTik, TP-Link Omada                |
+| 📡 **VPN Router**            | ✅ Yes            | DrayTek, Ubiquiti                                 |
+| ☁️ **Cloud VPN Gateway**     | ✅ Yes            | AWS VPN Gateway, Azure VPN Gateway, GCP Cloud VPN |
+| 🖥️ **Server/Linux**          | ✅ Yes            | strongSwan, OpenVPN, WireGuard                    |
+| 🏠 **Some Modem/Routers**    | ✅ Depends on model | DrayTek, ASUS, MikroTik
+
+## Firewalls
+
+- For more detail: [Firewall](#firewall)
