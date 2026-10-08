@@ -123,8 +123,13 @@
     - [Defense in Depth](#defense-in-depth)
     - [Three Firewall Generations](#three-firewall-generations)
       - [First Generation — Packet Filtering](#first-generation--packet-filtering)
-      - [Second Generation — Circuit-Level Firewall](#second-generation--circuit-level-firewall)
-      - [Third Generation — Application Layer / NGFW](#third-generation--application-layer--ngfw)
+      - [Second Generation — Stateful Inspection Firewall / Circuit-Level Firewall](#second-generation--stateful-inspection-firewall--circuit-level-firewall)
+        - [Stateless vs Stateful](#stateless-vs-stateful)
+      - [Third Generation — Application Layer Firewall / NGFW](#third-generation--application-layer-firewall--ngfw)
+        - [Three Main Functions of an Application-Level Firewall / Proxy](#three-main-functions-of-an-application-level-firewall--proxy)
+          - [Filtering](#filtering)
+          - [Caching](#caching)
+          - [Logging](#logging)
   - [VoIP Endpoint](#voip-endpoint)
     - [What Is VoIP?](#what-is-voip)
     - [Traditional Phone vs VoIP](#traditional-phone-vs-voip)
@@ -1746,9 +1751,12 @@ Marketing       [Firewall 2]
 - Stateless
   - A packet-filtering firewall is generally considered stateless because it does not track whether packets belong to an established/valid connection.
 
-#### Second Generation — Circuit-Level Firewall
+#### Second Generation — Stateful Inspection Firewall / Circuit-Level Firewall
 
-- A circuit-level firewall focuses on connections/sessions, particularly TCP sessions.
+- A Stateful Inspection Firewall / Circuit-Level firewall focuses on connections/sessions, particularly TCP sessions.
+- It operates primarily at Layer 4 (Transport Layer) and understands protocols such as:
+  - TCP
+  - UDP
 - The firewall monitors whether traffic belongs to a valid/established session.
 
 ```
@@ -1763,8 +1771,20 @@ Client                 Server
 # TCP session established
 ```
 
-#### Third Generation — Application Layer / NGFW
+##### Stateless vs Stateful
 
+| | Stateless | Stateful |
+|---|---|---|
+| Tracks sessions | ❌ | ✅ |
+| IP filtering | ✅ | ✅ |
+| Port filtering | ✅ | ✅ |
+| Understands connection state | ❌ | ✅ |
+| Example | Basic ACL firewall | Stateful firewall |
+
+#### Third Generation — Application Layer Firewall / NGFW
+
+- The application-level firewall operates at OSI Layer 7 — Application Layer
+- It is also commonly associated with a proxy server
 - These firewalls can provide significantly more advanced traffic inspection and application-aware security capabilities than basic packet filtering.
 
 ```
@@ -1773,6 +1793,61 @@ Client                 Server
 Layer 7 ─ Application
           ↑
 NGFW / Application-aware
+```
+
+- Example: Suppose a company wants to block FTP
+  - A basic packet-filtering firewall (First Generation — Packet Filtering) might simply block `TCP port 21`
+  - An application-level firewall can inspect the traffic and determine whether it is actually associated with the FTP protocol
+
+##### Three Main Functions of an Application-Level Firewall / Proxy
+
+###### Filtering
+
+- Can allow or deny traffic based on application-level protocol
+- Example:
+
+```
+FTP       → ❌ Block
+HTTP      → ✅ Allow
+HTTPS     → ✅ Allow
+```
+
+###### Caching
+
+- The proxy can cache frequently requested content
+- This can reduce:
+  - Internet bandwidth usage
+  - ISP traffic
+  - Repeated external requests
+
+```
+User A → YouTube video
+             ↓
+          Proxy
+             ↓
+        Internet
+
+Proxy caches content
+
+User B → Same video
+             ↓
+          Proxy
+             ↓
+       Cached content
+```
+
+###### Logging
+
+- The proxy can record user activity for auditing and monitoring.
+  - This can help organizations enforce their Acceptable Use Policy (AUP) and investigate inappropriate activity.
+
+- Example
+
+```
+User: John
+Website: example.com
+Time: 10:35
+Action: Accessed website
 ```
 
 ## VoIP Endpoint
