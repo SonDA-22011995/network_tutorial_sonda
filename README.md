@@ -477,6 +477,13 @@
       - [Site-to-Site VPN or Intranet VPN](#site-to-site-vpn-or-intranet-vpn)
       - [VPN Device](#vpn-device)
   - [Firewalls](#firewalls)
+  - [Web Proxy Server](#web-proxy-server)
+    - [What is a Web Proxy Server?](#what-is-a-web-proxy-server)
+    - [Web Proxy Architecture](#web-proxy-architecture)
+      - [Filtering](#filtering-1)
+      - [Content Checking](#content-checking)
+      - [Caching](#caching-1)
+    - [Web Proxy vs Application-Level Firewall](#web-proxy-vs-application-level-firewall)
 
 # Introduction Network
 
@@ -5840,3 +5847,118 @@ VPN Client
 ## Firewalls
 
 - For more detail: [Firewall](#firewall)
+
+## Web Proxy Server
+
+### What is a Web Proxy Server?
+
+- A Web Proxy Server is a specialized type of proxy server designed primarily to control and manage web/Internet traffic in enterprise environments.
+- It mainly handles:
+  - HTTP
+  - HTTPS
+  - DNS-related requests
+- Its main functions are: **Filtering + Content Checking + Caching**
+
+### Web Proxy Architecture
+
+- The employee's web traffic goes through the proxy before reaching the Internet.
+
+```
+    Employee PC
+        │
+        │ HTTP / HTTPS
+        ↓
+┌─────────────────┐
+│   Web Proxy     │
+│                 │
+│ • Filtering     │
+│ • Content Check │
+│ • Caching       │
+└────────┬────────┘
+         │
+         ↓
+      Internet  
+```
+
+#### Filtering
+
+- One of the most important functions is website/category filtering.
+- The proxy can classify websites into categories such as:
+  - Gambling
+  - Social media
+  - Streaming media
+  - Adult content
+  - Gaming
+  - Malicious websites
+
+```
+Employee
+   ↓
+Request: gambling website
+   ↓
+Web Proxy
+   ↓
+Category = Gambling
+   ↓
+❌ BLOCK
+```
+
+#### Content Checking
+
+- A web proxy can also inspect website content to determine whether it is potentially malicious.
+
+```
+Employee
+   ↓
+Website Request
+   ↓
+Web Proxy
+   ↓
+Content Inspection
+   ↓
+┌───────────────┐
+│ Safe content  │ → ✅ Allow
+│ Malicious     │ → ❌ Block
+└───────────────┘
+```
+
+#### Caching
+
+- Just like a third-generation/application-level proxy, a web proxy can cache frequently requested content.
+- If multiple employees request the same content, the proxy may serve it from its cache instead of retrieving it from the Internet again.
+- Benefits
+  - Reduces Internet bandwidth usage
+  - Reduces repeated external requests
+  - Can improve performance
+
+
+```
+Employee A ──> Web Proxy ──> Internet
+                    │
+                    ↓
+                  Cache
+
+Employee B ──> Web Proxy
+                    │
+                    ↓
+              Cached Content
+```
+
+### Web Proxy vs Application-Level Firewall
+
+- A general application-level proxy can deal with various application-layer protocols.
+- A web proxy is specifically focused on web/Internet traffic and provides specialized features such as website categorization and URL filtering.
+
+- The relationship is
+
+```
+Third-Generation Firewall
+        │
+        └── Application-Level Firewall
+                    │
+                    └── Proxy
+                         │
+                         └── Web Proxy
+                              ↓
+                       Focuses on Web Traffic
+```
