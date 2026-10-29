@@ -269,9 +269,15 @@
       - [What Does a Router Do?](#what-does-a-router-do)
       - [Router Uses IP Addresses](#router-uses-ip-addresses)
       - [Router vs Switch](#router-vs-switch)
+      - [Routing Protocols](#routing-protocols)
       - [Routers Determine the Best Path](#routers-determine-the-best-path)
-      - [A router separates broadcast domains](#a-router-separates-broadcast-domains)
-      - [Example](#example)
+      - [How Routing Works](#how-routing-works)
+        - [Network Topology](#network-topology-1)
+        - [The Routing Process](#the-routing-process)
+          - [Step 1: PC1 Sends a Packet to Router 1](#step-1-pc1-sends-a-packet-to-router-1)
+          - [Step 2: Router 1 Checks Its Routing Table](#step-2-router-1-checks-its-routing-table)
+          - [Step 3: Router 2 Forwards the Packet to PC2](#step-3-router-2-forwards-the-packet-to-pc2)
+        - [What Happens to the IP and MAC Addresses?](#what-happens-to-the-ip-and-mac-addresses)
   - [Network Address Translation (NAT)](#network-address-translation-nat)
     - [What Is NAT?](#what-is-nat)
     - [Benefits of NAT](#benefits-of-nat)
@@ -349,7 +355,7 @@
       - [How to Determine Whether Two IP Addresses Are on the Same Network](#how-to-determine-whether-two-ip-addresses-are-on-the-same-network)
         - [Basic rule](#basic-rule)
         - [How to calculate network IDs](#how-to-calculate-network-ids)
-        - [Example](#example-1)
+        - [Example](#example)
       - [Subnetting](#subnetting)
         - [Why Subnetting Is Needed?](#why-subnetting-is-needed)
         - [Benefits of Subnetting](#benefits-of-subnetting)
@@ -3106,11 +3112,9 @@ Interface: 192.168.56.1 --- 0xb
 #### What Does a Router Do?
 
 - A router connects different networks together.
-- This is the key difference:
-  - Switch → connects devices within the same network
-  - Router → connects different networks
-
 - Example: If PC1 wants to communicate with PC3, they are on different networks, so the traffic must pass through the router.
+  - When PC1 sends a packet to PC2, it sends the packet to its default gateway, 192.168.1.1. 
+  - The router then forwards the packet toward LAN 2 based on its routing table.
 
 ```
 Network A                              Network B
@@ -3124,6 +3128,9 @@ Network A                              Network B
        │                              │
        ↓                              ↓
    [Router A] ──────────────── [Router B]
+  Router interface           Router interface 
+    in LAN 1                    in LAN 2
+  192.168.1.1                192.168.2.1
        │        Network Link        │
        └────────────────────────────┘
 ```
@@ -3132,6 +3139,11 @@ Network A                              Network B
 
 - A router operates primarily at: **OSI Layer 3 — Network Layer**
 - It uses **IP addresses** to determine where packets should go.
+- When forwarding a packet, a router typically:
+  - Examines the destination IP address.
+  - Checks its routing table for the best matching route.
+  - Selects the outgoing interface and, if necessary, the next-hop router.
+  - Forwards the packet through the selected interface.
 
 | Device | OSI Layer | Main Address | Main Function                  |
 | ------ | --------: | ------------ | ------------------------------ |
@@ -3159,61 +3171,118 @@ PC1 ─── Switch ─── Router ─── Switch ─── PC2
                   IP address
 ```
 
+- Switch → connects devices within the same network
+  - Purpose: Connect devices within the same Local Area Network (LAN).
+  - OSI Layer: Layer 2 (Data Link Layer).
+  - Function: Forward Ethernet frames based on MAC addresses.
+  - Broadcast domains: Switches generally forward broadcasts within the same VLAN.
+- Router → connects different networks
+  - Purpose: Connect different IP networks, such as LAN 1 and LAN 2.
+  - OSI Layer: Layer 3 (Network Layer).
+  - Function: Forward IP packets based on destination IP addresses.
+  - Broadcast domains: Routers separate broadcast domains and do not forward ordinary Layer 2 broadcasts between interfaces.
+
+#### Routing Protocols
+
+- Routers use routing information to determine the best paths for forwarding packets between networks.
+- Routing protocols allow routers to exchange information about network reachability and, depending on the protocol, select suitable routes.
+- Examples include:
+  - RIP: Routing Information Protocol.
+  - OSPF: Open Shortest Path First.
+  - BGP: Border Gateway Protocol.
+  - EIGRP: Enhanced Interior Gateway Routing Protocol.
+- Note that routers can also forward packets using directly connected networks and manually configured static routes without requiring a dynamic routing protocol.
+
 #### Routers Determine the Best Path
 
 - The routers determine an appropriate/best route toward the destination based on their routing information
 
-#### A router separates broadcast domains
 
-- A router therefore creates a boundary between different Layer 3 networks/broadcast domains.
+#### How Routing Works
 
-```
- Broadcast Domain A
- PC1 ── Switch ──┐
-                 │
-              [Router]
-                 │
-                 └── Switch ── PC3
-                     Broadcast Domain B
-```
+- *Note: This describes ordinary routing without NAT. Other technologies can modify packet addresses.*
 
-#### Example
+##### Network Topology
 
-```
-# When PC1 wants to communicate with PC3:
+- The example consists of two LANs connected through two routers using a WAN link.
 
-PC1
-Network: 192.168.1.0/24
+| Network | Network Address  | Devices                        |
+|---------|------------------|--------------------------------|
+| LAN 1   | 192.168.1.0/24   | PC1, Switch 1, Router 1        |
+| WAN     | 200.100.100.0/24 | Router 1 and Router 2          |
+| LAN 2   | 192.168.0.0/24   | PC2, Switch 2, Router 2        |
 
-        ↓
+- LAN connections: Use Ethernet interfaces and Ethernet cables.
+- WAN connection: The example uses a serial connection between the two routers.
+- Default gateway: Each PC uses its local router's LAN interface to communicate with devices on other networks.
 
-[Switch]
+##### The Routing Process
 
-        ↓
+###### Step 1: PC1 Sends a Packet to Router 1
 
-[Router]
+- PC1 wants to communicate with PC2, which belongs to a different network.
+- PC1 creates an IP packet containing:
+  - **Source IP address:** PC1's IP address.
+  - **Destination IP address:** PC2's IP address.
+  - **Data:** The information being transmitted.
+- Because PC2 is on a different network, PC1 sends the packet to its default gateway, Router 1.
+- If PC1 does not know the MAC address of its default gateway, it uses ARP to discover it.
+- The Ethernet frame contains:
+  - Source MAC address: PC1's MAC address.
+  - Destination MAC address: Router 1's LAN interface MAC address.
+- **Key point:** 
+  - IP addresses identify the source and destination across networks
+  - While MAC addresses are used to deliver Ethernet frames on the local network.
 
-        ↓
+###### Step 2: Router 1 Checks Its Routing Table
 
-[Switch]
+- Router 1 receives the frame, extracts the IP packet, and examines its destination IP address.
+- It checks its routing table to determine where to forward the packet.
+- For example, the routing table contains:
 
-        ↓
+| Destination Network | Route Type | Next Hop / Interface |
+|---|---|---|
+| 192.168.1.0/24 | Directly connected | LAN interface |
+| 200.100.100.0/24 | Directly connected | Serial interface |
+| 192.168.0.0/24 | Remote network | 200.100.100.254 |
 
-PC3
-Network: 192.168.2.0/24
-```
+- The destination network, `192.168.0.0/24`, is reachable through Router 2 at `200.100.100.254`.
+- Router 1 forwards the packet through its serial interface toward Router 2.
 
-- Step 1 — PC1 sends the frame
-  - PC1 sends traffic toward the router through the local switch.
-- Step 2 — Switch forwards using MAC
-  - The switch examines the destination MAC address and uses its CAM/MAC table to determine the correct port.
-- Step 3 — Router receives the packet
-  - The router examines the destination IP address
-- Step 4 — Router chooses the route
-  - The router checks its routing information and determines where to forward the packet.
-- Step 5 — Destination network
-  - Eventually the packet reaches the destination network.
-  - The destination switch then uses MAC addresses to deliver the frame to PC3
+- **Important concepts:**
+  - A directly connected route represents a network connected to a router's interface.
+  - A remote route provides a path to a network that is not directly connected.
+  - The routing table helps the router select the appropriate route for the destination IP address.
+
+######  Step 3: Router 2 Forwards the Packet to PC2
+
+- Router 2 receives the packet and examines its destination IP address.
+- It checks its routing table and finds that `192.168.0.0/24` is directly connected through its LAN interface.
+- Therefore, Router 2 forwards the packet into LAN 2.
+- If Router 2 does not know PC2's MAC address, it uses ARP to discover it.
+- The Ethernet frame on LAN 2 contains:
+  - Source MAC address: Router 2's LAN interface MAC address.
+  - Destination MAC address: PC2's MAC address.
+- The switch forwards the frame to PC2 using its MAC address table.
+- PC2 receives the frame, extracts the IP packet, and processes the data.
+
+##### What Happens to the IP and MAC Addresses?
+
+- An important distinction is that routers forward IP packets by examining destination IP addresses
+- While Ethernet frames deliver those packets across individual network links.
+
+| Property | During Routing |
+|---|---|
+| Source IP address | Normally remains unchanged |
+| Destination IP address | Normally remains unchanged |
+| Source MAC address | Changes at each routed Ethernet hop |
+| Destination MAC address | Changes at each routed Ethernet hop |
+| Routing table | Determines the outgoing route |
+| ARP | Resolves IPv4 addresses to MAC addresses on the local link |
+
+
+
+
 
 ## Network Address Translation (NAT)
 
