@@ -269,8 +269,6 @@
       - [What Does a Router Do?](#what-does-a-router-do)
       - [Router Uses IP Addresses](#router-uses-ip-addresses)
       - [Router vs Switch](#router-vs-switch)
-      - [Routing Protocols](#routing-protocols)
-      - [Routers Determine the Best Path](#routers-determine-the-best-path)
       - [How Routing Works](#how-routing-works)
         - [Network Topology](#network-topology-1)
         - [The Routing Process](#the-routing-process)
@@ -278,6 +276,10 @@
           - [Step 2: Router 1 Checks Its Routing Table](#step-2-router-1-checks-its-routing-table)
           - [Step 3: Router 2 Forwards the Packet to PC2](#step-3-router-2-forwards-the-packet-to-pc2)
         - [What Happens to the IP and MAC Addresses?](#what-happens-to-the-ip-and-mac-addresses)
+      - [Routing Protocols](#routing-protocols)
+        - [Static Routing](#static-routing)
+        - [Dynamic Routing](#dynamic-routing)
+      - [Routers Determine the Best Path](#routers-determine-the-best-path)
   - [Network Address Translation (NAT)](#network-address-translation-nat)
     - [What Is NAT?](#what-is-nat)
     - [Benefits of NAT](#benefits-of-nat)
@@ -3182,22 +3184,6 @@ PC1 ─── Switch ─── Router ─── Switch ─── PC2
   - Function: Forward IP packets based on destination IP addresses.
   - Broadcast domains: Routers separate broadcast domains and do not forward ordinary Layer 2 broadcasts between interfaces.
 
-#### Routing Protocols
-
-- Routers use routing information to determine the best paths for forwarding packets between networks.
-- Routing protocols allow routers to exchange information about network reachability and, depending on the protocol, select suitable routes.
-- Examples include:
-  - RIP: Routing Information Protocol.
-  - OSPF: Open Shortest Path First.
-  - BGP: Border Gateway Protocol.
-  - EIGRP: Enhanced Interior Gateway Routing Protocol.
-- Note that routers can also forward packets using directly connected networks and manually configured static routes without requiring a dynamic routing protocol.
-
-#### Routers Determine the Best Path
-
-- The routers determine an appropriate/best route toward the destination based on their routing information
-
-
 #### How Routing Works
 
 - *Note: This describes ordinary routing without NAT. Other technologies can modify packet addresses.*
@@ -3280,8 +3266,67 @@ PC1 ─── Switch ─── Router ─── Switch ─── PC2
 | Routing table | Determines the outgoing route |
 | ARP | Resolves IPv4 addresses to MAC addresses on the local link |
 
+#### Routing Protocols
 
+- Routers use routing information to determine the best paths for forwarding packets between networks.
+- Routing protocols allow routers to exchange information about network reachability and, depending on the protocol, select suitable routes.
+- Examples include:
+  - RIP: Routing Information Protocol.
+  - OSPF: Open Shortest Path First.
+  - BGP: Border Gateway Protocol.
+  - EIGRP: Enhanced Interior Gateway Routing Protocol.
+- Note that routers can also forward packets using directly connected networks and manually configured static routes without requiring a dynamic routing protocol.
 
+##### Static Routing
+
+- Static routing is a routing method in which network administrators manually configure routes on routers.
+- Key Characteristics
+  - Manual configuration: Administrators must manually add or modify routes in the routing table.
+  - Simple: Easy to configure in small networks with a few routers and routes.
+  - No routing protocol overhead: Does not require a dynamic routing protocol to discover routes or exchange routing information.
+  - Error-prone: Incorrect route configurations can cause network connectivity problems.
+  - Limited scalability: Managing routes becomes difficult as the network grows or changes.
+- Example: Consider a network with two routers connecting two LANs.
+  - If the network topology rarely changes, an administrator can manually configure static routes on both routers. There is no need for a dynamic routing protocol.
+
+| Advantages | Disadvantages |
+|---|---|
+| Simple to configure | Requires manual configuration |
+| No dynamic routing protocol overhead | Difficult to manage in large networks |
+| Predictable routing behavior | Does not automatically adapt to topology changes |
+| Suitable for small, stable networks | Configuration errors can disrupt connectivity |
+
+##### Dynamic Routing
+
+- Dynamic routing uses routing protocols to exchange routing information, discover available routes, and automatically update routing tables when network conditions change.
+- Key Characteristics
+  - Automatic route discovery: Routers learn routes through dynamic routing protocols.
+  - Automatic updates: Routing tables can be updated when network topology changes.
+  - Metric-based decisions: Routers select routes based on metrics such as hop count, cost, or bandwidth, depending on the protocol.
+  - Scalable: More suitable for large and complex networks.
+  - Resource overhead: Routing protocols consume CPU, RAM, and network bandwidth.
+- Example
+  - Consider a network with three routers. If the middle router goes offline, a dynamic routing protocol can detect the failure and select an alternative route if one is available.
+  - This reduces the need for administrators to manually update routes on every router.
+
+| Advantages | Disadvantages |
+|---|---|
+| Automatically discovers routes | Requires additional configuration and knowledge |
+| Updates routes when topology changes | Consumes CPU and RAM |
+| Can select alternative paths after failures | Uses bandwidth to exchange routing information |
+| Suitable for large, complex networks | Convergence may take time |
+
+- Dynamic routing protocols are commonly classified into three categories.
+
+| Category | Description | Routing Decision |
+|---|---|---|
+| Distance Vector | Routers exchange information about reachable networks and distances. | Uses metrics such as hop count. |
+| Link-State | Routers build a topology map of the network. | Calculates optimal paths using topology information and link costs. |
+| Hybrid / Advanced Distance Vector | Combines characteristics associated with distance-vector and link-state approaches. | Uses protocol-specific metrics and algorithms. |
+
+#### Routers Determine the Best Path
+
+- The routers determine an appropriate/best route toward the destination based on their routing information
 
 
 ## Network Address Translation (NAT)
