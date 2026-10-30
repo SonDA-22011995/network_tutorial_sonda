@@ -271,10 +271,10 @@
       - [Router vs Switch](#router-vs-switch)
       - [How Routing Works](#how-routing-works)
         - [Network Topology](#network-topology-1)
-        - [The Routing Process](#the-routing-process)
-          - [Step 1: PC1 Sends a Packet to Router 1](#step-1-pc1-sends-a-packet-to-router-1)
-          - [Step 2: Router 1 Checks Its Routing Table](#step-2-router-1-checks-its-routing-table)
-          - [Step 3: Router 2 Forwards the Packet to PC2](#step-3-router-2-forwards-the-packet-to-pc2)
+      - [The Routing Process](#the-routing-process)
+        - [Step 1: PC1 Sends a Packet to Router 1](#step-1-pc1-sends-a-packet-to-router-1)
+        - [Step 2: Router 1 Checks Its Routing Table](#step-2-router-1-checks-its-routing-table)
+        - [Step 3: Router 2 Forwards the Packet to PC2](#step-3-router-2-forwards-the-packet-to-pc2)
         - [What Happens to the IP and MAC Addresses?](#what-happens-to-the-ip-and-mac-addresses)
       - [Routing Tables](#routing-tables)
         - [What Is a Routing Table?](#what-is-a-routing-table)
@@ -3210,9 +3210,9 @@ PC1 ─── Switch ─── Router ─── Switch ─── PC2
 - WAN connection: The example uses a serial connection between the two routers.
 - Default gateway: Each PC uses its local router's LAN interface to communicate with devices on other networks.
 
-##### The Routing Process
+#### The Routing Process
 
-###### Step 1: PC1 Sends a Packet to Router 1
+##### Step 1: PC1 Sends a Packet to Router 1
 
 - PC1 wants to communicate with PC2, which belongs to a different network.
 - PC1 creates an IP packet containing:
@@ -3228,7 +3228,7 @@ PC1 ─── Switch ─── Router ─── Switch ─── PC2
   - IP addresses identify the source and destination across networks
   - While MAC addresses are used to deliver Ethernet frames on the local network.
 
-###### Step 2: Router 1 Checks Its Routing Table
+##### Step 2: Router 1 Checks Its Routing Table
 
 - Router 1 receives the frame, extracts the IP packet, and examines its destination IP address.
 - It checks its routing table to determine where to forward the packet.
@@ -3248,7 +3248,7 @@ PC1 ─── Switch ─── Router ─── Switch ─── PC2
   - A remote route provides a path to a network that is not directly connected.
   - The routing table helps the router select the appropriate route for the destination IP address.
 
-######  Step 3: Router 2 Forwards the Packet to PC2
+#####  Step 3: Router 2 Forwards the Packet to PC2
 
 - Router 2 receives the packet and examines its destination IP address.
 - It checks its routing table and finds that `192.168.0.0/24` is directly connected through its LAN interface.
