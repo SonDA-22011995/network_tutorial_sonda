@@ -276,6 +276,14 @@
           - [Step 2: Router 1 Checks Its Routing Table](#step-2-router-1-checks-its-routing-table)
           - [Step 3: Router 2 Forwards the Packet to PC2](#step-3-router-2-forwards-the-packet-to-pc2)
         - [What Happens to the IP and MAC Addresses?](#what-happens-to-the-ip-and-mac-addresses)
+      - [Routing Tables](#routing-tables)
+        - [What Is a Routing Table?](#what-is-a-routing-table)
+        - [Types of Routing Table Entries](#types-of-routing-table-entries)
+          - [Directly Connected Route](#directly-connected-route)
+        - [Remote Network Route](#remote-network-route)
+        - [Default Route](#default-route)
+        - [Routing Table Components](#routing-table-components)
+        - [Administrative Distance (AD)](#administrative-distance-ad)
       - [Routing Protocols](#routing-protocols)
         - [Static Routing](#static-routing)
         - [Dynamic Routing](#dynamic-routing)
@@ -3258,13 +3266,77 @@ PC1 ─── Switch ─── Router ─── Switch ─── PC2
 - While Ethernet frames deliver those packets across individual network links.
 
 | Property | During Routing |
-|---|---|
+|----------|----------------|
 | Source IP address | Normally remains unchanged |
 | Destination IP address | Normally remains unchanged |
 | Source MAC address | Changes at each routed Ethernet hop |
 | Destination MAC address | Changes at each routed Ethernet hop |
 | Routing table | Determines the outgoing route |
 | ARP | Resolves IPv4 addresses to MAC addresses on the local link |
+
+#### Routing Tables
+
+##### What Is a Routing Table?
+
+- A routing table is a data structure maintained by a router that contains information about destination networks and how to reach them.
+- When a router receives a packet, it examines the destination IP address and consults its routing table to determine where to forward the packet.
+
+##### Types of Routing Table Entries
+
+| Route Type | Description | Example |
+|------------|-------------|---------|
+| Directly Connected Route | A network directly connected to one of the router's interfaces. | A LAN connected directly to R1. |
+| Remote Network Route | A network that can be reached through another router. | R1 reaches LAN 2 through R2. |
+| Default Route | The route used when no more specific matching route is available. | `0.0.0.0/0` |
+
+###### Directly Connected Route
+
+- A directly connected route represents a network attached directly to a router interface.
+- The router does not need a static route or a dynamic routing protocol to discover this network
+- For example
+  - If R1 has an interface configured with 192.168.1.1/24, the router automatically knows that the network 192.168.1.0/24 is directly connected.
+
+##### Remote Network Route
+
+- A remote network route represents a destination network that is not directly connected to the router
+- For example
+  - To send a packet from LAN 1 to LAN 2, R1 must forward the packet toward R2.
+  - R1 needs a routing table entry that tells it how to reach 192.168.2.0/24.
+  - Remote routes can be learned through static configuration or dynamic routing protocols
+
+
+```
+LAN 1                 LAN 2
+192.168.1.0/24        192.168.2.0/24
+    |                     |
+   [R1] ---------------- [R2]
+```
+
+##### Default Route
+
+- A default route is used when the routing table has no more specific matching route for the destination.
+- The IPv4 default route is: `0.0.0.0/0`
+- **Important**: 
+  - A default route is not used when a more specific matching route exists. 
+  - The router uses the most specific matching route according to the longest-prefix-match rule.
+
+##### Routing Table Components
+
+- A routing table entry can contain several fields. The lecture introduces these basic components:
+
+| Component | Description | Example |
+|---|---|---|
+| Route Type | Indicates how the route was learned. | Connected, Static |
+| Destination Network | The destination network to reach. | `192.168.1.0` |
+| Subnet Mask / Prefix Length | Defines the size of the destination network. | `/24` |
+| Outgoing Interface | The interface through which packets are forwarded. | FastEthernet, Serial |
+| Metric | A value used to compare routes according to a routing protocol's rules. | Hop count or protocol-specific cost |
+
+##### Administrative Distance (AD)
+
+- **Administrative Distance (AD)** is a value used by certain routers, such as Cisco routers, to rank the trustworthiness of route sources when multiple sources provide routes to the same destination prefix
+- **The general rule is: Lower Administrative Distance = More preferred route source.**
+- For example, if a router learns the same destination through a static route and OSPF, it normally prefers the static route because its default AD is lower.
 
 #### Routing Protocols
 
@@ -3295,6 +3367,14 @@ PC1 ─── Switch ─── Router ─── Switch ─── PC2
 | No dynamic routing protocol overhead | Difficult to manage in large networks |
 | Predictable routing behavior | Does not automatically adapt to topology changes |
 | Suitable for small, stable networks | Configuration errors can disrupt connectivity |
+
+- Categories of Dynamic Routing Protocols
+
+| Category | Description | Routing Decision |
+|---|---|---|
+| Distance Vector | Routers exchange information about reachable networks and distances. | Uses metrics such as hop count. |
+| Link-State | Routers build a topology map of the network. | Calculates optimal paths using topology information and link costs. |
+| Hybrid / Advanced Distance Vector | Combines characteristics associated with distance-vector and link-state approaches. | Uses protocol-specific metrics and algorithms. |
 
 ##### Dynamic Routing
 
