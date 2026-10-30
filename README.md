@@ -279,7 +279,7 @@
       - [Routing Tables](#routing-tables)
         - [What Is a Routing Table?](#what-is-a-routing-table)
         - [Types of Routing Table Entries](#types-of-routing-table-entries)
-          - [Directly Connected Route](#directly-connected-route)
+        - [Directly Connected Route](#directly-connected-route)
         - [Remote Network Route](#remote-network-route)
         - [Default Route](#default-route)
         - [Routing Table Components](#routing-table-components)
@@ -3289,7 +3289,7 @@ PC1 ─── Switch ─── Router ─── Switch ─── PC2
 | Remote Network Route | A network that can be reached through another router. | R1 reaches LAN 2 through R2. |
 | Default Route | The route used when no more specific matching route is available. | `0.0.0.0/0` |
 
-###### Directly Connected Route
+##### Directly Connected Route
 
 - A directly connected route represents a network attached directly to a router interface.
 - The router does not need a static route or a dynamic routing protocol to discover this network
